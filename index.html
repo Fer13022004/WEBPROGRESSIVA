@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matemáticas Educativas - PWA</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="images/icon-192x192.svg" />
+    <meta name="theme-color" content="#2196F3" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1 class="logo">📚 Matemáticas Educativas</h1>
+        <nav class="nav">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <ul class="nav-list" id="navList">
+            <li><a href="#home" class="nav-link active">Inicio</a></li>
+            <li><a href="#about" class="nav-link">Acerca de</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <section id="home" class="hero">
+        <div class="container">
+          <h2 class="hero-title">Aprende Matemáticas de Forma Interactiva</h2>
+          <p class="hero-subtitle">
+            Domina conceptos fundamentales de aritmética con ejercicios
+            prácticos y explicaciones claras
+          </p>
+        </div>
+      </section>
+
+      <section class="topics" id="topics">
+        <div class="container">
+          <h2 class="section-title">Temas de Estudio</h2>
+          <div class="topics-grid">
+            <div class="topic-card" data-topic="multiplos">
+              <div class="topic-icon">✖️</div>
+              <h3 class="topic-title">Múltiples de un número</h3>
+              <p class="topic-description">
+                Aprende a calcular y identificar múltiples de cualquier número
+              </p>
+              <button class="topic-btn">Estudiar</button>
+            </div>
+
+            <div class="topic-card" data-topic="mcm">
+              <div class="topic-icon">🔢</div>
+              <h3 class="topic-title">Mínimo común múltiplo</h3>
+              <p class="topic-description">
+                Encuentra el MCM de dos o más números paso a paso
+              </p>
+              <button class="topic-btn">Estudiar</button>
+            </div>
+
+            <div class="topic-card" data-topic="divisores">
+              <div class="topic-icon">➗</div>
+              <h3 class="topic-title">Divisores de un número</h3>
+              <p class="topic-description">
+                Identifica todos los divisores de cualquier número
+              </p>
+              <button class="topic-btn">Estudiar</button>
+            </div>
+
+            <div class="topic-card" data-topic="criterios">
+              <div class="topic-icon">✅</div>
+              <h3 class="topic-title">Criterios de divisibilidad</h3>
+              <p class="topic-description">
+                Aprende las reglas de divisibilidad por 2, 3 y 5
+              </p>
+              <button class="topic-btn">Estudiar</button>
+            </div>
+
+            <div class="topic-card" data-topic="todos-divisores">
+              <div class="topic-icon">📊</div>
+              <h3 class="topic-title">Cálculo de todos los divisores</h3>
+              <p class="topic-description">
+                Método sistemático para encontrar todos los divisores
+              </p>
+              <button class="topic-btn">Estudiar</button>
+            </div>
+
+            <div class="topic-card" data-topic="primos">
+              <div class="topic-icon">🎯</div>
+              <h3 class="topic-title">Números primos y compuestos</h3>
+              <p class="topic-description">
+                Distingue entre números primos y compuestos
+              </p>
+              <button class="topic-btn">Estudiar</button>
+            </div>
+
+            <div class="topic-card" data-topic="mcd">
+              <div class="topic-icon">🏆</div>
+              <h3 class="topic-title">Máximo común divisor</h3>
+              <p class="topic-description">
+                Calcula el MCD usando diferentes métodos
+              </p>
+              <button class="topic-btn">Estudiar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about">
+        <div class="container">
+          <h2 class="section-title">Acerca de la Aplicación</h2>
+          <p class="about-text">
+            Esta aplicación web progresiva está diseñada para ayudar a
+            estudiantes a comprender conceptos fundamentales de matemáticas de
+            manera interactiva y práctica.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>
+          &copy; 2025 Matemáticas Educativas. Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/sw-register.js"></script>
+  </body>
+</html>

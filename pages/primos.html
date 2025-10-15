@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Números Primos y Compuestos - Matemáticas Educativas</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/topic-page.css" />
+    <link rel="manifest" href="../manifest.json" />
+    <link rel="icon" type="image/png" href="../images/icon-192x192.png" />
+    <meta name="theme-color" content="#2196F3" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <a href="../index.html" class="back-btn">← Volver</a>
+          <h1 class="page-title">🎯 Números Primos y Compuestos</h1>
+          <button class="theme-toggle" id="themeToggle">🌙</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Sección de teoría -->
+      <section class="theory-section">
+        <div class="container">
+          <div class="content-card">
+            <h2>📚 ¿Qué son los números primos y compuestos?</h2>
+            <div class="theory-content">
+              <div class="concept-grid">
+                <div class="concept-card">
+                  <h3>🎯 Números Primos</h3>
+                  <p>
+                    Un <strong>número primo</strong> es un número natural mayor
+                    que 1 que tiene exactamente dos divisores: el 1 y él mismo.
+                  </p>
+                  <div class="example-list">
+                    <h4>Ejemplos de números primos:</h4>
+                    <div class="number-list">
+                      <span class="number-badge prime">2</span>
+                      <span class="number-badge prime">3</span>
+                      <span class="number-badge prime">5</span>
+                      <span class="number-badge prime">7</span>
+                      <span class="number-badge prime">11</span>
+                      <span class="number-badge prime">13</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="concept-card">
+                  <h3>🔢 Números Compuestos</h3>
+                  <p>
+                    Un <strong>número compuesto</strong> es un número natural
+                    mayor que 1 que tiene más de dos divisores.
+                  </p>
+                  <div class="example-list">
+                    <h4>Ejemplos de números compuestos:</h4>
+                    <div class="number-list">
+                      <span class="number-badge composite">4</span>
+                      <span class="number-badge composite">6</span>
+                      <span class="number-badge composite">8</span>
+                      <span class="number-badge composite">9</span>
+                      <span class="number-badge composite">10</span>
+                      <span class="number-badge composite">12</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="special-case">
+                <h3>🚨 Casos Especiales</h3>
+                <ul>
+                  <li>
+                    <strong>El número 1:</strong> No es primo ni compuesto
+                  </li>
+                  <li>
+                    <strong>El número 2:</strong> Es el único número primo par
+                  </li>
+                  <li>
+                    <strong>Números mayores a 2:</strong> Todos los números
+                    pares son compuestos
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección interactiva -->
+      <section class="interactive-section">
+        <div class="container">
+          <div class="content-card">
+            <h2>🔍 Verificador de Números Primos</h2>
+            <div class="calculator">
+              <div class="input-group">
+                <label for="numberInput"
+                  >Ingresa un número para verificar:</label
+                >
+                <input
+                  type="number"
+                  id="numberInput"
+                  min="2"
+                  max="1000"
+                  placeholder="Ej: 17"
+                />
+                <button id="checkBtn" class="btn">Verificar</button>
+              </div>
+              <div class="results" id="results">
+                <p class="placeholder-text">
+                  Ingresa un número para verificar si es primo o compuesto
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Criba de Eratóstenes -->
+      <section class="sieve-section">
+        <div class="container">
+          <div class="content-card">
+            <h2>🧮 Criba de Eratóstenes</h2>
+            <p>Encuentra todos los números primos hasta un número dado:</p>
+            <div class="sieve-controls">
+              <input
+                type="number"
+                id="sieveLimit"
+                min="2"
+                max="100"
+                value="30"
+                placeholder="Límite"
+              />
+              <button id="sieveBtn" class="btn">Generar Criba</button>
+            </div>
+            <div class="sieve-grid" id="sieveGrid">
+              <!-- Se llenará dinámicamente -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ejercicios -->
+      <section class="exercise-section">
+        <div class="container">
+          <div class="content-card">
+            <h2>💪 Ejercicio Práctico</h2>
+            <div class="exercise" id="exercise1">
+              <h3>
+                ¿El número <span id="exerciseNumber">17</span> es primo o
+                compuesto?
+              </h3>
+              <div class="exercise-options">
+                <button class="option-btn" data-answer="primo">🎯 Primo</button>
+                <button class="option-btn" data-answer="compuesto">
+                  🔢 Compuesto
+                </button>
+              </div>
+              <div class="exercise-feedback" id="exerciseFeedback"></div>
+              <button id="newExerciseBtn" class="btn btn-secondary">
+                Nuevo Ejercicio
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>
+          &copy; 2025 Matemáticas Educativas. Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/primos.js"></script>
+    <script src="../js/sw-register.js"></script>
+  </body>
+</html>
