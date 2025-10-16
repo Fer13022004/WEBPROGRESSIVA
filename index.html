@@ -4,126 +4,112 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Matemáticas Educativas - PWA</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Iconos -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="manifest" href="manifest.json" />
     <link rel="icon" type="image/svg+xml" href="images/icon-192x192.svg" />
-    <meta name="theme-color" content="#2196F3" />
+    <meta name="theme-color" content="#ff9f43" />
   </head>
   <body>
-    <header class="header">
-      <div class="container">
-        <h1 class="logo">📚 Matemáticas Educativas</h1>
-        <nav class="nav">
-          <button class="menu-toggle" id="menuToggle">☰</button>
-          <ul class="nav-list" id="navList">
-            <li><a href="#home" class="nav-link active">Inicio</a></li>
-            <li><a href="#about" class="nav-link">Acerca de</a></li>
-          </ul>
-        </nav>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-gradient shadow-sm">
+      <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand fw-bold d-flex align-items-center text-light" href="#">
+          <i class="bi bi-calculator-fill me-2 fs-3"></i> Matemáticas Educativas
+        </a>
       </div>
-    </header>
+    </nav>
 
-    <main class="main">
-      <section id="home" class="hero">
-        <div class="container">
-          <h2 class="hero-title">Aprende Matemáticas de Forma Interactiva</h2>
-          <p class="hero-subtitle">
-            Domina conceptos fundamentales de aritmética con ejercicios
-            prácticos y explicaciones claras
-          </p>
-        </div>
-      </section>
+    <!-- Dashboard -->
+    <main class="dashboard py-5">
+      <div class="container">
+        <h2 class="text-center fw-bold mb-5 title-gradient animate-fade">
+          🧮 Elige una lección para comenzar
+        </h2>
 
-      <section class="topics" id="topics">
-        <div class="container">
-          <h2 class="section-title">Temas de Estudio</h2>
-          <div class="topics-grid">
-            <div class="topic-card" data-topic="multiplos">
-              <div class="topic-icon">✖️</div>
-              <h3 class="topic-title">Múltiples de un número</h3>
-              <p class="topic-description">
-                Aprende a calcular y identificar múltiples de cualquier número
-              </p>
-              <button class="topic-btn">Estudiar</button>
-            </div>
+        <div class="row g-4" id="topics">
+          <!-- Tarjetas -->
+          <div class="col-md-6 col-lg-4">
+            <a href="pages/multiplos.html" class="card topic-card gradient-1 text-center p-4 text-decoration-none">
+              <div class="topic-icon"><i class="bi bi-x-circle-fill"></i></div>
+              <h5 class="fw-bold mt-3">Múltiplos de un número</h5>
+              <p>Aprende a identificar múltiplos fácilmente.</p>
+            </a>
+          </div>
 
-            <div class="topic-card" data-topic="mcm">
-              <div class="topic-icon">🔢</div>
-              <h3 class="topic-title">Mínimo común múltiplo</h3>
-              <p class="topic-description">
-                Encuentra el MCM de dos o más números paso a paso
-              </p>
-              <button class="topic-btn">Estudiar</button>
-            </div>
+          <div class="col-md-6 col-lg-4">
+            <a href="pages/mcm.html" class="card topic-card gradient-2 text-center p-4 text-decoration-none">
+              <div class="topic-icon"><i class="bi bi-123"></i></div>
+              <h5 class="fw-bold mt-3">Mínimo común múltiplo</h5>
+              <p>Descubre cómo calcular el MCM paso a paso.</p>
+            </a>
+          </div>
 
-            <div class="topic-card" data-topic="divisores">
-              <div class="topic-icon">➗</div>
-              <h3 class="topic-title">Divisores de un número</h3>
-              <p class="topic-description">
-                Identifica todos los divisores de cualquier número
-              </p>
-              <button class="topic-btn">Estudiar</button>
-            </div>
+          <div class="col-md-6 col-lg-4">
+            <a href="pages/divisores.html" class="card topic-card gradient-3 text-center p-4 text-decoration-none">
+              <div class="topic-icon"><i class="bi bi-slash-circle-fill"></i></div>
+              <h5 class="fw-bold mt-3">Divisores de un número</h5>
+              <p>Encuentra los divisores de forma interactiva.</p>
+            </a>
+          </div>
 
-            <div class="topic-card" data-topic="criterios">
-              <div class="topic-icon">✅</div>
-              <h3 class="topic-title">Criterios de divisibilidad</h3>
-              <p class="topic-description">
-                Aprende las reglas de divisibilidad por 2, 3 y 5
-              </p>
-              <button class="topic-btn">Estudiar</button>
-            </div>
+          <div class="col-md-6 col-lg-4">
+            <a href="pages/criterios.html" class="card topic-card gradient-4 text-center p-4 text-decoration-none">
+              <div class="topic-icon"><i class="bi bi-check2-circle"></i></div>
+              <h5 class="fw-bold mt-3">Criterios de divisibilidad</h5>
+              <p>Explora las reglas por 2, 3 y 5.</p>
+            </a>
+          </div>
 
-            <div class="topic-card" data-topic="todos-divisores">
-              <div class="topic-icon">📊</div>
-              <h3 class="topic-title">Cálculo de todos los divisores</h3>
-              <p class="topic-description">
-                Método sistemático para encontrar todos los divisores
-              </p>
-              <button class="topic-btn">Estudiar</button>
-            </div>
+          <div class="col-md-6 col-lg-4">
+            <a href="pages/calculo-divisores.html" class="card topic-card gradient-5 text-center p-4 text-decoration-none">
+              <div class="topic-icon"><i class="bi bi-grid-3x3-gap-fill"></i></div>
+              <h5 class="fw-bold mt-3">Cálculo de todos los divisores</h5>
+              <p>Descubre patrones y practica con ejercicios.</p>
+            </a>
+          </div>
 
-            <div class="topic-card" data-topic="primos">
-              <div class="topic-icon">🎯</div>
-              <h3 class="topic-title">Números primos y compuestos</h3>
-              <p class="topic-description">
-                Distingue entre números primos y compuestos
-              </p>
-              <button class="topic-btn">Estudiar</button>
-            </div>
+          <div class="col-md-6 col-lg-4">
+            <a href="pages/primos-compuestos.html" class="card topic-card gradient-6 text-center p-4 text-decoration-none">
+              <div class="topic-icon"><i class="bi bi-gem"></i></div>
+              <h5 class="fw-bold mt-3">Números primos y compuestos</h5>
+              <p>Distingue entre primos y compuestos fácilmente.</p>
+            </a>
+          </div>
 
-            <div class="topic-card" data-topic="mcd">
-              <div class="topic-icon">🏆</div>
-              <h3 class="topic-title">Máximo común divisor</h3>
-              <p class="topic-description">
-                Calcula el MCD usando diferentes métodos
-              </p>
-              <button class="topic-btn">Estudiar</button>
-            </div>
+          <div class="col-md-6 col-lg-4 mx-auto">
+            <a href="pages/mcd.html" class="card topic-card gradient-7 text-center p-4 text-decoration-none">
+              <div class="topic-icon"><i class="bi bi-trophy-fill"></i></div>
+              <h5 class="fw-bold mt-3">Máximo común divisor</h5>
+              <p>Calcula el MCD con métodos prácticos.</p>
+            </a>
           </div>
         </div>
-      </section>
-
-      <section id="about" class="about">
-        <div class="container">
-          <h2 class="section-title">Acerca de la Aplicación</h2>
-          <p class="about-text">
-            Esta aplicación web progresiva está diseñada para ayudar a
-            estudiantes a comprender conceptos fundamentales de matemáticas de
-            manera interactiva y práctica.
-          </p>
-        </div>
-      </section>
+      </div>
     </main>
 
-    <footer class="footer">
-      <div class="container">
-        <p>
-          &copy; 2025 Matemáticas Educativas. Todos los derechos reservados.
-        </p>
-      </div>
+    <!-- Footer -->
+    <footer class="footer text-white text-center py-3 mt-auto">
+      <p class="mb-0">&copy; 2025 Matemáticas Educativas </p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/sw-register.js"></script>
   </body>

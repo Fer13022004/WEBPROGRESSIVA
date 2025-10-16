@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Múltiplos de un número - Matemáticas Educativas</title>
+  <title>Divisores de un número - Matemáticas Educativas</title>
   <link rel="stylesheet" href="../css/styles-template.css" />
   <link rel="icon" type="image/svg+xml" href="../images/icon-192x192.svg" />
 </head>
@@ -33,9 +33,9 @@
         <div class="content-card animate-fade">
           <h2 class="page-title">Concepto</h2>
           <p>
-            Un <strong>múltiplo de un número</strong> es aquel que se obtiene al multiplicar ese número por un entero.
-            Por ejemplo, los múltiplos de 3 son: 3, 6, 9, 12, 15, ...
+            Un <strong>divisor de un número</strong> es aquel número que divide exactamente al número dado sin dejar residuo.
           </p>
+          <p>Por ejemplo, los divisores de 12 son: 1, 2, 3, 4, 6, 12.</p>
         </div>
       </div>
     </section>
@@ -44,18 +44,15 @@
       <div class="container">
         <div class="content-card animate-fade">
           <h2 class="page-title">Ejemplo</h2>
-          <p>Encuentra los múltiplos de 4 hasta 40:</p>
+          <p>Encuentra los divisores de 18:</p>
           <div class="calculation-steps">
-            <div class="step">4 × 1 = 4 ✔️</div>
-            <div class="step">4 × 2 = 8 ✔️</div>
-            <div class="step">4 × 3 = 12 ✔️</div>
-            <div class="step">4 × 4 = 16 ✔️</div>
-            <div class="step">4 × 5 = 20 ✔️</div>
-            <div class="step">4 × 6 = 24 ✔️</div>
-            <div class="step">4 × 7 = 28 ✔️</div>
-            <div class="step">4 × 8 = 32 ✔️</div>
-            <div class="step">4 × 9 = 36 ✔️</div>
-            <div class="step">4 × 10 = 40 ✔️</div>
+            <div class="step">18 ÷ 1 = 18 ✔️</div>
+            <div class="step">18 ÷ 2 = 9 ✔️</div>
+            <div class="step">18 ÷ 3 = 6 ✔️</div>
+            <div class="step">18 ÷ 4 = 4.5 ❌</div>
+            <div class="step">18 ÷ 6 = 3 ✔️</div>
+            <div class="step">18 ÷ 9 = 2 ✔️</div>
+            <div class="step">18 ÷ 18 = 1 ✔️</div>
           </div>
         </div>
       </div>
@@ -66,11 +63,11 @@
         <div class="content-card animate-fade">
           <h2 class="page-title">Ejercicio</h2>
           <div class="exercise">
-            <div class="exercise-question">Encuentra los múltiplos de 5 hasta 50:</div>
+            <div class="exercise-question">Encuentra todos los divisores de 20:</div>
             <div class="options">
-              <div class="option">5, 10, 15, 20, 25, 30, 35, 40, 45, 50</div>
-              <div class="option">5, 10, 15, 25, 30, 40, 45</div>
-              <div class="option">5, 15, 25, 35, 45</div>
+              <div class="option">1, 2, 4, 5, 10, 20 ✔️</div>
+              <div class="option">1, 2, 5, 10 ❌</div>
+              <div class="option">2, 4, 8, 10, 20 ❌</div>
             </div>
             <div class="exercise-feedback"></div>
           </div>
@@ -87,7 +84,7 @@
   </footer>
 
   <script src="../js/app.js"></script>
-  <script src="../js/multiplos.js"></script>
+  <script src="../js/divisores.js"></script>
   <script src="../js/sw-register.js"></script>
 </body>
 </html>
