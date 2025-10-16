@@ -16,6 +16,7 @@ body {
 .title-gradient {
   background: linear-gradient(90deg, #ff6b6b, #ffa502, #2ed573);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -25,8 +26,14 @@ body {
 }
 
 @keyframes fadeIn {
-  0% {opacity:0; transform:translateY(20px);}
-  100% {opacity:1; transform:translateY(0);}
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* TARJETAS */
@@ -45,7 +52,7 @@ body {
 /* Hover más vistoso */
 .topic-card:hover {
   transform: translateY(-10px) scale(1.07);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 /* Icono animado */
@@ -62,9 +69,15 @@ body {
 
 /* Animación flotante para todas las tarjetas */
 @keyframes floatCard {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .topic-card {
@@ -73,18 +86,38 @@ body {
 
 /* Fade in Up */
 @keyframes fadeInUp {
-  0% {opacity:0; transform:translateY(25px);}
-  100% {opacity:1; transform:translateY(0);}
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Gradientes renovados */
-.gradient-1 { background: linear-gradient(135deg, #ff9f43, #ffbe76); }
-.gradient-2 { background: linear-gradient(135deg, #1dd1a1, #00b894); }
-.gradient-3 { background: linear-gradient(135deg, #74b9ff, #0984e3); }
-.gradient-4 { background: linear-gradient(135deg, #ff7675, #d63031); }
-.gradient-5 { background: linear-gradient(135deg, #48dbfb, #0097e6); }
-.gradient-6 { background: linear-gradient(135deg, #a29bfe, #6c5ce7); }
-.gradient-7 { background: linear-gradient(135deg, #f368e0, #ff4757); }
+.gradient-1 {
+  background: linear-gradient(135deg, #ff9f43, #ffbe76);
+}
+.gradient-2 {
+  background: linear-gradient(135deg, #1dd1a1, #00b894);
+}
+.gradient-3 {
+  background: linear-gradient(135deg, #74b9ff, #0984e3);
+}
+.gradient-4 {
+  background: linear-gradient(135deg, #ff7675, #d63031);
+}
+.gradient-5 {
+  background: linear-gradient(135deg, #48dbfb, #0097e6);
+}
+.gradient-6 {
+  background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+}
+.gradient-7 {
+  background: linear-gradient(135deg, #f368e0, #ff4757);
+}
 
 /* Footer */
 .footer {
@@ -96,10 +129,12 @@ body {
 }
 
 /* Opcional: transición de texto en hover */
-.topic-card h5, .topic-card p {
+.topic-card h5,
+.topic-card p {
   transition: transform 0.4s ease, color 0.4s ease;
 }
 
-.topic-card:hover h5, .topic-card:hover p {
+.topic-card:hover h5,
+.topic-card:hover p {
   transform: translateY(-3px);
 }
