@@ -1,0 +1,454 @@
+/* ============================================
+   ESTILOS PERSONALIZADOS PARA MÚLTIPLOS
+   ============================================ */
+
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #2ecc71;
+  --accent-color: #e74c3c;
+  --dark-color: #2c3e50;
+  --light-bg: #f8f9fa;
+}
+
+/* ============================================
+   TARJETAS PERSONALIZADAS
+   ============================================ */
+
+.custom-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+/* ============================================
+   TÍTULOS Y ENCABEZADOS
+   ============================================ */
+
+.section-title {
+  color: var(--primary-color);
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid var(--secondary-color);
+  padding-bottom: 0.5rem;
+}
+
+.emoji-large {
+  font-size: 3rem;
+  margin: 1rem 0;
+}
+
+/* ============================================
+   CAJAS DE CONCEPTOS
+   ============================================ */
+
+.concept-box {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+.example-box {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+.mcm-box {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+.property-card {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.definition-highlight {
+  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  border-left: 5px solid var(--primary-color);
+  color: var(--dark-color);
+}
+
+/* ============================================
+   NÚMEROS Y MÚLTIPLOS
+   ============================================ */
+
+.multiple-number {
+  display: inline-block;
+  background: var(--secondary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin: 0.3rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.common-multiple {
+  background: var(--accent-color);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.number-circle {
+  width: 50px;
+  height: 50px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0.3rem;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+/* ============================================
+   PASOS Y CÁLCULOS
+   ============================================ */
+
+.calculation-step {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-left: 4px solid var(--primary-color);
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  color: var(--dark-color);
+}
+
+.calculation-step.bg-white {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* ============================================
+   LÍNEA DE TIEMPO
+   ============================================ */
+
+.timeline-item {
+  position: relative;
+  padding-left: 3rem;
+  padding-bottom: 2rem;
+  border-left: 3px solid var(--primary-color);
+  margin-left: 1rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -9px;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--secondary-color);
+  border: 3px solid white;
+  box-shadow: 0 0 0 3px var(--secondary-color);
+}
+
+/* ============================================
+   GRILLA VISUAL
+   ============================================ */
+
+.visual-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 10px;
+  margin: 1rem 0;
+}
+
+.grid-item {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--light-bg);
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  color: var(--dark-color);
+}
+
+.grid-item.highlight {
+  background: var(--secondary-color);
+  color: white;
+  border-color: var(--secondary-color);
+  transform: scale(1.1);
+}
+
+.grid-item.highlight-alt {
+  background: #e74c3c;
+  color: white;
+  border-color: #e74c3c;
+  transform: scale(1.1);
+}
+
+/* ============================================
+   TABLA INTERACTIVA
+   ============================================ */
+
+.interactive-table {
+  width: 100%;
+  margin: 1rem 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.interactive-table th {
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.interactive-table td {
+  background: white;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #dee2e6;
+  color: var(--dark-color);
+}
+
+.interactive-table tr:hover td {
+  background: var(--light-bg);
+}
+
+/* ============================================
+   CAJAS DE CONSEJOS
+   ============================================ */
+
+.tip-box {
+  background: #fff3cd;
+  border-left: 5px solid #ffc107;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  color: var(--dark-color);
+}
+
+.info-badge {
+  background: var(--secondary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 0.5rem;
+  font-weight: bold;
+}
+
+/* ============================================
+   EJERCICIOS
+   ============================================ */
+
+.exercise-card {
+  background: white;
+  border: 3px solid var(--primary-color);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 1rem 0;
+}
+
+.exercise-question {
+  margin-bottom: 1.5rem;
+  color: var(--dark-color);
+}
+
+.exercise-question h5 {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.option-btn {
+  background: white;
+  border: 2px solid var(--primary-color);
+  color: var(--dark-color);
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.option-btn:hover:not(:disabled) {
+  background: var(--primary-color);
+  color: white;
+  transform: translateX(10px);
+}
+
+.option-btn.correct {
+  background: var(--secondary-color);
+  color: white;
+  border-color: var(--secondary-color);
+}
+
+.option-btn.incorrect {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+}
+
+.option-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+/* ============================================
+   ACORDEÓN PERSONALIZADO
+   ============================================ */
+
+.accordion-custom .accordion-button {
+  background: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.accordion-custom .accordion-button:not(.collapsed) {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.accordion-custom .accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(74, 144, 226, 0.25);
+}
+
+/* ============================================
+   BADGES Y ETIQUETAS
+   ============================================ */
+
+.badge-custom {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+/* ============================================
+   BARRA DE PROGRESO
+   ============================================ */
+
+.progress-bar-custom {
+  height: 30px;
+  border-radius: 15px;
+  background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .custom-card {
+    padding: 1rem;
+  }
+
+  .emoji-large {
+    font-size: 2rem;
+  }
+
+  .visual-grid {
+    grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+    gap: 5px;
+  }
+
+  .multiple-number {
+    padding: 0.4rem 0.8rem;
+    font-size: 1rem;
+  }
+
+  .timeline-item {
+    padding-left: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .concept-box,
+  .example-box,
+  .mcm-box,
+  .property-card {
+    padding: 1rem;
+  }
+
+  .calculation-step {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .option-btn {
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================
+   ANIMACIONES ADICIONALES
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* ============================================
+   UTILIDADES
+   ============================================ */
+
+.text-white {
+  color: white !important;
+}
+
+.bg-white {
+  background-color: white !important;
+}
