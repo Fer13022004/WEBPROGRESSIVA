@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mínimo Común Múltiplo - Matemáticas Educativas</title>
+  <title>Mínimo Común Múltiplo (MCM) - Guía Completa - Matemáticas Educativas</title>
+  <!-- Enlaces a los mismos archivos CSS para mantener la consistencia -->
   <link rel="stylesheet" href="../css/styles-template.css" />
+  <link rel="stylesheet" href="../css/multiplos-styles.css" /> 
+  <link rel="stylesheet" href="../css/mcm-styles.css" /> <!-- Estilos específicos para esta página -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../images/icon-192x192.svg" />
 </head>
 <body>
@@ -17,9 +21,14 @@
         <div class="dropdown">
           <button class="dropbtn">Subtemas ▼</button>
           <div class="dropdown-content">
-            <a href="#concepto">Concepto</a>
-            <a href="#ejemplo">Ejemplo</a>
-            <a href="#ejercicio">Ejercicio</a>
+            <a href="#introduccion">Introducción</a>
+            <a href="#concepto">¿Qué es el MCM?</a>
+            <a href="#metodo-1">Método 1: Listas</a>
+            <a href="#metodo-2">Método 2: Factores Primos</a>
+            <a href="#propiedades">Propiedades del MCM</a>
+            <a href="#mcm-vs-mcd">MCM vs MCD</a>
+            <a href="#aplicaciones">Aplicaciones Reales</a>
+            <a href="#ejercicios">Ejercicios Prácticos</a>
           </div>
         </div>
       </nav>
@@ -28,49 +37,336 @@
 
   <!-- Main Content -->
   <main class="main">
-    <section id="concepto" class="theory-section">
-      <div class="container">
-        <div class="content-card animate-fade">
-          <h2 class="page-title">Concepto</h2>
-          <p>
-            El <strong>mínimo común múltiplo (MCM)</strong> de dos o más números
-            es el número positivo más pequeño que es múltiplo de todos ellos.
-          </p>
-          <p>Por ejemplo, el MCM de 4 y 6 es 12, porque 12 es divisible entre 4 y 6 y es el menor número con esa propiedad.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="ejemplo" class="interactive-section">
-      <div class="container">
-        <div class="content-card animate-fade">
-          <h2 class="page-title">Ejemplo</h2>
-          <p>Calcula el MCM de 8 y 12:</p>
-          <div class="calculation-steps">
-            <div class="step">Múltiplos de 8: 8, 16, 24, 32, 40, ...</div>
-            <div class="step">Múltiplos de 12: 12, 24, 36, 48, ...</div>
-            <div class="step">MCM = 24 ✔️</div>
+    <div class="container py-5">
+      
+      <!-- Introducción -->
+      <section id="introduccion" class="mb-5">
+        <div class="custom-card">
+          <div class="text-center emoji-large">🤝</div>
+          <h2 class="section-title text-center">Mínimo Común Múltiplo (MCM)</h2>
+          <div class="definition-highlight">
+            <p class="mb-0">
+              ¡Hola! Hoy exploraremos el Mínimo Común Múltiplo o MCM. Este concepto es clave para resolver problemas de coincidencias, como cuándo volverán a pasar dos autobuses al mismo tiempo por la misma parada, o para sumar y restar fracciones con diferente denominador. ¡Es una herramienta muy poderosa y útil! 🎯
+            </p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="ejercicio" class="exercise-section">
-      <div class="container">
-        <div class="content-card animate-fade">
-          <h2 class="page-title">Ejercicio</h2>
-          <div class="exercise">
-            <div class="exercise-question">Encuentra el MCM de 5 y 15:</div>
-            <div class="options">
-              <div class="option">5 ✔️</div>
-              <div class="option">15 ✔️</div>
-              <div class="option">10 ❌</div>
+      <!-- ¿Qué es el MCM? -->
+      <section id="concepto" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">📖 ¿Qué es el Mínimo Común Múltiplo?</h2>
+          <div class="concept-box">
+            <h4 class="text-white">💡 Definición</h4>
+            <p class="mb-0 text-white">
+              El <strong>Mínimo Común Múltiplo (MCM)</strong> de dos o más números es el <strong>múltiplo común más pequeño</strong> de todos ellos, sin contar el cero. Es el primer número que aparece en las listas de múltiplos de cada uno de los números.
+            </p>
+          </div>
+          <div class="tip-box mt-4">
+              <strong>🤔 Piénsalo así:</strong> Si tienes dos amigos, uno que te visita cada 3 días y otro cada 4 días, el MCM te dirá cuándo será el próximo día en que ambos te visiten juntos. La respuesta es el MCM(3, 4) = 12. ¡Se verán en 12 días!
+          </div>
+        </div>
+      </section>
+
+      <!-- Método 1: Listar Múltiplos -->
+      <section id="metodo-1" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">📝 Método 1: Listar los Múltiplos</h2>
+          <p class="lead">Este método es muy visual y perfecto para números pequeños.</p>
+          
+          <div class="example-box mt-4">
+            <h5 class="text-white">🎯 Ejemplo A: Calcular el MCM de 4 y 6</h5>
+            <div class="timeline-item-alt">
+                <h5><span class="badge bg-light text-primary badge-custom">Paso 1</span> Escribe los primeros múltiplos de cada número.</h5>
+                <p>
+                    <strong>Múltiplos de 4:</strong> 4, 8, <span class="common-multiple-highlight">12</span>, 16, 20, <span class="common-multiple-highlight">24</span>...<br>
+                    <strong>Múltiplos de 6:</strong> 6, <span class="common-multiple-highlight">12</span>, 18, <span class="common-multiple-highlight">24</span>...
+                </p>
             </div>
-            <div class="exercise-feedback"></div>
+            <div class="timeline-item-alt">
+                <h5><span class="badge bg-light text-primary badge-custom">Paso 2</span> Encuentra los múltiplos comunes.</h5>
+                <p>Observando las listas, los múltiplos que se repiten son <strong>12, 24, 36</strong>...</p>
+            </div>
+            <div class="timeline-item-alt">
+                <h5><span class="badge bg-light text-primary badge-custom">Paso 3</span> Elige el más pequeño.</h5>
+                <p class="mb-0">El múltiplo común más pequeño de todos es el <strong>12</strong>.</p>
+            </div>
+            <div class="calculation-step bg-white mt-3"><strong>Resultado:</strong> El MCM de 4 y 6 es <strong>12</strong>.</div>
+          </div>
+
+          <div class="mcm-box mt-4">
+            <h5 class="text-white">🎯 Ejemplo B: Calcular el MCM de 3, 5 y 6</h5>
+            <div class="timeline-item-alt">
+                <h5><span class="badge bg-light text-primary badge-custom">Paso 1</span> Escribe las listas de múltiplos.</h5>
+                <p>
+                    <strong>Múltiplos de 3:</strong> 3, 6, 9, 12, 15, 18, 21, 24, 27, <span class="common-multiple-highlight">30</span>...<br>
+                    <strong>Múltiplos de 5:</strong> 5, 10, 15, 20, 25, <span class="common-multiple-highlight">30</span>, 35...<br>
+                    <strong>Múltiplos de 6:</strong> 6, 12, 18, 24, <span class="common-multiple-highlight">30</span>, 36...
+                </p>
+            </div>
+             <div class="timeline-item-alt">
+                <h5><span class="badge bg-light text-primary badge-custom">Paso 2</span> Encuentra el primer múltiplo que aparezca en las tres listas.</h5>
+                <p class="mb-0">El primer número que es común a las tres listas es el <strong>30</strong>.</p>
+            </div>
+            <div class="calculation-step bg-white mt-3"><strong>Resultado:</strong> El MCM de 3, 5 y 6 es <strong>30</strong>.</div>
           </div>
         </div>
+      </section>
+
+      <!-- Método 2: Descomposición en Factores Primos -->
+      <section id="metodo-2" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">⚙️ Método 2: Descomposición en Factores Primos</h2>
+          <p class="lead">Este método es más rápido y eficiente, especialmente para números grandes.</p>
+          <div class="concept-box mt-4">
+            <h5 class="text-white">🎯 Ejemplo A: Calcular el MCM de 12 y 18</h5>
+            <div class="timeline-item-alt">
+                <h5><span class="badge bg-light text-primary badge-custom">Paso 1</span> Descompón cada número en sus factores primos.</h5>
+                <div class="row">
+                    <div class="col-md-6"><p><strong>Para 12:</strong> 12 = 2² × 3</p></div>
+                    <div class="col-md-6"><p><strong>Para 18:</strong> 18 = 2 × 3²</p></div>
+                </div>
+            </div>
+            <div class="timeline-item-alt">
+                <h5><span class="badge bg-light text-primary badge-custom">Paso 2</span> Elige los factores comunes y no comunes con el mayor exponente.</h5>
+                <p>Factores: <strong>2</strong> y <strong>3</strong>. Mayor exponente del 2 es <strong>2²</strong>. Mayor exponente del 3 es <strong>3²</strong>.</p>
+            </div>
+            <div class="timeline-item-alt">
+                <h5><span class="badge bg-light text-primary badge-custom">Paso 3</span> Multiplica esos factores.</h5>
+                <p class="mb-0">MCM = <strong>2² × 3²</strong> = 4 × 9 = <strong>36</strong>.</p>
+            </div>
+            <div class="calculation-step bg-white mt-3"><strong>Resultado:</strong> El MCM de 12 y 18 es <strong>36</strong>.</div>
+          </div>
+          
+           <div class="property-card mt-4">
+            <h5 class="text-white">🎯 Ejemplo B: Calcular el MCM de 8, 20 y 30</h5>
+            <div class="timeline-item-alt">
+                <h5><span class="badge bg-light text-primary badge-custom">Paso 1</span> Descomposición en factores primos.</h5>
+                <p>
+                    <strong>8 = 2³</strong><br>
+                    <strong>20 = 2² × 5</strong><br>
+                    <strong>30 = 2 × 3 × 5</strong>
+                </p>
+            </div>
+             <div class="timeline-item-alt">
+                <h5><span class="badge bg-light text-primary badge-custom">Paso 2</span> Elige factores comunes y no comunes con el mayor exponente.</h5>
+                <p>
+                    • Factor <strong>2</strong>: El mayor exponente es <strong>2³</strong>.<br>
+                    • Factor <strong>3</strong>: El mayor exponente es <strong>3¹</strong>.<br>
+                    • Factor <strong>5</strong>: El mayor exponente es <strong>5¹</strong>.
+                </p>
+            </div>
+             <div class="timeline-item-alt">
+                <h5><span class="badge bg-light text-primary badge-custom">Paso 3</span> Multiplica.</h5>
+                <p class="mb-0">MCM = <strong>2³ × 3 × 5</strong> = 8 × 3 × 5 = <strong>120</strong>.</p>
+            </div>
+            <div class="calculation-step bg-white mt-3"><strong>Resultado:</strong> El MCM de 8, 20 y 30 es <strong>120</strong>.</div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Propiedades del MCM -->
+      <section id="propiedades" class="mb-5">
+        <div class="custom-card">
+            <h2 class="section-title">✨ Propiedades Importantes del MCM</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="property-card">
+                        <h5 class="text-white">1. MCM con un múltiplo</h5>
+                        <p class="text-white mb-0">Si un número es múltiplo de otro, el MCM es el número más grande. <strong>Ej: MCM(6, 12) = 12</strong>.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="property-card">
+                        <h5 class="text-white">2. MCM con números primos entre sí</h5>
+                        <p class="text-white mb-0">Si dos números no tienen divisores comunes (aparte del 1), su MCM es su multiplicación. <strong>Ej: MCM(7, 10) = 70</strong>.</p>
+                    </div>
+                </div>
+                 <div class="col-md-12">
+                    <div class="property-card">
+                        <h5 class="text-white">3. Relación con el MCD (Máximo Común Divisor)</h5>
+                        <p class="text-white mb-0">Para dos números a y b, siempre se cumple que: <strong>a × b = MCM(a, b) × MCD(a, b)</strong>. ¡Una fórmula muy útil!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <!-- MCM vs MCD -->
+      <section id="mcm-vs-mcd" class="mb-5">
+        <div class="custom-card">
+            <h2 class="section-title">⚖️ MCM vs. MCD (Máximo Común Divisor)</h2>
+            <p>Es común confundirlos, pero hacen cosas opuestas. ¡Veamos la diferencia!</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="concept-box h-100">
+                        <h4 class="text-white">🔼 Mínimo Común Múltiplo (MCM)</h4>
+                        <p class="text-white">Busca el <strong>primer punto de encuentro</strong> hacia adelante.</p>
+                        <p class="text-white"><strong>Pregunta clave:</strong> ¿Cuándo coincidirán?</p>
+                        <div class="calculation-step bg-white">
+                            <strong>MCM(10, 15) = 30</strong><br>
+                            El resultado es <strong>MAYOR O IGUAL</strong> que los números.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="example-box h-100">
+                        <h4 class="text-white">🔽 Máximo Común Divisor (MCD)</h4>
+                        <p class="text-white">Busca el <strong>mayor grupo posible</strong> para repartir.</p>
+                        <p class="text-white"><strong>Pregunta clave:</strong> ¿Cuál es el mayor número que los divide a ambos?</p>
+                        <div class="calculation-step bg-white">
+                            <strong>MCD(10, 15) = 5</strong><br>
+                            El resultado es <strong>MENOR O IGUAL</strong> que los números.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+
+      <!-- Aplicaciones en la Vida Real -->
+      <section id="aplicaciones" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">🌍 ¿Cuándo Usamos el MCM en la Vida Real?</h2>
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="tip-box h-100 text-center">
+                <div class="emoji-large">🗓️</div>
+                <h6>Eventos que Coinciden</h6>
+                <p>Dos cometas pasan por la Tierra, uno cada 20 años y otro cada 30. El MCM (60) te dice que volverán a coincidir en 60 años.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="tip-box h-100 text-center">
+                <div class="emoji-large">🌭</div>
+                <h6>Compras en Paquetes</h6>
+                <p>Si las salchichas vienen en paquetes de 10 y los panes en paquetes de 8, el MCM (40) te dice que necesitas comprar 4 paq. de salchichas y 5 de panes para tener la misma cantidad.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="tip-box h-100 text-center">
+                <div class="emoji-large">➕</div>
+                <h6>Suma de Fracciones</h6>
+                <p>Para sumar 1/4 + 1/6, necesitas un denominador común. El MCM de 4 y 6 es 12, que es el denominador que usarás.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN DE EJERCICIOS -->
+      <section id="ejercicios" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title text-center">📝 Ejercicios Prácticos</h2>
+          <p class="text-center lead">¡Es tu turno! Calcula el MCM y resuelve los problemas.</p>
+        </div>
+      </section>
+
+      <!-- Ejercicios -->
+      <div id="exercise-container">
+        <!-- Ejercicio 1 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>1. ¿Cuál es el Mínimo Común Múltiplo (MCM) de 3 y 5?</strong></div>
+          <div class="options"><button class="option-btn">5</button><button class="option-btn">10</button><button class="option-btn">15</button><button class="option-btn">30</button></div>
+        </div>
+        <!-- Ejercicio 2 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>2. ¿Cuál es el MCM de 6 y 8?</strong></div>
+          <div class="options"><button class="option-btn">12</button><button class="option-btn">24</button><button class="option-btn">36</button><button class="option-btn">48</button></div>
+        </div>
+        <!-- Ejercicio 3 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>3. ¿Cuál es el MCM de 10 y 15?</strong></div>
+          <div class="options"><button class="option-btn">15</button><button class="option-btn">20</button><button class="option-btn">30</button><button class="option-btn">60</button></div>
+        </div>
+        <!-- Ejercicio 4 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>4. ¿Cuál es el MCM de 7 y 14?</strong></div>
+          <div class="options"><button class="option-btn">7</button><button class="option-btn">14</button><button class="option-btn">21</button><button class="option-btn">28</button></div>
+        </div>
+        <!-- Ejercicio 5 -->
+        <div class="custom-card exercise-item mb-4">
+            <div class="exercise-question"><strong>5. ¿Cuál es el MCM de 9 y 12?</strong></div>
+            <div class="options"><button class="option-btn">18</button><button class="option-btn">27</button><button class="option-btn">36</button><button class="option-btn">72</button></div>
+        </div>
+        <!-- Ejercicio 6 -->
+        <div class="custom-card exercise-item mb-4">
+            <div class="exercise-question"><strong>6. Un faro se enciende cada 12 segundos y otro cada 18 segundos. ¿Después de cuántos segundos coincidirán?</strong></div>
+            <div class="options"><button class="option-btn">18 segundos</button><button class="option-btn">24 segundos</button><button class="option-btn">36 segundos</button><button class="option-btn">72 segundos</button></div>
+        </div>
+        <!-- Ejercicio 7 -->
+        <div class="custom-card exercise-item mb-4">
+            <div class="exercise-question"><strong>7. ¿Cuál es el MCM de 5 y 8?</strong></div>
+            <div class="options"><button class="option-btn">20</button><button class="option-btn">30</button><button class="option-btn">40</button><button class="option-btn">80</button></div>
+        </div>
+        <!-- Ejercicio 8 -->
+        <div class="custom-card exercise-item mb-4">
+            <div class="exercise-question"><strong>8. María come una manzana cada 2 días y un plátano cada 3 días. Si hoy comió ambas frutas, ¿en cuántos días volverá a comer ambas el mismo día?</strong></div>
+            <div class="options"><button class="option-btn">4 días</button><button class="option-btn">5 días</button><button class="option-btn">6 días</button><button class="option-btn">12 días</button></div>
+        </div>
+        <!-- Ejercicio 9 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>9. ¿Cuál es el MCM de 2, 3 y 4?</strong></div>
+          <div class="options"><button class="option-btn">6</button><button class="option-btn">8</button><button class="option-btn">12</button><button class="option-btn">24</button></div>
+        </div>
+        <!-- Ejercicio 10 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>10. Si los factores primos de dos números son 2² x 3 y 2 x 5, ¿cuál es su MCM?</strong></div>
+          <div class="options"><button class="option-btn">2 x 3 x 5 = 30</button><button class="option-btn">2² x 3 x 5 = 60</button><button class="option-btn">2² x 3 = 12</button><button class="option-btn">2 x 5 = 10</button></div>
+        </div>
+        <!-- Ejercicio 11 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>11. ¿Cuál es el MCM de 15 y 25?</strong></div>
+          <div class="options"><button class="option-btn">25</button><button class="option-btn">50</button><button class="option-btn">75</button><button class="option-btn">150</button></div>
+        </div>
+        <!-- Ejercicio 12 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>12. Un autobús de la ruta A pasa cada 20 minutos y uno de la ruta B cada 30 minutos. Si ambos pasan a las 2:00 PM, ¿a qué hora volverán a coincidir?</strong></div>
+          <div class="options"><button class="option-btn">2:30 PM</button><button class="option-btn">2:40 PM</button><button class="option-btn">3:00 PM</button><button class="option-btn">3:20 PM</button></div>
+        </div>
+         <!-- Ejercicio 13 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>13. ¿Cuál es el MCM de 20 y 50?</strong></div>
+          <div class="options"><button class="option-btn">50</button><button class="option-btn">100</button><button class="option-btn">200</button><button class="option-btn">1000</button></div>
+        </div>
+         <!-- Ejercicio 14 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>14. Si un número es múltiplo de otro, ¿cuál es su MCM? (Ejemplo: MCM de 5 y 10)</strong></div>
+          <div class="options"><button class="option-btn">El número más pequeño</button><button class="option-btn">El número más grande</button><button class="option-btn">La suma de ambos</button><button class="option-btn">La multiplicación de ambos</button></div>
+        </div>
+         <!-- Ejercicio 15 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>15. ¿Cuál es el MCM de 4, 5 y 6?</strong></div>
+          <div class="options"><button class="option-btn">20</button><button class="option-btn">30</button><button class="option-btn">60</button><button class="option-btn">120</button></div>
+        </div>
+         <!-- Ejercicio 16 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>16. Quieres comprar la misma cantidad de lápices (paquetes de 12) y gomas (paquetes de 9). ¿Cuál es la menor cantidad de cada uno que puedes comprar?</strong></div>
+          <div class="options"><button class="option-btn">24</button><button class="option-btn">36</button><button class="option-btn">72</button><button class="option-btn">108</button></div>
+        </div>
+        <!-- Ejercicio 17 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>17. ¿Cuál es el MCM de 8 y 14?</strong></div>
+          <div class="options"><button class="option-btn">28</button><button class="option-btn">56</button><button class="option-btn">84</button><button class="option-btn">112</button></div>
+        </div>
+        <!-- Ejercicio 18 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>18. Tres amigos corren en una pista circular. El primero tarda 10 min, el segundo 12 min y el tercero 15 min en dar una vuelta. Si salen juntos, ¿después de cuántos minutos se encontrarán en la salida?</strong></div>
+          <div class="options"><button class="option-btn">30 minutos</button><button class="option-btn">60 minutos</button><button class="option-btn">90 minutos</button><button class="option-btn">120 minutos</button></div>
+        </div>
+        <!-- Ejercicio 19 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>19. ¿Cuál es el MCM de 30 y 45?</strong></div>
+          <div class="options"><button class="option-btn">45</button><button class="option-btn">60</button><button class="option-btn">90</button><button class="option-btn">135</button></div>
+        </div>
+        <!-- Ejercicio 20 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>20. Usando la propiedad a x b = MCM(a,b) x MCD(a,b), si sabes que el MCD(10, 12) es 2, ¿cuál es el MCM(10, 12)?</strong></div>
+          <div class="options"><button class="option-btn">24</button><button class="option-btn">30</button><button class="option-btn">60</button><button class="option-btn">120</button></div>
+        </div>
       </div>
-    </section>
+    </div>
   </main>
 
   <!-- Footer -->
@@ -80,8 +376,10 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../js/app.js"></script>
   <script src="../js/mcm.js"></script>
   <script src="../js/sw-register.js"></script>
 </body>
 </html>
+
