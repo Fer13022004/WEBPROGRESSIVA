@@ -7,7 +7,6 @@ const urlsToCache = [
   `${basePath}/`,
   `${basePath}/index.html`,
   `${basePath}/css/styles.css`,
-  `${basePath}/css/topic-page.css`,
   `${basePath}/js/app.js`,
   `${basePath}/js/config.js`,
   `${basePath}/js/sw-register.js`,
@@ -117,12 +116,20 @@ self.addEventListener("fetch", (event) => {
 
           return response;
         })
-        .catch(() => {
-          // Si falla la petición de red, mostrar página offline personalizada
-          if (event.request.destination === "document") {
-            return caches.match(`${basePath}/index.html`);
-          }
-        });
+            .catch(() => {
+      // Si falla la petición de red, intentar mostrar una página cacheada
+      if (event.request.destination === "document") {
+        return caches.match(`${basePath}/index.html`);
+      }
+
+      // Si no hay nada, devuelve una respuesta vacía válida
+      return new Response("Recurso no disponible sin conexión", {
+        status: 503,
+        statusText: "Service Unavailable",
+        headers: { "Content-Type": "text/plain" }
+      });
+    });
+
     })
   );
 });

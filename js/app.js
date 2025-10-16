@@ -121,14 +121,17 @@ class MathApp {
     }
   }
 
-  closeMenu() {
-    const navList = document.getElementById("navList");
-    const menuToggle = document.getElementById("menuToggle");
+closeMenu() {
+  const navList = document.getElementById("navList");
+  const menuToggle = document.getElementById("menuToggle");
 
-    AppState.isMenuOpen = false;
-    navList.classList.remove("active");
-    menuToggle.innerHTML = "☰";
-  }
+  if (!navList || !menuToggle) return; // <- evita el error si no existen
+
+  AppState.isMenuOpen = false;
+  navList.classList.remove("active");
+  menuToggle.innerHTML = "☰";
+}
+
 
   navigateToSection(sectionId) {
     const element = document.getElementById(sectionId);
