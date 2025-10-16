@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Criterios de Divisibilidad - Matemáticas Educativas</title>
+  <title>Guía Completa de Criterios de Divisibilidad - Matemáticas Educativas</title>
+  <!-- Mantengo los mismos enlaces a CSS para consistencia -->
   <link rel="stylesheet" href="../css/styles-template.css" />
+  <link rel="stylesheet" href="../css/multiplos-styles.css" /> <!-- Reutilizo estilos de la página anterior -->
+  <link rel="stylesheet" href="../css/criterios-styles.css" /> <!-- Estilos específicos para esta página -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="../images/icon-192x192.svg" />
 </head>
 <body>
@@ -17,9 +21,15 @@
         <div class="dropdown">
           <button class="dropbtn">Subtemas ▼</button>
           <div class="dropdown-content">
-            <a href="#concepto">Concepto</a>
-            <a href="#ejemplo">Ejemplo</a>
-            <a href="#ejercicio">Ejercicio</a>
+            <a href="#introduccion">Introducción</a>
+            <a href="#criterio-2">Criterio del 2</a>
+            <a href="#criterio-3">Criterio del 3</a>
+            <a href="#criterio-5">Criterio del 5</a>
+            <a href="#otros-criterios">Más Criterios (4, 6, 9, 10)</a>
+            <a href="#porque-funcionan">¿Por Qué Funcionan?</a>
+            <a href="#resumen">Resumen Comparativo</a>
+            <a href="#aplicaciones">Aplicaciones</a>
+            <a href="#ejercicios">Ejercicios Prácticos</a>
           </div>
         </div>
       </nav>
@@ -28,52 +38,333 @@
 
   <!-- Main Content -->
   <main class="main">
-    <section id="concepto" class="theory-section">
-      <div class="container">
-        <div class="content-card animate-fade">
-          <h2 class="page-title">Concepto</h2>
-          <p>
-            Los <strong>criterios de divisibilidad</strong> son reglas que permiten determinar si un número es divisible por otro sin hacer la división completa.
-          </p>
-          <ul>
-            <li>Divisible entre 2: si termina en 0, 2, 4, 6 u 8.</li>
-            <li>Divisible entre 3: si la suma de sus dígitos es múltiplo de 3.</li>
-            <li>Divisible entre 5: si termina en 0 o 5.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="ejemplo" class="interactive-section">
-      <div class="container">
-        <div class="content-card animate-fade">
-          <h2 class="page-title">Ejemplo</h2>
-          <p>Determina si 135 es divisible por 2, 3 y 5:</p>
-          <div class="calculation-steps">
-            <div class="step">135 termina en 5 → no divisible entre 2 ❌</div>
-            <div class="step">1 + 3 + 5 = 9 → divisible entre 3 ✔️</div>
-            <div class="step">135 termina en 5 → divisible entre 5 ✔️</div>
+    <div class="container py-5">
+      
+      <!-- Introducción -->
+      <section id="introduccion" class="mb-5">
+        <div class="custom-card">
+          <div class="text-center emoji-large">🔍</div>
+          <h2 class="section-title text-center">Criterios de Divisibilidad</h2>
+          <div class="definition-highlight">
+            <p class="mb-0">
+              ¡Bienvenido a los atajos de las matemáticas! Los criterios de divisibilidad son <strong>reglas simples</strong> que nos permiten saber si un número se puede dividir exactamente entre otro, ¡sin tener que hacer la división completa! Son herramientas súper útiles para simplificar problemas, encontrar factores y entender mejor la estructura de los números. 🎯
+            </p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="ejercicio" class="exercise-section">
-      <div class="container">
-        <div class="content-card animate-fade">
-          <h2 class="page-title">Ejercicio</h2>
-          <div class="exercise">
-            <div class="exercise-question">Determina los criterios de divisibilidad de 246:</div>
-            <div class="options">
-              <div class="option">Divisible entre 2 ✔️, entre 3 ✔️, entre 5 ❌</div>
-              <div class="option">Divisible entre 2 ❌, entre 3 ✔️, entre 5 ❌</div>
-              <div class="option">Divisible entre 2 ✔️, entre 3 ❌, entre 5 ❌</div>
+      <!-- Criterio del 2 -->
+      <section id="criterio-2" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">2️⃣ Criterio de Divisibilidad por 2</h2>
+          <div class="concept-box">
+            <h4 class="text-white">💡 La Regla del 2</h4>
+            <p class="mb-0 text-white">
+              Un número es divisible por 2 si es un <strong>número par</strong>. Esto significa que su última cifra debe ser <strong>0, 2, 4, 6 u 8</strong>.
+            </p>
+          </div>
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="tip-box">
+                <strong>✔️ Ejemplos (Divisibles por 2):</strong><br>
+                • <strong>78</strong> (termina en 8)<br>
+                • <strong>150</strong> (termina en 0)<br>
+                • <strong>934</strong> (termina en 4)<br>
+                • <strong>5.876</strong> (termina en 6)
+              </div>
             </div>
-            <div class="exercise-feedback"></div>
+            <div class="col-md-6">
+              <div class="tip-box-alt">
+                <strong>❌ Ejemplos (NO Divisibles por 2):</strong><br>
+                • <strong>41</strong> (termina en 1)<br>
+                • <strong>123</strong> (termina en 3)<br>
+                • <strong>875</strong> (termina en 5)<br>
+                • <strong>4.447</strong> (termina en 7)
+              </div>
+            </div>
           </div>
         </div>
+      </section>
+
+      <!-- Criterio del 3 -->
+      <section id="criterio-3" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">3️⃣ Criterio de Divisibilidad por 3</h2>
+          <div class="concept-box">
+            <h4 class="text-white">💡 La Regla del 3</h4>
+            <p class="mb-0 text-white">
+              Un número es divisible por 3 si la <strong>suma de sus cifras</strong> es un múltiplo de 3 (como 3, 6, 9, 12, 15...).
+            </p>
+          </div>
+          <div class="example-box mt-4">
+            <h5 class="text-white">🎯 Ejemplo: ¿Es 531 divisible por 3?</h5>
+            <div class="timeline-item-alt">
+                <h5><span class="badge bg-light text-primary badge-custom">Paso 1</span> Suma las cifras del número</h5>
+                <p>Para el número <strong>531</strong>, sumamos: 5 + 3 + 1 = <strong>9</strong></p>
+            </div>
+            <div class="timeline-item-alt">
+                <h5><span class="badge bg-light text-primary badge-custom">Paso 2</span> Comprueba si el resultado es múltiplo de 3</h5>
+                <p>El resultado es <strong>9</strong>. ¿Es 9 un múltiplo de 3? ¡Sí! (porque 3 × 3 = 9).</p>
+            </div>
+            <div class="timeline-item-alt">
+                <h5><span class="badge bg-light text-primary badge-custom">Paso 3</span> Conclusión</h5>
+                <p class="mb-0">Como la suma de sus cifras (9) es múltiplo de 3, entonces el número <strong>531 SÍ es divisible por 3</strong>.</p>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="tip-box">
+                    <strong>✔️ Ejemplos (Divisibles por 3):</strong><br>
+                    • <strong>75</strong> → 7 + 5 = 12 (12 es múltiplo de 3)<br>
+                    • <strong>4.821</strong> → 4 + 8 + 2 + 1 = 15 (15 es múltiplo de 3)
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="tip-box-alt">
+                    <strong>❌ Ejemplos (NO Divisibles por 3):</strong><br>
+                    • <strong>134</strong> → 1 + 3 + 4 = 8 (8 no es múltiplo de 3)<br>
+                    • <strong>5.002</strong> → 5 + 0 + 0 + 2 = 7 (7 no es múltiplo de 3)
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Criterio del 5 -->
+      <section id="criterio-5" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">5️⃣ Criterio de Divisibilidad por 5</h2>
+          <div class="concept-box">
+            <h4 class="text-white">💡 La Regla del 5</h4>
+            <p class="mb-0 text-white">
+              Un número es divisible por 5 si su <strong>última cifra</strong> es <strong>0 o 5</strong>. ¡Esta es una de las reglas más fáciles!
+            </p>
+          </div>
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="tip-box">
+                <strong>✔️ Ejemplos (Divisibles por 5):</strong><br>
+                • <strong>95</strong> (termina en 5)<br>
+                • <strong>480</strong> (termina en 0)<br>
+                • <strong>1.235</strong> (termina en 5)<br>
+                • <strong>9.990</strong> (termina en 0)
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="tip-box-alt">
+                <strong>❌ Ejemplos (NO Divisibles por 5):</strong><br>
+                • <strong>61</strong> (termina en 1)<br>
+                • <strong>333</strong> (termina en 3)<br>
+                • <strong>1.004</strong> (termina en 4)<br>
+                • <strong>8.769</strong> (termina en 9)
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Otros Criterios -->
+      <section id="otros-criterios" class="mb-5">
+        <div class="custom-card">
+            <h2 class="section-title">➕ Más Criterios Útiles (4, 6, 9 y 10)</h2>
+            <div class="row g-4">
+                <!-- Criterio del 4 -->
+                <div class="col-md-6">
+                    <div class="mcm-box">
+                        <h5 class="text-white">4️⃣ Criterio del 4</h5>
+                        <p class="text-white">Un número es divisible por 4 si sus <strong>dos últimas cifras</strong> forman un número divisible por 4, o si termina en <strong>00</strong>.</p>
+                        <div class="calculation-step bg-white"><strong>Ej: 1.3<u>24</u></strong> → 24 es divisible por 4 (4x6=24), entonces 1.324 también lo es.</div>
+                        <div class="calculation-step bg-white"><strong>Ej: 7.5<u>00</u></strong> → Termina en 00, entonces es divisible por 4.</div>
+                    </div>
+                </div>
+                <!-- Criterio del 6 -->
+                <div class="col-md-6">
+                    <div class="property-card">
+                        <h5 class="text-white">6️⃣ Criterio del 6</h5>
+                        <p class="text-white">Un número es divisible por 6 si es divisible por <strong>2 y por 3 al mismo tiempo</strong>.</p>
+                        <div class="calculation-step bg-white"><strong>Ej: 834</strong> → Es par (divisible por 2) ✔️. Y 8+3+4=15 (divisible por 3) ✔️. Como cumple ambas, 834 es divisible por 6.</div>
+                    </div>
+                </div>
+                <!-- Criterio del 9 -->
+                <div class="col-md-6">
+                    <div class="example-box">
+                        <h5 class="text-white">9️⃣ Criterio del 9</h5>
+                        <p class="text-white">Similar al del 3: un número es divisible por 9 si la <strong>suma de sus cifras</strong> es un múltiplo de 9.</p>
+                        <div class="calculation-step bg-white"><strong>Ej: 2.745</strong> → 2+7+4+5=18. Como 18 es múltiplo de 9 (9x2=18), 2.745 es divisible por 9.</div>
+                    </div>
+                </div>
+                <!-- Criterio del 10 -->
+                <div class="col-md-6">
+                    <div class="concept-box">
+                        <h5 class="text-white">🔟 Criterio del 10</h5>
+                        <p class="text-white">¡La más fácil! Un número es divisible por 10 si su <strong>última cifra es 0</strong>.</p>
+                        <div class="calculation-step bg-white"><strong>Ej: 520, 1.400, 9.870</strong> todos son divisibles por 10.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <!-- Por qué funcionan -->
+      <section id="porque-funcionan" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">🧠 ¿Por Qué Funcionan Estas Reglas?</h2>
+          <div class="definition-highlight">
+            <p>Estas reglas no son magia, ¡son matemáticas puras basadas en nuestro sistema numérico decimal (base 10)!</p>
+            <ul>
+              <li><strong>Reglas del 2, 5 y 10:</strong> Funcionan porque 10 es divisible por 2 y 5. Esto significa que cualquier número que represente decenas, centenas, etc. (como 40, 300, 5000) siempre será divisible por 2 y 5. Por eso, solo necesitamos mirar la última cifra (las unidades) para saber si el número total lo es.</li>
+              <li><strong>Reglas del 3 y 9:</strong> Esta es un poco más compleja. Se basa en que cualquier potencia de 10 (10, 100, 1000) al dividirse entre 3 o 9, siempre deja un residuo de 1. Esto provoca un patrón matemático que hace que la suma de las cifras del número original tenga el mismo residuo que el número original al dividirse por 3 o 9. Por eso, si la suma es divisible, ¡el número original también lo es!</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resumen Comparativo -->
+      <section id="resumen" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">⚖️ Tabla Resumen de Criterios</h2>
+          <div class="table-responsive">
+            <table class="interactive-table mt-3">
+              <thead>
+                <tr>
+                  <th>Divisible por...</th>
+                  <th>La Regla o "Atajo"</th>
+                  <th>Ejemplo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>2</strong></td><td>La última cifra es 0, 2, 4, 6 u 8.</td><td>5.17<strong>8</strong></td></tr>
+                <tr><td><strong>3</strong></td><td>La suma de sus cifras es múltiplo de 3.</td><td>381 → 3+8+1=12</td></tr>
+                <tr><td><strong>4</strong></td><td>Las dos últimas cifras son múltiplo de 4 o son 00.</td><td>9.5<strong>16</strong></td></tr>
+                <tr><td><strong>5</strong></td><td>La última cifra es 0 o 5.</td><td>14.97<strong>5</strong></td></tr>
+                <tr><td><strong>6</strong></td><td>Es divisible por 2 <strong>Y</strong> por 3.</td><td>2.53<strong>2</strong> (par y 2+5+3+2=12)</td></tr>
+                <tr><td><strong>9</strong></td><td>La suma de sus cifras es múltiplo de 9.</td><td>43.614 → 4+3+6+1+4=18</td></tr>
+                <tr><td><strong>10</strong></td><td>La última cifra es 0.</td><td>77.21<strong>0</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Aplicaciones en la Vida Real -->
+      <section id="aplicaciones" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">🌍 ¿Para Qué Sirven Estos Criterios?</h2>
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="tip-box h-100">
+                <h6> Reparto Equitativo</h6>
+                <p>Para saber si puedes repartir 90 caramelos entre 2, 3 o 5 amigos sin que sobre ninguno.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+                <div class="tip-box h-100">
+                    <h6> Organizar Grupos</h6>
+                    <p>Si tienes 120 estudiantes, sabes que puedes formar equipos de 2, 3, 5, 6 y 10 personas sin que nadie se quede fuera.</p>
+                </div>
+              </div>
+            <div class="col-md-4">
+              <div class="tip-box h-100">
+                <h6> Simplificar Fracciones</h6>
+                <p>Para simplificar 42/54, ves que ambos son divisibles por 2 (a 21/27) y luego por 3 (a 7/9) ¡mucho más rápido!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN DE EJERCICIOS -->
+      <section id="ejercicios" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title text-center">📝 Ejercicios Prácticos</h2>
+          <p class="text-center lead">¡Es hora de usar los atajos! Resuelve todos los ejercicios.</p>
+        </div>
+      </section>
+
+      <!-- Ejercicios -->
+      <div id="exercise-container">
+        <!-- Ejercicio 1 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>1. ¿Cuál de estos números es divisible por 2?</strong></div>
+          <div class="options"><button class="option-btn">457</button><button class="option-btn">894</button><button class="option-btn">101</button><button class="option-btn">333</button></div>
+        </div>
+        <!-- Ejercicio 2 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>2. ¿Cuál de estos números es divisible por 3?</strong> (Suma sus cifras)</div>
+          <div class="options"><button class="option-btn">621</button><button class="option-btn">104</button><button class="option-btn">701</button><button class="option-btn">554</button></div>
+        </div>
+        <!-- Ejercicio 3 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>3. ¿Cuál de estos números es divisible por 5?</strong></div>
+          <div class="options"><button class="option-btn">901</button><button class="option-btn">552</button><button class="option-btn">108</button><button class="option-btn">3.450</button></div>
+        </div>
+        <!-- Ejercicio 4 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>4. El número 1.536 es divisible por...</strong> (Revisa sus dos últimas cifras y la suma)</div>
+          <div class="options"><button class="option-btn">Solo por 2 y 3</button><button class="option-btn">Por 2, 3 y 4</button><button class="option-btn">Solo por 2</button><button class="option-btn">Por 2, 3, 4 y 6</button></div>
+        </div>
+        <!-- Ejercicio 5 -->
+        <div class="custom-card exercise-item mb-4">
+            <div class="exercise-question"><strong>5. ¿Cuál de los siguientes números es divisible por 9?</strong></div>
+            <div class="options"><button class="option-btn">9.001</button><button class="option-btn">1.234</button><button class="option-btn">7.344</button><button class="option-btn">5.553</button></div>
+        </div>
+        <!-- Ejercicio 6 -->
+        <div class="custom-card exercise-item mb-4">
+            <div class="exercise-question"><strong>6. Para que un número sea divisible por 10, su última cifra debe ser...</strong></div>
+            <div class="options"><button class="option-btn">Par</button><button class="option-btn">Impar</button><button class="option-btn">5</button><button class="option-btn">0</button></div>
+        </div>
+        <!-- Ejercicio 7 -->
+        <div class="custom-card exercise-item mb-4">
+            <div class="exercise-question"><strong>7. ¿El número 4.350 es divisible por 2, 3, 5 y 6?</strong></div>
+            <div class="options"><button class="option-btn">Solo por 2 y 5</button><button class="option-btn">Sí, por todos ellos</button><button class="option-btn">Solo por 3 y 5</button><button class="option-btn">No, solo por 2, 3 y 5</button></div>
+        </div>
+        <!-- Ejercicio 8 -->
+        <div class="custom-card exercise-item mb-4">
+            <div class="exercise-question"><strong>8. Si un número termina en 36, ¿por quién es siempre divisible?</strong></div>
+            <div class="options"><button class="option-btn">Solo por 2</button><button class="option-btn">Solo por 3</button><button class="option-btn">Por 2 y 4</button><button class="option-btn">Solo por 6</button></div>
+        </div>
+        <!-- Ejercicio 9 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>9. ¿Cuál de estos números NO es divisible por 3?</strong></div>
+          <div class="options"><button class="option-btn">99</button><button class="option-btn">105</button><button class="option-btn">202</button><button class="option-btn">306</button></div>
+        </div>
+        <!-- Ejercicio 10 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>10. Un número es divisible por 6 si...</strong></div>
+          <div class="options"><button class="option-btn">Es par y termina en 0</button><button class="option-btn">La suma de sus cifras es 6</button><button class="option-btn">Es divisible por 2 y por 3</button><button class="option-btn">Termina en 6</button></div>
+        </div>
+        <!-- Ejercicio 11 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>11. ¿Cuál de los siguientes números es divisible por 4?</strong></div>
+          <div class="options"><button class="option-btn">1.234</button><button class="option-btn">5.648</button><button class="option-btn">7.710</button><button class="option-btn">3.333</button></div>
+        </div>
+        <!-- Ejercicio 12 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>12. El número 8.130 es divisible por...</strong></div>
+          <div class="options"><button class="option-btn">Solo por 2, 5 y 10</button><button class="option-btn">Por 2, 3, 5, 6 y 10</button><button class="option-btn">Solo por 3 y 6</button><button class="option-btn">Por ninguno</button></div>
+        </div>
+         <!-- Ejercicio 13 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>13. ¿Cuál de los siguientes números es divisible por 2, 3, 4, 5 y 6?</strong></div>
+          <div class="options"><button class="option-btn">75</button><button class="option-btn">100</button><button class="option-btn">120</button><button class="option-btn">150</button></div>
+        </div>
+         <!-- Ejercicio 14 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>14. Si la suma de las cifras de un número es 27, ¿por quién es divisible siempre?</strong></div>
+          <div class="options"><button class="option-btn">Solo por 3</button><button class="option-btn">Solo por 9</button><button class="option-btn">Por 3 y por 9</button><button class="option-btn">Por 6</button></div>
+        </div>
+         <!-- Ejercicio 15 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>15. ¿Cuál de estos números NO es divisible por 6?</strong></div>
+          <div class="options"><button class="option-btn">636</button><button class="option-btn">704</button><button class="option-btn">810</button><button class="option-btn">912</button></div>
+        </div>
+         <!-- Ejercicio 16 -->
+        <div class="custom-card exercise-item mb-4">
+          <div class="exercise-question"><strong>16. Tienes 135 galletas. ¿Puedes repartirlas en bolsas de 3 o 5 galletas sin que sobre ninguna?</strong></div>
+          <div class="options"><button class="option-btn">Solo en bolsas de 3</button><button class="option-btn">Solo en bolsas de 5</button><button class="option-btn">Sí, en bolsas de 3 y también en bolsas de 5</button><button class="option-btn">No, en ninguna de las dos</button></div>
+        </div>
       </div>
-    </section>
+    </div>
   </main>
 
   <!-- Footer -->
@@ -83,8 +374,10 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../js/app.js"></script>
   <script src="../js/criterios.js"></script>
   <script src="../js/sw-register.js"></script>
 </body>
 </html>
+
