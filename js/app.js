@@ -121,17 +121,16 @@ class MathApp {
     }
   }
 
-closeMenu() {
-  const navList = document.getElementById("navList");
-  const menuToggle = document.getElementById("menuToggle");
+  closeMenu() {
+    const navList = document.getElementById("navList");
+    const menuToggle = document.getElementById("menuToggle");
 
-  if (!navList || !menuToggle) return; // <- evita el error si no existen
+    if (!navList || !menuToggle) return; // <- evita el error si no existen
 
-  AppState.isMenuOpen = false;
-  navList.classList.remove("active");
-  menuToggle.innerHTML = "☰";
-}
-
+    AppState.isMenuOpen = false;
+    navList.classList.remove("active");
+    menuToggle.innerHTML = "☰";
+  }
 
   navigateToSection(sectionId) {
     const element = document.getElementById(sectionId);
@@ -363,7 +362,91 @@ document.addEventListener("DOMContentLoaded", () => {
   if (window.matchMedia("(display-mode: standalone)").matches) {
     Utils.showToast("¡Aplicación iniciada en modo PWA!", "success");
   }
+
+  // Manejar instalación PWA
+  PWAInstaller.init();
 });
+
+// Gestor de instalación PWA
+const PWAInstaller = {
+  deferredPrompt: null,
+  installButton: null,
+
+  init() {
+    this.installButton = document.getElementById("installButton");
+
+    // Detectar si la PWA puede ser instalada
+    window.addEventListener("beforeinstallprompt", (e) => {
+      console.log("PWA: Evento beforeinstallprompt activado");
+      e.preventDefault();
+      this.deferredPrompt = e;
+      this.showInstallButton();
+    });
+
+    // Manejar el clic del botón de instalación
+    if (this.installButton) {
+      this.installButton.addEventListener("click", () => {
+        this.installPWA();
+      });
+    }
+
+    // Detectar cuando la PWA es instalada
+    window.addEventListener("appinstalled", () => {
+      console.log("PWA: App instalada exitosamente");
+      Utils.showToast("¡App instalada correctamente!", "success");
+      this.hideInstallButton();
+      this.deferredPrompt = null;
+    });
+
+    // Ocultar botón si ya está instalada o en modo standalone
+    if (
+      window.matchMedia("(display-mode: standalone)").matches ||
+      window.navigator.standalone
+    ) {
+      this.hideInstallButton();
+    }
+  },
+
+  showInstallButton() {
+    if (this.installButton) {
+      this.installButton.classList.remove("d-none");
+      this.installButton.style.animation = "fadeIn 0.5s ease";
+    }
+  },
+
+  hideInstallButton() {
+    if (this.installButton) {
+      this.installButton.classList.add("d-none");
+    }
+  },
+
+  async installPWA() {
+    if (!this.deferredPrompt) {
+      console.log("PWA: No hay prompt de instalación disponible");
+      return;
+    }
+
+    try {
+      // Mostrar el prompt de instalación
+      this.deferredPrompt.prompt();
+
+      // Esperar la respuesta del usuario
+      const { outcome } = await this.deferredPrompt.userChoice;
+
+      if (outcome === "accepted") {
+        console.log("PWA: Usuario aceptó la instalación");
+        Utils.showToast("Instalando aplicación...", "info");
+      } else {
+        console.log("PWA: Usuario rechazó la instalación");
+      }
+
+      this.deferredPrompt = null;
+    } catch (error) {
+      console.error("PWA: Error durante la instalación:", error);
+      Utils.showToast("Error al instalar la aplicación", "error");
+    }
+  },
+};
 
 // Manejar errores globales
 window.addEventListener("error", (e) => {

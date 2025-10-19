@@ -1,4 +1,4 @@
-const CACHE_NAME = "matematicas-pwa-v1.0.1"; // Incrementar versión para forzar actualización
+const CACHE_NAME = "matematicas-pwa-v1.1.0"; // PWA optimizada
 // Detectar si estamos en GitHub Pages o desarrollo local
 const isGitHubPages = location.hostname.includes("github.io");
 const basePath = isGitHubPages ? "/WEBPROGRESSIVA" : "";
@@ -10,10 +10,12 @@ const urlsToCache = [
   `${basePath}/js/app.js`,
   `${basePath}/js/config.js`,
   `${basePath}/js/sw-register.js`,
+  `${basePath}/js/primos-compuestos.js`,
   `${basePath}/manifest.json`,
   `${basePath}/images/icon-192x192.svg`,
   `${basePath}/images/icon-512x512.svg`,
-  // Solo páginas que existen
+  // Páginas principales
+  `${basePath}/pages/primos-compuestos.html`,
   `${basePath}/pages/multiplos.html`,
   `${basePath}/pages/primos.html`,
 ];
@@ -27,11 +29,7 @@ self.addEventListener("install", (event) => {
       .open(CACHE_NAME)
       .then((cache) => {
         console.log("Service Worker: Archivos cacheados");
-        return cache.addAll(
-          urlsToCache.filter(
-            (url) => !url.includes("/pages/") // No cachear páginas que aún no existen
-          )
-        );
+        return cache.addAll(urlsToCache);
       })
       .catch((error) => {
         console.error("Error al cachear archivos:", error);
@@ -116,20 +114,19 @@ self.addEventListener("fetch", (event) => {
 
           return response;
         })
-            .catch(() => {
-      // Si falla la petición de red, intentar mostrar una página cacheada
-      if (event.request.destination === "document") {
-        return caches.match(`${basePath}/index.html`);
-      }
+        .catch(() => {
+          // Si falla la petición de red, intentar mostrar una página cacheada
+          if (event.request.destination === "document") {
+            return caches.match(`${basePath}/index.html`);
+          }
 
-      // Si no hay nada, devuelve una respuesta vacía válida
-      return new Response("Recurso no disponible sin conexión", {
-        status: 503,
-        statusText: "Service Unavailable",
-        headers: { "Content-Type": "text/plain" }
-      });
-    });
-
+          // Si no hay nada, devuelve una respuesta vacía válida
+          return new Response("Recurso no disponible sin conexión", {
+            status: 503,
+            statusText: "Service Unavailable",
+            headers: { "Content-Type": "text/plain" },
+          });
+        });
     })
   );
 });

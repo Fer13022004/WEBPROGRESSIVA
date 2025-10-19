@@ -24,7 +24,15 @@
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="manifest" href="manifest.json" />
     <link rel="icon" type="image/svg+xml" href="images/icon-192x192.svg" />
-    <meta name="theme-color" content="#ff9f43" />
+    <link rel="apple-touch-icon" href="images/icon-192x192.svg" />
+    <meta name="theme-color" content="#3498db" />
+    <meta
+      name="description"
+      content="Aplicación web progresiva para aprender matemáticas de forma interactiva"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="MathEdu" />
   </head>
   <body>
     <!-- Navbar -->
@@ -36,6 +44,15 @@
         >
           <i class="bi bi-calculator-fill me-2 fs-3"></i> Matemáticas Educativas
         </a>
+
+        <!-- Botón de instalación PWA -->
+        <button
+          id="installButton"
+          class="btn btn-outline-light d-none"
+          style="font-size: 0.9rem"
+        >
+          <i class="bi bi-download"></i> Instalar App
+        </button>
       </div>
     </nav>
 

@@ -4,8 +4,8 @@
   "description": "Aplicación web progresiva para aprender conceptos fundamentales de matemáticas de forma interactiva",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#FAFAFA",
-  "theme_color": "#2196F3",
+  "background_color": "#ffffff",
+  "theme_color": "#3498db",
   "orientation": "portrait-primary",
   "scope": "./",
   "lang": "es-ES",
@@ -24,7 +24,32 @@
       "purpose": "any maskable"
     }
   ],
-  "shortcuts": [],
+  "shortcuts": [
+    {
+      "name": "Números Primos",
+      "short_name": "Primos",
+      "description": "Aprende sobre números primos y compuestos",
+      "url": "./pages/primos-compuestos.html",
+      "icons": [
+        {
+          "src": "images/icon-192x192.svg",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Múltiplos",
+      "short_name": "Múltiplos",
+      "description": "Aprende sobre múltiplos y divisores",
+      "url": "./pages/multiplos.html",
+      "icons": [
+        {
+          "src": "images/icon-192x192.svg",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
   "related_applications": [],
   "prefer_related_applications": false,
   "edge_side_panel": {
@@ -32,11 +57,5 @@
   },
   "launch_handler": {
     "client_mode": "focus-existing"
-  },
-  "protocol_handlers": [
-    {
-      "protocol": "web+matheduca",
-      "url": "/?topic=%s"
-    }
-  ]
+  }
 }
