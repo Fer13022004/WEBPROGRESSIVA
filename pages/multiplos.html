@@ -1,16 +1,381 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Múltiplos de un número - Matemáticas Educativas</title>
-  <link rel="stylesheet" href="../css/styles-template.css" />
-  <link rel="stylesheet" href="../css/multiplos-styles.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="../images/icon-192x192.svg" />
+  <style>
+    :root {
+      --primary-color: #4a90e2;
+      --secondary-color: #50c878;
+      --accent-color: #ff6b6b;
+      --dark-bg: #2c3e50;
+      --light-bg: #ecf0f1;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1.5rem 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .back-btn,
+    .dropbtn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .back-btn:hover,
+    .dropbtn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+      color: white;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: white;
+      min-width: 200px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      margin-top: 0.5rem;
+      right: 0;
+      z-index: 1001;
+    }
+
+    .dropdown-content a {
+      color: #333;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .main {
+      background: white;
+      margin: 2rem auto;
+      max-width: 1200px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+
+    .custom-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      color: var(--primary-color);
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 0.5rem;
+    }
+
+    .emoji-large {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .definition-highlight {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+    }
+
+    .concept-box {
+      background: linear-gradient(135deg, #4a90e2, #357abd);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+    }
+
+    .example-box {
+      background: linear-gradient(135deg, #50c878, #3da35d);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+    }
+
+    .tip-box {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .calculation-step {
+      background: #f8f9fa;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: 8px;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .interactive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .interactive-table th,
+    .interactive-table td {
+      padding: 0.75rem;
+      text-align: center;
+      border: 1px solid #dee2e6;
+    }
+
+    .interactive-table th {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .interactive-table tbody tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    .visual-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .grid-item {
+      background: #e9ecef;
+      padding: 0.75rem;
+      text-align: center;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .grid-item.highlight {
+      background: linear-gradient(135deg, #4a90e2, #357abd);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .grid-item.highlight-alt {
+      background: linear-gradient(135deg, #50c878, #3da35d);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .mcm-box {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+    }
+
+    .property-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 0.5rem 0;
+      transition: transform 0.3s;
+    }
+
+    .property-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .timeline-item {
+      border-left: 3px solid var(--primary-color);
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 0;
+      width: 13px;
+      height: 13px;
+      background: var(--primary-color);
+      border-radius: 50%;
+    }
+
+    .badge-custom {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      margin-right: 0.5rem;
+    }
+
+    .exercise-card {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .exercise-question {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .options {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .option-btn {
+      background: white;
+      border: 2px solid #dee2e6;
+      padding: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: left;
+      font-size: 1rem;
+    }
+
+    .option-btn:hover {
+      border-color: var(--primary-color);
+      background: #f8f9fa;
+      transform: translateX(5px);
+    }
+
+    .option-btn.correct {
+      background: #d4edda;
+      border-color: #28a745;
+      animation: pulse 0.5s;
+    }
+
+    .option-btn.incorrect {
+      background: #f8d7da;
+      border-color: #dc3545;
+      animation: shake 0.5s;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-10px);
+      }
+
+      75% {
+        transform: translateX(10px);
+      }
+    }
+
+    .footer {
+      background: var(--dark-bg);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    .reference-box {
+      background: #e7f3ff;
+      border-left: 4px solid #2196F3;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    .reference-box strong {
+      color: #1976D2;
+    }
+
+    @media (max-width: 768px) {
+      .visual-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <!-- Header / Navbar -->
   <header class="header">
     <div class="container header-content">
       <h1 class="logo">📚 Matemáticas Educativas</h1>
@@ -35,11 +400,9 @@
     </div>
   </header>
 
-  <!-- Main Content -->
   <main class="main">
     <div class="container py-5">
-      
-      <!-- Introducción -->
+
       <section id="introduccion" class="mb-5">
         <div class="custom-card">
           <div class="text-center emoji-large">🔢</div>
@@ -47,345 +410,172 @@
           <div class="definition-highlight">
             <p class="mb-0">
               ¡Bienvenido al fascinante mundo de los múltiplos! Los múltiplos son uno de los conceptos más importantes
-              en matemáticas y están presentes en nuestra vida diaria: cuando contamos dinero, cuando organizamos objetos
+              en matemáticas y están presentes en nuestra vida diaria: cuando contamos dinero, cuando organizamos
+              objetos
               en grupos, cuando calculamos tiempo, y mucho más. En esta lección aprenderás todo sobre ellos. 🎯
             </p>
           </div>
         </div>
       </section>
 
-      <!-- ¿Qué son los Múltiplos? -->
       <section id="concepto" class="mb-5">
         <div class="custom-card">
           <h2 class="section-title">📖 ¿Qué son los Múltiplos?</h2>
-          
+
           <div class="concept-box">
             <h4 class="text-white">💡 Definición</h4>
             <p class="mb-0 text-white">
-              Un <strong>múltiplo de un número</strong> es el resultado que obtenemos cuando multiplicamos ese número 
-              por cualquier número entero positivo (1, 2, 3, 4, 5, 6...).
+              <strong>Los múltiplos de un número natural son los números que se obtienen al
+                multiplicar dicho número por otros números naturales: 0, 1, 2, 3… </strong>
             </p>
+          </div>
+
+          <div class="reference-box">
+            <strong>📚 Referencia:</strong> Instituto Guatemalteco de Educación Radiofónica (IGER) & Asociación de
+            Servicios Educativos y Culturales (ASEC).
+            Material para uso educativo no lucrativo.
+            🔗 <a
+              href="https://elmaestroencasa.edu.gt/wp-content/uploads/2020/03/IGER-1.%C2%BA-Ba%CC%81sico-Matema%CC%81tica-semana-6.pdf"
+              target="_blank">Ver material completo</a>
           </div>
 
           <div class="row mt-4">
             <div class="col-md-6">
               <div class="tip-box">
-                <strong>🤔 Piénsalo de esta manera:</strong><br>
-                Imagina que tienes cajas con 3 manzanas cada una. Si tienes 1 caja, tienes 3 manzanas. 
-                Si tienes 2 cajas, tienes 6 manzanas. Si tienes 3 cajas, tienes 9 manzanas.<br>
-                Entonces: 3, 6, 9... ¡son múltiplos de 3!
+                <strong id="ejemplo-cajas">🤔 Ejemplo ilustrativo:</strong><br>
+                <span class="ejemplo-texto"></span>
               </div>
             </div>
             <div class="col-md-6">
               <div class="tip-box">
                 <strong>⭐ Importante saber:</strong><br>
-                • Todo número tiene infinitos múltiplos<br>
-                • El primer múltiplo de un número es él mismo<br>
-                • Los múltiplos siempre son mayores o iguales al número original
+                Para averiguar si un número es múltiplo de otro, dividimos el número mayor
+                entre el número menor.<br>
+                • Si la división es exacta, el número es múltiplo.<br>
+                • Si la división es inexacta, el número no es múltiplo.
               </div>
             </div>
           </div>
 
-          <div class="mt-4">
+          <div class="reference-box">
+            <strong>📚 Referencia:(Pag. 5)</strong> Instituto Guatemalteco de Educación Radiofónica (IGER) & Asociación de
+            Servicios Educativos y Culturales (ASEC).
+            Material para uso educativo no lucrativo.
+            🔗 <a
+              href="https://elmaestroencasa.edu.gt/wp-content/uploads/2020/03/IGER-1.%C2%BA-Ba%CC%81sico-Matema%CC%81tica-semana-6.pdf"
+              target="_blank">Ver material completo</a>
+          </div>
+
+          <div class="mt-4" id="ejemplos-basicos">
             <h5>Ejemplos básicos de múltiplos:</h5>
-            <div class="row">
-              <div class="col-md-3">
-                <div class="calculation-step">
-                  <strong>Múltiplos de 2:</strong><br>
-                  2, 4, 6, 8, 10, 12, 14, 16, 18, 20...
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="calculation-step">
-                  <strong>Múltiplos de 5:</strong><br>
-                  5, 10, 15, 20, 25, 30, 35, 40, 45, 50...
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="calculation-step">
-                  <strong>Múltiplos de 10:</strong><br>
-                  10, 20, 30, 40, 50, 60, 70, 80, 90, 100...
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="calculation-step">
-                  <strong>Múltiplos de 7:</strong><br>
-                  7, 14, 21, 28, 35, 42, 49, 56, 63, 70...
-                </div>
-              </div>
-            </div>
+            <div class="row ejemplo-multiplos-container"></div>
           </div>
         </div>
       </section>
 
-      <!-- Cómo encontrar múltiplos -->
       <section id="como-encontrar" class="mb-5">
         <div class="custom-card">
-          <h2 class="section-title">🔍 ¿Cómo Encontrar los Múltiplos de un Número?</h2>
-          
-          <div class="concept-box">
-            <h5 class="text-white">📝 Método paso a paso:</h5>
+  <h2 class="section-title">🔍 Múltiplos de un Número Natural</h2>
+
+  <div class="concept-box">
+    <h5 class="text-white">📝 Definición:</h5>
+    <p>Los múltiplos de un número natural son los números que se obtienen al multiplicar dicho número por otros números naturales: 0, 1, 2, 3...</p>
+    <p>El conjunto de múltiplos se nombra con la letra M mayúscula y entre paréntesis se escribe el número del cual enumeramos los múltiplos.</p>
+    <p>El conjunto de múltiplos es infinito porque el conjunto de números naturales también lo es.</p>
+    <p>Para averiguar si un número es múltiplo de otro, dividimos el número mayor entre el número menor. Si la división es exacta, el número es múltiplo.</p>
+  </div>
+
+  <div class="concept-box">
+    <h5 class="text-white">⚡ Propiedades de los múltiplos:</h5>
+    <ul>
+      <li>El cero es el primer múltiplo de todo número natural.</li>
+      <li>Todo número, distinto de cero, es múltiplo de sí mismo y de la unidad.</li>
+      <li>El resultado de multiplicar varios números es múltiplo de dichos números.</li>
+      <li>La suma de dos múltiplos de un número es también múltiplo de ese número.</li>
+    </ul>
+  </div>
+
+  <div class="timeline-item">
+    <h5><span class="badge bg-primary badge-custom">Paso 1</span> Elige el número base</h5>
+    <p>Decide de qué número quieres encontrar los múltiplos. Por ejemplo: <strong id="num-ejemplo"></strong></p>
+  </div>
+
+  <div class="timeline-item">
+    <h5><span class="badge bg-primary badge-custom">Paso 2</span> Multiplica por números consecutivos</h5>
+    <p>Multiplica tu número base por 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10... y así sucesivamente.</p>
+  </div>
+
+  <div class="timeline-item">
+    <h5><span class="badge bg-primary badge-custom">Paso 3</span> Escribe todos los resultados</h5>
+    <p>Cada resultado que obtengas será un múltiplo del número que elegiste.</p>
+  </div>
+</div>
+
+
+           <div class="reference-box">
+            <strong>📚 Referencia:(Pag. 5)</strong> Instituto Guatemalteco de Educación Radiofónica (IGER) & Asociación de
+            Servicios Educativos y Culturales (ASEC).
+            Material para uso educativo no lucrativo.
+            🔗 <a
+              href="https://elmaestroencasa.edu.gt/wp-content/uploads/2020/03/IGER-1.%C2%BA-Ba%CC%81sico-Matema%CC%81tica-semana-6.pdf"
+              target="_blank">Ver material completo</a>
           </div>
 
-          <div class="timeline-item">
-            <h5><span class="badge bg-primary badge-custom">Paso 1</span> Elige el número base</h5>
-            <p>Decide de qué número quieres encontrar los múltiplos. Por ejemplo: <strong>6</strong></p>
-          </div>
-
-          <div class="timeline-item">
-            <h5><span class="badge bg-primary badge-custom">Paso 2</span> Multiplica por números consecutivos</h5>
-            <p>Multiplica tu número base por 1, 2, 3, 4, 5, 6, 7, 8, 9, 10... y así sucesivamente.</p>
-          </div>
-
-          <div class="timeline-item">
-            <h5><span class="badge bg-primary badge-custom">Paso 3</span> Escribe todos los resultados</h5>
-            <p>Cada resultado que obtengas será un múltiplo del número que elegiste.</p>
-          </div>
-
-          <div class="example-box mt-4">
-            <h5 class="text-white">🎯 Ejemplo completo: Múltiplos de 6</h5>
-            <div class="row mt-3">
-              <div class="col-md-6">
-                <div class="calculation-step bg-white">6 × 1 = <strong>6</strong> ✔️</div>
-                <div class="calculation-step bg-white">6 × 2 = <strong>12</strong> ✔️</div>
-                <div class="calculation-step bg-white">6 × 3 = <strong>18</strong> ✔️</div>
-                <div class="calculation-step bg-white">6 × 4 = <strong>24</strong> ✔️</div>
-                <div class="calculation-step bg-white">6 × 5 = <strong>30</strong> ✔️</div>
-              </div>
-              <div class="col-md-6">
-                <div class="calculation-step bg-white">6 × 6 = <strong>36</strong> ✔️</div>
-                <div class="calculation-step bg-white">6 × 7 = <strong>42</strong> ✔️</div>
-                <div class="calculation-step bg-white">6 × 8 = <strong>48</strong> ✔️</div>
-                <div class="calculation-step bg-white">6 × 9 = <strong>54</strong> ✔️</div>
-                <div class="calculation-step bg-white">6 × 10 = <strong>60</strong> ✔️</div>
-              </div>
-            </div>
-            <p class="mt-3 mb-0 text-white">
-              <strong>Resultado:</strong> Los primeros 10 múltiplos de 6 son: 6, 12, 18, 24, 30, 36, 42, 48, 54, 60
-            </p>
-          </div>
-
-          <div class="row mt-4">
-            <div class="col-md-6">
-              <div class="example-box">
-                <h6 class="text-white">Múltiplos de 8 hasta 80:</h6>
-                <div class="calculation-step bg-white">
-                  8, 16, 24, 32, 40, 48, 56, 64, 72, 80
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="example-box">
-                <h6 class="text-white">Múltiplos de 9 hasta 90:</h6>
-                <div class="calculation-step bg-white">
-                  9, 18, 27, 36, 45, 54, 63, 72, 81, 90
-                </div>
-              </div>
-            </div>
+          <div class="example-box mt-4" id="ejemplo-completo">
+            <h5 class="text-white">🎯 Ejemplo completo: <span id="titulo-multiplo"></span></h5>
+            <div class="row mt-3" id="calculos-multiplos"></div>
+            <p class="mt-3 mb-0 text-white" id="resultado-multiplos"></p>
           </div>
         </div>
       </section>
 
-      <!-- Relación con Tablas de Multiplicar -->
       <section id="tabla-multiplicar" class="mb-5">
         <div class="custom-card">
           <h2 class="section-title">✖️ Relación con las Tablas de Multiplicar</h2>
-          
+
           <div class="concept-box">
             <p class="text-white mb-0">
-              <strong>¡Dato importante!</strong> Los múltiplos de un número son exactamente los resultados de su tabla de multiplicar.
+              <strong>¡Dato importante!</strong> Los múltiplos de un número son exactamente los resultados de su tabla
+              de multiplicar.
               Si conoces bien tus tablas, ¡ya sabes encontrar múltiplos!
             </p>
           </div>
 
-          <div class="row mt-4">
-            <div class="col-md-6">
-              <div class="example-box">
-                <h5 class="text-white text-center">Tabla del 4</h5>
-                <table class="interactive-table mt-3">
-                  <thead>
-                    <tr>
-                      <th>Operación</th>
-                      <th>Resultado</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>4 × 1</td><td><strong>4</strong></td></tr>
-                    <tr><td>4 × 2</td><td><strong>8</strong></td></tr>
-                    <tr><td>4 × 3</td><td><strong>12</strong></td></tr>
-                    <tr><td>4 × 4</td><td><strong>16</strong></td></tr>
-                    <tr><td>4 × 5</td><td><strong>20</strong></td></tr>
-                    <tr><td>4 × 6</td><td><strong>24</strong></td></tr>
-                    <tr><td>4 × 7</td><td><strong>28</strong></td></tr>
-                    <tr><td>4 × 8</td><td><strong>32</strong></td></tr>
-                    <tr><td>4 × 9</td><td><strong>36</strong></td></tr>
-                    <tr><td>4 × 10</td><td><strong>40</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="example-box">
-                <h5 class="text-white text-center">Tabla del 7</h5>
-                <table class="interactive-table mt-3">
-                  <thead>
-                    <tr>
-                      <th>Operación</th>
-                      <th>Resultado</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>7 × 1</td><td><strong>7</strong></td></tr>
-                    <tr><td>7 × 2</td><td><strong>14</strong></td></tr>
-                    <tr><td>7 × 3</td><td><strong>21</strong></td></tr>
-                    <tr><td>7 × 4</td><td><strong>28</strong></td></tr>
-                    <tr><td>7 × 5</td><td><strong>35</strong></td></tr>
-                    <tr><td>7 × 6</td><td><strong>42</strong></td></tr>
-                    <tr><td>7 × 7</td><td><strong>49</strong></td></tr>
-                    <tr><td>7 × 8</td><td><strong>56</strong></td></tr>
-                    <tr><td>7 × 9</td><td><strong>63</strong></td></tr>
-                    <tr><td>7 × 10</td><td><strong>70</strong></td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+          <div class="reference-box">
+            <strong>📚 Referencia:</strong> Instituto Guatemalteco de Educación Radiofónica (IGER) & Asociación de
+            Servicios Educativos y Culturales (ASEC).
+            Material para uso educativo no lucrativo.
+            🔗 <a
+              href="https://elmaestroencasa.edu.gt/wp-content/uploads/2020/03/IGER-1.%C2%BA-Ba%CC%81sico-Matema%CC%81tica-semana-6.pdf"
+              target="_blank">Ver material completo</a>
           </div>
+
+          <div class="row mt-4" id="tablas-multiplicar"></div>
         </div>
       </section>
 
-      <!-- Representación Visual -->
       <section id="representacion" class="mb-5">
         <div class="custom-card">
           <h2 class="section-title">🎨 Representación Visual de Múltiplos</h2>
-          
-          <p class="lead">Observa cómo se distribuyen los múltiplos en una cuadrícula numérica del 1 al 100:</p>
 
-          <div class="row mt-4">
-            <div class="col-md-6">
-              <h5 class="text-center">Múltiplos de 3 (del 1 al 50)</h5>
-              <div class="visual-grid">
-                <div class="grid-item">1</div>
-                <div class="grid-item">2</div>
-                <div class="grid-item highlight">3</div>
-                <div class="grid-item">4</div>
-                <div class="grid-item">5</div>
-                <div class="grid-item highlight">6</div>
-                <div class="grid-item">7</div>
-                <div class="grid-item">8</div>
-                <div class="grid-item highlight">9</div>
-                <div class="grid-item">10</div>
-                <div class="grid-item">11</div>
-                <div class="grid-item highlight">12</div>
-                <div class="grid-item">13</div>
-                <div class="grid-item">14</div>
-                <div class="grid-item highlight">15</div>
-                <div class="grid-item">16</div>
-                <div class="grid-item">17</div>
-                <div class="grid-item highlight">18</div>
-                <div class="grid-item">19</div>
-                <div class="grid-item">20</div>
-                <div class="grid-item highlight">21</div>
-                <div class="grid-item">22</div>
-                <div class="grid-item">23</div>
-                <div class="grid-item highlight">24</div>
-                <div class="grid-item">25</div>
-                <div class="grid-item">26</div>
-                <div class="grid-item highlight">27</div>
-                <div class="grid-item">28</div>
-                <div class="grid-item">29</div>
-                <div class="grid-item highlight">30</div>
-                <div class="grid-item">31</div>
-                <div class="grid-item">32</div>
-                <div class="grid-item highlight">33</div>
-                <div class="grid-item">34</div>
-                <div class="grid-item">35</div>
-                <div class="grid-item highlight">36</div>
-                <div class="grid-item">37</div>
-                <div class="grid-item">38</div>
-                <div class="grid-item highlight">39</div>
-                <div class="grid-item">40</div>
-                <div class="grid-item">41</div>
-                <div class="grid-item highlight">42</div>
-                <div class="grid-item">43</div>
-                <div class="grid-item">44</div>
-                <div class="grid-item highlight">45</div>
-                <div class="grid-item">46</div>
-                <div class="grid-item">47</div>
-                <div class="grid-item highlight">48</div>
-                <div class="grid-item">49</div>
-                <div class="grid-item">50</div>
-              </div>
-            </div>
+          <p class="lead">Observa cómo se distribuyen los múltiplos en una cuadrícula numérica del 1 al 50:</p>
 
-            <div class="col-md-6">
-              <h5 class="text-center">Múltiplos de 4 (del 1 al 50)</h5>
-              <div class="visual-grid">
-                <div class="grid-item">1</div>
-                <div class="grid-item">2</div>
-                <div class="grid-item">3</div>
-                <div class="grid-item highlight-alt">4</div>
-                <div class="grid-item">5</div>
-                <div class="grid-item">6</div>
-                <div class="grid-item">7</div>
-                <div class="grid-item highlight-alt">8</div>
-                <div class="grid-item">9</div>
-                <div class="grid-item">10</div>
-                <div class="grid-item">11</div>
-                <div class="grid-item highlight-alt">12</div>
-                <div class="grid-item">13</div>
-                <div class="grid-item">14</div>
-                <div class="grid-item">15</div>
-                <div class="grid-item highlight-alt">16</div>
-                <div class="grid-item">17</div>
-                <div class="grid-item">18</div>
-                <div class="grid-item">19</div>
-                <div class="grid-item highlight-alt">20</div>
-                <div class="grid-item">21</div>
-                <div class="grid-item">22</div>
-                <div class="grid-item">23</div>
-                <div class="grid-item highlight-alt">24</div>
-                <div class="grid-item">25</div>
-                <div class="grid-item">26</div>
-                <div class="grid-item">27</div>
-                <div class="grid-item highlight-alt">28</div>
-                <div class="grid-item">29</div>
-                <div class="grid-item">30</div>
-                <div class="grid-item">31</div>
-                <div class="grid-item highlight-alt">32</div>
-                <div class="grid-item">33</div>
-                <div class="grid-item">34</div>
-                <div class="grid-item">35</div>
-                <div class="grid-item highlight-alt">36</div>
-                <div class="grid-item">37</div>
-                <div class="grid-item">38</div>
-                <div class="grid-item">39</div>
-                <div class="grid-item highlight-alt">40</div>
-                <div class="grid-item">41</div>
-                <div class="grid-item">42</div>
-                <div class="grid-item">43</div>
-                <div class="grid-item highlight-alt">44</div>
-                <div class="grid-item">45</div>
-                <div class="grid-item">46</div>
-                <div class="grid-item">47</div>
-                <div class="grid-item highlight-alt">48</div>
-                <div class="grid-item">49</div>
-                <div class="grid-item">50</div>
-              </div>
-            </div>
-          </div>
+          <div class="row mt-4" id="grids-visuales"></div>
 
           <div class="tip-box mt-4">
-            <strong>👀 ¿Notaste el patrón?</strong> Los múltiplos aparecen a intervalos regulares. 
-            Los de 3 cada 3 números, los de 4 cada 4 números. ¡Esto nos ayuda a identificarlos rápidamente!
+            <strong>👀 ¿Notaste el patrón?</strong> Los múltiplos aparecen a intervalos regulares.
+            ¡Esto nos ayuda a identificarlos rápidamente!
           </div>
+
+          
         </div>
       </section>
 
-      <!-- Patrones de Múltiplos -->
       <section id="patrones" class="mb-5">
         <div class="custom-card">
           <h2 class="section-title">🔮 Patrones Especiales en los Múltiplos</h2>
+
+          
 
           <div class="row g-4">
             <div class="col-md-6">
@@ -435,8 +625,7 @@
                 <p class="text-white">La suma de sus dígitos es múltiplo de 9</p>
                 <div class="calculation-step bg-white">
                   Ejemplo: 36 → 3+6=9 ✓<br>
-                  Ejemplo: 108 → 1+0+8=9 ✓<br>
-                  Ejemplo: 234 → 2+3+4=9 ✓
+                  Ejemplo: 108 → 1+0+8=9 ✓
                 </div>
               </div>
             </div>
@@ -446,8 +635,7 @@
                 <h5 class="text-white">6️⃣ Múltiplos de 6</h5>
                 <p class="text-white">Son pares Y la suma de dígitos es múltiplo de 3</p>
                 <div class="calculation-step bg-white">
-                  Ejemplo: 24 → par ✓ y 2+4=6 (múltiplo de 3) ✓<br>
-                  Ejemplo: 42 → par ✓ y 4+2=6 (múltiplo de 3) ✓
+                  Ejemplo: 24 → par ✓ y 2+4=6 (múltiplo de 3) ✓
                 </div>
               </div>
             </div>
@@ -455,11 +643,12 @@
         </div>
       </section>
 
-      <!-- Propiedades -->
       <section id="propiedades" class="mb-5">
         <div class="custom-card">
           <h2 class="section-title">✨ Propiedades Importantes de los Múltiplos</h2>
-          
+
+        
+
           <div class="row g-3">
             <div class="col-md-6">
               <div class="property-card">
@@ -520,11 +709,19 @@
         </div>
       </section>
 
-      <!-- Diferencia entre Múltiplos y Divisores -->
       <section id="diferencia" class="mb-5">
         <div class="custom-card">
           <h2 class="section-title">⚖️ Múltiplos vs Divisores</h2>
-          
+
+           <div class="reference-box">
+            <strong>📚 Referencia:(Pag. 5)</strong> Instituto Guatemalteco de Educación Radiofónica (IGER) & Asociación de
+            Servicios Educativos y Culturales (ASEC).
+            Material para uso educativo no lucrativo.
+            🔗 <a
+              href="https://elmaestroencasa.edu.gt/wp-content/uploads/2020/03/IGER-1.%C2%BA-Ba%CC%81sico-Matema%CC%81tica-semana-6.pdf"
+              target="_blank">Ver material completo</a>
+          </div>
+
           <div class="row">
             <div class="col-md-6">
               <div class="concept-box">
@@ -554,456 +751,36 @@
               </div>
             </div>
           </div>
-
-          <div class="tip-box mt-4">
-            <strong>💡 Recuerda:</strong> Los múltiplos son como "hijos" del número (van hacia arriba), 
-            mientras que los divisores son como "padres" del número (van hacia abajo).
-          </div>
         </div>
       </section>
 
-      <!-- Aplicaciones en la Vida Real -->
       <section id="aplicaciones" class="mb-5">
         <div class="custom-card">
           <h2 class="section-title">🌍 Múltiplos en la Vida Real</h2>
 
-          <div class="row g-4">
-            <div class="col-md-4">
-              <div class="concept-box text-center">
-                <div class="emoji-large">🛒</div>
-                <h5 class="text-white">En el Supermercado</h5>
-                <p class="text-white">Los productos vienen en paquetes. Si compras 3 paquetes de 6 galletas, tienes 18 galletas (múltiplo de 6).</p>
-              </div>
-            </div>
+         
 
-            <div class="col-md-4">
-              <div class="example-box text-center">
-                <div class="emoji-large">🎵</div>
-                <h5 class="text-white">Música y Ritmo</h5>
-                <p class="text-white">En música, los compases se repiten en múltiplos de tiempos (4/4, 3/4, etc.).</p>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="mcm-box text-center">
-                <div class="emoji-large">⏰</div>
-                <h5 class="text-white">Horarios</h5>
-                <p class="text-white">Los relojes marcan los minutos en múltiplos de 5 (5, 10, 15, 20...).</p>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="tip-box">
-                <h6>🚌 Ejemplo: Autobuses</h6>
-                <p>Un autobús pasa cada 15 minutos. ¿En qué minutos pasará?</p>
-                <p class="mb-0"><strong>Respuesta:</strong> En los minutos 15, 30, 45, 60 (múltiplos de 15)</p>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="tip-box">
-                <h6>💰 Ejemplo: Dinero</h6>
-                <p>Si ahorras $20 cada semana, ¿cuánto tendrás después de varias semanas?</p>
-                <p class="mb-0"><strong>Respuesta:</strong> Tendrás múltiplos de 20: $20, $40, $60, $80...</p>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="tip-box">
-                <h6>🎂 Ejemplo: Fiestas</h6>
-                <p>Si pones 8 sillas en cada mesa, ¿cuántas sillas necesitas para varias mesas?</p>
-                <p class="mb-0"><strong>Respuesta:</strong> Necesitas múltiplos de 8: 8, 16, 24, 32, 40...</p>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="tip-box">
-                <h6>📅 Ejemplo: Calendario</h6>
-                <p>Los días de la semana se repiten cada 7 días (múltiplos de 7).</p>
-                <p class="mb-0"><strong>Ejemplo:</strong> Si hoy es lunes, en 7, 14, 21 días también será lunes.</p>
-              </div>
-            </div>
-          </div>
+          <div class="row g-4" id="aplicaciones-vida-real"></div>
         </div>
       </section>
 
-      <!-- SECCIÓN DE EJERCICIOS -->
       <section id="ejercicios" class="mb-5">
         <div class="custom-card">
           <h2 class="section-title text-center">📝 Ejercicios Prácticos</h2>
           <p class="text-center lead">¡Pon a prueba tus conocimientos! Resuelve todos los ejercicios.</p>
-        </div>
-      </section>
-
-      <!-- Ejercicio 1 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 1: Identificar Múltiplos Básicos</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>Escribe los primeros 10 múltiplos de 5:</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">5, 10, 15, 20, 25, 30, 35, 40, 45, 50</button>
-              <button class="option-btn">5, 10, 15, 25, 30, 40, 45</button>
-              <button class="option-btn">5, 15, 25, 35, 45, 55, 65, 75, 85, 95</button>
-              <button class="option-btn">10, 20, 30, 40, 50, 60, 70, 80, 90, 100</button>
-            </div>
+          <div class="text-center">
+            <button class="btn btn-primary btn-lg" onclick="generarNuevosEjercicios()">🔄 Generar Nuevos
+              Ejercicios</button>
           </div>
         </div>
       </section>
 
-      <!-- Ejercicio 2 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 2: Múltiplos de 7</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>¿Cuáles de los siguientes números son múltiplos de 7?</h5>
-              <p class="text-muted">Números: 14, 21, 30, 35, 42, 50, 56</p>
-            </div>
-            <div class="options">
-              <button class="option-btn">14, 21, 35, 42, 56</button>
-              <button class="option-btn">14, 30, 35, 50</button>
-              <button class="option-btn">21, 30, 42, 56</button>
-              <button class="option-btn">Todos son múltiplos de 7</button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div id="ejercicios-container"></div>
 
-      <!-- Ejercicio 3 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 3: Completar la Secuencia</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>Completa la secuencia de múltiplos de 8:</h5>
-              <p class="lead">8, 16, ___, 32, ___, 48, ___, 64</p>
-            </div>
-            <div class="options">
-              <button class="option-btn">24, 40, 56</button>
-              <button class="option-btn">20, 36, 52</button>
-              <button class="option-btn">24, 36, 56</button>
-              <button class="option-btn">22, 38, 54</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 4 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 4: Reconocer Patrones</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>¿Cuál de estos números NO es múltiplo de 3?</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">27</button>
-              <button class="option-btn">36</button>
-              <button class="option-btn">43</button>
-              <button class="option-btn">54</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 5 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 5: Múltiplos de 9</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>Escribe los múltiplos de 9 que están entre 20 y 70:</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">27, 36, 45, 54, 63</button>
-              <button class="option-btn">18, 27, 36, 45, 54, 63, 72</button>
-              <button class="option-btn">27, 36, 45, 54</button>
-              <button class="option-btn">21, 30, 39, 48, 57, 66</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 6 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 6: Números Pares</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>Los números pares son múltiplos de:</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">2</button>
-              <button class="option-btn">5</button>
-              <button class="option-btn">10</button>
-              <button class="option-btn">3</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 7 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 7: Problema de Aplicación</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>María tiene cajas con 6 chocolates cada una. Si tiene 8 cajas, ¿cuántos chocolates tiene en total?</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">42 chocolates</button>
-              <button class="option-btn">48 chocolates</button>
-              <button class="option-btn">54 chocolates</button>
-              <button class="option-btn">36 chocolates</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 8 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 8: Múltiplos de 10</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>¿Cuál es el séptimo múltiplo de 10?</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">60</button>
-              <button class="option-btn">70</button>
-              <button class="option-btn">80</button>
-              <button class="option-btn">50</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 9 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 9: Identificar Múltiplos de 4</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>¿Cuántos múltiplos de 4 hay entre 10 y 50?</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">8 múltiplos</button>
-              <button class="option-btn">10 múltiplos</button>
-              <button class="option-btn">9 múltiplos</button>
-              <button class="option-btn">11 múltiplos</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 10 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 10: Tabla de Multiplicar</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>Si 12 es múltiplo de 3, ¿qué operación lo demuestra?</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">3 × 4 = 12</button>
-              <button class="option-btn">12 ÷ 3 = 4</button>
-              <button class="option-btn">3 + 9 = 12</button>
-              <button class="option-btn">12 - 3 = 9</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 11 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 11: Suma de Múltiplos</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>Si sumas dos múltiplos de 5, ¿qué obtienes?</h5>
-              <p class="text-muted">Ejemplo: 15 + 20 = ?</p>
-            </div>
-            <div class="options">
-              <button class="option-btn">Otro múltiplo de 5</button>
-              <button class="option-btn">Un número impar</button>
-              <button class="option-btn">Un divisor de 5</button>
-              <button class="option-btn">Siempre el número 35</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 12 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 12: Múltiplos de 6</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>¿Cuál de estos números es múltiplo de 6?</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">32</button>
-              <button class="option-btn">42</button>
-              <button class="option-btn">46</button>
-              <button class="option-btn">52</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 13 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 13: Problema de Tiempo</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>Un reloj da campanadas cada 12 horas. ¿A qué horas dará campanadas en un día?</h5>
-              <p class="text-muted">(Considerando un día de 24 horas)</p>
-            </div>
-            <div class="options">
-              <button class="option-btn">12:00 PM y 12:00 AM</button>
-              <button class="option-btn">Solo a las 12:00 PM</button>
-              <button class="option-btn">Cada hora</button>
-              <button class="option-btn">6:00 AM y 6:00 PM</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 14 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 14: Múltiplos Grandes</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>¿Cuál es el múltiplo de 7 más cercano a 100?</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">91</button>
-              <button class="option-btn">98</button>
-              <button class="option-btn">105</button>
-              <button class="option-btn">100</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 15 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 15: Patrón de Múltiplos</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>¿Qué patrón siguen los múltiplos de 5?</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">Terminan en 0 o 5</button>
-              <button class="option-btn">Terminan en números pares</button>
-              <button class="option-btn">Son todos números impares</button>
-              <button class="option-btn">Terminan en 5 solamente</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 16 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 16: Problema de Dinero</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>Si ahorras $15 cada semana, ¿cuánto tendrás después de 6 semanas?</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">$75</button>
-              <button class="option-btn">$90</button>
-              <button class="option-btn">$80</button>
-              <button class="option-btn">$105</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 17 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 17: Múltiplos de 11</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>Escribe los primeros 5 múltiplos de 11:</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">11, 22, 33, 44, 55</button>
-              <button class="option-btn">11, 21, 31, 41, 51</button>
-              <button class="option-btn">10, 20, 30, 40, 50</button>
-              <button class="option-btn">11, 23, 35, 47, 59</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 18 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 18: Comparación</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>¿Cuál número es múltiplo tanto de 2 como de 3?</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">18</button>
-              <button class="option-btn">20</button>
-              <button class="option-btn">15</button>
-              <button class="option-btn">14</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 19 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 19: Problema de Frutas</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>En una tienda, las manzanas se venden en bolsas de 8. Si compras 7 bolsas, ¿cuántas manzanas tienes?</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">48 manzanas</button>
-              <button class="option-btn">56 manzanas</button>
-              <button class="option-btn">64 manzanas</button>
-              <button class="option-btn">52 manzanas</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ejercicio 20 -->
-      <section class="mb-5">
-        <div class="custom-card">
-          <h3 class="section-title">Ejercicio 20: Desafío Final</h3>
-          <div class="exercise-card">
-            <div class="exercise-question">
-              <h5>¿Cuántos múltiplos de 3 hay entre 1 y 30?</h5>
-            </div>
-            <div class="options">
-              <button class="option-btn">8 múltiplos</button>
-              <button class="option-btn">9 múltiplos</button>
-              <button class="option-btn">10 múltiplos</button>
-              <button class="option-btn">11 múltiplos</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Resumen Final -->
       <section id="resumen" class="mb-5">
         <div class="custom-card">
           <h2 class="section-title text-center">🎓 ¡Felicidades! Has completado todos los ejercicios</h2>
-          
+
           <div class="definition-highlight text-center">
             <div class="emoji-large">🌟</div>
             <h4>Resumen de lo que aprendiste:</h4>
@@ -1022,13 +799,14 @@
             <h4>¡Excelente trabajo!</h4>
             <p class="lead">Ahora dominas el concepto de múltiplos de un número</p>
           </div>
+
+          
         </div>
       </section>
 
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <p>&copy; 2025 Matemáticas Educativas. Todos los derechos reservados.</p>
@@ -1036,8 +814,417 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../js/app.js"></script>
-  <script src="../js/multiplos.js"></script>
-  <script src="../js/sw-register.js"></script>
+  <script>
+    // Datos para ejemplos aleatorios
+    const ejemplosCajas = [
+      { obj: "manzanas", cant: 3, cajas: [1, 2, 3] },
+      { obj: "galletas", cant: 4, cajas: [1, 2, 3] },
+      { obj: "lápices", cant: 5, cajas: [1, 2, 3] },
+      { obj: "caramelos", cant: 6, cajas: [1, 2, 3] },
+      { obj: "naranjas", cant: 2, cajas: [1, 2, 3] }
+    ];
+
+    const numerosEjemplo = [3, 4, 5, 6, 7, 8];
+    const numerosTablas = [4, 5, 6, 7, 8, 9];
+    const numerosGrids = [3, 4, 5, 6];
+
+    const aplicacionesVidaReal = [
+      { emoji: "🛒", titulo: "En el Supermercado", texto: "Los productos vienen en paquetes. Si compras 3 paquetes de 6 galletas, tienes 18 galletas (múltiplo de 6)." },
+      { emoji: "🎵", titulo: "Música y Ritmo", texto: "En música, los compases se repiten en múltiplos de tiempos (4/4, 3/4, etc.)." },
+      { emoji: "⏰", titulo: "Horarios", texto: "Los relojes marcan los minutos en múltiplos de 5 (5, 10, 15, 20...)." },
+      { emoji: "🚌", titulo: "Autobuses", texto: "Un autobús pasa cada 15 minutos. ¿En qué minutos pasará? En los minutos 15, 30, 45, 60 (múltiplos de 15)" },
+      { emoji: "💰", titulo: "Dinero", texto: "Si ahorras $20 cada semana, tendrás múltiplos de 20: $20, $40, $60, $80..." },
+      { emoji: "🎂", titulo: "Fiestas", texto: "Si pones 8 sillas en cada mesa, necesitas múltiplos de 8: 8, 16, 24, 32, 40..." },
+      { emoji: "📅", titulo: "Calendario", texto: "Los días de la semana se repiten cada 7 días. Si hoy es lunes, en 7, 14, 21 días también será lunes." },
+      { emoji: "🏃", titulo: "Ejercicio", texto: "Si corres 3 km cada día, en varios días recorrerás múltiplos de 3: 3, 6, 9, 12 km..." }
+    ];
+
+    // Banco de ejercicios
+    const bancoEjercicios = [
+      {
+        pregunta: "Escribe los primeros 10 múltiplos de {num}:",
+        tipo: "multiplos",
+        nums: [2, 3, 4, 5, 6, 7, 8, 9],
+        generarOpciones: function (num) {
+          const correcta = Array.from({ length: 10 }, (_, i) => num * (i + 1)).join(', ');
+          return [
+            correcta,
+            Array.from({ length: 10 }, (_, i) => num * (i + 1) + 1).join(', '),
+            Array.from({ length: 8 }, (_, i) => num * (i + 1)).join(', '),
+            Array.from({ length: 10 }, (_, i) => num * (i + 2)).join(', ')
+          ];
+        },
+        respuestaCorrecta: 0
+      },
+      {
+        pregunta: "¿Cuáles de los siguientes números son múltiplos de {num}?",
+        tipo: "identificar",
+        nums: [3, 4, 5, 6, 7, 8],
+        generarOpciones: function (num) {
+          const multiplos = [num * 2, num * 3, num * 5, num * 7];
+          const noMultiplos = [num * 2 + 1, num * 3 + 2];
+          const todos = [...multiplos, ...noMultiplos].sort((a, b) => a - b);
+          this.extra = `Números: ${todos.join(', ')}`;
+          return [
+            multiplos.join(', '),
+            todos.slice(0, 4).join(', '),
+            [...multiplos.slice(0, 2), ...noMultiplos].sort((a, b) => a - b).join(', '),
+            'Todos son múltiplos de ' + num
+          ];
+        },
+        respuestaCorrecta: 0
+      },
+      {
+        pregunta: "Completa la secuencia de múltiplos de {num}: {num}, {num2}, ___, {num4}, ___, {num6}, ___, {num8}",
+        tipo: "secuencia",
+        nums: [4, 5, 6, 7, 8],
+        generarOpciones: function (num) {
+          const seq = [num * 3, num * 5, num * 7];
+          return [
+            seq.join(', '),
+            [num * 3 + 1, num * 5 + 1, num * 7 + 1].join(', '),
+            [num * 3, num * 4, num * 7].join(', '),
+            [num * 2, num * 5, num * 8].join(', ')
+          ];
+        },
+        respuestaCorrecta: 0,
+        procesarPregunta: function (num) {
+          return this.pregunta
+            .replace(/{num8}/g, num * 8)
+            .replace(/{num6}/g, num * 6)
+            .replace(/{num4}/g, num * 4)
+            .replace(/{num2}/g, num * 2)
+            .replace(/{num}/g, num);
+        }
+      },
+      {
+        pregunta: "¿Cuál de estos números NO es múltiplo de {num}?",
+        tipo: "no_multiplo",
+        nums: [3, 4, 5, 6],
+        generarOpciones: function (num) {
+          const multiplos = [num * 3, num * 4, num * 6];
+          const noMultiplo = num * 3 + 2;
+          const opciones = [...multiplos, noMultiplo];
+          this.respuestaCorrecta = opciones.indexOf(noMultiplo);
+          return opciones.sort(() => Math.random() - 0.5);
+        },
+        respuestaCorrecta: -1
+      },
+      {
+        pregunta: "Los números pares son múltiplos de:",
+        tipo: "concepto",
+        generarOpciones: function () {
+          return ['2', '5', '10', '3'];
+        },
+        respuestaCorrecta: 0
+      },
+      {
+        pregunta: "María tiene cajas con {num} chocolates cada una. Si tiene {cajas} cajas, ¿cuántos chocolates tiene en total?",
+        tipo: "problema",
+        nums: [4, 5, 6, 8],
+        generarOpciones: function (num) {
+          const cajas = Math.floor(Math.random() * 5) + 5;
+          this.pregunta = this.pregunta.replace('{cajas}', cajas);
+          const correcto = num * cajas;
+          return [
+            correcto - 6 + ' chocolates',
+            correcto + ' chocolates',
+            correcto + 6 + ' chocolates',
+            correcto - 12 + ' chocolates'
+          ];
+        },
+        respuestaCorrecta: 1
+      },
+      {
+        pregunta: "¿Cuál es el {ord} múltiplo de {num}?",
+        tipo: "posicion",
+        nums: [5, 7, 10, 12],
+        generarOpciones: function (num) {
+          const pos = Math.floor(Math.random() * 5) + 5;
+          const ordinal = ['quinto', 'sexto', 'séptimo', 'octavo', 'noveno'][pos - 5];
+          this.pregunta = this.pregunta.replace('{ord}', ordinal);
+          const correcto = num * pos;
+          return [
+            (correcto - num) + '',
+            correcto + '',
+            (correcto + num) + '',
+            (correcto - num * 2) + ''
+          ];
+        },
+        respuestaCorrecta: 1
+      },
+      {
+        pregunta: "¿Cuántos múltiplos de {num} hay entre 10 y 50?",
+        tipo: "contar",
+        nums: [3, 4, 5, 6],
+        generarOpciones: function (num) {
+          let count = 0;
+          for (let i = 10; i <= 50; i++) {
+            if (i % num === 0) count++;
+          }
+          return [
+            (count - 2) + ' múltiplos',
+            count + ' múltiplos',
+            (count + 1) + ' múltiplos',
+            (count + 2) + ' múltiplos'
+          ];
+        },
+        respuestaCorrecta: 1
+      },
+      {
+        pregunta: "Si {num1} es múltiplo de {num2}, ¿qué operación lo demuestra?",
+        tipo: "operacion",
+        generarOpciones: function () {
+          const base = Math.floor(Math.random() * 5) + 3;
+          const mult = Math.floor(Math.random() * 4) + 2;
+          const resultado = base * mult;
+          this.pregunta = this.pregunta.replace('{num1}', resultado).replace('{num2}', base);
+          return [
+            `${base} × ${mult} = ${resultado}`,
+            `${resultado} ÷ ${base} = ${mult}`,
+            `${base} + ${resultado - base} = ${resultado}`,
+            `${resultado} - ${base} = ${resultado - base}`
+          ];
+        },
+        respuestaCorrecta: 0
+      },
+      {
+        pregunta: "Si sumas dos múltiplos de {num}, ¿qué obtienes?",
+        tipo: "propiedad",
+        nums: [3, 5, 7],
+        generarOpciones: function (num) {
+          return [
+            'Otro múltiplo de ' + num,
+            'Un número impar',
+            'Un divisor de ' + num,
+            'Siempre un número par'
+          ];
+        },
+        respuestaCorrecta: 0
+      }
+    ];
+
+    function seleccionarAleatorio(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function generarEjemploCajas() {
+      const ej = seleccionarAleatorio(ejemplosCajas);
+      const html = `Imagina que tienes cajas con ${ej.cant} ${ej.obj} cada una. Si tienes 1 caja, tienes ${ej.cant} ${ej.obj}. 
+        Si tienes 2 cajas, tienes ${ej.cant * 2} ${ej.obj}. Si tienes 3 cajas, tienes ${ej.cant * 3} ${ej.obj}.<br>
+        Entonces: ${ej.cant}, ${ej.cant * 2}, ${ej.cant * 3}... ¡son múltiplos de ${ej.cant}!`;
+      document.querySelector('.ejemplo-texto').innerHTML = html;
+    }
+
+    function generarEjemplosBasicos() {
+      const numeros = [];
+      while (numeros.length < 4) {
+        const num = seleccionarAleatorio([2, 3, 4, 5, 6, 7, 8, 9, 10]);
+        if (!numeros.includes(num)) numeros.push(num);
+      }
+
+      const html = numeros.map(num => {
+        const multiplos = Array.from({ length: 10 }, (_, i) => num * (i + 1)).join(', ');
+        return `
+          <div class="col-md-3">
+            <div class="calculation-step">
+              <strong>Múltiplos de ${num}:</strong><br>
+              ${multiplos}...
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.querySelector('.ejemplo-multiplos-container').innerHTML = html;
+    }
+
+    function generarEjemploCompleto() {
+      const num = seleccionarAleatorio(numerosEjemplo);
+      document.getElementById('num-ejemplo').textContent = num;
+      document.getElementById('titulo-multiplo').textContent = `Múltiplos de ${num}`;
+
+      const calculos = Array.from({ length: 10 }, (_, i) => {
+        const mult = i + 1;
+        const result = num * mult;
+        return `
+          <div class="col-md-6">
+            <div class="calculation-step bg-white">${num} × ${mult} = <strong>${result}</strong> ✔️</div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('calculos-multiplos').innerHTML = calculos;
+
+      const multiplos = Array.from({ length: 10 }, (_, i) => num * (i + 1)).join(', ');
+      document.getElementById('resultado-multiplos').innerHTML =
+        `<strong>Resultado:</strong> Los primeros 10 múltiplos de ${num} son: ${multiplos}`;
+    }
+
+    function generarTablas() {
+      const nums = [];
+      while (nums.length < 2) {
+        const num = seleccionarAleatorio(numerosTablas);
+        if (!nums.includes(num)) nums.push(num);
+      }
+
+      const html = nums.map(num => `
+        <div class="col-md-6">
+          <div class="example-box">
+            <h5 class="text-white text-center">Tabla del ${num}</h5>
+            <table class="interactive-table mt-3">
+              <thead>
+                <tr>
+                  <th>Operación</th>
+                  <th>Resultado</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${Array.from({ length: 10 }, (_, i) => {
+        const mult = i + 1;
+        return `<tr><td>${num} × ${mult}</td><td><strong>${num * mult}</strong></td></tr>`;
+      }).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('tablas-multiplicar').innerHTML = html;
+    }
+
+    function generarGridsVisuales() {
+      const nums = [];
+      while (nums.length < 2) {
+        const num = seleccionarAleatorio(numerosGrids);
+        if (!nums.includes(num)) nums.push(num);
+      }
+
+      const html = nums.map((num, idx) => {
+        const clase = idx === 0 ? 'highlight' : 'highlight-alt';
+        const gridItems = Array.from({ length: 50 }, (_, i) => {
+          const n = i + 1;
+          const esMultiplo = n % num === 0;
+          return `<div class="grid-item ${esMultiplo ? clase : ''}">${n}</div>`;
+        }).join('');
+
+        return `
+          <div class="col-md-6">
+            <h5 class="text-center">Múltiplos de ${num} (del 1 al 50)</h5>
+            <div class="visual-grid">
+              ${gridItems}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('grids-visuales').innerHTML = html;
+    }
+
+    function generarAplicaciones() {
+      const apps = [];
+      while (apps.length < 4) {
+        const app = seleccionarAleatorio(aplicacionesVidaReal);
+        if (!apps.includes(app)) apps.push(app);
+      }
+
+      const html = apps.map(app => `
+        <div class="col-md-6">
+          <div class="concept-box text-center">
+            <div class="emoji-large">${app.emoji}</div>
+            <h5 class="text-white">${app.titulo}</h5>
+            <p class="text-white">${app.texto}</p>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('aplicaciones-vida-real').innerHTML = html;
+    }
+
+    function generarEjercicios() {
+      const ejerciciosSeleccionados = [];
+      const ejerciciosUsados = new Set();
+
+      while (ejerciciosSeleccionados.length < 15) {
+        const ej = seleccionarAleatorio(bancoEjercicios);
+        const key = ej.tipo + (ej.nums ? seleccionarAleatorio(ej.nums) : '');
+
+        if (!ejerciciosUsados.has(key)) {
+          ejerciciosUsados.add(key);
+          ejerciciosSeleccionados.push({ ...ej });
+        }
+      }
+
+      const html = ejerciciosSeleccionados.map((ej, idx) => {
+        let num = ej.nums ? seleccionarAleatorio(ej.nums) : null;
+        let pregunta = ej.procesarPregunta ? ej.procesarPregunta(num) : ej.pregunta.replace(/{num}/g, num);
+        let opciones = ej.generarOpciones(num);
+        let respuestaCorrecta = ej.respuestaCorrecta >= 0 ? ej.respuestaCorrecta : ej.respuestaCorrecta;
+
+        if (respuestaCorrecta < 0) {
+          respuestaCorrecta = opciones.findIndex(op => !op.match(/\d+/g) || parseInt(op) % (num || 1) !== 0);
+        }
+
+        const opcionesHTML = opciones.map((op, i) =>
+          `<button class="option-btn" onclick="verificarRespuesta(${idx}, ${i}, ${respuestaCorrecta})">${op}</button>`
+        ).join('');
+
+        return `
+          <section class="mb-5">
+            <div class="custom-card">
+              <h3 class="section-title">Ejercicio ${idx + 1}</h3>
+              <div class="exercise-card">
+                <div class="exercise-question">
+                  <h5>${pregunta}</h5>
+                  ${ej.extra ? `<p class="text-muted">${ej.extra}</p>` : ''}
+                </div>
+                <div class="options" id="ejercicio-${idx}">
+                  ${opcionesHTML}
+                </div>
+              </div>
+            </div>
+          </section>
+        `;
+      }).join('');
+
+      document.getElementById('ejercicios-container').innerHTML = html;
+    }
+
+    function verificarRespuesta(ejercicioIdx, opcionIdx, correcta) {
+      const container = document.getElementById(`ejercicio-${ejercicioIdx}`);
+      const botones = container.querySelectorAll('.option-btn');
+
+      botones.forEach(btn => {
+        btn.disabled = true;
+        btn.style.cursor = 'not-allowed';
+      });
+
+      if (opcionIdx === correcta) {
+        botones[opcionIdx].classList.add('correct');
+      } else {
+        botones[opcionIdx].classList.add('incorrect');
+        botones[correcta].classList.add('correct');
+      }
+    }
+
+    function generarNuevosEjercicios() {
+      generarEjercicios();
+      document.getElementById('ejercicios').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Inicializar contenido aleatorio
+    function inicializar() {
+      generarEjemploCajas();
+      generarEjemplosBasicos();
+      generarEjemploCompleto();
+      generarTablas();
+      generarGridsVisuales();
+      generarAplicaciones();
+      generarEjercicios();
+    }
+
+    // Ejecutar al cargar la página
+    document.addEventListener('DOMContentLoaded', inicializar);
+  </script>
 </body>
+
 </html>
