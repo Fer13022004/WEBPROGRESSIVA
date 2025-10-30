@@ -1,386 +1,422 @@
-// Funcionalidad específica para la página de múltiples
-class MultiplesPage {
-  constructor() {
-    this.currentNumber = 5;
-    this.userStats = {
-      correct: 0,
-      total: 0,
-    };
-    this.init();
-  }
+// ============================================
+// SISTEMA DE EJERCICIOS INTERACTIVOS
+// ============================================
 
-  init() {
-    this.setupEventListeners();
-    this.loadStats();
-    this.generateNewExercise();
-    console.log("Página de múltiples inicializada");
-  }
+// Respuestas correctas para cada ejercicio
+const respuestasCorrectas = {
+  1: "5, 10, 15, 20, 25, 30, 35, 40, 45, 50",
+  2: "14, 21, 35, 42, 56",
+  3: "24, 40, 56",
+  4: "43",
+  5: "27, 36, 45, 54, 63",
+  6: "2",
+  7: "48 chocolates",
+  8: "70",
+  9: "10 múltiplos",
+  10: "3 × 4 = 12",
+  11: "Otro múltiplo de 5",
+  12: "42",
+  13: "12:00 PM y 12:00 AM",
+  14: "98",
+  15: "Terminan en 0 o 5",
+  16: "$90",
+  17: "11, 22, 33, 44, 55",
+  18: "18",
+  19: "56 manzanas",
+  20: "10 múltiplos"
+};
 
-  setupEventListeners() {
-    // Calculadora de múltiples
-    const calculateBtn = document.getElementById("calculateBtn");
-    const numberInput = document.getElementById("numberInput");
+// Contador de ejercicios resueltos
+let ejerciciosResueltos = 0;
+let ejerciciosCorrectos = 0;
 
-    if (calculateBtn) {
-      calculateBtn.addEventListener("click", () => {
-        this.calculateMultiples();
-      });
-    }
+// Inicializar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+  inicializarEjercicios();
+  crearBarraProgreso();
+});
 
-    if (numberInput) {
-      numberInput.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-          this.calculateMultiples();
-        }
-      });
-
-      numberInput.addEventListener("input", () => {
-        this.clearResults();
-      });
-    }
-
-    // Botón de nuevo ejercicio
-    const newExerciseBtn = document.getElementById("newExerciseBtn");
-    if (newExerciseBtn) {
-      newExerciseBtn.addEventListener("click", () => {
-        this.generateNewExercise();
-      });
-    }
-
-    // Toggle de tema
-    const themeToggle = document.getElementById("themeToggle");
-    if (themeToggle) {
-      themeToggle.addEventListener("click", () => {
-        this.toggleTheme();
-      });
-    }
-  }
-
-  calculateMultiples() {
-    const numberInput = document.getElementById("numberInput");
-    const resultsDiv = document.getElementById("results");
-
-    if (!numberInput || !resultsDiv) return;
-
-    const number = parseInt(numberInput.value);
-
-    if (!number || number < 1 || number > 100) {
-      resultsDiv.innerHTML = `
-                <div class="error-message">
-                    <p>❌ Por favor, ingresa un número válido entre 1 y 100</p>
-                </div>
-            `;
-      return;
-    }
-
-    // Calcular los primeros 10 múltiples
-    const multiples = [];
-    for (let i = 1; i <= 10; i++) {
-      multiples.push(number * i);
-    }
-
-    // Mostrar resultados con animación
-    resultsDiv.innerHTML = `
-            <h3>Los primeros 10 múltiples de ${number} son:</h3>
-            <div class="multiples-list">
-                ${multiples
-                  .map(
-                    (multiple, index) =>
-                      `<span class="multiple-item" style="animation-delay: ${
-                        index * 0.1
-                      }s">${multiple}</span>`
-                  )
-                  .join("")}
-            </div>
-            <p class="calculation-info">
-                <strong>Fórmula:</strong> ${number} × n = múltiplo (donde n = 1, 2, 3, ...)
-            </p>
-        `;
-
-    // Mostrar toast de éxito
-    if (window.Utils) {
-      window.Utils.showToast(
-        `Múltiples de ${number} calculados correctamente`,
-        "success"
-      );
-    }
-  }
-
-  clearResults() {
-    const resultsDiv = document.getElementById("results");
-    if (resultsDiv) {
-      resultsDiv.innerHTML = "";
-    }
-  }
-
-  generateNewExercise() {
-    // Generar número aleatorio entre 2 y 12
-    this.currentNumber = Math.floor(Math.random() * 11) + 2;
-
-    // Actualizar la pregunta
-    const exerciseNumber = document.getElementById("exerciseNumber");
-    if (exerciseNumber) {
-      exerciseNumber.textContent = this.currentNumber;
-    }
-
-    // Generar opciones (múltiples y no múltiples)
-    const options = this.generateExerciseOptions(this.currentNumber);
-    this.displayExerciseOptions(options);
-
-    // Limpiar feedback
-    const feedback = document.getElementById("exerciseFeedback");
-    if (feedback) {
-      feedback.innerHTML = "";
-      feedback.className = "exercise-feedback";
-    }
-  }
-
-  generateExerciseOptions(number) {
-    const options = [];
-
-    // Agregar 3-4 múltiples correctos
-    const correctCount = Math.floor(Math.random() * 2) + 3; // 3 o 4
-    const multiples = [];
-
-    for (let i = 1; i <= 20; i++) {
-      multiples.push(number * i);
-    }
-
-    // Seleccionar múltiples aleatorios
-    const shuffledMultiples = multiples.sort(() => Math.random() - 0.5);
-    for (let i = 0; i < correctCount; i++) {
-      options.push({
-        value: shuffledMultiples[i],
-        isCorrect: true,
-      });
-    }
-
-    // Agregar números incorrectos
-    const incorrectCount = 6 - correctCount;
-    for (let i = 0; i < incorrectCount; i++) {
-      let incorrectNumber;
-      do {
-        incorrectNumber = Math.floor(Math.random() * (number * 10)) + 1;
-      } while (
-        incorrectNumber % number === 0 ||
-        options.some((opt) => opt.value === incorrectNumber)
-      );
-
-      options.push({
-        value: incorrectNumber,
-        isCorrect: false,
-      });
-    }
-
-    // Mezclar opciones
-    return options.sort(() => Math.random() - 0.5);
-  }
-
-  displayExerciseOptions(options) {
-    const optionsContainer = document.getElementById("exerciseOptions");
-    if (!optionsContainer) return;
-
-    optionsContainer.innerHTML = options
-      .map(
-        (option) => `
-            <div class="option" data-value="${option.value}" data-correct="${option.isCorrect}">
-                ${option.value}
-            </div>
-        `
-      )
-      .join("");
-
-    // Agregar event listeners a las opciones
-    optionsContainer.querySelectorAll(".option").forEach((optionEl) => {
-      optionEl.addEventListener("click", () => {
-        this.handleOptionClick(optionEl);
-      });
+// ============================================
+// FUNCIÓN PRINCIPAL DE INICIALIZACIÓN
+// ============================================
+function inicializarEjercicios() {
+  // Seleccionar todos los botones de opciones
+  const todosBotones = document.querySelectorAll('.option-btn');
+  
+  todosBotones.forEach(boton => {
+    boton.addEventListener('click', function() {
+      manejarRespuesta(this);
     });
+  });
+}
+
+// ============================================
+// MANEJAR RESPUESTA DEL ESTUDIANTE
+// ============================================
+function manejarRespuesta(botonSeleccionado) {
+  // Obtener el contenedor del ejercicio
+  const ejercicioCard = botonSeleccionado.closest('.custom-card');
+  const todosLosBotones = ejercicioCard.querySelectorAll('.option-btn');
+  
+  // Obtener el número del ejercicio desde el título
+  const tituloEjercicio = ejercicioCard.querySelector('.section-title').textContent;
+  const numeroEjercicio = extraerNumeroEjercicio(tituloEjercicio);
+  
+  // Verificar si ya fue respondido
+  if (botonSeleccionado.disabled) {
+    return;
   }
-
-  handleOptionClick(optionEl) {
-    const isCorrect = optionEl.dataset.correct === "true";
-    const allOptions = document.querySelectorAll(".option");
-
-    // Deshabilitar todas las opciones
-    allOptions.forEach((opt) => {
-      opt.style.pointerEvents = "none";
-      if (opt.dataset.correct === "true") {
-        opt.classList.add("correct");
-      } else if (opt === optionEl && !isCorrect) {
-        opt.classList.add("incorrect");
-      }
-    });
-
-    // Mostrar feedback
-    this.showExerciseFeedback(isCorrect);
-
-    // Actualizar estadísticas
-    this.updateStats(isCorrect);
-
-    // Generar nuevo ejercicio después de 3 segundos
-    setTimeout(() => {
-      this.generateNewExercise();
-    }, 3000);
+  
+  // Deshabilitar todos los botones del ejercicio
+  todosLosBotones.forEach(btn => {
+    btn.disabled = true;
+  });
+  
+  // Obtener la respuesta seleccionada y la correcta
+  const respuestaSeleccionada = botonSeleccionado.textContent.trim();
+  const respuestaCorrecta = respuestasCorrectas[numeroEjercicio];
+  
+  // Verificar si es correcta
+  const esCorrecta = respuestaSeleccionada === respuestaCorrecta;
+  
+  // Mostrar feedback
+  mostrarFeedback(ejercicioCard, botonSeleccionado, todosLosBotones, esCorrecta, respuestaCorrecta);
+  
+  // Actualizar estadísticas
+  ejerciciosResueltos++;
+  if (esCorrecta) {
+    ejerciciosCorrectos++;
   }
-
-  showExerciseFeedback(isCorrect) {
-    const feedback = document.getElementById("exerciseFeedback");
-    if (!feedback) return;
-
-    if (isCorrect) {
-      feedback.innerHTML = `
-                <div class="feedback-content">
-                    <h4>🎉 ¡Excelente!</h4>
-                    <p>Has identificado correctamente un múltiple de ${this.currentNumber}.</p>
-                    <p><strong>Recuerda:</strong> Un número es múltiplo de ${this.currentNumber} si al dividirlo entre ${this.currentNumber} el resultado es un número entero.</p>
-                </div>
-            `;
-      feedback.className = "exercise-feedback correct";
-    } else {
-      const correctMultiples = Array.from(
-        document.querySelectorAll('.option[data-correct="true"]')
-      )
-        .map((opt) => opt.dataset.value)
-        .join(", ");
-
-      feedback.innerHTML = `
-                <div class="feedback-content">
-                    <h4>❌ No es correcto</h4>
-                    <p>Ese número no es múltiplo de ${this.currentNumber}.</p>
-                    <p><strong>Los múltiples correctos eran:</strong> ${correctMultiples}</p>
-                    <p><strong>Consejo:</strong> Para verificar si un número es múltiplo de ${this.currentNumber}, divídelo entre ${this.currentNumber}. Si el resultado es un número entero, entonces es un múltiplo.</p>
-                </div>
-            `;
-      feedback.className = "exercise-feedback incorrect";
-    }
-  }
-
-  updateStats(isCorrect) {
-    if (isCorrect) {
-      this.userStats.correct++;
-    }
-    this.userStats.total++;
-
-    this.saveStats();
-    this.displayStats();
-  }
-
-  displayStats() {
-    const correctEl = document.getElementById("correctAnswers");
-    const totalEl = document.getElementById("totalAttempts");
-    const accuracyEl = document.getElementById("accuracy");
-    const progressFill = document.getElementById("progressFill");
-
-    if (correctEl) correctEl.textContent = this.userStats.correct;
-    if (totalEl) totalEl.textContent = this.userStats.total;
-
-    const accuracy =
-      this.userStats.total > 0
-        ? Math.round((this.userStats.correct / this.userStats.total) * 100)
-        : 0;
-
-    if (accuracyEl) accuracyEl.textContent = `${accuracy}%`;
-
-    if (progressFill) {
-      progressFill.style.width = `${Math.min(accuracy, 100)}%`;
-    }
-  }
-
-  saveStats() {
-    localStorage.setItem("multiplos-stats", JSON.stringify(this.userStats));
-  }
-
-  loadStats() {
-    const saved = localStorage.getItem("multiplos-stats");
-    if (saved) {
-      this.userStats = JSON.parse(saved);
-    }
-    this.displayStats();
-  }
-
-  toggleTheme() {
-    const currentTheme = document.body.getAttribute("data-theme") || "light";
-    const newTheme = currentTheme === "light" ? "dark" : "light";
-
-    document.body.setAttribute("data-theme", newTheme);
-    localStorage.setItem("theme", newTheme);
-
-    const themeToggle = document.getElementById("themeToggle");
-    if (themeToggle) {
-      themeToggle.textContent = newTheme === "light" ? "🌙" : "☀️";
-    }
-  }
-
-  // Método para verificar si un número es múltiplo de otro
-  static isMultiple(number, base) {
-    return number % base === 0;
-  }
-
-  // Método para obtener múltiples de un número
-  static getMultiples(number, count = 10) {
-    const multiples = [];
-    for (let i = 1; i <= count; i++) {
-      multiples.push(number * i);
-    }
-    return multiples;
+  
+  // Actualizar barra de progreso
+  actualizarProgreso();
+  
+  // Guardar progreso en memoria (no en localStorage por restricciones)
+  guardarProgresoEnMemoria(numeroEjercicio, esCorrecta);
+  
+  // Animación de celebración si es correcta
+  if (esCorrecta) {
+    animarExito(botonSeleccionado);
   }
 }
 
-// Utilidades específicas para múltiples
-const MultiplesUtils = {
-  // Generar múltiples en un rango
-  getMultiplesInRange(number, min, max) {
-    const multiples = [];
-    let multiple = number;
-    let multiplier = 1;
-
-    while (multiple <= max) {
-      if (multiple >= min) {
-        multiples.push(multiple);
-      }
-      multiplier++;
-      multiple = number * multiplier;
-    }
-
-    return multiples;
-  },
-
-  // Verificar si un número es múltiplo común de varios números
-  isCommonMultiple(number, bases) {
-    return bases.every((base) => number % base === 0);
-  },
-
-  // Encontrar el MCM de dos números (para futuras secciones)
-  lcm(a, b) {
-    return Math.abs(a * b) / this.gcd(a, b);
-  },
-
-  // Encontrar el MCD de dos números (algoritmo de Euclides)
-  gcd(a, b) {
-    while (b !== 0) {
-      const temp = b;
-      b = a % b;
-      a = temp;
-    }
-    return a;
-  },
-};
-
-// Inicializar cuando el DOM esté listo
-document.addEventListener("DOMContentLoaded", () => {
-  // Cargar tema guardado
-  const savedTheme = localStorage.getItem("theme") || "light";
-  document.body.setAttribute("data-theme", savedTheme);
-
-  const themeToggle = document.getElementById("themeToggle");
-  if (themeToggle) {
-    themeToggle.textContent = savedTheme === "light" ? "🌙" : "☀️";
+// ============================================
+// MOSTRAR FEEDBACK AL ESTUDIANTE
+// ============================================
+function mostrarFeedback(ejercicioCard, botonSeleccionado, todosLosBotones, esCorrecta, respuestaCorrecta) {
+  // Crear o encontrar el contenedor de feedback
+  let feedbackContainer = ejercicioCard.querySelector('.exercise-feedback');
+  
+  if (!feedbackContainer) {
+    feedbackContainer = document.createElement('div');
+    feedbackContainer.className = 'exercise-feedback mt-4';
+    ejercicioCard.querySelector('.exercise-card').appendChild(feedbackContainer);
   }
+  
+  if (esCorrecta) {
+    // Respuesta correcta
+    botonSeleccionado.classList.add('correct');
+    feedbackContainer.innerHTML = `
+      <div class="alert alert-success animate-fade">
+        <strong>¡Excelente! 🎉</strong> Respuesta correcta.
+        <br><small>Sigue así, vas muy bien.</small>
+      </div>
+    `;
+  } else {
+    // Respuesta incorrecta
+    botonSeleccionado.classList.add('incorrect');
+    
+    // Marcar la respuesta correcta en verde
+    todosLosBotones.forEach(btn => {
+      if (btn.textContent.trim() === respuestaCorrecta) {
+        btn.classList.add('correct');
+      }
+    });
+    
+    feedbackContainer.innerHTML = `
+      <div class="alert alert-danger animate-fade">
+        <strong>Incorrecto ❌</strong>
+        <br>La respuesta correcta está marcada en verde. Revísala y aprende de tu error.
+      </div>
+    `;
+  }
+}
 
-  // Inicializar la página
-  window.multiplesPage = new MultiplesPage();
-});
+// ============================================
+// EXTRAER NÚMERO DEL EJERCICIO
+// ============================================
+function extraerNumeroEjercicio(titulo) {
+  const match = titulo.match(/Ejercicio (\d+)/);
+  return match ? parseInt(match[1]) : 0;
+}
 
-// Exportar para uso global
-window.MultiplesUtils = MultiplesUtils;
+// ============================================
+// CREAR BARRA DE PROGRESO
+// ============================================
+function crearBarraProgreso() {
+  const ejerciciosSection = document.querySelector('#ejercicios');
+  
+  if (!ejerciciosSection) return;
+  
+  const barraHTML = `
+    <div class="progress-container mb-4" style="position: sticky; top: 80px; z-index: 100; background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+      <div class="d-flex justify-content-between mb-2">
+        <span><strong>Tu Progreso:</strong></span>
+        <span id="progreso-texto">0/20 ejercicios completados</span>
+      </div>
+      <div class="progress" style="height: 25px; border-radius: 15px;">
+        <div id="barra-progreso" class="progress-bar progress-bar-custom" role="progressbar" 
+             style="width: 0%; background: linear-gradient(90deg, #2ecc71, #4a90e2);" 
+             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+          0%
+        </div>
+      </div>
+      <div class="mt-2 text-center">
+        <small id="mensaje-motivacion">¡Comienza a resolver los ejercicios! 💪</small>
+      </div>
+    </div>
+  `;
+  
+  ejerciciosSection.insertAdjacentHTML('afterend', barraHTML);
+}
+
+// ============================================
+// ACTUALIZAR PROGRESO
+// ============================================
+function actualizarProgreso() {
+  const totalEjercicios = 20;
+  const porcentaje = Math.round((ejerciciosResueltos / totalEjercicios) * 100);
+  
+  const barraProgreso = document.getElementById('barra-progreso');
+  const textoProgreso = document.getElementById('progreso-texto');
+  const mensajeMotivacion = document.getElementById('mensaje-motivacion');
+  
+  if (barraProgreso) {
+    barraProgreso.style.width = porcentaje + '%';
+    barraProgreso.textContent = porcentaje + '%';
+    barraProgreso.setAttribute('aria-valuenow', porcentaje);
+  }
+  
+  if (textoProgreso) {
+    textoProgreso.textContent = `${ejerciciosResueltos}/20 ejercicios completados (${ejerciciosCorrectos} correctos)`;
+  }
+  
+  if (mensajeMotivacion) {
+    mensajeMotivacion.innerHTML = obtenerMensajeMotivacion(porcentaje, ejerciciosCorrectos, ejerciciosResueltos);
+  }
+  
+  // Si completó todos los ejercicios
+  if (ejerciciosResueltos === totalEjercicios) {
+    mostrarResumenFinal();
+  }
+}
+
+// ============================================
+// MENSAJES MOTIVACIONALES
+// ============================================
+function obtenerMensajeMotivacion(porcentaje, correctos, resueltos) {
+  const tasaExito = resueltos > 0 ? Math.round((correctos / resueltos) * 100) : 0;
+  
+  if (porcentaje === 0) {
+    return '¡Comienza a resolver los ejercicios! 💪';
+  } else if (porcentaje < 25) {
+    return '¡Buen comienzo! Sigue adelante 🚀';
+  } else if (porcentaje < 50) {
+    return '¡Vas por buen camino! Ya llevas ' + porcentaje + '% 🌟';
+  } else if (porcentaje < 75) {
+    return '¡Excelente progreso! Ya casi llegas a la meta 🎯';
+  } else if (porcentaje < 100) {
+    return '¡Casi terminas! Solo un poco más 🏆';
+  } else {
+    if (tasaExito === 100) {
+      return '🎉 ¡PERFECTO! Todas las respuestas correctas 🌟';
+    } else if (tasaExito >= 80) {
+      return '¡Excelente trabajo! ' + tasaExito + '% de aciertos 👏';
+    } else if (tasaExito >= 60) {
+      return '¡Buen esfuerzo! ' + tasaExito + '% de aciertos 💪';
+    } else {
+      return 'Completado. Tasa de aciertos: ' + tasaExito + '%. ¡Sigue practicando! 📚';
+    }
+  }
+}
+
+// ============================================
+// ANIMACIÓN DE ÉXITO
+// ============================================
+function animarExito(boton) {
+  // Crear partículas de celebración
+  const rect = boton.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+  
+  for (let i = 0; i < 5; i++) {
+    crearParticula(centerX, centerY);
+  }
+}
+
+function crearParticula(x, y) {
+  const particula = document.createElement('div');
+  particula.textContent = ['✨', '⭐', '🌟', '💫'][Math.floor(Math.random() * 4)];
+  particula.style.position = 'fixed';
+  particula.style.left = x + 'px';
+  particula.style.top = y + 'px';
+  particula.style.fontSize = '24px';
+  particula.style.pointerEvents = 'none';
+  particula.style.zIndex = '9999';
+  particula.style.transition = 'all 1s ease-out';
+  
+  document.body.appendChild(particula);
+  
+  setTimeout(() => {
+    const randomX = (Math.random() - 0.5) * 200;
+    const randomY = -100 - Math.random() * 100;
+    particula.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    particula.style.opacity = '0';
+  }, 10);
+  
+  setTimeout(() => {
+    particula.remove();
+  }, 1000);
+}
+
+// ============================================
+// GUARDAR PROGRESO EN MEMORIA
+// ============================================
+let progresoEjercicios = {};
+
+function guardarProgresoEnMemoria(numeroEjercicio, esCorrecta) {
+  progresoEjercicios[numeroEjercicio] = {
+    completado: true,
+    correcto: esCorrecta,
+    fecha: new Date().toISOString()
+  };
+}
+
+// ============================================
+// MOSTRAR RESUMEN FINAL
+// ============================================
+function mostrarResumenFinal() {
+  const totalEjercicios = 20;
+  const porcentajeExito = Math.round((ejerciciosCorrectos / totalEjercicios) * 100);
+  
+  // Crear modal de resumen
+  const modalHTML = `
+    <div class="modal fade" id="modalResumen" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 15px; border: 3px solid #2ecc71;">
+          <div class="modal-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 12px 12px 0 0;">
+            <h5 class="modal-title">🎓 ¡Ejercicios Completados!</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body text-center p-4">
+            <div class="emoji-large">🎉</div>
+            <h3>¡Felicidades!</h3>
+            <p class="lead">Has completado todos los ejercicios</p>
+            
+            <div class="row mt-4">
+              <div class="col-6">
+                <div class="p-3" style="background: #e8f5e9; border-radius: 10px;">
+                  <h2 style="color: #2ecc71; margin: 0;">${ejerciciosCorrectos}</h2>
+                  <small>Correctas</small>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="p-3" style="background: #ffebee; border-radius: 10px;">
+                  <h2 style="color: #e74c3c; margin: 0;">${totalEjercicios - ejerciciosCorrectos}</h2>
+                  <small>Incorrectas</small>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-4 p-3" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 10px;">
+              <h4 style="color: white; margin: 0;">${porcentajeExito}%</h4>
+              <small style="color: white;">Porcentaje de aciertos</small>
+            </div>
+            
+            <div class="mt-4">
+              ${obtenerMensajeFinal(porcentajeExito)}
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-primary btn-lg" data-bs-dismiss="modal">
+              ¡Entendido! 👍
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Insertar modal en el documento
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+  
+  // Mostrar modal
+  const modal = new bootstrap.Modal(document.getElementById('modalResumen'));
+  modal.show();
+  
+  // Limpiar modal después de cerrarlo
+  document.getElementById('modalResumen').addEventListener('hidden.bs.modal', function () {
+    this.remove();
+  });
+}
+
+// ============================================
+// MENSAJE FINAL SEGÚN DESEMPEÑO
+// ============================================
+function obtenerMensajeFinal(porcentaje) {
+  if (porcentaje === 100) {
+    return `
+      <div class="alert alert-success">
+        <strong>¡PERFECTO! 🌟</strong><br>
+        ¡Has respondido correctamente todos los ejercicios! Tienes un excelente dominio del tema de múltiplos.
+      </div>
+    `;
+  } else if (porcentaje >= 80) {
+    return `
+      <div class="alert alert-success">
+        <strong>¡Excelente trabajo! 🎯</strong><br>
+        Tu comprensión del tema es muy buena. Sigue practicando para llegar al 100%.
+      </div>
+    `;
+  } else if (porcentaje >= 60) {
+    return `
+      <div class="alert alert-warning">
+        <strong>¡Buen esfuerzo! 💪</strong><br>
+        Tienes una comprensión básica del tema. Te recomendamos revisar los conceptos y practicar más.
+      </div>
+    `;
+  } else {
+    return `
+      <div class="alert alert-info">
+        <strong>Sigue practicando 📚</strong><br>
+        Te recomendamos revisar la teoría y volver a intentar los ejercicios. ¡No te rindas!
+      </div>
+    `;
+  }
+}
+
+// ============================================
+// FUNCIÓN PARA REINICIAR EJERCICIOS
+// ============================================
+function reiniciarEjercicios() {
+  ejerciciosResueltos = 0;
+  ejerciciosCorrectos = 0;
+  progresoEjercicios = {};
+  
+  // Reiniciar todos los botones
+  document.querySelectorAll('.option-btn').forEach(btn => {
+    btn.disabled = false;
+    btn.classList.remove('correct', 'incorrect');
+  });
+  
+  // Limpiar feedbacks
+  document.querySelectorAll('.exercise-feedback').forEach(feedback => {
+    feedback.innerHTML = '';
+  });
+  
+  // Actualizar progreso
+  actualizarProgreso();
+}
+
+// Hacer la función disponible globalmente
+window.reiniciarEjercicios = reiniciarEjercicios;
