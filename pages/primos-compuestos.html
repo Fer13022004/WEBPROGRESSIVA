@@ -48,10 +48,24 @@
 
     <!-- Main Content -->
     <main class="main">
+      <!-- Título principal de la página -->
+      <section class="page-header">
+        <div class="container">
+          <div class="page-title-section">
+            <h1 class="main-page-title">Números Primos y Compuestos</h1>
+          </div>
+        </div>
+      </section>
+
       <section id="concepto" class="theory-section">
         <div class="container">
           <div class="content-card animate-fade">
-            <h2 class="page-title">Concepto</h2>
+            <div class="concept-header">
+              <h2 class="page-title">Concepto</h2>
+              <button id="refreshExamples" class="refresh-btn" title="Generar nuevos ejemplos">
+                🔄 Nuevos Ejemplos
+              </button>
+            </div>
 
             <div class="definition-box">
               <h3>📚 Definiciones Fundamentales</h3>
@@ -63,6 +77,9 @@
                     que 1 que tiene exactamente dos divisores positivos: 1 y él
                     mismo.
                   </p>
+                  <div class="citation">
+                    <em>(Rosen, 2019, p. 240)</em>
+                  </div>
                   <div class="example-box">
                     <strong>Ejemplos:</strong> 2, 3, 5, 7, 11, 13, 17, 19, 23...
                   </div>
@@ -74,6 +91,9 @@
                     Un <strong>número compuesto</strong> es un número natural
                     mayor que 1 que tiene más de dos divisores positivos.
                   </p>
+                  <div class="citation">
+                    <em>(Burton, 2017, p. 58)</em>
+                  </div>
                   <div class="example-box">
                     <strong>Ejemplos:</strong> 4, 6, 8, 9, 10, 12, 14, 15, 16...
                   </div>
@@ -84,9 +104,9 @@
             <div class="special-cases">
               <h3>⚠️ Casos Especiales</h3>
               <ul class="compact-list">
-                <li><strong>El número 1:</strong> No es primo ni compuesto (tiene un solo divisor)</li>
-                <li><strong>El número 2:</strong> Es el único número primo par</li>
-                <li><strong>Números pares > 2:</strong> Todos son compuestos (divisibles por 2)</li>
+                <li><strong>El número 1:</strong> No es primo ni compuesto (tiene un solo divisor) <span class="citation-inline">(Baldor, 2016, p. 95)</span></li>
+                <li><strong>El número 2:</strong> Es el único número primo par <span class="citation-inline">(Rosen, 2019, p. 241)</span></li>
+                <li><strong>Números pares > 2:</strong> Todos son compuestos (divisibles por 2) <span class="citation-inline">(Burton, 2017, p. 60)</span></li>
               </ul>
             </div>
               </ul>
@@ -97,15 +117,15 @@
               <ul class="compact-list">
                 <li>
                   <strong>Infinitud:</strong> Existen infinitos números primos
-                  (demostrado por Euclides)
+                  (demostrado por Euclides) <span class="citation-inline">(Rosen, 2019, p. 245)</span>
                 </li>
                 <li>
                   <strong>Factorización:</strong> Todo número compuesto puede
-                  expresarse como producto de números primos
+                  expresarse como producto de números primos <span class="citation-inline">(Burton, 2017, p. 75)</span>
                 </li>
                 <li>
                   <strong>Fundamento:</strong> Los números primos son los
-                  "bloques constructores" de todos los números
+                  "bloques constructores" de todos los números <span class="citation-inline">(Baldor, 2016, p. 98)</span>
                 </li>
               </ul>
             </div>
@@ -233,152 +253,36 @@
           <div class="content-card animate-fade">
             <h2 class="page-title">🎯 Ejercicios Interactivos</h2>
 
-            <div class="exercise-group">
-              <h3>Ejercicio 1: Clasificación Básica</h3>
-              <div class="exercise">
-                <div class="exercise-question">
-                  Clasifica los siguientes números como primos (P) o compuestos
-                  (C):
+            <!-- Cuadro único de ejercicios dinámicos -->
+            <div class="dynamic-exercise-container">
+              <!-- Header con progreso -->
+              <div class="exercise-header">
+                <div class="exercise-counter">
+                  Ejercicio <span id="currentExercise">1</span>
                 </div>
-                <div class="number-classification">
-                  <div class="number-item" data-number="11" data-type="primo">
-                    <span class="number">11</span>
-                    <div class="classification-buttons">
-                      <button
-                        class="classify-btn primo-btn"
-                        data-answer="primo"
-                      >
-                        P
-                      </button>
-                      <button
-                        class="classify-btn compuesto-btn"
-                        data-answer="compuesto"
-                      >
-                        C
-                      </button>
-                    </div>
-                    <div class="feedback hidden"></div>
-                  </div>
-
-                  <div
-                    class="number-item"
-                    data-number="15"
-                    data-type="compuesto"
-                  >
-                    <span class="number">15</span>
-                    <div class="classification-buttons">
-                      <button
-                        class="classify-btn primo-btn"
-                        data-answer="primo"
-                      >
-                        P
-                      </button>
-                      <button
-                        class="classify-btn compuesto-btn"
-                        data-answer="compuesto"
-                      >
-                        C
-                      </button>
-                    </div>
-                    <div class="feedback hidden"></div>
-                  </div>
-
-                  <div class="number-item" data-number="23" data-type="primo">
-                    <span class="number">23</span>
-                    <div class="classification-buttons">
-                      <button
-                        class="classify-btn primo-btn"
-                        data-answer="primo"
-                      >
-                        P
-                      </button>
-                      <button
-                        class="classify-btn compuesto-btn"
-                        data-answer="compuesto"
-                      >
-                        C
-                      </button>
-                    </div>
-                    <div class="feedback hidden"></div>
-                  </div>
-
-                  <div
-                    class="number-item"
-                    data-number="28"
-                    data-type="compuesto"
-                  >
-                    <span class="number">28</span>
-                    <div class="classification-buttons">
-                      <button
-                        class="classify-btn primo-btn"
-                        data-answer="primo"
-                      >
-                        P
-                      </button>
-                      <button
-                        class="classify-btn compuesto-btn"
-                        data-answer="compuesto"
-                      >
-                        C
-                      </button>
-                    </div>
-                    <div class="feedback hidden"></div>
-                  </div>
+                <div class="exercise-score">
+                  Aciertos: <span id="correctAnswers">0</span> / <span id="answeredQuestions">0</span>
                 </div>
               </div>
-            </div>
 
-            <div class="exercise-group">
-              <h3>Ejercicio 2: Verdadero o Falso</h3>
-              <div class="true-false-section">
-                <div class="statement" data-answer="false">
-                  <p>"Todos los números impares son primos"</p>
-                  <div class="tf-buttons">
-                    <button class="tf-btn" data-answer="true">Verdadero</button>
-                    <button class="tf-btn" data-answer="false">Falso</button>
-                  </div>
-                  <div class="tf-feedback hidden">
-                    <strong>Falso.</strong> Contraejemplo: 9 = 3×3 es impar pero
-                    compuesto.
-                  </div>
-                </div>
-
-                <div class="statement" data-answer="true">
-                  <p>"El número 2 es el único primo par"</p>
-                  <div class="tf-buttons">
-                    <button class="tf-btn" data-answer="true">Verdadero</button>
-                    <button class="tf-btn" data-answer="false">Falso</button>
-                  </div>
-                  <div class="tf-feedback hidden">
-                    <strong>Verdadero.</strong> Todos los demás pares son
-                    divisibles por 2.
-                  </div>
-                </div>
-
-                <div class="statement" data-answer="true">
-                  <p>"Todo número compuesto puede factorizarse en primos"</p>
-                  <div class="tf-buttons">
-                    <button class="tf-btn" data-answer="true">Verdadero</button>
-                    <button class="tf-btn" data-answer="false">Falso</button>
-                  </div>
-                  <div class="tf-feedback hidden">
-                    <strong>Verdadero.</strong> Teorema Fundamental de la
-                    Aritmética.
-                  </div>
-                </div>
+              <!-- Contenedor del ejercicio actual -->
+              <div id="exerciseContainer" class="exercise-container">
+                <!-- El ejercicio se generará dinámicamente -->
               </div>
-            </div>
 
-            <div class="exercise-group">
-              <h3>Ejercicio 3: Encuentra los Primos</h3>
-              <div class="prime-finder">
-                <p>Encuentra todos los números primos entre 1 y 30:</p>
-                <div class="number-grid">
-                  <!-- Los números se generarán dinámicamente con JavaScript -->
-                </div>
-                <div class="prime-counter">
-                  <span id="foundPrimes">0</span> / 10 primos encontrados
-                </div>
+              <!-- Feedback y botón siguiente -->
+              <div id="exerciseFeedback" class="exercise-feedback hidden">
+                <!-- El feedback se mostrará aquí -->
+              </div>
+
+              <!-- Botones de acción -->
+              <div class="exercise-buttons">
+                <button id="nextExerciseBtn" class="next-exercise-btn hidden">
+                  Siguiente Ejercicio →
+                </button>
+                <button id="restartExerciseBtn" class="restart-exercise-btn">
+                  🔄 Reiniciar Puntuación
+                </button>
               </div>
             </div>
           </div>
@@ -390,42 +294,14 @@
           <div class="content-card animate-fade">
             <h2 class="page-title">🌟 Curiosidades y Datos Interesantes</h2>
 
-            <div class="curiosities-grid">
-              <div class="curiosity-card">
-                <h4>🔢 Números Primos Gemelos</h4>
-                <p>Son pares de primos que difieren en 2 unidades:</p>
-                <div class="example-box">
-                  (3,5), (5,7), (11,13), (17,19), (29,31)...
-                </div>
+            <!-- Curiosidad dinámica -->
+            <div class="dynamic-curiosity-container">
+              <div id="dynamicCuriosity" class="curiosity-card">
+                <!-- El contenido se genera dinámicamente -->
               </div>
-
-              <div class="curiosity-card">
-                <h4>🎯 Conjetura de Goldbach</h4>
-                <p>
-                  Todo número par mayor que 2 puede expresarse como la suma de
-                  dos primos:
-                </p>
-                <div class="example-box">
-                  4=2+2, 6=3+3, 8=3+5, 10=3+7, 12=5+7...
-                </div>
-              </div>
-
-              <div class="curiosity-card">
-                <h4>🏆 El Primo más Grande Conocido</h4>
-                <p>
-                  El número primo más grande conocido tiene más de 24 millones
-                  de dígitos y es un primo de Mersenne:
-                </p>
-                <div class="example-box">2^82,589,933 - 1</div>
-              </div>
-
-              <div class="curiosity-card">
-                <h4>📊 Distribución de Primos</h4>
-                <p>
-                  Los primos se vuelven menos frecuentes a medida que los
-                  números crecen, pero nunca se agotan (Teorema de Euclides).
-                </p>
-              </div>
+              <button id="refreshCuriosity" class="refresh-curiosity-btn">
+                � Nueva Curiosidad
+              </button>
             </div>
           </div>
         </div>
@@ -466,105 +342,55 @@
                 </li>
               </ol>
 
-              <h3>Recursos Digitales y Artículos</h3>
-              <ol class="reference-list" start="4">
+              <h3>Recursos Electrónicos</h3>
+              <ol class="reference-list">
                 <li>
-                  <strong
-                    >National Council of Teachers of Mathematics (NCTM).</strong
-                  >
-                  (2020). <em>Prime Numbers in Elementary Mathematics</em>.
-                  Recuperado de:
-                  <a href="https://www.nctm.org" target="_blank"
-                    >https://www.nctm.org</a
-                  >
-                </li>
-
-                <li>
-                  <strong>Wolfram MathWorld.</strong> (2024).
-                  <em>Prime Number</em>. Recuperado de:
-                  <a
-                    href="https://mathworld.wolfram.com/PrimeNumber.html"
-                    target="_blank"
-                    >https://mathworld.wolfram.com/PrimeNumber.html</a
-                  >
-                </li>
-
-                <li>
-                  <strong>Khan Academy.</strong> (2023).
-                  <em>Intro to Prime and Composite Numbers</em>. Recuperado de:
-                  <a
-                    href="https://www.khanacademy.org/math/arithmetic/arith-factors-multiples"
-                    target="_blank"
-                    >Khan Academy - Factores y Múltiplos</a
-                  >
-                </li>
-              </ol>
-
-              <h3>Fuentes Académicas</h3>
-              <ol class="reference-list" start="7">
-                <li>
-                  <strong>Hardy, G. H., & Wright, E. M. (2008).</strong>
-                  <em>An Introduction to the Theory of Numbers</em> (6ª ed.).
-                  Oxford University Press.
+                  <strong>Great Internet Mersenne Prime Search. (2023).</strong>
+                  <em>GIMPS - Discovering World Record Primes Since 1996.</em>
+                  <a href="https://www.mersenne.org/" target="_blank">https://www.mersenne.org/</a>
                   <span class="reference-note"
-                    >Referencia clásica en teoría de números.</span
-                  >
-                </li>
-
-                <li>
-                  <strong>Ministerio de Educación Nacional de Colombia.</strong>
-                  (2022).
-                  <em>Estándares Básicos de Competencias en Matemáticas</em>.
-                  Bogotá: MEN.
-                </li>
-              </ol>
-
-              <h3>Sitios Web Educativos Verificados</h3>
-              <ol class="reference-list" start="9">
-                <li>
-                  <strong>Sector Matemática.</strong> (2024).
-                  <em>Números Primos y Compuestos</em>. Recuperado de:
-                  <a href="http://www.sectormatematica.cl" target="_blank"
-                    >http://www.sectormatematica.cl</a
-                  >
-                </li>
-
-                <li>
-                  <strong>Matemáticas IES.</strong> (2023).
-                  <em>Teoría de Números para Secundaria</em>. Recuperado de:
-                  <a href="https://www.matematicas.es" target="_blank"
-                    >https://www.matematicas.es</a
+                    >Base de datos de números primos de Mersenne.</span
                   >
                 </li>
               </ol>
-
-              <div class="citation-note">
-                <h4>📝 Nota sobre las Citas</h4>
-                <p>
-                  Las referencias anteriores siguen el formato APA (7ª edición)
-                  y han sido seleccionadas por su rigor académico y relevancia
-                  educativa. Se recomienda verificar la fecha de acceso para los
-                  recursos digitales al momento de consulta.
-                </p>
-                <p>
-                  <strong>Fecha de última actualización de esta página:</strong>
-                  Octubre 2024
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Botón flotante de progreso -->
-    <div
-      class="floating-progress"
-      onclick="window.primosModule.showProgress()"
-      title="Ver tu progreso"
-    >
-      <span class="progress-icon">📊</span>
-      <span class="progress-text">Progreso</span>
+    <!-- Menú flotante de navegación -->
+    <div class="floating-menu" id="floatingMenu">
+      <div class="menu-toggle" onclick="toggleFloatingMenu()" title="Navegación rápida">
+        <span class="menu-icon">📱</span>
+        <span class="menu-text">Menú</span>
+      </div>
+      
+      <div class="menu-items" id="menuItems">
+        <a href="#concepto" class="menu-item" onclick="closeFloatingMenu()">
+          <span class="item-icon">📖</span>
+          <span class="item-text">Concepto</span>
+        </a>
+        <a href="#ejemplo" class="menu-item" onclick="closeFloatingMenu()">
+          <span class="item-icon">📝</span>
+          <span class="item-text">Ejemplos</span>
+        </a>
+        <a href="#calculadora" class="menu-item" onclick="closeFloatingMenu()">
+          <span class="item-icon">🧮</span>
+          <span class="item-text">Calculadora</span>
+        </a>
+        <a href="#ejercicio" class="menu-item" onclick="closeFloatingMenu()">
+          <span class="item-icon">🎯</span>
+          <span class="item-text">Ejercicios</span>
+        </a>
+        <a href="#curiosidades" class="menu-item" onclick="closeFloatingMenu()">
+          <span class="item-icon">🌟</span>
+          <span class="item-text">Curiosidades</span>
+        </a>
+        <a href="#referencias" class="menu-item" onclick="closeFloatingMenu()">
+          <span class="item-icon">�</span>
+          <span class="item-text">Referencias</span>
+        </a>
+      </div>
     </div>
 
     <!-- Footer -->
@@ -579,5 +405,60 @@
     <script src="../js/app.js"></script>
     <script src="../js/primos-compuestos.js"></script>
     <script src="../js/sw-register.js"></script>
+    
+    <script>
+      // Funciones para el menú flotante
+      function toggleFloatingMenu() {
+        const menuItems = document.getElementById('menuItems');
+        const isOpen = menuItems.classList.contains('menu-open');
+        
+        if (isOpen) {
+          closeFloatingMenu();
+        } else {
+          openFloatingMenu();
+        }
+      }
+      
+      function openFloatingMenu() {
+        const menuItems = document.getElementById('menuItems');
+        const menuToggle = document.querySelector('.menu-toggle');
+        
+        menuItems.classList.add('menu-open');
+        menuToggle.classList.add('menu-active');
+      }
+      
+      function closeFloatingMenu() {
+        const menuItems = document.getElementById('menuItems');
+        const menuToggle = document.querySelector('.menu-toggle');
+        
+        menuItems.classList.remove('menu-open');
+        menuToggle.classList.remove('menu-active');
+      }
+      
+      // Cerrar menú al hacer scroll
+      let scrollTimeout;
+      window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          closeFloatingMenu();
+        }, 100);
+      });
+      
+      // Smooth scrolling para los enlaces del menú
+      document.querySelectorAll('.menu-item').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>
