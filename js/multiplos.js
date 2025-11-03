@@ -1,158 +1,725 @@
 // ============================================
-// SISTEMA DE EJERCICIOS INTERACTIVOS
+// DATOS PARA EJEMPLOS ALEATORIOS
 // ============================================
 
-// Respuestas correctas para cada ejercicio
-const respuestasCorrectas = {
-  1: "5, 10, 15, 20, 25, 30, 35, 40, 45, 50",
-  2: "14, 21, 35, 42, 56",
-  3: "24, 40, 56",
-  4: "43",
-  5: "27, 36, 45, 54, 63",
-  6: "2",
-  7: "48 chocolates",
-  8: "70",
-  9: "10 múltiplos",
-  10: "3 × 4 = 12",
-  11: "Otro múltiplo de 5",
-  12: "42",
-  13: "12:00 PM y 12:00 AM",
-  14: "98",
-  15: "Terminan en 0 o 5",
-  16: "$90",
-  17: "11, 22, 33, 44, 55",
-  18: "18",
-  19: "56 manzanas",
-  20: "10 múltiplos"
-};
+const ejemplosCajas = [
+  { obj: "manzanas", cant: 3, cajas: [1, 2, 3] },
+  { obj: "galletas", cant: 4, cajas: [1, 2, 3] },
+  { obj: "lápices", cant: 5, cajas: [1, 2, 3] },
+  { obj: "caramelos", cant: 6, cajas: [1, 2, 3] },
+  { obj: "naranjas", cant: 2, cajas: [1, 2, 3] }
+];
 
-// Contador de ejercicios resueltos
+const numerosEjemplo = [3, 4, 5, 6, 7, 8];
+const numerosTablas = [4, 5, 6, 7, 8, 9];
+const numerosGrids = [3, 4, 5, 6];
+
+const aplicacionesVidaReal = [
+  { emoji: "🛒", titulo: "En el Supermercado", texto: "Los productos vienen en paquetes. Si compras 3 paquetes de 6 galletas, tienes 18 galletas (múltiplo de 6)." },
+  { emoji: "🎵", titulo: "Música y Ritmo", texto: "En música, los compases se repiten en múltiplos de tiempos (4/4, 3/4, etc.)." },
+  { emoji: "⏰", titulo: "Horarios", texto: "Los relojes marcan los minutos en múltiplos de 5 (5, 10, 15, 20...)." },
+  { emoji: "🚌", titulo: "Autobuses", texto: "Un autobús pasa cada 15 minutos. ¿En qué minutos pasará? En los minutos 15, 30, 45, 60 (múltiplos de 15)" },
+  { emoji: "💰", titulo: "Dinero", texto: "Si ahorras $20 cada semana, tendrás múltiplos de 20: $20, $40, $60, $80..." },
+  { emoji: "🎂", titulo: "Fiestas", texto: "Si pones 8 sillas en cada mesa, necesitas múltiplos de 8: 8, 16, 24, 32, 40..." },
+  { emoji: "📅", titulo: "Calendario", texto: "Los días de la semana se repiten cada 7 días. Si hoy es lunes, en 7, 14, 21 días también será lunes." },
+  { emoji: "🏃", titulo: "Ejercicio", texto: "Si corres 3 km cada día, en varios días recorrerás múltiplos de 3: 3, 6, 9, 12 km..." }
+];
+
+// ============================================
+// BANCO DE EJERCICIOS CON EXPLICACIONES
+// ============================================
+
+const bancoEjercicios = [
+  {
+    pregunta: "Escribe los primeros 10 múltiplos de {num}:",
+    tipo: "multiplos",
+    nums: [2, 3, 4, 5, 6, 7, 8, 9],
+    generarOpciones: function (num) {
+      const correcta = Array.from({ length: 10 }, (_, i) => num * (i + 1)).join(', ');
+      return [
+        correcta,
+        Array.from({ length: 10 }, (_, i) => num * (i + 1) + 1).join(', '),
+        Array.from({ length: 8 }, (_, i) => num * (i + 1)).join(', '),
+        Array.from({ length: 10 }, (_, i) => num * (i + 2)).join(', ')
+      ];
+    },
+    respuestaCorrecta: 0,
+    explicacion: function(num) {
+      return `
+        <div class="explanation-step">
+          <strong>📝 Paso 1:</strong> Para encontrar los múltiplos de ${num}, debemos multiplicar ${num} por números consecutivos (1, 2, 3, 4...)
+        </div>
+        <div class="explanation-step">
+          <strong>🔢 Paso 2:</strong> Realizamos las multiplicaciones:<br>
+          ${num} × 1 = ${num}<br>
+          ${num} × 2 = ${num*2}<br>
+          ${num} × 3 = ${num*3}<br>
+          ${num} × 4 = ${num*4}<br>
+          ${num} × 5 = ${num*5}<br>
+          ${num} × 6 = ${num*6}<br>
+          ${num} × 7 = ${num*7}<br>
+          ${num} × 8 = ${num*8}<br>
+          ${num} × 9 = ${num*9}<br>
+          ${num} × 10 = ${num*10}
+        </div>
+        <div class="explanation-step">
+          <strong>✅ Respuesta:</strong> Los primeros 10 múltiplos de ${num} son: ${Array.from({ length: 10 }, (_, i) => num * (i + 1)).join(', ')}
+        </div>
+      `;
+    }
+  },
+  {
+    pregunta: "¿Cuáles de los siguientes números son múltiplos de {num}?",
+    tipo: "identificar",
+    nums: [3, 4, 5, 6, 7, 8],
+    generarOpciones: function (num) {
+      const multiplos = [num * 2, num * 3, num * 5, num * 7];
+      const noMultiplos = [num * 2 + 1, num * 3 + 2];
+      const todos = [...multiplos, ...noMultiplos].sort((a, b) => a - b);
+      this.extra = `Números: ${todos.join(', ')}`;
+      this.todosNumeros = todos;
+      this.multiplosList = multiplos;
+      return [
+        multiplos.join(', '),
+        todos.slice(0, 4).join(', '),
+        [...multiplos.slice(0, 2), ...noMultiplos].sort((a, b) => a - b).join(', '),
+        'Todos son múltiplos de ' + num
+      ];
+    },
+    respuestaCorrecta: 0,
+    explicacion: function(num, ej) {
+      const todos = ej.todosNumeros;
+      const verificaciones = todos.map(n => {
+        const division = n / num;
+        const esMultiplo = n % num === 0;
+        return `${n} ÷ ${num} = ${division}${esMultiplo ? ' ✅ (División exacta, SÍ es múltiplo)' : ' ❌ (División inexacta, NO es múltiplo)'}`;
+      }).join('<br>');
+      
+      return `
+        <div class="explanation-step">
+          <strong>📝 Concepto:</strong> Para saber si un número es múltiplo de ${num}, debemos dividirlo entre ${num}. Si la división es exacta (sin residuo), entonces SÍ es múltiplo.
+        </div>
+        <div class="explanation-step">
+          <strong>🔍 Verificamos cada número:</strong><br>
+          ${verificaciones}
+        </div>
+        <div class="explanation-step">
+          <strong>✅ Respuesta:</strong> Los múltiplos de ${num} son: ${ej.multiplosList.join(', ')}
+        </div>
+      `;
+    }
+  },
+  {
+    pregunta: "Completa la secuencia de múltiplos de {num}: {num}, {num2}, ___, {num4}, ___, {num6}, ___, {num8}",
+    tipo: "secuencia",
+    nums: [4, 5, 6, 7, 8],
+    generarOpciones: function (num) {
+      const seq = [num * 3, num * 5, num * 7];
+      this.secuenciaCompleta = seq;
+      return [
+        seq.join(', '),
+        [num * 3 + 1, num * 5 + 1, num * 7 + 1].join(', '),
+        [num * 3, num * 4, num * 7].join(', '),
+        [num * 2, num * 5, num * 8].join(', ')
+      ];
+    },
+    respuestaCorrecta: 0,
+    procesarPregunta: function (num) {
+      return this.pregunta
+        .replace(/{num8}/g, num * 8)
+        .replace(/{num6}/g, num * 6)
+        .replace(/{num4}/g, num * 4)
+        .replace(/{num2}/g, num * 2)
+        .replace(/{num}/g, num);
+    },
+    explicacion: function(num) {
+      return `
+        <div class="explanation-step">
+          <strong>📝 Concepto:</strong> Una secuencia de múltiplos sigue un patrón constante. Cada número se obtiene sumando el valor base.
+        </div>
+        <div class="explanation-step">
+          <strong>🔍 Analizamos el patrón:</strong><br>
+          ${num} → ${num*2} (sumamos ${num})<br>
+          ${num*2} → ? → ${num*4} (faltan ${num} entre cada salto)<br>
+          La diferencia entre números consecutivos siempre es ${num}
+        </div>
+        <div class="explanation-step">
+          <strong>🔢 Completamos:</strong><br>
+          ${num}, ${num*2}, <strong>${num*3}</strong>, ${num*4}, <strong>${num*5}</strong>, ${num*6}, <strong>${num*7}</strong>, ${num*8}
+        </div>
+        <div class="explanation-step">
+          <strong>✅ Respuesta:</strong> Los números que faltan son: ${num*3}, ${num*5}, ${num*7}
+        </div>
+      `;
+    }
+  },
+  {
+    pregunta: "¿Cuál de estos números NO es múltiplo de {num}?",
+    tipo: "no_multiplo",
+    nums: [3, 4, 5, 6],
+    generarOpciones: function (num) {
+      const multiplos = [num * 3, num * 4, num * 6];
+      const noMultiplo = num * 3 + 2;
+      const opciones = [...multiplos, noMultiplo];
+      this.respuestaCorrecta = opciones.indexOf(noMultiplo);
+      this.noMultiploNum = noMultiplo;
+      this.todosNumeros = opciones;
+      return opciones.sort(() => Math.random() - 0.5);
+    },
+    respuestaCorrecta: -1,
+    explicacion: function(num, ej) {
+      const verificaciones = ej.todosNumeros.map(n => {
+        const division = n / num;
+        const resto = n % num;
+        const esMultiplo = resto === 0;
+        return `${n} ÷ ${num} = ${division.toFixed(2)}${esMultiplo ? ' ✅ (Resto = 0, SÍ es múltiplo)' : ` ❌ (Resto = ${resto}, NO es múltiplo)`}`;
+      }).join('<br>');
+      
+      return `
+        <div class="explanation-step">
+          <strong>📝 Método:</strong> Dividimos cada número entre ${num}. El que tenga resto diferente de cero NO es múltiplo.
+        </div>
+        <div class="explanation-step">
+          <strong>🔍 Verificamos:</strong><br>
+          ${verificaciones}
+        </div>
+        <div class="explanation-step">
+          <strong>✅ Respuesta:</strong> El número ${ej.noMultiploNum} NO es múltiplo de ${num}
+        </div>
+      `;
+    }
+  },
+  {
+    pregunta: "Los números pares son múltiplos de:",
+    tipo: "concepto",
+    generarOpciones: function () {
+      return ['2', '5', '10', '3'];
+    },
+    respuestaCorrecta: 0,
+    explicacion: function() {
+      return `
+        <div class="explanation-step">
+          <strong>📝 Concepto de números pares:</strong> Los números pares son aquellos que se pueden dividir exactamente entre 2.
+        </div>
+        <div class="explanation-step">
+          <strong>🔢 Ejemplos de números pares:</strong><br>
+          2, 4, 6, 8, 10, 12, 14, 16, 18, 20...
+        </div>
+        <div class="explanation-step">
+          <strong>🔍 Verificación:</strong><br>
+          2 = 2 × 1 ✅<br>
+          4 = 2 × 2 ✅<br>
+          6 = 2 × 3 ✅<br>
+          8 = 2 × 4 ✅<br>
+          Todos se obtienen multiplicando 2 por otro número
+        </div>
+        <div class="explanation-step">
+          <strong>✅ Conclusión:</strong> Los números pares son múltiplos de 2
+        </div>
+      `;
+    }
+  },
+  {
+    pregunta: "María tiene cajas con {num} chocolates cada una. Si tiene {cajas} cajas, ¿cuántos chocolates tiene en total?",
+    tipo: "problema",
+    nums: [4, 5, 6, 8],
+    generarOpciones: function (num) {
+      const cajas = Math.floor(Math.random() * 5) + 5;
+      this.pregunta = this.pregunta.replace('{cajas}', cajas);
+      const correcto = num * cajas;
+      this.numCajas = cajas;
+      this.totalChocolates = correcto;
+      return [
+        correcto - 6 + ' chocolates',
+        correcto + ' chocolates',
+        correcto + 6 + ' chocolates',
+        correcto - 12 + ' chocolates'
+      ];
+    },
+    respuestaCorrecta: 1,
+    explicacion: function(num, ej) {
+      return `
+        <div class="explanation-step">
+          <strong>📝 Datos del problema:</strong><br>
+          • Cada caja tiene: ${num} chocolates<br>
+          • Número de cajas: ${ej.numCajas}
+        </div>
+        <div class="explanation-step">
+          <strong>🔍 Estrategia:</strong> Como cada caja tiene la misma cantidad, multiplicamos:
+        </div>
+        <div class="explanation-step">
+          <strong>🔢 Operación:</strong><br>
+          ${num} chocolates × ${ej.numCajas} cajas = ${ej.totalChocolates} chocolates
+        </div>
+        <div class="explanation-step">
+          <strong>💡 Relación con múltiplos:</strong> ${ej.totalChocolates} es un múltiplo de ${num}
+        </div>
+        <div class="explanation-step">
+          <strong>✅ Respuesta:</strong> María tiene ${ej.totalChocolates} chocolates en total
+        </div>
+      `;
+    }
+  },
+  {
+    pregunta: "¿Cuál es el {ord} múltiplo de {num}?",
+    tipo: "posicion",
+    nums: [5, 7, 10, 12],
+    generarOpciones: function (num) {
+      const pos = Math.floor(Math.random() * 5) + 5;
+      const ordinal = ['quinto', 'sexto', 'séptimo', 'octavo', 'noveno'][pos - 5];
+      this.pregunta = this.pregunta.replace('{ord}', ordinal);
+      const correcto = num * pos;
+      this.posicion = pos;
+      this.resultado = correcto;
+      return [
+        (correcto - num) + '',
+        correcto + '',
+        (correcto + num) + '',
+        (correcto - num * 2) + ''
+      ];
+    },
+    respuestaCorrecta: 1,
+    explicacion: function(num, ej) {
+      const pasos = [];
+      for(let i = 1; i <= ej.posicion; i++) {
+        pasos.push(`${i}° múltiplo: ${num} × ${i} = ${num * i}${i === ej.posicion ? ' ← Este es el que buscamos' : ''}`);
+      }
+      return `
+        <div class="explanation-step">
+          <strong>📝 Concepto:</strong> El primer múltiplo es ${num}×1, el segundo es ${num}×2, y así sucesivamente.
+        </div>
+        <div class="explanation-step">
+          <strong>🔢 Calculamos los múltiplos:</strong><br>
+          ${pasos.join('<br>')}
+        </div>
+        <div class="explanation-step">
+          <strong>✅ Respuesta:</strong> El múltiplo que buscamos es ${ej.resultado}
+        </div>
+      `;
+    }
+  },
+  {
+    pregunta: "¿Cuántos múltiplos de {num} hay entre 10 y 50?",
+    tipo: "contar",
+    nums: [3, 4, 5, 6],
+    generarOpciones: function (num) {
+      let count = 0;
+      const multiplosEnRango = [];
+      for (let i = 10; i <= 50; i++) {
+        if (i % num === 0) {
+          count++;
+          multiplosEnRango.push(i);
+        }
+      }
+      this.multiplosList = multiplosEnRango;
+      this.cantidadTotal = count;
+      return [
+        (count - 2) + ' múltiplos',
+        count + ' múltiplos',
+        (count + 1) + ' múltiplos',
+        (count + 2) + ' múltiplos'
+      ];
+    },
+    respuestaCorrecta: 1,
+    explicacion: function(num, ej) {
+      return `
+        <div class="explanation-step">
+          <strong>📝 Método:</strong> Identificamos todos los múltiplos de ${num} que están entre 10 y 50 (inclusive).
+        </div>
+        <div class="explanation-step">
+          <strong>🔍 Buscamos los múltiplos:</strong><br>
+          ${ej.multiplosList.join(', ')}
+        </div>
+        <div class="explanation-step">
+          <strong>🔢 Contamos:</strong><br>
+          Hay ${ej.cantidadTotal} números en total
+        </div>
+        <div class="explanation-step">
+          <strong>💡 Tip:</strong> Otra forma es usar división:<br>
+          • Primer múltiplo ≥ 10: dividir 10 entre ${num} y redondear hacia arriba<br>
+          • Último múltiplo ≤ 50: dividir 50 entre ${num} y redondear hacia abajo<br>
+          • Restar las posiciones
+        </div>
+        <div class="explanation-step">
+          <strong>✅ Respuesta:</strong> Hay ${ej.cantidadTotal} múltiplos de ${num} entre 10 y 50
+        </div>
+      `;
+    }
+  },
+  {
+    pregunta: "Si {num1} es múltiplo de {num2}, ¿qué operación lo demuestra?",
+    tipo: "operacion",
+    generarOpciones: function () {
+      const base = Math.floor(Math.random() * 5) + 3;
+      const mult = Math.floor(Math.random() * 4) + 2;
+      const resultado = base * mult;
+      this.pregunta = this.pregunta.replace('{num1}', resultado).replace('{num2}', base);
+      this.numBase = base;
+      this.multiplicador = mult;
+      this.numResultado = resultado;
+      return [
+        `${base} × ${mult} = ${resultado}`,
+        `${resultado} ÷ ${base} = ${mult}`,
+        `${base} + ${resultado - base} = ${resultado}`,
+        `${resultado} - ${base} = ${resultado - base}`
+      ];
+    },
+    respuestaCorrecta: 0,
+    explicacion: function(num, ej) {
+      return `
+        <div class="explanation-step">
+          <strong>📝 Concepto:</strong> Un número es múltiplo de otro cuando se obtiene al multiplicar ese número por un entero.
+        </div>
+        <div class="explanation-step">
+          <strong>🔍 Análisis:</strong><br>
+          Queremos demostrar que ${ej.numResultado} es múltiplo de ${ej.numBase}
+        </div>
+        <div class="explanation-step">
+          <strong>🔢 Operación correcta:</strong><br>
+          ${ej.numBase} × ${ej.multiplicador} = ${ej.numResultado} ✅<br><br>
+          Esto demuestra que ${ej.numResultado} se obtiene multiplicando ${ej.numBase} por ${ej.multiplicador}
+        </div>
+        <div class="explanation-step">
+          <strong>❌ ¿Por qué las otras son incorrectas?</strong><br>
+          • La división solo verifica, pero no demuestra la relación de multiplicación<br>
+          • Las sumas y restas no definen múltiplos
+        </div>
+        <div class="explanation-step">
+          <strong>✅ Respuesta:</strong> ${ej.numBase} × ${ej.multiplicador} = ${ej.numResultado}
+        </div>
+      `;
+    }
+  },
+  {
+    pregunta: "Si sumas dos múltiplos de {num}, ¿qué obtienes?",
+    tipo: "propiedad",
+    nums: [3, 5, 7],
+    generarOpciones: function (num) {
+      return [
+        'Otro múltiplo de ' + num,
+        'Un número impar',
+        'Un divisor de ' + num,
+        'Siempre un número par'
+      ];
+    },
+    respuestaCorrecta: 0,
+    explicacion: function(num) {
+      const mult1 = num * 3;
+      const mult2 = num * 5;
+      const suma = mult1 + mult2;
+      return `
+        <div class="explanation-step">
+          <strong>📝 Propiedad de los múltiplos:</strong> La suma de dos múltiplos de un número es también múltiplo de ese número.
+        </div>
+        <div class="explanation-step">
+          <strong>🔍 Ejemplo con ${num}:</strong><br>
+          Tomemos dos múltiplos de ${num}: ${mult1} y ${mult2}
+        </div>
+        <div class="explanation-step">
+          <strong>🔢 Verificación:</strong><br>
+          ${mult1} + ${mult2} = ${suma}<br><br>
+          ¿Es ${suma} múltiplo de ${num}?<br>
+          ${suma} ÷ ${num} = ${suma/num} ✅ (División exacta)
+        </div>
+        <div class="explanation-step">
+          <strong>💡 ¿Por qué funciona?</strong><br>
+          Si a = ${num} × m y b = ${num} × n, entonces:<br>
+          a + b = ${num} × m + ${num} × n = ${num} × (m + n)<br>
+          Por lo tanto, la suma es múltiplo de ${num}
+        </div>
+        <div class="explanation-step">
+          <strong>✅ Respuesta:</strong> Al sumar dos múltiplos de ${num}, obtienes otro múltiplo de ${num}
+        </div>
+      `;
+    }
+  }
+];
+
+// ============================================
+// VARIABLES GLOBALES
+// ============================================
+
 let ejerciciosResueltos = 0;
 let ejerciciosCorrectos = 0;
-
-// Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-  inicializarEjercicios();
-  crearBarraProgreso();
-});
+let progresoEjercicios = {};
 
 // ============================================
-// FUNCIÓN PRINCIPAL DE INICIALIZACIÓN
+// FUNCIONES AUXILIARES
 // ============================================
-function inicializarEjercicios() {
-  // Seleccionar todos los botones de opciones
-  const todosBotones = document.querySelectorAll('.option-btn');
-  
-  todosBotones.forEach(boton => {
-    boton.addEventListener('click', function() {
-      manejarRespuesta(this);
-    });
-  });
+
+function seleccionarAleatorio(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 // ============================================
-// MANEJAR RESPUESTA DEL ESTUDIANTE
+// GENERACIÓN DE CONTENIDO DINÁMICO
 // ============================================
-function manejarRespuesta(botonSeleccionado) {
-  // Obtener el contenedor del ejercicio
-  const ejercicioCard = botonSeleccionado.closest('.custom-card');
-  const todosLosBotones = ejercicioCard.querySelectorAll('.option-btn');
+
+function generarEjemploCajas() {
+  const ej = seleccionarAleatorio(ejemplosCajas);
+  const html = `Imagina que tienes cajas con ${ej.cant} ${ej.obj} cada una. Si tienes 1 caja, tienes ${ej.cant} ${ej.obj}. 
+    Si tienes 2 cajas, tienes ${ej.cant * 2} ${ej.obj}. Si tienes 3 cajas, tienes ${ej.cant * 3} ${ej.obj}.<br>
+    Entonces: ${ej.cant}, ${ej.cant * 2}, ${ej.cant * 3}... ¡son múltiplos de ${ej.cant}!`;
+  document.querySelector('.ejemplo-texto').innerHTML = html;
+}
+
+function generarEjemplosBasicos() {
+  const numeros = [];
+  while (numeros.length < 4) {
+    const num = seleccionarAleatorio([2, 3, 4, 5, 6, 7, 8, 9, 10]);
+    if (!numeros.includes(num)) numeros.push(num);
+  }
+
+  const html = numeros.map(num => {
+    const multiplos = Array.from({ length: 10 }, (_, i) => num * (i + 1)).join(', ');
+    return `
+      <div class="col-md-3">
+        <div class="calculation-step">
+          <strong>Múltiplos de ${num}:</strong><br>
+          ${multiplos}...
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  document.querySelector('.ejemplo-multiplos-container').innerHTML = html;
+}
+
+function generarEjemploCompleto() {
+  const num = seleccionarAleatorio(numerosEjemplo);
+  document.getElementById('num-ejemplo').textContent = num;
+  document.getElementById('titulo-multiplo').textContent = `Múltiplos de ${num}`;
+
+  const calculos = Array.from({ length: 10 }, (_, i) => {
+    const mult = i + 1;
+    const result = num * mult;
+    return `
+      <div class="col-md-6">
+        <div class="calculation-step bg-white">${num} × ${mult} = <strong>${result}</strong> ✔️</div>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('calculos-multiplos').innerHTML = calculos;
+
+  const multiplos = Array.from({ length: 10 }, (_, i) => num * (i + 1)).join(', ');
+  document.getElementById('resultado-multiplos').innerHTML =
+    `<strong>Resultado:</strong> Los primeros 10 múltiplos de ${num} son: ${multiplos}`;
+}
+
+function generarTablas() {
+  const nums = [];
+  while (nums.length < 2) {
+    const num = seleccionarAleatorio(numerosTablas);
+    if (!nums.includes(num)) nums.push(num);
+  }
+
+  const html = nums.map(num => `
+    <div class="col-md-6">
+      <div class="example-box">
+        <h5 class="text-white text-center">Tabla del ${num}</h5>
+        <table class="interactive-table mt-3">
+          <thead>
+            <tr>
+              <th>Operación</th>
+              <th>Resultado</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${Array.from({ length: 10 }, (_, i) => {
+              const mult = i + 1;
+              return `<tr><td>${num} × ${mult}</td><td><strong>${num * mult}</strong></td></tr>`;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('tablas-multiplicar').innerHTML = html;
+}
+
+function generarGridsVisuales() {
+  const nums = [];
+  while (nums.length < 2) {
+    const num = seleccionarAleatorio(numerosGrids);
+    if (!nums.includes(num)) nums.push(num);
+  }
+
+  const html = nums.map((num, idx) => {
+    const clase = idx === 0 ? 'highlight' : 'highlight-alt';
+    const gridItems = Array.from({ length: 50 }, (_, i) => {
+      const n = i + 1;
+      const esMultiplo = n % num === 0;
+      return `<div class="grid-item ${esMultiplo ? clase : ''}">${n}</div>`;
+    }).join('');
+
+    return `
+      <div class="col-md-6">
+        <h5 class="text-center">Múltiplos de ${num} (del 1 al 50)</h5>
+        <div class="visual-grid">
+          ${gridItems}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('grids-visuales').innerHTML = html;
+}
+
+function generarAplicaciones() {
+  const apps = [];
+  while (apps.length < 4) {
+    const app = seleccionarAleatorio(aplicacionesVidaReal);
+    if (!apps.includes(app)) apps.push(app);
+  }
+
+  const html = apps.map(app => `
+    <div class="col-md-6">
+      <div class="concept-box text-center">
+        <div class="emoji-large">${app.emoji}</div>
+        <h5 class="text-white">${app.titulo}</h5>
+        <p class="text-white">${app.texto}</p>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('aplicaciones-vida-real').innerHTML = html;
+}
+
+// ============================================
+// GENERACIÓN DE EJERCICIOS
+// ============================================
+
+function generarEjercicios() {
+  const ejerciciosSeleccionados = [];
+  const ejerciciosUsados = new Set();
+
+  while (ejerciciosSeleccionados.length < 15) {
+    const ej = seleccionarAleatorio(bancoEjercicios);
+    const key = ej.tipo + (ej.nums ? seleccionarAleatorio(ej.nums) : '');
+
+    if (!ejerciciosUsados.has(key)) {
+      ejerciciosUsados.add(key);
+      ejerciciosSeleccionados.push({ ...ej });
+    }
+  }
+
+  const html = ejerciciosSeleccionados.map((ej, idx) => {
+    let num = ej.nums ? seleccionarAleatorio(ej.nums) : null;
+    let pregunta = ej.procesarPregunta ? ej.procesarPregunta(num) : ej.pregunta.replace(/{num}/g, num);
+    let opciones = ej.generarOpciones(num);
+    let respuestaCorrecta = ej.respuestaCorrecta >= 0 ? ej.respuestaCorrecta : ej.respuestaCorrecta;
+
+    if (respuestaCorrecta < 0) {
+      respuestaCorrecta = opciones.findIndex(op => !op.match(/\d+/g) || parseInt(op) % (num || 1) !== 0);
+    }
+
+    const opcionesHTML = opciones.map((op, i) =>
+      `<button class="option-btn" onclick="verificarRespuesta(${idx}, ${i}, ${respuestaCorrecta})">${op}</button>`
+    ).join('');
+
+    // Guardamos la explicación en un objeto global
+    window.explicaciones = window.explicaciones || {};
+    window.explicaciones[idx] = { explicacion: ej.explicacion, num: num, ejercicio: ej };
+
+    return `
+      <section class="mb-5">
+        <div class="custom-card">
+          <h3 class="section-title">Ejercicio ${idx + 1}</h3>
+          <div class="exercise-card">
+            <div class="exercise-question">
+              <h5>${pregunta}</h5>
+              ${ej.extra ? `<p class="text-muted">${ej.extra}</p>` : ''}
+            </div>
+            <div class="options" id="ejercicio-${idx}">
+              ${opcionesHTML}
+            </div>
+            <button class="hint-btn" onclick="mostrarExplicacion(${idx})">💡 Ver Explicación Paso a Paso</button>
+            <div class="explanation-box" id="explicacion-${idx}"></div>
+          </div>
+        </div>
+      </section>
+    `;
+  }).join('');
+
+  document.getElementById('ejercicios-container').innerHTML = html;
+}
+
+// ============================================
+// MOSTRAR EXPLICACIÓN
+// ============================================
+
+function mostrarExplicacion(ejercicioIdx) {
+  const explicacionBox = document.getElementById(`explicacion-${ejercicioIdx}`);
+  const datosEjercicio = window.explicaciones[ejercicioIdx];
   
-  // Obtener el número del ejercicio desde el título
-  const tituloEjercicio = ejercicioCard.querySelector('.section-title').textContent;
-  const numeroEjercicio = extraerNumeroEjercicio(tituloEjercicio);
-  
-  // Verificar si ya fue respondido
-  if (botonSeleccionado.disabled) {
+  if (explicacionBox.classList.contains('show')) {
+    explicacionBox.classList.remove('show');
     return;
   }
   
-  // Deshabilitar todos los botones del ejercicio
-  todosLosBotones.forEach(btn => {
+  if (datosEjercicio && datosEjercicio.explicacion) {
+    const contenidoExplicacion = datosEjercicio.explicacion(datosEjercicio.num, datosEjercicio.ejercicio);
+    explicacionBox.innerHTML = `
+      <h5 style="color: #1976D2; margin-bottom: 1rem;">📖 Explicación Detallada</h5>
+      ${contenidoExplicacion}
+    `;
+    explicacionBox.classList.add('show');
+  }
+}
+
+// ============================================
+// VERIFICAR RESPUESTA
+// ============================================
+
+function verificarRespuesta(ejercicioIdx, opcionIdx, correcta) {
+  const container = document.getElementById(`ejercicio-${ejercicioIdx}`);
+  const botones = container.querySelectorAll('.option-btn');
+
+  botones.forEach(btn => {
     btn.disabled = true;
+    btn.style.cursor = 'not-allowed';
   });
-  
-  // Obtener la respuesta seleccionada y la correcta
-  const respuestaSeleccionada = botonSeleccionado.textContent.trim();
-  const respuestaCorrecta = respuestasCorrectas[numeroEjercicio];
-  
-  // Verificar si es correcta
-  const esCorrecta = respuestaSeleccionada === respuestaCorrecta;
-  
-  // Mostrar feedback
-  mostrarFeedback(ejercicioCard, botonSeleccionado, todosLosBotones, esCorrecta, respuestaCorrecta);
-  
-  // Actualizar estadísticas
-  ejerciciosResueltos++;
-  if (esCorrecta) {
+
+  if (opcionIdx === correcta) {
+    botones[opcionIdx].classList.add('correct');
     ejerciciosCorrectos++;
+    animarExito(botones[opcionIdx]);
+  } else {
+    botones[opcionIdx].classList.add('incorrect');
+    botones[correcta].classList.add('correct');
   }
   
-  // Actualizar barra de progreso
+  ejerciciosResueltos++;
+  actualizarProgreso();
+  guardarProgresoEnMemoria(ejercicioIdx, opcionIdx === correcta);
+  
+  // Mostrar automáticamente la explicación después de responder
+  setTimeout(() => {
+    mostrarExplicacion(ejercicioIdx);
+  }, 500);
+}
+
+// ============================================
+// GENERAR NUEVOS EJERCICIOS
+// ============================================
+
+function generarNuevosEjercicios() {
+  ejerciciosResueltos = 0;
+  ejerciciosCorrectos = 0;
+  progresoEjercicios = {};
+  
+  generarEjercicios();
   actualizarProgreso();
   
-  // Guardar progreso en memoria (no en localStorage por restricciones)
-  guardarProgresoEnMemoria(numeroEjercicio, esCorrecta);
-  
-  // Animación de celebración si es correcta
-  if (esCorrecta) {
-    animarExito(botonSeleccionado);
-  }
+  document.getElementById('ejercicios').scrollIntoView({ behavior: 'smooth' });
 }
 
 // ============================================
-// MOSTRAR FEEDBACK AL ESTUDIANTE
+// BARRA DE PROGRESO
 // ============================================
-function mostrarFeedback(ejercicioCard, botonSeleccionado, todosLosBotones, esCorrecta, respuestaCorrecta) {
-  // Crear o encontrar el contenedor de feedback
-  let feedbackContainer = ejercicioCard.querySelector('.exercise-feedback');
-  
-  if (!feedbackContainer) {
-    feedbackContainer = document.createElement('div');
-    feedbackContainer.className = 'exercise-feedback mt-4';
-    ejercicioCard.querySelector('.exercise-card').appendChild(feedbackContainer);
-  }
-  
-  if (esCorrecta) {
-    // Respuesta correcta
-    botonSeleccionado.classList.add('correct');
-    feedbackContainer.innerHTML = `
-      <div class="alert alert-success animate-fade">
-        <strong>¡Excelente! 🎉</strong> Respuesta correcta.
-        <br><small>Sigue así, vas muy bien.</small>
-      </div>
-    `;
-  } else {
-    // Respuesta incorrecta
-    botonSeleccionado.classList.add('incorrect');
-    
-    // Marcar la respuesta correcta en verde
-    todosLosBotones.forEach(btn => {
-      if (btn.textContent.trim() === respuestaCorrecta) {
-        btn.classList.add('correct');
-      }
-    });
-    
-    feedbackContainer.innerHTML = `
-      <div class="alert alert-danger animate-fade">
-        <strong>Incorrecto ❌</strong>
-        <br>La respuesta correcta está marcada en verde. Revísala y aprende de tu error.
-      </div>
-    `;
-  }
-}
 
-// ============================================
-// EXTRAER NÚMERO DEL EJERCICIO
-// ============================================
-function extraerNumeroEjercicio(titulo) {
-  const match = titulo.match(/Ejercicio (\d+)/);
-  return match ? parseInt(match[1]) : 0;
-}
-
-// ============================================
-// CREAR BARRA DE PROGRESO
-// ============================================
 function crearBarraProgreso() {
   const ejerciciosSection = document.querySelector('#ejercicios');
   
@@ -162,7 +729,7 @@ function crearBarraProgreso() {
     <div class="progress-container mb-4" style="position: sticky; top: 80px; z-index: 100; background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
       <div class="d-flex justify-content-between mb-2">
         <span><strong>Tu Progreso:</strong></span>
-        <span id="progreso-texto">0/20 ejercicios completados</span>
+        <span id="progreso-texto">0/15 ejercicios completados</span>
       </div>
       <div class="progress" style="height: 25px; border-radius: 15px;">
         <div id="barra-progreso" class="progress-bar progress-bar-custom" role="progressbar" 
@@ -180,11 +747,8 @@ function crearBarraProgreso() {
   ejerciciosSection.insertAdjacentHTML('afterend', barraHTML);
 }
 
-// ============================================
-// ACTUALIZAR PROGRESO
-// ============================================
 function actualizarProgreso() {
-  const totalEjercicios = 20;
+  const totalEjercicios = 15;
   const porcentaje = Math.round((ejerciciosResueltos / totalEjercicios) * 100);
   
   const barraProgreso = document.getElementById('barra-progreso');
@@ -198,7 +762,7 @@ function actualizarProgreso() {
   }
   
   if (textoProgreso) {
-    textoProgreso.textContent = `${ejerciciosResueltos}/20 ejercicios completados (${ejerciciosCorrectos} correctos)`;
+    textoProgreso.textContent = `${ejerciciosResueltos}/15 ejercicios completados (${ejerciciosCorrectos} correctos)`;
   }
   
   if (mensajeMotivacion) {
@@ -214,6 +778,7 @@ function actualizarProgreso() {
 // ============================================
 // MENSAJES MOTIVACIONALES
 // ============================================
+
 function obtenerMensajeMotivacion(porcentaje, correctos, resueltos) {
   const tasaExito = resueltos > 0 ? Math.round((correctos / resueltos) * 100) : 0;
   
@@ -243,8 +808,8 @@ function obtenerMensajeMotivacion(porcentaje, correctos, resueltos) {
 // ============================================
 // ANIMACIÓN DE ÉXITO
 // ============================================
+
 function animarExito(boton) {
-  // Crear partículas de celebración
   const rect = boton.getBoundingClientRect();
   const centerX = rect.left + rect.width / 2;
   const centerY = rect.top + rect.height / 2;
@@ -280,9 +845,8 @@ function crearParticula(x, y) {
 }
 
 // ============================================
-// GUARDAR PROGRESO EN MEMORIA
+// GUARDAR PROGRESO
 // ============================================
-let progresoEjercicios = {};
 
 function guardarProgresoEnMemoria(numeroEjercicio, esCorrecta) {
   progresoEjercicios[numeroEjercicio] = {
@@ -293,13 +857,13 @@ function guardarProgresoEnMemoria(numeroEjercicio, esCorrecta) {
 }
 
 // ============================================
-// MOSTRAR RESUMEN FINAL
+// RESUMEN FINAL
 // ============================================
+
 function mostrarResumenFinal() {
-  const totalEjercicios = 20;
+  const totalEjercicios = 15;
   const porcentajeExito = Math.round((ejerciciosCorrectos / totalEjercicios) * 100);
   
-  // Crear modal de resumen
   const modalHTML = `
     <div class="modal fade" id="modalResumen" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
@@ -341,28 +905,25 @@ function mostrarResumenFinal() {
             <button type="button" class="btn btn-primary btn-lg" data-bs-dismiss="modal">
               ¡Entendido! 👍
             </button>
+            <button type="button" class="btn btn-success btn-lg" onclick="generarNuevosEjercicios(); bootstrap.Modal.getInstance(document.getElementById('modalResumen')).hide();">
+              🔄 Nuevos Ejercicios
+            </button>
           </div>
         </div>
       </div>
     </div>
   `;
   
-  // Insertar modal en el documento
   document.body.insertAdjacentHTML('beforeend', modalHTML);
   
-  // Mostrar modal
   const modal = new bootstrap.Modal(document.getElementById('modalResumen'));
   modal.show();
   
-  // Limpiar modal después de cerrarlo
   document.getElementById('modalResumen').addEventListener('hidden.bs.modal', function () {
     this.remove();
   });
 }
 
-// ============================================
-// MENSAJE FINAL SEGÚN DESEMPEÑO
-// ============================================
 function obtenerMensajeFinal(porcentaje) {
   if (porcentaje === 100) {
     return `
@@ -396,27 +957,24 @@ function obtenerMensajeFinal(porcentaje) {
 }
 
 // ============================================
-// FUNCIÓN PARA REINICIAR EJERCICIOS
+// INICIALIZACIÓN AL CARGAR LA PÁGINA
 // ============================================
-function reiniciarEjercicios() {
-  ejerciciosResueltos = 0;
-  ejerciciosCorrectos = 0;
-  progresoEjercicios = {};
-  
-  // Reiniciar todos los botones
-  document.querySelectorAll('.option-btn').forEach(btn => {
-    btn.disabled = false;
-    btn.classList.remove('correct', 'incorrect');
-  });
-  
-  // Limpiar feedbacks
-  document.querySelectorAll('.exercise-feedback').forEach(feedback => {
-    feedback.innerHTML = '';
-  });
-  
-  // Actualizar progreso
-  actualizarProgreso();
-}
 
-// Hacer la función disponible globalmente
-window.reiniciarEjercicios = reiniciarEjercicios;
+document.addEventListener('DOMContentLoaded', function() {
+  // Generar contenido dinámico
+  generarEjemploCajas();
+  generarEjemplosBasicos();
+  generarEjemploCompleto();
+  generarTablas();
+  generarGridsVisuales();
+  generarAplicaciones();
+  generarEjercicios();
+  
+  // Crear barra de progreso
+  crearBarraProgreso();
+});
+
+// Hacer funciones disponibles globalmente
+window.generarNuevosEjercicios = generarNuevosEjercicios;
+window.verificarRespuesta = verificarRespuesta;
+window.mostrarExplicacion = mostrarExplicacion;

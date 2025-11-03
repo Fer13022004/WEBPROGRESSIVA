@@ -1,13 +1,124 @@
 /* ============================================
-   ESTILOS PERSONALIZADOS PARA MÚLTIPLOS
+   ESTILOS GENERALES
    ============================================ */
 
 :root {
   --primary-color: #4a90e2;
-  --secondary-color: #2ecc71;
-  --accent-color: #e74c3c;
-  --dark-color: #2c3e50;
-  --light-bg: #f8f9fa;
+  --secondary-color: #50c878;
+  --accent-color: #ff6b6b;
+  --dark-bg: #2c3e50;
+  --light-bg: #ecf0f1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: #222; /* Texto oscuro general */
+}
+
+/* ============================================
+   HEADER Y NAVEGACIÓN
+   ============================================ */
+
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.back-btn,
+.dropbtn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.back-btn:hover,
+.dropbtn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  color: white;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: white;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  right: 0;
+  z-index: 1001;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background 0.3s;
+}
+
+.dropdown-content a:hover {
+  background: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* ============================================
+   CONTENEDOR PRINCIPAL
+   ============================================ */
+
+.main {
+  background: white;
+  margin: 2rem auto;
+  max-width: 1200px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  color: #222;
 }
 
 /* ============================================
@@ -17,15 +128,16 @@
 .custom-card {
   background: white;
   border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   margin-bottom: 2rem;
   transition: transform 0.3s ease;
+  color: #222;
 }
 
 .custom-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* ============================================
@@ -34,104 +146,103 @@
 
 .section-title {
   color: var(--primary-color);
-  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
   border-bottom: 3px solid var(--secondary-color);
   padding-bottom: 0.5rem;
+  font-size: 2rem;
 }
 
 .emoji-large {
   font-size: 3rem;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
 
 /* ============================================
    CAJAS DE CONCEPTOS
    ============================================ */
 
-.concept-box {
+.definition-highlight {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  color: #fff;
   padding: 1.5rem;
-  border-radius: 10px;
+  border-radius: 12px;
   margin: 1rem 0;
+}
+
+.concept-box {
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  color: #fff;
 }
 
 .example-box {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  color: white;
+  background: linear-gradient(135deg, #50c878, #3da35d);
   padding: 1.5rem;
-  border-radius: 10px;
+  border-radius: 12px;
   margin: 1rem 0;
+  color: #fff;
 }
 
 .mcm-box {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  color: white;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
   padding: 1.5rem;
-  border-radius: 10px;
+  border-radius: 12px;
   margin: 1rem 0;
+  color: #fff;
 }
 
 .property-card {
-  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-  color: white;
-  padding: 1rem;
-  border-radius: 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
   margin: 0.5rem 0;
-  font-weight: 500;
+  transition: transform 0.3s;
+  color: #fff;
 }
 
-.definition-highlight {
-  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  padding: 1.5rem;
-  border-radius: 10px;
+.property-card:hover {
+  transform: translateY(-5px);
+}
+
+.tip-box {
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 1rem;
+  border-radius: 8px;
   margin: 1rem 0;
-  font-size: 1.1rem;
-  border-left: 5px solid var(--primary-color);
-  color: var(--dark-color);
+  color: #222;
 }
 
 /* ============================================
-   NÚMEROS Y MÚLTIPLOS
+   REFERENCIA BIBLIOGRÁFICA
    ============================================ */
 
-.multiple-number {
-  display: inline-block;
-  background: var(--secondary-color);
-  color: white;
-  padding: 0.5rem 1rem;
+.reference-box {
+  background: #e7f3ff;
+  border-left: 4px solid #2196F3;
+  padding: 1rem;
+  margin: 1rem 0;
   border-radius: 8px;
-  margin: 0.3rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #222;
+}
+
+.reference-box strong {
+  color: #1976D2;
+}
+
+.reference-box a {
+  color: #1976D2;
+  text-decoration: none;
   font-weight: bold;
-  font-size: 1.1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.common-multiple {
-  background: var(--accent-color);
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
-.number-circle {
-  width: 50px;
-  height: 50px;
-  background: var(--primary-color);
-  color: white;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin: 0.3rem;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+.reference-box a:hover {
+  text-decoration: underline;
 }
 
 /* ============================================
@@ -141,16 +252,15 @@
 .calculation-step {
   background: #f8f9fa;
   padding: 1rem;
-  border-left: 4px solid var(--primary-color);
   margin: 0.5rem 0;
-  border-radius: 5px;
-  font-size: 1.1rem;
-  color: var(--dark-color);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+  color: #222;
 }
 
 .calculation-step.bg-white {
   background: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 /* ============================================
@@ -158,62 +268,32 @@
    ============================================ */
 
 .timeline-item {
-  position: relative;
-  padding-left: 3rem;
-  padding-bottom: 2rem;
   border-left: 3px solid var(--primary-color);
-  margin-left: 1rem;
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  position: relative;
+  color: #222;
 }
 
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -9px;
+  left: -8px;
   top: 0;
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
+  background: var(--primary-color);
   border-radius: 50%;
-  background: var(--secondary-color);
-  border: 3px solid white;
-  box-shadow: 0 0 0 3px var(--secondary-color);
 }
 
 /* ============================================
-   GRILLA VISUAL
+   BADGES
    ============================================ */
 
-.visual-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-  gap: 10px;
-  margin: 1rem 0;
-}
-
-.grid-item {
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--light-bg);
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  color: var(--dark-color);
-}
-
-.grid-item.highlight {
-  background: var(--secondary-color);
-  color: white;
-  border-color: var(--secondary-color);
-  transform: scale(1.1);
-}
-
-.grid-item.highlight-alt {
-  background: #e74c3c;
-  color: white;
-  border-color: #e74c3c;
-  transform: scale(1.1);
+.badge-custom {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
 }
 
 /* ============================================
@@ -222,55 +302,61 @@
 
 .interactive-table {
   width: 100%;
-  margin: 1rem 0;
-  border-collapse: separate;
-  border-spacing: 0;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.interactive-table th,
+.interactive-table td {
+  padding: 0.75rem;
+  text-align: center;
+  border: 1px solid #dee2e6;
 }
 
 .interactive-table th {
   background: var(--primary-color);
   color: white;
-  padding: 1rem;
-  text-align: center;
-  font-weight: bold;
 }
 
 .interactive-table td {
-  background: white;
-  padding: 1rem;
-  text-align: center;
-  border: 1px solid #dee2e6;
-  color: var(--dark-color);
+  color: #222;
 }
 
-.interactive-table tr:hover td {
-  background: var(--light-bg);
+.interactive-table tbody tr:nth-child(even) {
+  background: #f8f9fa;
 }
 
 /* ============================================
-   CAJAS DE CONSEJOS
+   GRILLA VISUAL
    ============================================ */
 
-.tip-box {
-  background: #fff3cd;
-  border-left: 5px solid #ffc107;
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 5px;
-  color: var(--dark-color);
+.visual-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
-.info-badge {
-  background: var(--secondary-color);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  display: inline-block;
-  margin: 0.5rem;
+.grid-item {
+  background: #e9ecef;
+  padding: 0.75rem;
+  text-align: center;
+  border-radius: 8px;
   font-weight: bold;
+  transition: all 0.3s;
+  color: #222;
+}
+
+.grid-item.highlight {
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.grid-item.highlight-alt {
+  background: linear-gradient(135deg, #50c878, #3da35d);
+  color: #fff;
+  transform: scale(1.05);
 }
 
 /* ============================================
@@ -278,98 +364,165 @@
    ============================================ */
 
 .exercise-card {
-  background: white;
-  border: 3px solid var(--primary-color);
-  border-radius: 15px;
-  padding: 2rem;
-  margin: 1rem 0;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  color: #222;
 }
 
 .exercise-question {
-  margin-bottom: 1.5rem;
-  color: var(--dark-color);
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--primary-color);
+  color: #222;
 }
 
-.exercise-question h5 {
-  color: var(--primary-color);
-  font-weight: bold;
+.options {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .option-btn {
   background: white;
-  border: 2px solid var(--primary-color);
-  color: var(--dark-color);
+  border: 2px solid #dee2e6;
   padding: 1rem;
-  margin: 0.5rem 0;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
+  transition: all 0.3s;
   text-align: left;
   font-size: 1rem;
+  color: #222;
 }
 
 .option-btn:hover:not(:disabled) {
-  background: var(--primary-color);
-  color: white;
-  transform: translateX(10px);
+  border-color: var(--primary-color);
+  background: #f8f9fa;
+  transform: translateX(5px);
 }
 
 .option-btn.correct {
-  background: var(--secondary-color);
-  color: white;
-  border-color: var(--secondary-color);
+  background: #d4edda;
+  border-color: #28a745;
+  animation: pulse 0.5s;
 }
 
 .option-btn.incorrect {
-  background: var(--accent-color);
-  color: white;
-  border-color: var(--accent-color);
+  background: #f8d7da;
+  border-color: #dc3545;
+  animation: shake 0.5s;
 }
 
 .option-btn:disabled {
   cursor: not-allowed;
-  opacity: 0.9;
 }
 
 /* ============================================
-   ACORDEÓN PERSONALIZADO
+   EXPLICACIONES
    ============================================ */
 
-.accordion-custom .accordion-button {
-  background: var(--primary-color);
+.explanation-box {
+  background: #e3f2fd;
+  border-left: 4px solid #2196F3;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+  display: none;
+  color: #222;
+}
+
+.explanation-box.show {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+.explanation-step {
+  background: white;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  border-left: 3px solid #4CAF50;
+  color: #222;
+}
+
+.hint-btn {
+  background: linear-gradient(135deg, #ffc107, #ff9800);
   color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 1rem;
   font-weight: bold;
-  font-size: 1.1rem;
 }
 
-.accordion-custom .accordion-button:not(.collapsed) {
-  background: var(--secondary-color);
+.hint-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+  background: var(--dark-bg);
   color: white;
-}
-
-.accordion-custom .accordion-button:focus {
-  box-shadow: 0 0 0 0.25rem rgba(74, 144, 226, 0.25);
-}
-
-/* ============================================
-   BADGES Y ETIQUETAS
-   ============================================ */
-
-.badge-custom {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 10px;
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 3rem;
 }
 
 /* ============================================
-   BARRA DE PROGRESO
+   UTILIDADES
    ============================================ */
 
-.progress-bar-custom {
-  height: 30px;
-  border-radius: 15px;
-  background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+.text-white {
+  color: white !important;
+}
+
+.bg-white {
+  background-color: white !important;
 }
 
 /* ============================================
@@ -377,10 +530,19 @@
    ============================================ */
 
 @media (max-width: 768px) {
+  .visual-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
   .section-title {
     font-size: 1.5rem;
   }
-  
+
   .custom-card {
     padding: 1rem;
   }
@@ -388,23 +550,14 @@
   .emoji-large {
     font-size: 2rem;
   }
-
-  .visual-grid {
-    grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
-    gap: 5px;
-  }
-
-  .multiple-number {
-    padding: 0.4rem 0.8rem;
-    font-size: 1rem;
-  }
-
-  .timeline-item {
-    padding-left: 2rem;
-  }
 }
 
 @media (max-width: 576px) {
+  .main {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
   .concept-box,
   .example-box,
   .mcm-box,
@@ -420,35 +573,4 @@
   .option-btn {
     font-size: 0.9rem;
   }
-}
-
-/* ============================================
-   ANIMACIONES ADICIONALES
-   ============================================ */
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade {
-  animation: fadeIn 0.6s ease-in-out;
-}
-
-/* ============================================
-   UTILIDADES
-   ============================================ */
-
-.text-white {
-  color: white !important;
-}
-
-.bg-white {
-  background-color: white !important;
 }
