@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matemáticas Educativas - PWA</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Iconos -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="images/icon-192x192.svg" />
+    <meta name="theme-color" content="#ff9f43" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-gradient shadow-sm">
+      <div class="container d-flex justify-content-between align-items-center">
+        <a
+          class="navbar-brand fw-bold d-flex align-items-center text-light"
+          href="#"
+        >
+          <i class="bi bi-calculator-fill me-2 fs-3"></i> Matemáticas Educativas
+        </a>
+      </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <main class="dashboard pt-4 pb-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h1 class="display-4 fw-bold mb-3 title-gradient animate-fade">
+            📚 Matemáticas Educativas
+          </h1>
+          <p class="lead text-muted mb-4">
+            Aprende conceptos fundamentales de matemáticas de forma interactiva
+            y divertida
+          </p>
+          <h2 class="fw-bold title-gradient animate-fade">
+            🧮 Elige una lección para comenzar
+          </h2>
+        </div>
+
+        <div class="row g-4" id="topics">
+          <!-- Tarjetas -->
+          <div class="col-md-6 col-lg-4">
+            <a
+              href="pages/multiplos.html"
+              class="card topic-card gradient-1 text-center p-4 text-decoration-none"
+            >
+              <div class="topic-icon"><i class="bi bi-x-circle-fill"></i></div>
+              <h5 class="fw-bold mt-3">Múltiplos de un número</h5>
+              <p>Aprende a identificar múltiplos fácilmente.</p>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a
+              href="pages/mcm.html"
+              class="card topic-card gradient-2 text-center p-4 text-decoration-none"
+            >
+              <div class="topic-icon"><i class="bi bi-123"></i></div>
+              <h5 class="fw-bold mt-3">Mínimo común múltiplo</h5>
+              <p>Descubre cómo calcular el MCM paso a paso.</p>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a
+              href="pages/divisores.html"
+              class="card topic-card gradient-3 text-center p-4 text-decoration-none"
+            >
+              <div class="topic-icon">
+                <i class="bi bi-slash-circle-fill"></i>
+              </div>
+              <h5 class="fw-bold mt-3">Divisores de un número</h5>
+              <p>Encuentra los divisores de forma interactiva.</p>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a
+              href="pages/criterios.html"
+              class="card topic-card gradient-4 text-center p-4 text-decoration-none"
+            >
+              <div class="topic-icon"><i class="bi bi-check2-circle"></i></div>
+              <h5 class="fw-bold mt-3">Criterios de divisibilidad</h5>
+              <p>Explora las reglas por 2, 3 y 5.</p>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a
+              href="pages/calculo-divisores.html"
+              class="card topic-card gradient-5 text-center p-4 text-decoration-none"
+            >
+              <div class="topic-icon">
+                <i class="bi bi-grid-3x3-gap-fill"></i>
+              </div>
+              <h5 class="fw-bold mt-3">Cálculo de todos los divisores</h5>
+              <p>Descubre patrones y practica con ejercicios.</p>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <a
+              href="pages/primos-compuestos.html"
+              class="card topic-card gradient-6 text-center p-4 text-decoration-none"
+            >
+              <div class="topic-icon"><i class="bi bi-gem"></i></div>
+              <h5 class="fw-bold mt-3">Números primos y compuestos</h5>
+              <p>Distingue entre primos y compuestos fácilmente.</p>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4 mx-auto">
+            <a
+              href="pages/mcd.html"
+              class="card topic-card gradient-7 text-center p-4 text-decoration-none"
+            >
+              <div class="topic-icon"><i class="bi bi-trophy-fill"></i></div>
+              <h5 class="fw-bold mt-3">Máximo común divisor</h5>
+              <p>Calcula el MCD con métodos prácticos.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer text-white text-center py-3 mt-auto">
+      <p class="mb-0">&copy; 2025 Matemáticas Educativas</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/sw-register.js"></script>
+  </body>
+</html>
