@@ -1,0 +1,101 @@
+/* calculo-divisores.css */
+/* Diseño visual y claro para niños de sexto de primaria */
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f0f8ff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #4a90e2;
+  color: white;
+  text-align: center;
+  padding: 30px 10px;
+}
+
+.logo {
+  font-size: 2.2em;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.3em;
+  margin: 0;
+  font-weight: normal;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.content-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.page-title {
+  color: #4a90e2;
+  border-bottom: 2px solid #4a90e2;
+  padding-bottom: 5px;
+}
+
+.number-highlight {
+  font-size: 1.6em;
+  color: #e67e22;
+  font-weight: bold;
+}
+
+.tip {
+  background-color: #e7f3ff;
+  padding: 10px;
+  border-left: 5px solid #4a90e2;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.refresh-hint {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  margin-top: 10px;
+}
+
+.calculation-steps {
+  background: #f9fbfd;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.step {
+  background-color: #eef7ff;
+  margin: 6px 0;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 1.1em;
+}
+
+.footer {
+  background-color: #4a90e2;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.9em;
+}
+
+a {
+  color: #4a90e2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

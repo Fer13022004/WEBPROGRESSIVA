@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Divisores de un número - Matemáticas Educativas</title>
+    <style>
+      /* 🎨 Estilos generales */
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        background: linear-gradient(to bottom right, #b2ebf2, #e3f2fd, #ffffff);
+        color: #333;
+      }
+
+      /* 🧮 Encabezado */
+      header {
+        background: linear-gradient(to right, #00796b, #009688);
+        padding: 2rem 1rem;
+        text-align: center;
+        color: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      header h1 {
+        font-size: 2.8rem;
+        margin: 0;
+        letter-spacing: 1px;
+      }
+
+      /* 📘 Contenedores y tarjetas */
+      .container {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 1.5rem;
+      }
+
+      .content-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 121, 107, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .content-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 10px 25px rgba(0, 121, 107, 0.3);
+      }
+
+      h2 {
+        color: #00796b;
+        border-bottom: 3px solid #80cbc4;
+        display: inline-block;
+        padding-bottom: 5px;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        line-height: 1.6;
+        font-size: 1.05rem;
+      }
+
+      ul {
+        margin-left: 1.5rem;
+      }
+
+      /* 🔢 Ejemplo dinámico */
+      .number-highlight {
+        color: #00796b;
+        font-weight: bold;
+        font-size: 1.6rem;
+        background-color: #e0f2f1;
+        padding: 0.2rem 0.6rem;
+        border-radius: 10px;
+      }
+
+      .calculation-steps p {
+        background: #f1f8e9;
+        padding: 0.7rem 1rem;
+        border-radius: 12px;
+        margin: 0.5rem 0;
+        font-weight: 500;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .calculation-steps p::after {
+        content: "✔️";
+        color: #4caf50;
+      }
+
+      .tip {
+        margin-top: 1rem;
+        background: #e0f7fa;
+        padding: 1rem;
+        border-left: 6px solid #009688;
+        border-radius: 10px;
+        font-style: italic;
+      }
+
+      /* ✨ Animación de entrada */
+      .animate-fade {
+        animation: fadeIn 1.2s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* 🧾 Pie de página */
+      footer {
+        background-color: #004d40;
+        color: white;
+        text-align: center;
+        padding: 1.8rem;
+        margin-top: 3rem;
+        border-top: 4px solid #26a69a;
+      }
+
+      footer h3 {
+        margin-top: 0;
+        color: #a7ffeb;
+      }
+
+      footer p {
+        margin: 0.4rem 0;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>📘 Divisores de un Número</h1>
+      <p>Aprende de forma fácil con ejemplos y explicaciones claras</p>
+    </header>
+
+    <!-- 🧠 EXPLICACIÓN -->
+    <div class="container">
+      <div class="content-card animate-fade">
+        <h2> Explicación</h2>
+        <p>
+          Los <strong>divisores</strong> de un número son aquellos números enteros que pueden dividirlo de manera exacta, 
+          es decir, sin dejar residuo. Por ejemplo, si decimos que 3 es divisor de 12, significa que al dividir 12 entre 3, 
+          el resultado es exacto (12 ÷ 3 = 4).
+        </p>
+
+        <p>
+          En otras palabras, un número <em>a</em> es divisor de otro número <em>b</em> si al dividir <em>b ÷ a</em> 
+          el resultado es un número entero.  
+          A esto también se le llama una <strong>división exacta</strong>.
+        </p>
+
+        <p>
+          Todos los números tienen al menos dos divisores: el <strong>1</strong> y el <strong>mismo número</strong>.  
+          Por ejemplo, el número 8 tiene como divisores al 1 (porque 8 ÷ 1 = 8) y al 8 (porque 8 ÷ 8 = 1).  
+          Sin embargo, también puede tener otros divisores intermedios, como el 2 y el 4 (ya que 8 ÷ 2 = 4 y 8 ÷ 4 = 2).
+        </p>
+
+        <p>
+          En resumen:
+        </p>
+        <ul>
+          <li>Un divisor es un número que cabe exactamente dentro de otro.</li>
+          <li>Si al dividir dos números no queda residuo, el divisor es válido.</li>
+          <li>Todos los números tienen al menos dos divisores: 1 y ellos mismos.</li>
+        </ul>
+
+        <p>
+          Este tema es muy útil para comprender los <strong>números primos</strong>, el 
+          <strong>mínimo común múltiplo (MCM)</strong> y el 
+          <strong>máximo común divisor (MCD)</strong>, que se usan en muchos problemas de matemáticas.
+        </p>
+      </div>
+    </div>
+
+    <!-- 🎲 EJEMPLO DINÁMICO -->
+    <section class="exercise-section">
+      <div class="container">
+        <div class="content-card animate-fade">
+          <h2> Ejemplo Práctico</h2>
+          <p>
+            Observa los <strong>divisores</strong> del siguiente número aleatorio:
+          </p>
+
+          <p>
+            Número: <span id="numeroEjemplo" class="number-highlight"></span>
+          </p>
+
+          <div id="resultadoEjemplo" class="calculation-steps"></div>
+
+          <p class="tip">
+            💡 Recuerda: todos los números tienen como divisores al <strong>1</strong> y a sí mismos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 💭 CONCLUSIÓN -->
+    <section class="container">
+      <div class="content-card animate-fade">
+        <h2> Conclusión</h2>
+        <p>
+          Entender qué son los divisores nos ayuda a reconocer patrones en los números y desarrollar 
+          habilidades para resolver problemas. Al saber identificar los divisores, es más fácil simplificar fracciones, 
+          encontrar múltiplos comunes y comprender otros temas importantes de las matemáticas.  
+          ¡Recuerda! Los divisores son una base importante para convertirte en un verdadero experto en números. 🔢
+        </p>
+      </div>
+    </section>
+
+    <!-- 📚 REFERENCIAS -->
+<footer>
+  <div class="container">
+    <h3>Referencias</h3>
+    <ul>
+      <li>
+        EducaMadrid. <em>“Los divisores de un número”</em>. Disponible en:
+        <a href="https://www.educa2.madrid.org/web/6_ceip_puerto_rico/matematicas/-/visor/los-divisores-de-un-numero" target="_blank">
+          https://www.educa2.madrid.org
+        </a>
+      </li>
+      <li>
+        Edebé Editorial. <em>“Números divisores: qué son y ejemplos resueltos”</em>. Disponible en:
+        <a href="https://vacacionesedebe.com/numeros-divisores-que-son-y-ejemplos-resueltos/" target="_blank">
+          https://vacacionesedebe.com
+        </a>
+      </li>
+      <li>
+        Universidad de Granada — E. Cid, J. D. Godino y C. Batanero. <em>“Sistemas numéricos y su didáctica para maestros”</em>. 2008. Disponible en:
+        <a href="https://www.ugr.es/~jgodino/edumat-maestros/manual/2_Sistemas_numericos.pdf" target="_blank">
+          https://www.ugr.es
+        </a>
+      </li>
+      <li>
+        Fundación Areces. <em>“Libro Blanco de las Matemáticas”</em>. Octubre 2020. Disponible en:
+        <a href="https://www.fundacionareces.es/recursos/doc/portal/2020/10/14/libro-blanco-de-las-matematicas.pdf" target="_blank">
+          https://www.fundacionareces.es
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+
+    <script>
+      function obtenerDivisores(num) {
+        const divisores = [];
+        for (let i = 1; i <= num; i++) {
+          if (num % i === 0) {
+            divisores.push(i);
+          }
+        }
+        return divisores;
+      }
+
+      function mostrarEjercicio() {
+        const numeroAleatorio = Math.floor(Math.random() * 90) + 10; // Número entre 10 y 99
+        document.getElementById("numeroEjemplo").textContent = numeroAleatorio;
+
+        const resultado = document.getElementById("resultadoEjemplo");
+        resultado.innerHTML = "";
+
+        const divisores = obtenerDivisores(numeroAleatorio);
+        divisores.forEach((d) => {
+          const p = document.createElement("p");
+          p.textContent = `${numeroAleatorio} ÷ ${d} = ${numeroAleatorio / d}`;
+          resultado.appendChild(p);
+        });
+      }
+
+      mostrarEjercicio();
+    </script>
+  </body>
+</html>
