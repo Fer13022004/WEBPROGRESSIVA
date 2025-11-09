@@ -1,7 +1,3 @@
-// ============================================
-// SERVICE WORKER ESENCIAL - Solo lo necesario
-// ============================================
-
 const CACHE_NAME = "matematicas-pwa-v1.1.0";
 const isGitHubPages = location.hostname.includes("github.io");
 const basePath = isGitHubPages ? "/WEBPROGRESSIVA" : "";
