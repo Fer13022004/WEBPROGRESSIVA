@@ -35,55 +35,56 @@ class PrimosCompuestosModule {
       ],
     };
 
-    // Banco de curiosidades dinámicas
+    // Banco de curiosidades dinámicas para niños
     this.curiosidadesBank = [
       {
-        emoji: "🔢",
-        titulo: "Números Primos Gemelos",
-        descripcion: "Son pares de primos que difieren en 2 unidades:",
-        ejemplo: "(3,5), (5,7), (11,13), (17,19), (29,31)...",
-        cita: "(Burton, 2017, p. 112)",
-      },
-      {
-        emoji: "🎯",
-        titulo: "Conjetura de Goldbach",
+        emoji: "�‍♂️",
+        titulo: "Números Primos Hermanos",
         descripcion:
-          "Todo número par mayor que 2 puede expresarse como la suma de dos primos:",
-        ejemplo: "4=2+2, 6=3+3, 8=3+5, 10=3+7, 12=5+7...",
-        cita: "(Rosen, 2019, p. 248)",
-      },
-      {
-        emoji: "🏆",
-        titulo: "El Primo más Grande Conocido",
-        descripcion:
-          "El número primo más grande conocido tiene más de 24 millones de dígitos y es un primo de Mersenne:",
-        ejemplo: "2^82,589,933 - 1",
-        cita: "(Great Internet Mersenne Prime Search, 2023)",
-      },
-      {
-        emoji: "📊",
-        titulo: "Distribución de Primos",
-        descripcion:
-          "Los primos se vuelven menos frecuentes a medida que los números crecen, pero nunca se agotan (Teorema de Euclides).",
+          "¡Hay números primos que son 'hermanos'! Se llaman gemelos porque están muy cerquita uno del otro:",
         ejemplo:
-          "Entre 1-10: 4 primos, Entre 1-100: 25 primos, Entre 1-1000: 168 primos",
-        cita: "(Burton, 2017, p. 95)",
+          "Como 3 y 5, o 11 y 13, o 17 y 19... ¡Solo los separa el número 2!",
+        cita: "(Burton, 2017, p. 112 - Conjetura de primos gemelos)",
       },
       {
-        emoji: "🔍",
-        titulo: "Criba de Eratóstenes",
+        emoji: "🧮",
+        titulo: "El Truco de los Números Pares",
         descripcion:
-          "Método antiguo para encontrar todos los primos hasta un número dado, eliminando múltiplos sucesivamente:",
-        ejemplo: "Para encontrar primos hasta 30: 2,3,5,7,11,13,17,19,23,29",
-        cita: "(Rosen, 2019, p. 241)",
+          "¿Sabías que puedes formar muchos números pares sumando dos números primos?",
+        ejemplo: "4 = 2+2, 6 = 3+3, 8 = 3+5, 10 = 3+7... ¡Inténtalo!",
+        cita: "(Conjetura de Goldbach, Rosen, 2019, p. 248)",
       },
       {
-        emoji: "🌟",
-        titulo: "Primo de Mersenne",
+        emoji: "�",
+        titulo: "¿Cuántos Primos Hay?",
         descripcion:
-          "Primos de la forma 2^p - 1 donde p también es primo. Son muy raros y especiales:",
-        ejemplo: "2^2-1=3, 2^3-1=7, 2^5-1=31, 2^7-1=127...",
-        cita: "(Burton, 2017, p. 201)",
+          "¡Los números primos nunca se acaban! Por más que contemos, siempre encontraremos más:",
+        ejemplo: "Del 1 al 10 hay 4 primos, del 1 al 100 hay 25 primos...",
+        cita: "(Teorema de Euclides, demostrado en Rosen, 2019, p. 248)",
+      },
+      {
+        emoji: "�",
+        titulo: "El Método de la Criba",
+        descripcion:
+          "Hay un juego muy antiguo para encontrar números primos. ¡Es como usar un colador!",
+        ejemplo:
+          "Escribes números del 1 al 30 y vas tachando los que NO son primos",
+        cita: "(Criba de Eratóstenes, Burton, 2017, p. 102)",
+      },
+      {
+        emoji: "🏗️",
+        titulo: "Los Primos son como Ladrillos",
+        descripcion:
+          "¡Los números primos son como ladrillos para construir otros números!",
+        ejemplo: "12 = 2 × 2 × 3, 15 = 3 × 5, 20 = 2 × 2 × 5",
+        cita: "(Teorema Fundamental de la Aritmética, Burton, 2017, p. 115)",
+      },
+      {
+        emoji: "�",
+        titulo: "El Número Primo más Pequeño",
+        descripcion: "¿Sabes cuál es el número primo más pequeño? ¡Es el 2!",
+        ejemplo: "El 2 es súper especial porque es el único primo que es par",
+        cita: "(SEP, 2023, Desafíos Matemáticos 5° grado, p. 47)",
       },
     ];
 
@@ -143,38 +144,44 @@ class PrimosCompuestosModule {
       });
     });
 
-    // Ejercicios de verdadero/falso (5)
+    // Ejercicios de verdadero/falso (5) - Lenguaje para niños
     const trueFalseQuestions = [
       {
         question: "Todos los números impares son primos",
         answer: false,
-        explanation: "Falso. Contraejemplo: 9 = 3×3 es impar pero compuesto.",
+        explanation:
+          "¡Falso! Por ejemplo, el 9 es impar pero NO es primo (9 = 3 × 3). También el 15 es impar pero es compuesto (15 = 3 × 5).",
       },
       {
-        question: "El número 2 es el único primo par",
-        answer: true,
-        explanation: "Verdadero. Todos los demás pares son divisibles por 2.",
-      },
-      {
-        question: "Todo número compuesto puede factorizarse en primos",
+        question: "El número 2 es el único primo que es par",
         answer: true,
         explanation:
-          "Verdadero. Según el Teorema Fundamental de la Aritmética, todo número compuesto puede escribirse como producto de números primos. Por ejemplo: 12 = 2 × 2 × 3, donde 2 y 3 son primos.",
+          "¡Verdadero! El 2 es súper especial. Todos los demás números pares se pueden dividir por 2, así que son compuestos.",
+      },
+      {
+        question:
+          "Todo número compuesto se puede formar multiplicando números primos",
+        answer: true,
+        explanation:
+          "¡Verdadero! Es como un juego de construcción. Por ejemplo: 12 = 2 × 2 × 3 (usando solo primos como 'ladrillos').",
       },
       {
         question: "El número 1 es primo",
         answer: false,
-        explanation: "Falso. El 1 no es primo ni compuesto por definición.",
+        explanation:
+          "¡Falso! El 1 es especial: no es primo ni compuesto. Los primos necesitan tener exactamente 2 divisores, pero el 1 solo se divide por sí mismo.",
       },
       {
-        question: "Existen infinitos números primos",
+        question: "Los números primos nunca se acaban",
         answer: true,
-        explanation: "Verdadero. Demostrado por Euclides.",
+        explanation:
+          "¡Verdadero! Por más grande que sea un primo, siempre hay otro más grande. ¡Nunca dejaremos de encontrar primos nuevos!",
       },
       {
-        question: "Todos los números primos mayores que 2 son impares",
+        question: "Todos los números primos (excepto el 2) son impares",
         answer: true,
-        explanation: "Verdadero. Si fueran pares, serían divisibles por 2.",
+        explanation:
+          "¡Verdadero! Si un primo fuera par (excepto el 2), se podría dividir por 2, y entonces sería compuesto, no primo.",
       },
     ];
 
@@ -325,7 +332,7 @@ class PrimosCompuestosModule {
   // Mostrar feedback
   showFeedback(exercise, isCorrect) {
     const feedbackDiv = document.getElementById("exerciseFeedback");
-    const message = isCorrect ? "¡Correcto! ✅" : "¡Incorrecto! ❌";
+    const message = isCorrect ? "¡Muy bien! ✅" : "¡Ups! Inténtalo de nuevo ❌";
 
     let explanation = "";
 
@@ -1089,8 +1096,8 @@ class PrimosCompuestosModule {
 
     const number = parseInt(numberInput.value);
 
-    if (!number || number < 1 || number > 10000) {
-      Utils.showToast("Por favor ingresa un número entre 1 y 10000", "warning");
+    if (!number || number < 1 || number > 100) {
+      Utils.showToast("Por favor escribe un número entre 1 y 100", "warning");
       return;
     }
 
@@ -1621,7 +1628,7 @@ class PrimosCompuestosModule {
     const counter = document.getElementById("foundPrimes");
     if (counter) counter.textContent = "0";
 
-    Utils.showToast("Ejercicios reiniciados", "info");
+    Utils.showToast("¡Listos para empezar de nuevo!", "info");
   }
 
   // Mostrar estadísticas de progreso

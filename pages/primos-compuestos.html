@@ -4,28 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Números Primos y Compuestos - Matemáticas Educativas</title>
-    
-    <!-- PWA Meta Tags -->
-    <meta name="description" content="Aprende sobre números primos y compuestos de forma interactiva con ejercicios y calculadora" />
+
+    <meta
+      name="description"
+      content="Aprende sobre números primos y compuestos de forma interactiva con ejercicios y calculadora"
+    />
     <meta name="theme-color" content="#3498db" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="MathEdu" />
     <meta name="msapplication-TileColor" content="#3498db" />
     <meta name="msapplication-tap-highlight" content="no" />
-    
-    <!-- Links para PWA -->
+
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="manifest" href="../manifest.json" />
     <link rel="icon" type="image/svg+xml" href="../images/icon-192x192.svg" />
     <link rel="apple-touch-icon" href="../images/icon-192x192.svg" />
-    
-    <!-- Preload para mejor rendimiento -->
+
     <link rel="preload" href="../js/primos-compuestos.js" as="script" />
     <link rel="preload" href="../css/styles.css" as="style" />
   </head>
   <body>
-    <!-- Header / Navbar -->
     <header class="header">
       <div class="container header-content">
         <h1 class="logo">📚 Matemáticas Educativas</h1>
@@ -46,9 +45,7 @@
       </div>
     </header>
 
-    <!-- Main Content -->
     <main class="main">
-      <!-- Título principal de la página -->
       <section class="page-header">
         <div class="container">
           <div class="page-title-section">
@@ -65,17 +62,24 @@
             </div>
 
             <div class="definition-box">
-              <h3>📚 Definiciones Fundamentales</h3>
+              <h3>📚 ¿Qué son los números primos y compuestos?</h3>
               <div class="definition-grid">
                 <div class="definition-item">
                   <h4>🔢 Número Primo</h4>
                   <p>
-                    Un <strong>número primo</strong> es un número natural mayor
-                    que 1 que tiene exactamente dos divisores positivos: 1 y él
-                    mismo.
+                    Un <strong>número primo</strong> es un número mayor que 1
+                    que solamente se puede dividir de manera exacta por
+                    <strong>1 y por sí mismo</strong>.
                   </p>
                   <div class="citation">
-                    <em>(Rosen, 2019, p. 240)</em>
+                    <em>(SEP, 2023, Libro de matemáticas 5° grado, p. 45)</em>
+                  </div>
+                  <div class="tip-box">
+                    💡
+                    <em
+                      >¡Es como un número "especial" que no se puede dividir en
+                      partes más pequeñas!</em
+                    >
                   </div>
                   <div class="example-box">
                     <strong>Ejemplos:</strong> 2, 3, 5, 7, 11, 13, 17, 19, 23...
@@ -85,11 +89,19 @@
                 <div class="definition-item">
                   <h4>🧮 Número Compuesto</h4>
                   <p>
-                    Un <strong>número compuesto</strong> es un número natural
-                    mayor que 1 que tiene más de dos divisores positivos.
+                    Un <strong>número compuesto</strong> es un número mayor que
+                    1 que se puede dividir de manera exacta por
+                    <strong>otros números además de 1 y él mismo</strong>.
                   </p>
                   <div class="citation">
-                    <em>(Burton, 2017, p. 58)</em>
+                    <em>(SEP, 2023, Libro de matemáticas 5° grado, p. 46)</em>
+                  </div>
+                  <div class="tip-box">
+                    💡
+                    <em
+                      >¡Es como un número que se puede "desarmar" en pedacitos
+                      más pequeños!</em
+                    >
                   </div>
                   <div class="example-box">
                     <strong>Ejemplos:</strong> 4, 6, 8, 9, 10, 12, 14, 15, 16...
@@ -99,30 +111,65 @@
             </div>
 
             <div class="special-cases">
-              <h3>⚠️ Casos Especiales</h3>
+              <h3>⚠️ Números Especiales que Debes Recordar</h3>
               <ul class="compact-list">
-                <li><strong>El número 1:</strong> No es primo ni compuesto (tiene un solo divisor) <span class="citation-inline">(Baldor, 2016, p. 95)</span></li>
-                <li><strong>El número 2:</strong> Es el único número primo par <span class="citation-inline">(Rosen, 2019, p. 241)</span></li>
-                <li><strong>Números pares > 2:</strong> Todos son compuestos (divisibles por 2) <span class="citation-inline">(Burton, 2017, p. 60)</span></li>
-              </ul>
-            </div>
+                <li>
+                  <strong>El número 1:</strong> 🤔 No es primo ni compuesto
+                  <br /><em
+                    >¿Por qué? Porque solo se divide por sí mismo (no tiene dos
+                    divisores como los primos)</em
+                  >
+                  <span class="citation-inline">(Rosen, 2019, p. 241)</span>
+                </li>
+                <li>
+                  <strong>El número 2:</strong> 🌟 ¡Es el único primo que es
+                  par! <br /><em
+                    >Todos los demás números pares se pueden dividir por 2, así
+                    que son compuestos</em
+                  >
+                  <span class="citation-inline">(SEP, 2023, p. 47)</span>
+                </li>
+                <li>
+                  <strong>Números pares mayores que 2:</strong> 📝 Todos son
+                  compuestos <br /><em
+                    >Porque se pueden dividir por 2 (además de 1 y ellos
+                    mismos)</em
+                  >
+                  <span class="citation-inline">(Burton, 2017, p. 98)</span>
+                </li>
               </ul>
             </div>
 
             <div class="properties-box">
-              <h3>🔍 Propiedades Importantes</h3>
+              <h3>🔍 Datos Curiosos e Importantes</h3>
               <ul class="compact-list">
                 <li>
-                  <strong>Infinitud:</strong> Existen infinitos números primos
-                  (demostrado por Euclides) <span class="citation-inline">(Rosen, 2019, p. 245)</span>
+                  <strong>¡Nunca se acaban!</strong> 🔢 Siempre podemos
+                  encontrar números primos más grandes <br /><em
+                    >Por más grande que sea un primo, siempre hay otro más
+                    grande</em
+                  >
+                  <span class="citation-inline"
+                    >(Euclides, demostrado en Rosen, 2019, p. 248)</span
+                  >
                 </li>
                 <li>
-                  <strong>Factorización:</strong> Todo número compuesto puede
-                  expresarse como producto de números primos <span class="citation-inline">(Burton, 2017, p. 75)</span>
+                  <strong>Descomponer números:</strong> 🧩 Todo número compuesto
+                  se puede formar multiplicando números primos <br /><em
+                    >Ejemplo: 12 = 2 × 2 × 3 (usando solo primos)</em
+                  >
+                  <span class="citation-inline"
+                    >(Teorema Fundamental de la Aritmética, Burton, 2017, p.
+                    115)</span
+                  >
                 </li>
                 <li>
-                  <strong>Fundamento:</strong> Los números primos son los
-                  "bloques constructores" de todos los números <span class="citation-inline">(Baldor, 2016, p. 98)</span>
+                  <strong>Los primos son especiales:</strong> 🏗️ Son como los
+                  "ladrillos" con los que se construyen todos los demás números
+                  <br /><em
+                    >¡Sin ellos no existirían los números compuestos!</em
+                  >
+                  <span class="citation-inline">(SEP, 2023, p. 48)</span>
                 </li>
               </ul>
             </div>
@@ -136,27 +183,28 @@
             <h2 class="page-title">Ejemplos Detallados</h2>
 
             <div class="method-section">
-              <h3>🔎 Método para Identificar Primos y Compuestos</h3>
+              <h3>🔎 ¿Cómo saber si un número es primo o compuesto?</h3>
               <div class="method-steps">
                 <div class="method-step">
                   <span class="step-number">1</span>
                   <div class="step-content">
-                    <strong>Verificar si es mayor que 1</strong> - Solo los
-                    números mayores que 1 pueden ser primos o compuestos
+                    <strong>¿Es mayor que 1?</strong> - Solo los números mayores
+                    que 1 pueden ser primos o compuestos
                   </div>
                 </div>
                 <div class="method-step">
                   <span class="step-number">2</span>
                   <div class="step-content">
-                    <strong>Buscar divisores</strong> - Probar la divisibilidad
-                    desde 2 hasta √n
+                    <strong>Buscar todos los divisores</strong> - Probar dividir
+                    el número por 2, 3, 4, 5... hasta el mismo número
                   </div>
                 </div>
                 <div class="method-step">
                   <span class="step-number">3</span>
                   <div class="step-content">
-                    <strong>Clasificar</strong> - Si solo tiene divisores 1 y él
-                    mismo → Primo | Si tiene más divisores → Compuesto
+                    <strong>Contar los divisores</strong> - Si solo tiene 2
+                    divisores (1 y él mismo) → Es PRIMO <br />Si tiene más de 2
+                    divisores → Es COMPUESTO
                   </div>
                 </div>
               </div>
@@ -167,43 +215,71 @@
               <div class="calculation-steps">
                 <div class="example-item">
                   <h4>Ejemplo 1: ¿Es 17 primo o compuesto?</h4>
-                  <div class="step">1. Es mayor que 1 ✓</div>
-                  <div class="step">2. Probar divisibilidad: √17 ≈ 4.1</div>
-                  <div class="step">3. Probar: 17 ÷ 2 = 8.5 (no es entero)</div>
+                  <div class="step">1. ¿Es mayor que 1? Sí ✓</div>
                   <div class="step">
-                    4. Probar: 17 ÷ 3 = 5.67... (no es entero)
+                    2. Probemos dividir 17 entre diferentes números:
                   </div>
                   <div class="step">
-                    5. Probar: 17 ÷ 4 = 4.25 (no es entero)
+                    3. 17 ÷ 2 = 8.5 (no es exacto, sobra algo)
+                  </div>
+                  <div class="step">
+                    4. 17 ÷ 3 = 5.67... (no es exacto, sobra algo)
+                  </div>
+                  <div class="step">
+                    5. 17 ÷ 4 = 4.25 (no es exacto, sobra algo)
+                  </div>
+                  <div class="step">
+                    6. Seguimos probando hasta llegar a 17 ÷ 17 = 1
                   </div>
                   <div class="step conclusion">
-                    ✅ <strong>17 es PRIMO</strong> (solo divisores: 1 y 17)
+                    ✅ <strong>17 es PRIMO</strong> porque solo se divide
+                    exactamente por 1 y por 17 <br /><small
+                      class="citation-inline"
+                      >(SEP, 2023, p. 45)</small
+                    >
                   </div>
                 </div>
 
                 <div class="example-item">
                   <h4>Ejemplo 2: ¿Es 21 primo o compuesto?</h4>
-                  <div class="step">1. Es mayor que 1 ✓</div>
-                  <div class="step">2. Probar divisibilidad: √21 ≈ 4.6</div>
+                  <div class="step">1. ¿Es mayor que 1? Sí ✓</div>
                   <div class="step">
-                    3. Probar: 21 ÷ 2 = 10.5 (no es entero)
+                    2. Probemos dividir 21 entre diferentes números:
                   </div>
-                  <div class="step">4. Probar: 21 ÷ 3 = 7 ✓ (sí es entero)</div>
+                  <div class="step">
+                    3. 21 ÷ 2 = 10.5 (no es exacto, sobra algo)
+                  </div>
+                  <div class="step">
+                    4. 21 ÷ 3 = 7 ✓ (¡Es exacto! No sobra nada)
+                  </div>
+                  <div class="step">
+                    5. Como encontramos que 3 divide a 21, ya sabemos la
+                    respuesta
+                  </div>
                   <div class="step conclusion">
-                    ❌ <strong>21 es COMPUESTO</strong> (divisores: 1, 3, 7, 21)
+                    ❌ <strong>21 es COMPUESTO</strong> porque se puede dividir
+                    por 1, 3, 7 y 21 <br />💡
+                    <em>Se puede formar como: 21 = 3 × 7</em>
+                    <br /><small class="citation-inline"
+                      >(SEP, 2023, p. 46)</small
+                    >
                   </div>
                 </div>
 
                 <div class="example-item">
-                  <h4>Ejemplo 3: Casos especiales</h4>
+                  <h4>Ejemplo 3: Números especiales que debes conocer</h4>
                   <div class="step">
-                    • 2 → Único primo par (divisores: 1, 2)
+                    • <strong>El 2</strong> → Es primo y es par (¡único caso!)
+                    <br />&nbsp;&nbsp;Se divide solo por 1 y por 2
                   </div>
                   <div class="step">
-                    • 1 → Ni primo ni compuesto (solo un divisor)
+                    • <strong>El 1</strong> → No es primo ni compuesto
+                    <br />&nbsp;&nbsp;Solo se divide por sí mismo (necesitamos 2
+                    divisores para ser primo)
                   </div>
                   <div class="step">
-                    • 4 → Primer compuesto (divisores: 1, 2, 4)
+                    • <strong>El 4</strong> → Es el primer número compuesto
+                    <br />&nbsp;&nbsp;Se divide por 1, 2 y 4 (¡3 divisores!)
                   </div>
                 </div>
               </div>
@@ -219,16 +295,19 @@
             <div class="calculator-section">
               <div class="input-group">
                 <label for="numberInput"
-                  >Ingresa un número para analizar:</label
+                  >🔍 Escribe un número y te diremos si es primo o
+                  compuesto:</label
                 >
                 <input
                   type="number"
                   id="numberInput"
                   min="1"
-                  max="10000"
-                  placeholder="Ej: 29"
+                  max="100"
+                  placeholder="Prueba con números como: 7, 12, 15..."
                 />
-                <button id="analyzeBtn" class="btn-primary">Analizar</button>
+                <button id="analyzeBtn" class="btn-primary">
+                  ¡Averiguarlo!
+                </button>
               </div>
 
               <div
@@ -250,29 +329,21 @@
           <div class="content-card animate-fade">
             <h2 class="page-title">🎯 Ejercicios Interactivos</h2>
 
-            <!-- Cuadro único de ejercicios dinámicos -->
             <div class="dynamic-exercise-container">
-              <!-- Header con progreso -->
               <div class="exercise-header">
                 <div class="exercise-counter">
                   Ejercicio <span id="currentExercise">1</span>
                 </div>
                 <div class="exercise-score">
-                  Aciertos: <span id="correctAnswers">0</span> / <span id="answeredQuestions">0</span>
+                  Aciertos: <span id="correctAnswers">0</span> /
+                  <span id="answeredQuestions">0</span>
                 </div>
               </div>
 
-              <!-- Contenedor del ejercicio actual -->
-              <div id="exerciseContainer" class="exercise-container">
-                <!-- El ejercicio se generará dinámicamente -->
-              </div>
+              <div id="exerciseContainer" class="exercise-container"></div>
 
-              <!-- Feedback y botón siguiente -->
-              <div id="exerciseFeedback" class="exercise-feedback hidden">
-                <!-- El feedback se mostrará aquí -->
-              </div>
+              <div id="exerciseFeedback" class="exercise-feedback hidden"></div>
 
-              <!-- Botones de acción -->
               <div class="exercise-buttons">
                 <button id="nextExerciseBtn" class="next-exercise-btn hidden">
                   Siguiente Ejercicio →
@@ -289,13 +360,12 @@
       <section id="curiosidades" class="theory-section">
         <div class="container">
           <div class="content-card animate-fade">
-            <h2 class="page-title">🌟 Curiosidades y Datos Interesantes</h2>
+            <h2 class="page-title">
+              🌟 ¿Sabías que...? Datos Súper Interesantes
+            </h2>
 
-            <!-- Curiosidad dinámica -->
             <div class="dynamic-curiosity-container">
-              <div id="dynamicCuriosity" class="curiosity-card">
-                <!-- El contenido se genera dinámicamente -->
-              </div>
+              <div id="dynamicCuriosity" class="curiosity-card"></div>
             </div>
           </div>
         </div>
@@ -304,61 +374,61 @@
       <section id="referencias" class="references-section">
         <div class="container">
           <div class="content-card animate-fade">
-            <h2 class="page-title">📚 Referencias Bibliográficas</h2>
+            <h2 class="page-title">📚 Referencias y Más Información</h2>
 
             <div class="references-content">
-              <h3>Libros de Texto</h3>
+              <h3>📖 Fuentes Académicas</h3>
               <ol class="reference-list">
                 <li>
-                  <strong>Rosen, K. H. (2019).</strong>
-                  <em>Matemáticas Discretas y sus Aplicaciones</em> (8ª ed.).
-                  McGraw-Hill Education.
-                  <span class="reference-note"
-                    >Capítulos 4-5: Teoría de Números y Números Primos.</span
+                  <strong
+                    >Secretaría de Educación Pública [SEP]. (2023).</strong
                   >
+                  <em
+                    >Desafíos Matemáticos. Quinto grado. Educación Primaria.</em
+                  >
+                  Comisión Nacional de Libros de Texto Gratuitos (CONALITEG).
+                  <span class="reference-note">
+                    Páginas 45-48: Números primos y compuestos. Factorización.
+                    (Recurso oficial gratuito - México)
+                  </span>
                 </li>
 
                 <li>
                   <strong>Burton, D. M. (2017).</strong>
-                  <em>Elementary Number Theory</em> (7ª ed.). McGraw-Hill
+                  <em>Elementary Number Theory.</em> 7ª edición. McGraw-Hill
                   Education.
-                  <span class="reference-note"
-                    >Secciones 2.1-2.3: Números Primos y Factorización.</span
-                  >
+                  <span class="reference-note">
+                    Capítulo 3: Divisibilidad y números primos (pp. 98-115).
+                    Teorema Fundamental de la Aritmética.
+                  </span>
                 </li>
 
                 <li>
-                  <strong>Baldor, A. (2016).</strong> <em>Aritmética</em> (Nueva
-                  edición). Grupo Editorial Patria.
-                  <span class="reference-note"
-                    >Lecciones 18-20: Números Primos y Compuestos.</span
-                  >
+                  <strong>Rosen, K. H. (2019).</strong>
+                  <em>Elementary Number Theory and Its Applications.</em> 6ª
+                  edición. Pearson.
+                  <span class="reference-note">
+                    Capítulo 4: Números primos y factorización (pp. 241-248).
+                    Teorema de Euclides sobre infinitud de primos.
+                  </span>
                 </li>
               </ol>
-
-              <h3>Recursos Electrónicos</h3>
-              <ol class="reference-list">
-                <li>
-                  <strong>Great Internet Mersenne Prime Search. (2023).</strong>
-                  <em>GIMPS - Discovering World Record Primes Since 1996.</em>
-                  <a href="https://www.mersenne.org/" target="_blank">https://www.mersenne.org/</a>
-                  <span class="reference-note"
-                    >Base de datos de números primos de Mersenne.</span
-                  >
-                </li>
-              </ol>
+            </div>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Menú flotante de navegación -->
     <div class="floating-menu" id="floatingMenu">
-      <div class="menu-toggle" onclick="toggleFloatingMenu()" title="Navegación rápida">
+      <div
+        class="menu-toggle"
+        onclick="toggleFloatingMenu()"
+        title="Navegación rápida"
+      >
         <span class="menu-icon">📱</span>
         <span class="menu-text">Menú</span>
       </div>
-      
+
       <div class="menu-items" id="menuItems">
         <a href="#concepto" class="menu-item" onclick="closeFloatingMenu()">
           <span class="item-icon">📖</span>
@@ -381,13 +451,12 @@
           <span class="item-text">Curiosidades</span>
         </a>
         <a href="#referencias" class="menu-item" onclick="closeFloatingMenu()">
-          <span class="item-icon">�</span>
+          <span class="item-icon">📚</span>
           <span class="item-text">Referencias</span>
         </a>
       </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="container">
         <p>
@@ -399,56 +468,56 @@
     <script src="../js/app.js"></script>
     <script src="../js/primos-compuestos.js"></script>
     <script src="../js/sw-register.js"></script>
-    
+
     <script>
       // Funciones para el menú flotante
       function toggleFloatingMenu() {
-        const menuItems = document.getElementById('menuItems');
-        const isOpen = menuItems.classList.contains('menu-open');
-        
+        const menuItems = document.getElementById("menuItems");
+        const isOpen = menuItems.classList.contains("menu-open");
+
         if (isOpen) {
           closeFloatingMenu();
         } else {
           openFloatingMenu();
         }
       }
-      
+
       function openFloatingMenu() {
-        const menuItems = document.getElementById('menuItems');
-        const menuToggle = document.querySelector('.menu-toggle');
-        
-        menuItems.classList.add('menu-open');
-        menuToggle.classList.add('menu-active');
+        const menuItems = document.getElementById("menuItems");
+        const menuToggle = document.querySelector(".menu-toggle");
+
+        menuItems.classList.add("menu-open");
+        menuToggle.classList.add("menu-active");
       }
-      
+
       function closeFloatingMenu() {
-        const menuItems = document.getElementById('menuItems');
-        const menuToggle = document.querySelector('.menu-toggle');
-        
-        menuItems.classList.remove('menu-open');
-        menuToggle.classList.remove('menu-active');
+        const menuItems = document.getElementById("menuItems");
+        const menuToggle = document.querySelector(".menu-toggle");
+
+        menuItems.classList.remove("menu-open");
+        menuToggle.classList.remove("menu-active");
       }
-      
+
       // Cerrar menú al hacer scroll
       let scrollTimeout;
-      window.addEventListener('scroll', () => {
+      window.addEventListener("scroll", () => {
         clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(() => {
           closeFloatingMenu();
         }, 100);
       });
-      
+
       // Smooth scrolling para los enlaces del menú
-      document.querySelectorAll('.menu-item').forEach(link => {
-        link.addEventListener('click', (e) => {
+      document.querySelectorAll(".menu-item").forEach((link) => {
+        link.addEventListener("click", (e) => {
           e.preventDefault();
-          const targetId = link.getAttribute('href');
+          const targetId = link.getAttribute("href");
           const targetElement = document.querySelector(targetId);
-          
+
           if (targetElement) {
             targetElement.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
+              behavior: "smooth",
+              block: "start",
             });
           }
         });

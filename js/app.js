@@ -1,5 +1,5 @@
-// Configuración de la aplicación
-const APP_CONFIG = {
+// Configuración de la aplicación (usando CONFIG si existe)
+const APP_CONFIG = window.CONFIG?.app || {
   name: "Matemáticas Educativas PWA",
   version: "1.0.0",
   themes: {
@@ -333,10 +333,26 @@ const Utils = {
                     opacity: 1;
                     transform: translateX(0);
                 }
-                .toast-info { background: var(--primary-color); }
-                .toast-success { background: var(--accent-color); }
-                .toast-error { background: var(--error-color); }
-                .toast-warning { background: var(--secondary-color); color: var(--text-primary); }
+                .toast-info { 
+                    background: #3498db; 
+                    color: white; 
+                    border-left: 4px solid #2980b9;
+                }
+                .toast-success { 
+                    background: #27ae60; 
+                    color: white; 
+                    border-left: 4px solid #219a52;
+                }
+                .toast-error { 
+                    background: #e74c3c; 
+                    color: white; 
+                    border-left: 4px solid #c0392b;
+                }
+                .toast-warning { 
+                    background: #f39c12; 
+                    color: white; 
+                    border-left: 4px solid #e67e22;
+                }
             `;
       document.head.appendChild(style);
     }
@@ -363,90 +379,9 @@ document.addEventListener("DOMContentLoaded", () => {
     Utils.showToast("¡Aplicación iniciada en modo PWA!", "success");
   }
 
-  // Manejar instalación PWA
-  PWAInstaller.init();
+  // Solicitar permisos de notificación al iniciar
+  NotificationManager.init();
 });
-
-// Gestor de instalación PWA
-const PWAInstaller = {
-  deferredPrompt: null,
-  installButton: null,
-
-  init() {
-    this.installButton = document.getElementById("installButton");
-
-    // Detectar si la PWA puede ser instalada
-    window.addEventListener("beforeinstallprompt", (e) => {
-      console.log("PWA: Evento beforeinstallprompt activado");
-      e.preventDefault();
-      this.deferredPrompt = e;
-      this.showInstallButton();
-    });
-
-    // Manejar el clic del botón de instalación
-    if (this.installButton) {
-      this.installButton.addEventListener("click", () => {
-        this.installPWA();
-      });
-    }
-
-    // Detectar cuando la PWA es instalada
-    window.addEventListener("appinstalled", () => {
-      console.log("PWA: App instalada exitosamente");
-      Utils.showToast("¡App instalada correctamente!", "success");
-      this.hideInstallButton();
-      this.deferredPrompt = null;
-    });
-
-    // Ocultar botón si ya está instalada o en modo standalone
-    if (
-      window.matchMedia("(display-mode: standalone)").matches ||
-      window.navigator.standalone
-    ) {
-      this.hideInstallButton();
-    }
-  },
-
-  showInstallButton() {
-    if (this.installButton) {
-      this.installButton.classList.remove("d-none");
-      this.installButton.style.animation = "fadeIn 0.5s ease";
-    }
-  },
-
-  hideInstallButton() {
-    if (this.installButton) {
-      this.installButton.classList.add("d-none");
-    }
-  },
-
-  async installPWA() {
-    if (!this.deferredPrompt) {
-      console.log("PWA: No hay prompt de instalación disponible");
-      return;
-    }
-
-    try {
-      // Mostrar el prompt de instalación
-      this.deferredPrompt.prompt();
-
-      // Esperar la respuesta del usuario
-      const { outcome } = await this.deferredPrompt.userChoice;
-
-      if (outcome === "accepted") {
-        console.log("PWA: Usuario aceptó la instalación");
-        Utils.showToast("Instalando aplicación...", "info");
-      } else {
-        console.log("PWA: Usuario rechazó la instalación");
-      }
-
-      this.deferredPrompt = null;
-    } catch (error) {
-      console.error("PWA: Error durante la instalación:", error);
-      Utils.showToast("Error al instalar la aplicación", "error");
-    }
-  },
-};
 
 // Manejar errores globales
 window.addEventListener("error", (e) => {
@@ -457,7 +392,174 @@ window.addEventListener("error", (e) => {
   );
 });
 
+// Gestor de notificaciones
+const NotificationManager = {
+  init() {
+    // Esperar un poco después de cargar para no ser invasivo
+    setTimeout(() => {
+      this.checkAndRequestPermissions();
+    }, 3000);
+  },
+
+  async checkAndRequestPermissions() {
+    // Verificar si las notificaciones están soportadas
+    if (!("Notification" in window)) {
+      console.log("🔕 Notificaciones no soportadas en este navegador");
+      return;
+    }
+
+    // Si ya están permitidas, no molestamos al usuario
+    if (Notification.permission === "granted") {
+      console.log("✅ Permisos de notificación ya concedidos");
+      Utils.showToast("✅ Notificaciones habilitadas", "success");
+      return;
+    }
+
+    // Si fueron explícitamente denegadas, no insistimos
+    if (Notification.permission === "denied") {
+      console.log("❌ Permisos de notificación denegados previamente");
+      return;
+    }
+
+    // Solo preguntar si es la primera vez - USAR POPUP NATIVO
+    if (Notification.permission === "default") {
+      this.requestNativePermission();
+    }
+  },
+
+  async requestNativePermission() {
+    try {
+      // Solo mostrar el popup nativo del navegador, sin mensajes adicionales
+      const permission = await Notification.requestPermission();
+
+      if (permission === "granted") {
+        console.log("✅ Notificaciones permitidas");
+
+        // Enviar notificación de prueba
+        setTimeout(() => {
+          this.sendWelcomeNotification();
+        }, 1000);
+      } else if (permission === "denied") {
+        console.log("❌ Notificaciones denegadas");
+      }
+    } catch (error) {
+      console.error("Error al solicitar permisos:", error);
+    }
+  },
+
+  // MÉTODO ANTERIOR - YA NO SE USA
+  oldShowNotificationPrompt() {
+    const modal = window.mathApp.createModal(`
+      <div class="modal-content notification-prompt">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <div style="font-size: 3rem; margin-bottom: 10px;">🔔</div>
+          <h3 style="color: #3498db; margin-bottom: 15px;">
+            ¿Quieres recibir notificaciones?
+          </h3>
+        </div>
+        
+        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+          <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.4;">
+            Las notificaciones te ayudarán a:
+          </p>
+          <ul style="margin: 10px 0 0 0; padding-left: 20px; color: #666; font-size: 14px;">
+            <li>📚 Recordar practicar matemáticas</li>
+            <li>🎯 Recibir tips y curiosidades</li>
+            <li>📢 Conocer nuevos ejercicios</li>
+          </ul>
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: center;">
+          <button 
+            class="btn btn-primary" 
+            onclick="NotificationManager.acceptNotifications()"
+            style="background: #4CAF50; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;">
+            ✅ Sí, quiero notificaciones
+          </button>
+          <button 
+            class="btn btn-secondary" 
+            onclick="NotificationManager.declineNotifications()"
+            style="background: #6c757d; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;">
+            ❌ No, gracias
+          </button>
+        </div>
+        
+        <p style="font-size: 12px; color: #999; text-align: center; margin: 15px 0 0 0;">
+          Puedes cambiar esto después en la configuración del navegador
+        </p>
+      </div>
+    `);
+
+    document.body.appendChild(modal);
+  },
+
+  async acceptNotifications() {
+    this.closeModal();
+
+    try {
+      const permission = await Notification.requestPermission();
+
+      if (permission === "granted") {
+        Utils.showToast(
+          "🎉 ¡Notificaciones habilitadas! Te mantendremos informado",
+          "success"
+        );
+
+        // Enviar notificación de bienvenida después de 3 segundos
+        setTimeout(() => {
+          this.sendWelcomeNotification();
+        }, 3000);
+      } else {
+        Utils.showToast(
+          "😔 Permisos denegados. Puedes habilitarlos después en configuración",
+          "warning"
+        );
+      }
+    } catch (error) {
+      console.error("Error al solicitar permisos:", error);
+      Utils.showToast("❌ Error al configurar notificaciones", "error");
+    }
+  },
+
+  declineNotifications() {
+    this.closeModal();
+    Utils.showToast(
+      "👌 Entendido. Puedes habilitar notificaciones después si cambias de opinión",
+      "info"
+    );
+  },
+
+  closeModal() {
+    const modal = document.querySelector(".modal");
+    if (modal) {
+      modal.remove();
+    }
+  },
+
+  async sendWelcomeNotification() {
+    try {
+      const registration = await navigator.serviceWorker.ready;
+
+      registration.showNotification("🧮 Matemáticas Educativas", {
+        body: "¡Bienvenido! Las notificaciones están funcionando correctamente.",
+        icon: "/images/icon-192x192.svg",
+        badge: "/images/icon-192x192.svg",
+        tag: "welcome-notification",
+        actions: [
+          {
+            action: "explore",
+            title: "Explorar app",
+          },
+        ],
+      });
+    } catch (error) {
+      console.error("Error al enviar notificación de bienvenida:", error);
+    }
+  },
+};
+
 // Exportar para uso global
 window.AppConfig = APP_CONFIG;
 window.AppState = AppState;
 window.Utils = Utils;
+window.NotificationManager = NotificationManager;
