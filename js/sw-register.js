@@ -1,7 +1,3 @@
-// ============================================
-// REGISTRO DEL SERVICE WORKER - Solo lo esencial
-// ============================================
-
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
