@@ -1,8 +1,12 @@
-const CACHE_NAME = "matematicas-pwa-v1.1.0"; // PWA optimizada
-// Detectar si estamos en GitHub Pages o desarrollo local
+// ============================================
+// SERVICE WORKER ESENCIAL - Solo lo necesario
+// ============================================
+
+const CACHE_NAME = "matematicas-pwa-v1.1.0";
 const isGitHubPages = location.hostname.includes("github.io");
 const basePath = isGitHubPages ? "/WEBPROGRESSIVA" : "";
 
+// Archivos esenciales a cachear
 const urlsToCache = [
   `${basePath}/`,
   `${basePath}/index.html`,
@@ -14,13 +18,12 @@ const urlsToCache = [
   `${basePath}/manifest.json`,
   `${basePath}/images/icon-192x192.svg`,
   `${basePath}/images/icon-512x512.svg`,
-  // Páginas principales
   `${basePath}/pages/primos-compuestos.html`,
   `${basePath}/pages/multiplos.html`,
   `${basePath}/pages/primos.html`,
 ];
 
-// Instalación del Service Worker
+// Instalación - Cachear archivos
 self.addEventListener("install", (event) => {
   console.log("Service Worker: Instalando...");
 
@@ -36,11 +39,10 @@ self.addEventListener("install", (event) => {
       })
   );
 
-  // Forzar la activación inmediata
   self.skipWaiting();
 });
 
-// Activación del Service Worker
+// Activación - Limpiar caches antiguos
 self.addEventListener("activate", (event) => {
   console.log("Service Worker: Activado");
 
@@ -48,7 +50,6 @@ self.addEventListener("activate", (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
-          // Eliminar caches antiguos
           if (cacheName !== CACHE_NAME) {
             console.log("Service Worker: Eliminando cache antiguo", cacheName);
             return caches.delete(cacheName);
@@ -58,16 +59,14 @@ self.addEventListener("activate", (event) => {
     })
   );
 
-  // Reclamar control de todas las páginas
   return self.clients.claim();
 });
 
-// Interceptar peticiones de red
+// Interceptar peticiones - Cache First Strategy
 self.addEventListener("fetch", (event) => {
-  // Filtrar peticiones problemáticas
   const url = new URL(event.request.url);
 
-  // Ignorar extensiones de Chrome y otros schemes no válidos
+  // Ignorar extensiones y peticiones no-GET
   if (
     url.protocol === "chrome-extension:" ||
     url.protocol === "moz-extension:" ||
@@ -80,15 +79,15 @@ self.addEventListener("fetch", (event) => {
 
   event.respondWith(
     caches.match(event.request).then((response) => {
-      // Devolver desde cache si está disponible
+      // Servir desde cache si existe
       if (response) {
         return response;
       }
 
-      // Si no está en cache, hacer petición de red
+      // Si no está en cache, ir a la red
       return fetch(event.request)
         .then((response) => {
-          // Verificar si la respuesta es válida
+          // Verificar respuesta válida
           if (
             !response ||
             response.status !== 200 ||
@@ -97,30 +96,22 @@ self.addEventListener("fetch", (event) => {
             return response;
           }
 
-          // Solo cachear si es del mismo origen
+          // Cachear si es del mismo origen
           if (url.origin === self.location.origin) {
-            // Clonar la respuesta para cachearla
             const responseToCache = response.clone();
-
-            caches
-              .open(CACHE_NAME)
-              .then((cache) => {
-                cache.put(event.request, responseToCache);
-              })
-              .catch((error) => {
-                console.warn("Error al cachear:", error);
-              });
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseToCache);
+            });
           }
 
           return response;
         })
         .catch(() => {
-          // Si falla la petición de red, intentar mostrar una página cacheada
+          // Offline: servir index.html para páginas
           if (event.request.destination === "document") {
             return caches.match(`${basePath}/index.html`);
           }
 
-          // Si no hay nada, devuelve una respuesta vacía válida
           return new Response("Recurso no disponible sin conexión", {
             status: 503,
             statusText: "Service Unavailable",
@@ -131,72 +122,34 @@ self.addEventListener("fetch", (event) => {
   );
 });
 
-// Manejar mensajes del cliente
-self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
-    self.skipWaiting();
-  }
-});
-
-// Sincronización en segundo plano (para futuras funcionalidades)
-self.addEventListener("sync", (event) => {
-  if (event.tag === "background-sync") {
-    event.waitUntil(doBackgroundSync());
-  }
-});
-
-async function doBackgroundSync() {
-  // Aquí se puede implementar sincronización de datos
-  // Por ejemplo, enviar respuestas de ejercicios cuando haya conexión
-  console.log("Ejecutando sincronización en segundo plano");
-}
-
-// Notificaciones push (para futuras funcionalidades)
+// Manejar notificaciones push (desde DevTools)
 self.addEventListener("push", (event) => {
+  console.log("Push recibido:", event);
+
   const options = {
-    body: event.data ? event.data.text() : "Nueva notificación disponible",
-    icon: "/images/icon-192x192.png",
-    badge: "/images/badge-72x72.png",
-    vibrate: [100, 50, 100],
-    data: {
-      dateOfArrival: Date.now(),
-      primaryKey: "1",
-    },
+    body: event.data ? event.data.text() : "¡Notificación push de prueba!",
+    icon: `${basePath}/images/icon-192x192.svg`,
+    badge: `${basePath}/images/icon-192x192.svg`,
+    tag: "push-test",
     actions: [
       {
         action: "explore",
-        title: "Ver más",
-        icon: "/images/checkmark.png",
-      },
-      {
-        action: "close",
-        title: "Cerrar",
-        icon: "/images/xmark.png",
+        title: "Explorar app",
       },
     ],
   };
 
   event.waitUntil(
-    self.registration.showNotification("Matemáticas Educativas", options)
+    self.registration.showNotification("🧮 Matemáticas Educativas", options)
   );
 });
 
 // Manejar clicks en notificaciones
 self.addEventListener("notificationclick", (event) => {
+  console.log("Notificación clickeada:", event.notification.tag);
   event.notification.close();
 
   if (event.action === "explore") {
-    // Abrir la aplicación
     event.waitUntil(clients.openWindow(`${basePath}/`));
   }
-});
-
-// Manejo de errores
-self.addEventListener("error", (event) => {
-  console.error("Error en Service Worker:", event.error);
-});
-
-self.addEventListener("unhandledrejection", (event) => {
-  console.error("Promise rechazada en Service Worker:", event.reason);
-  event.preventDefault();
 });

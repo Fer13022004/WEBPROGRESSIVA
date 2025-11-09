@@ -1,4 +1,7 @@
-// Registro del Service Worker
+// ============================================
+// REGISTRO DEL SERVICE WORKER - Solo lo esencial
+// ============================================
+
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
@@ -8,7 +11,7 @@ if ("serviceWorker" in navigator) {
         registration.scope
       );
 
-      // Verificar actualizaciones
+      // Detectar actualizaciones
       registration.addEventListener("updatefound", () => {
         const newWorker = registration.installing;
         newWorker.addEventListener("statechange", () => {
@@ -16,7 +19,6 @@ if ("serviceWorker" in navigator) {
             newWorker.state === "installed" &&
             navigator.serviceWorker.controller
           ) {
-            // Nueva versión disponible
             showUpdateNotification();
           }
         });
@@ -27,7 +29,6 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-// Mostrar notificación de actualización
 function showUpdateNotification() {
   if (window.Utils && window.Utils.showToast) {
     window.Utils.showToast(
@@ -37,60 +38,15 @@ function showUpdateNotification() {
   }
 }
 
-// Detectar si la app está siendo instalada
-window.addEventListener("beforeinstallprompt", (e) => {
-  // Prevenir que Chrome 67 y anteriores muestren automáticamente el prompt
-  e.preventDefault();
-
-  // Guardar el evento para usarlo después
-  window.deferredPrompt = e;
-
-  // Mostrar botón de instalación personalizado si existe
-  const installButton = document.getElementById("install-button");
-  if (installButton) {
-    installButton.style.display = "block";
-    installButton.addEventListener("click", showInstallPrompt);
-  }
-});
-
-// Función para mostrar el prompt de instalación
-async function showInstallPrompt() {
-  if (window.deferredPrompt) {
-    // Mostrar el prompt
-    window.deferredPrompt.prompt();
-
-    // Esperar la respuesta del usuario
-    const { outcome } = await window.deferredPrompt.userChoice;
-
-    if (outcome === "accepted") {
-      console.log("Usuario aceptó instalar la PWA");
-    } else {
-      console.log("Usuario rechazó instalar la PWA");
-    }
-
-    // Limpiar el prompt
-    window.deferredPrompt = null;
-
-    // Ocultar el botón
-    const installButton = document.getElementById("install-button");
-    if (installButton) {
-      installButton.style.display = "none";
-    }
-  }
-}
-
-// Detectar cuando la app se instala
+// Detección de instalación PWA (solo logging)
 window.addEventListener("appinstalled", () => {
   console.log("PWA instalada exitosamente");
   if (window.Utils && window.Utils.showToast) {
     window.Utils.showToast("¡Aplicación instalada correctamente!", "success");
   }
-
-  // Limpiar el prompt diferido
-  window.deferredPrompt = null;
 });
 
-// Detectar cambios en el estado de la red
+// Detección del estado de la red
 window.addEventListener("online", () => {
   console.log("Conexión restaurada");
   if (window.Utils && window.Utils.showToast) {
@@ -108,7 +64,7 @@ window.addEventListener("offline", () => {
   }
 });
 
-// Verificar estado inicial de la red
+// Verificar estado inicial
 if (!navigator.onLine) {
   document.addEventListener("DOMContentLoaded", () => {
     if (window.Utils && window.Utils.showToast) {
