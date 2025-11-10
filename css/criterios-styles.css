@@ -1,19 +1,237 @@
-/* Estilos específicos para la página de Criterios de Divisibilidad.
-  La mayoría de los estilos generales se heredan de 'multiplos-styles.css'
-  y 'styles-template.css' para mantener la consistencia visual.
-*/
+/* ============================================
+   VARIABLES Y ESTILOS BASE (DE MULTIPLOS-STYLES.CSS)
+   ============================================ */
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #2ecc71;
+  --accent-color: #e74c3c;
+  --dark-color: #2c3e50;
+  --light-bg: #f8f9fa;
+}
 
-/* Un estilo alternativo para las cajas de "no ejemplos" para dar contraste */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  background-color: var(--light-bg); /* Fondo gris claro */
+  color: var(--dark-color);
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   HEADER / NAVBAR (DE STYLES-TEMPLATE.CSS)
+   ============================================ */
+.header {
+  background-color: #ffffff;
+  border-bottom: 2px solid #dee2e6;
+  padding: 10px 20px;
+}
+.header-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 1.5em;
+  color: var(--primary-color);
+  margin: 0;
+  font-weight: bold;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.back-btn {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.back-btn:hover {
+  background-color: #e9ecef;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropbtn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 15px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.dropbtn:hover {
+  background-color: #357abd; /* Un tono más oscuro de --primary-color */
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 220px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  z-index: 1;
+  right: 0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* Botones de navegación dentro del dropdown */
+.dropdown-content .nav-btn {
+  color: var(--dark-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1em;
+}
+.dropdown-content .nav-btn:hover {
+  background-color: #f1f1f1;
+}
+.dropdown-content .nav-btn.active {
+  background-color: #e9ecef;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* ============================================
+   MAIN / FOOTER (DE STYLES-TEMPLATE.CSS)
+   ============================================ */
+.main {
+  /* .container de Bootstrap se encarga del ancho */
+}
+.footer {
+  background-color: #343a40; /* Gris oscuro */
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 2rem;
+}
+.footer .container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   TARJETAS Y CAJAS (DE MULTIPLOS-STYLES.CSS)
+   ============================================ */
+.custom-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+.custom-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.section-title {
+  color: var(--primary-color);
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid var(--secondary-color);
+  padding-bottom: 0.5rem;
+}
+
+.emoji-large {
+  font-size: 3rem;
+  margin: 1rem 0;
+}
+
+.concept-box {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+.example-box {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+.mcm-box {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+.property-card {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.definition-highlight {
+  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  border-left: 5px solid var(--primary-color);
+  color: var(--dark-color);
+}
+
+.calculation-step {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-left: 4px solid var(--primary-color);
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  color: var(--dark-color);
+}
+.calculation-step.bg-white {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.tip-box {
+  background: #fff3cd; /* Amarillo Bootstrap */
+  border-left: 5px solid #ffc107;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  color: var(--dark-color);
+}
 .tip-box-alt {
-  background-color: #f8d7da; /* Un rojo claro de Bootstrap para 'danger' */
-  border-left: 5px solid #dc3545; /* Rojo de Bootstrap */
+  background-color: #f8d7da; /* Rojo Bootstrap */
+  border-left: 5px solid #dc3545;
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* Estilo para los pasos dentro de una caja de ejemplo */
+/* (Estilos de Criterios.css) */
 .timeline-item-alt {
     padding-left: 20px;
     border-left: 3px solid #ffffff;
@@ -22,12 +240,10 @@
     padding-bottom: 15px;
     color: #ffffff;
 }
-
 .timeline-item-alt:last-child {
     border-left: none;
     padding-bottom: 0;
 }
-
 .timeline-item-alt h5 .badge-custom {
     position: absolute;
     left: -25px;
@@ -42,22 +258,229 @@
     font-weight: bold;
     border: 3px solid #ffffff;
 }
-
-.exercise-item .options .option-btn.correct {
-  background-color: #198754; /* Verde Bootstrap */
-  color: white;
-  border-color: #198754;
+.interactive-table {
+    width: 100%;
+    margin: 1rem 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.interactive-table th {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
+.interactive-table td {
+    background: white;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #dee2e6;
+    color: var(--dark-color);
 }
 
-.exercise-item .options .option-btn.incorrect {
-  background-color: #dc3545; /* Rojo Bootstrap */
-  color: white;
-  border-color: #dc3545;
+/* ============================================
+   NUEVOS ESTILOS: SECCIÓN 1 (EJEMPLOS DINÁMICOS)
+   ============================================ */
+.dynamic-example-container {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+}
+.example-content-box {
+    padding: 10px;
+    min-height: 50px;
+}
+.example-content-box span {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+.example-content-box .ejemplo-si {
+    color: #155724; /* Verde */
+}
+.example-content-box .ejemplo-no {
+    color: #721c24; /* Rojo */
 }
 
-/* Nuevos estilos para la tabla resumen para asegurar legibilidad */
-.interactive-table th, .interactive-table td {
-  padding: 1rem 0.75rem;
-  vertical-align: middle;
+/* ============================================
+   NUEVOS ESTILOS: SECCIÓN 2 (VERIFICADOR)
+   ============================================ */
+.criterio-resultado-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+.criterio-resultado-item.criterio-si {
+    background-color: #d4edda; /* Verde Bootstrap */
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.criterio-resultado-item.criterio-no {
+    background-color: #f8d7da; /* Rojo Bootstrap */
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.criterio-resultado-item .emoji {
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+.criterio-resultado-item .explicacion {
+    font-style: italic;
+    font-size: 0.9em;
+    margin-left: auto;
+    padding-left: 15px;
+    text-align: right;
 }
 
+/* ============================================
+   NUEVOS ESTILOS: SECCIÓN 3 (EXAMEN)
+   ============================================ */
+
+#lista-examen-criterios {
+    padding-left: 0;
+    list-style: none;
+}
+#lista-examen-criterios li {
+    background-color: #f8f9fa;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    list-style-type: decimal;
+    list-style-position: inside;
+    font-weight: 500;
+}
+#lista-examen-criterios li > label {
+    display: block;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+.opciones-examen {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.opcion-label {
+    display: block;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid #dee2e6;
+    background-color: #ffffff;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    font-weight: normal;
+}
+.opcion-label:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+.opcion-label input[type="radio"] {
+    margin-right: 10px;
+    transform: translateY(1px);
+}
+.feedback-examen {
+    font-weight: bold;
+    margin-top: 15px;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+}
+.feedback-examen.correcto {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+.feedback-examen.incorrecto {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+#resultado-examen {
+    padding: 1.5rem;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+}
+#resultado-examen.aprobado {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+#resultado-examen.reprobado {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+/* ============================================
+   UTILIDADES
+   ============================================ */
+.hidden {
+  display: none;
+}
+.text-white {
+  color: white !important;
+}
+.bg-white {
+  background-color: white !important;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN (DE MULTIPLOS-STYLES.CSS)
+   ============================================ */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+  .custom-card {
+    padding: 1rem;
+  }
+  .emoji-large {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 576px) {
+  .concept-box,
+  .example-box,
+  .mcm-box,
+  .property-card {
+    padding: 1rem;
+  }
+  .calculation-step {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1; 
+}
+
+.footer {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 1rem 0;
+  color: #6c757d;
+  margin-top: auto; 
+}
