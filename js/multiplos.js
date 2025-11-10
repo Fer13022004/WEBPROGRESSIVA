@@ -487,24 +487,10 @@ function generarEjemplosBasicos() {
 
 function generarEjemploCompleto() {
   const num = seleccionarAleatorio(numerosEjemplo);
-  document.getElementById('num-ejemplo').textContent = num;
-  document.getElementById('titulo-multiplo').textContent = `Múltiplos de ${num}`;
-
-  const calculos = Array.from({ length: 10 }, (_, i) => {
-    const mult = i + 1;
-    const result = num * mult;
-    return `
-      <div class="col-md-6">
-        <div class="calculation-step bg-white">${num} × ${mult} = <strong>${result}</strong> ✔️</div>
-      </div>
-    `;
-  }).join('');
-
-  document.getElementById('calculos-multiplos').innerHTML = calculos;
-
-  const multiplos = Array.from({ length: 10 }, (_, i) => num * (i + 1)).join(', ');
-  document.getElementById('resultado-multiplos').innerHTML =
-    `<strong>Resultado:</strong> Los primeros 10 múltiplos de ${num} son: ${multiplos}`;
+  const numEjemploElement = document.getElementById('num-ejemplo');
+  if (numEjemploElement) {
+    numEjemploElement.textContent = num;
+  }
 }
 
 function generarTablas() {
@@ -635,7 +621,6 @@ function generarEjercicios() {
             <div class="options" id="ejercicio-${idx}">
               ${opcionesHTML}
             </div>
-            <button class="hint-btn" onclick="mostrarExplicacion(${idx})">💡 Ver Explicación Paso a Paso</button>
             <div class="explanation-box" id="explicacion-${idx}"></div>
           </div>
         </div>
@@ -698,22 +683,43 @@ function verificarRespuesta(ejercicioIdx, opcionIdx, correcta) {
   // Mostrar automáticamente la explicación después de responder
   setTimeout(() => {
     mostrarExplicacion(ejercicioIdx);
-  }, 500);
+  }, 300);
 }
 
 // ============================================
-// GENERAR NUEVOS EJERCICIOS
+// NAVEGACIÓN ENTRE PARTES
 // ============================================
 
-function generarNuevosEjercicios() {
-  ejerciciosResueltos = 0;
-  ejerciciosCorrectos = 0;
-  progresoEjercicios = {};
+function mostrarParte(numeroParte) {
+  // Ocultar todas las partes
+  document.querySelectorAll('.parte-contenido').forEach(parte => {
+    parte.classList.remove('active');
+  });
   
-  generarEjercicios();
-  actualizarProgreso();
+  // Ocultar todos los botones activos
+  document.querySelectorAll('.part-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
   
-  document.getElementById('ejercicios').scrollIntoView({ behavior: 'smooth' });
+  // Mostrar la parte seleccionada
+  document.getElementById(`parte-${numeroParte}`).classList.add('active');
+  
+  // Activar el botón correspondiente
+  document.querySelectorAll('.part-btn')[numeroParte - 1].classList.add('active');
+  
+  // Guardar la parte actual en localStorage
+  localStorage.setItem('parteActiva', numeroParte);
+  
+  // Scroll suave al inicio de la página
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  
+  // Si es la parte 3 (evaluación) y no hay ejercicios generados, generarlos
+  if (numeroParte === 3 && !window.ejerciciosGenerados) {
+    setTimeout(() => {
+      generarEjercicios();
+      window.ejerciciosGenerados = true;
+    }, 300);
+  }
 }
 
 // ============================================
@@ -726,7 +732,7 @@ function crearBarraProgreso() {
   if (!ejerciciosSection) return;
   
   const barraHTML = `
-    <div class="progress-container mb-4" style="position: sticky; top: 80px; z-index: 100; background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    <div class="progress-container mb-4" style="position: sticky; top: 150px; z-index: 50; background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
       <div class="d-flex justify-content-between mb-2">
         <span><strong>Tu Progreso:</strong></span>
         <span id="progreso-texto">0/15 ejercicios completados</span>
@@ -905,9 +911,6 @@ function mostrarResumenFinal() {
             <button type="button" class="btn btn-primary btn-lg" data-bs-dismiss="modal">
               ¡Entendido! 👍
             </button>
-            <button type="button" class="btn btn-success btn-lg" onclick="generarNuevosEjercicios(); bootstrap.Modal.getInstance(document.getElementById('modalResumen')).hide();">
-              🔄 Nuevos Ejercicios
-            </button>
           </div>
         </div>
       </div>
@@ -964,17 +967,28 @@ document.addEventListener('DOMContentLoaded', function() {
   // Generar contenido dinámico
   generarEjemploCajas();
   generarEjemplosBasicos();
-  generarEjemploCompleto();
+  generarEjemploCompleto(); // Solo genera el número de ejemplo
   generarTablas();
   generarGridsVisuales();
   generarAplicaciones();
-  generarEjercicios();
+  
+  // No generar ejercicios automáticamente al cargar, se generarán al ir a la parte 3
+  window.ejerciciosGenerados = false;
   
   // Crear barra de progreso
   crearBarraProgreso();
+  
+  // Restaurar la parte activa desde localStorage
+  const parteGuardada = localStorage.getItem('parteActiva');
+  if (parteGuardada) {
+    const numeroParte = parseInt(parteGuardada);
+    if (numeroParte >= 1 && numeroParte <= 3) {
+      mostrarParte(numeroParte);
+    }
+  }
 });
 
 // Hacer funciones disponibles globalmente
-window.generarNuevosEjercicios = generarNuevosEjercicios;
+window.mostrarParte = mostrarParte;
 window.verificarRespuesta = verificarRespuesta;
 window.mostrarExplicacion = mostrarExplicacion;

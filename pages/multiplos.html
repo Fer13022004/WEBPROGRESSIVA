@@ -15,27 +15,22 @@
       <h1 class="logo">📚 Matemáticas Educativas</h1>
       <nav class="nav">
         <a href="../index.html" class="back-btn">🏠 Dashboard</a>
-        <div class="dropdown">
-          <button class="dropbtn">Subtemas ▼</button>
-          <div class="dropdown-content">
-            <a href="#introduccion">Introducción</a>
-            <a href="#concepto">¿Qué son los Múltiplos?</a>
-            <a href="#como-encontrar">Cómo Encontrar Múltiplos</a>
-            <a href="#tabla-multiplicar">Relación con Tablas</a>
-            <a href="#representacion">Representación Visual</a>
-            <a href="#patrones">Patrones de Múltiplos</a>
-            <a href="#propiedades">Propiedades</a>
-            <a href="#diferencia">Múltiplos vs Divisores</a>
-            <a href="#aplicaciones">Aplicaciones</a>
-            <a href="#ejercicios">Ejercicios Prácticos</a>
-          </div>
-        </div>
       </nav>
     </div>
   </header>
 
   <main class="main">
     <div class="container py-5">
+
+      <!-- Navegación entre partes -->
+      <nav class="parts-navigation mb-4">
+        <button class="part-btn active" onclick="mostrarParte(1)">Parte 1: Definición</button>
+        <button class="part-btn" onclick="mostrarParte(2)">Parte 2: Conceptos y Ejemplos</button>
+        <button class="part-btn" onclick="mostrarParte(3)">Parte 3: Evaluación</button>
+      </nav>
+
+      <!-- PARTE 1: DEFINICIÓN -->
+      <div id="parte-1" class="parte-contenido active">
 
       <section id="introduccion" class="mb-5">
         <div class="custom-card">
@@ -58,19 +53,22 @@
 
           <div class="concept-box">
             <h4 class="text-white">💡 Definición</h4>
-            <p class="mb-0 text-white">
-              <strong>Los múltiplos de un número natural son los números que se obtienen al
-                multiplicar dicho número por otros números naturales: 0, 1, 2, 3… </strong>
+            <p class="text-white">
+              <strong>Es el producto de dicho número por cualquier número entero.</strong>
             </p>
-          </div>
-
-          <div class="reference-box">
-            <strong>📚 Referencia:</strong> Instituto Guatemalteco de Educación Radiofónica (IGER) & Asociación de
-            Servicios Educativos y Culturales (ASEC).
-            Material para uso educativo no lucrativo.
-            🔗 <a
-              href="https://elmaestroencasa.edu.gt/wp-content/uploads/2020/03/IGER-1.%C2%BA-Ba%CC%81sico-Matema%CC%81tica-semana-6.pdf"
-              target="_blank">Ver material completo</a>
+            <p class="text-white mb-2">
+              <strong>Ejemplos:</strong><br>
+              15 × 1 = 15<br>
+              15 × 2 = 30<br>
+              15 × 9 = 135
+            </p>
+            <p class="text-white mb-2">
+              15, 30 y 135 son múltiplos de 15.<br>
+              Así mismo, 30 es múltiplo de 2 y 135 es múltiplo de 9.
+            </p>
+            <p class="mb-0 text-white" style="font-size: 0.9em; font-style: italic; opacity: 0.9;">
+              (Ocádiz López, Luis. 2015. Aritmética Básica y Álgebra Elemental. Palibrio, pág. 6)
+            </p>
           </div>
 
           <div class="row mt-4">
@@ -82,23 +80,16 @@
             </div>
             <div class="col-md-6">
               <div class="tip-box">
-                <strong>⭐ Importante saber:</strong><br>
-                Para averiguar si un número es múltiplo de otro, dividimos el número mayor
-                entre el número menor.<br>
-                • Si la división es exacta, el número es múltiplo.<br>
-                • Si la división es inexacta, el número no es múltiplo.
+                <strong>⭐ ¿Cómo saber si un número es múltiplo de otro?</strong><br><br>
+                <strong>Si la división es exacta →</strong> el número es múltiplo.<br>
+                <strong>Si la división es inexacta →</strong> no es múltiplo.<br><br>
+                <strong>Ejemplo:</strong><br>
+                ¿Es 15 múltiplo de 3 y de 6?<br>
+                15 ÷ 3 = 5 → exacta → 15 es múltiplo de 3.<br>
+                15 ÷ 6 = 2.5 → inexacta → 15 no es múltiplo de 6.<br><br>
+                <em style="font-size: 0.85em;">(IGER. Matemática 1.º Básico, Semana 6, págs. 98-102)</em>
               </div>
             </div>
-          </div>
-
-          <div class="reference-box">
-            <strong>📚 Referencia:(Pag. 5)</strong> Instituto Guatemalteco de Educación Radiofónica (IGER) & Asociación
-            de
-            Servicios Educativos y Culturales (ASEC).
-            Material para uso educativo no lucrativo.
-            🔗 <a
-              href="https://elmaestroencasa.edu.gt/wp-content/uploads/2020/03/IGER-1.%C2%BA-Ba%CC%81sico-Matema%CC%81tica-semana-6.pdf"
-              target="_blank">Ver material completo</a>
           </div>
 
           <div class="mt-4" id="ejemplos-basicos">
@@ -107,31 +98,45 @@
           </div>
         </div>
       </section>
+      </div>
+
+      <!-- PARTE 2: CONCEPTOS Y EJEMPLOS -->
+      <div id="parte-2" class="parte-contenido">
 
       <section id="como-encontrar" class="mb-5">
         <div class="custom-card">
           <h2 class="section-title">🔍 Múltiplos de un Número Natural</h2>
 
           <div class="concept-box">
-            <h5 class="text-white">📝 Definición:</h5>
-            <p class="text-white">Los múltiplos de un número natural son los números que se obtienen al multiplicar
-              dicho número por otros números naturales: 0, 1, 2, 3...</p>
-            <p class="text-white">El conjunto de múltiplos se nombra con la letra M mayúscula y entre paréntesis se
-              escribe el número del cual enumeramos los múltiplos.</p>
-            <p class="text-white">El conjunto de múltiplos es infinito porque el conjunto de números naturales también
-              lo es.</p>
-            <p class="text-white mb-0">Para averiguar si un número es múltiplo de otro, dividimos el número mayor entre
-              el número menor. Si la división es exacta, el número es múltiplo.</p>
+            <p class="text-white">Los múltiplos de un número natural son los números naturales que resultan de multiplicar ese número por otros números naturales.</p>
+            <p class="text-white">Decimos que un número es múltiplo de otro si lo contiene un número entero de veces.</p>
+            <p class="text-white">El conjunto de múltiplos se nombra con la letra M mayúscula y entre paréntesis se escribe el número del cual enumeramos los múltiplos.</p>
+            <p class="text-white mb-2">
+              • El número 0 solamente tiene un múltiplo, que es el 0.<br>
+              • Los demás números naturales tienen infinito número de múltiplos.<br>
+              • El número 0 es múltiplo de todos los números.<br>
+              • Todos los números son múltiplos de 1.
+            </p>
+            <p class="mb-0 text-white" style="font-size: 0.9em; font-style: italic; opacity: 0.9;">
+              (Barbero Corral, Eduardo. Múltiplos y divisores - 1.º ESO. Proyecto EDAD, Red Educativa Digital Descartes, pág. 4)
+            </p>
           </div>
 
-          <div class="concept-box">
+          <div class="concept-box mt-4">
             <h5 class="text-white">⚡ Propiedades de los múltiplos:</h5>
-            <ul class="text-white">
-              <li>El cero es el primer múltiplo de todo número natural.</li>
-              <li>Todo número, distinto de cero, es múltiplo de sí mismo y de la unidad.</li>
-              <li>El resultado de multiplicar varios números es múltiplo de dichos números.</li>
-              <li>La suma de dos múltiplos de un número es también múltiplo de ese número.</li>
+            <ul class="text-white mb-2">
+              <li><strong>El cero es el primer múltiplo de todo número natural.</strong><br>
+              Ejemplos: 0 = 3 × 0; 0 = 15 × 0.</li>
+              <li><strong>Todo número, distinto de cero, es múltiplo de sí mismo y de 1.</strong><br>
+              Ejemplos: 3 = 1 × 3; 723 = 1 × 723.</li>
+              <li><strong>El resultado de multiplicar dos o más números es múltiplo de dichos números.</strong><br>
+              Ejemplo: 42 = 2 × 3 × 7 → 42 es múltiplo de 2, 3 y 7.</li>
+              <li><strong>La suma de dos múltiplos de un número es también múltiplo de ese número.</strong><br>
+              Ejemplo: 21 y 35 son múltiplos de 7 → 21 + 35 = 56 → 56 es múltiplo de 7.</li>
             </ul>
+            <p class="mb-0 text-white" style="font-size: 0.9em; font-style: italic; opacity: 0.9;">
+              (IGER - Instituto Guatemalteco de Educación Radiofónica. Matemática 1.º Básico, Semana 6, págs. 98-102)
+            </p>
           </div>
 
           <div class="timeline-item">
@@ -149,23 +154,6 @@
             <p>Cada resultado que obtengas será un múltiplo del número que elegiste.</p>
           </div>
         </div>
-
-
-        <div class="reference-box">
-          <strong>📚 Referencia:(Pag. 5)</strong> Instituto Guatemalteco de Educación Radiofónica (IGER) & Asociación
-          de
-          Servicios Educativos y Culturales (ASEC).
-          Material para uso educativo no lucrativo.
-          🔗 <a
-            href="https://elmaestroencasa.edu.gt/wp-content/uploads/2020/03/IGER-1.%C2%BA-Ba%CC%81sico-Matema%CC%81tica-semana-6.pdf"
-            target="_blank">Ver material completo</a>
-        </div>
-
-        <div class="example-box mt-4" id="ejemplo-completo">
-          <h5 class="text-white">🎯 Ejemplo completo: <span id="titulo-multiplo"></span></h5>
-          <div class="row mt-3" id="calculos-multiplos"></div>
-          <p class="mt-3 mb-0 text-white" id="resultado-multiplos"></p>
-        </div>
       </section>
 
       <section id="tabla-multiplicar" class="mb-5">
@@ -173,20 +161,15 @@
           <h2 class="section-title">✖️ Relación con las Tablas de Multiplicar</h2>
 
           <div class="concept-box">
-            <p class="text-white mb-0">
-              <strong>¡Dato importante!</strong> Los múltiplos de un número son exactamente los resultados de su tabla
-              de multiplicar.
-              Si conoces bien tus tablas, ¡ya sabes encontrar múltiplos!
+            <p class="text-white">
+              <strong>¡Dato importante!</strong> Los múltiplos de un número se obtienen multiplicando ese número por los números naturales: 0, 1, 2, 3, 4…
             </p>
-          </div>
-
-          <div class="reference-box">
-            <strong>📚 Referencia:</strong> Instituto Guatemalteco de Educación Radiofónica (IGER) & Asociación de
-            Servicios Educativos y Culturales (ASEC).
-            Material para uso educativo no lucrativo.
-            🔗 <a
-              href="https://elmaestroencasa.edu.gt/wp-content/uploads/2020/03/IGER-1.%C2%BA-Ba%CC%81sico-Matema%CC%81tica-semana-6.pdf"
-              target="_blank">Ver material completo</a>
+            <p class="text-white mb-2">
+              Durante varias semanas, hemos practicado las tablas de multiplicar. Los resultados que se memorizan son ejemplos de múltiplos. Si conoces bien tus tablas, ¡ya sabes encontrar múltiplos!
+            </p>
+            <p class="mb-0 text-white" style="font-size: 0.9em; font-style: italic; opacity: 0.9;">
+              (Equipo Editorial Santillana. Matemáticas Primaria - Múltiplos y divisores, Unidad 4, pág. 58)
+            </p>
           </div>
 
           <div class="row mt-4" id="tablas-multiplicar"></div>
@@ -205,16 +188,12 @@
             <strong>👀 ¿Notaste el patrón?</strong> Los múltiplos aparecen a intervalos regulares.
             ¡Esto nos ayuda a identificarlos rápidamente!
           </div>
-
-
         </div>
       </section>
 
       <section id="patrones" class="mb-5">
         <div class="custom-card">
           <h2 class="section-title">🔮 Patrones Especiales en los Múltiplos</h2>
-
-
 
           <div class="row g-4">
             <div class="col-md-6">
@@ -286,12 +265,10 @@
         <div class="custom-card">
           <h2 class="section-title">✨ Propiedades Importantes de los Múltiplos</h2>
 
-
-
           <div class="row g-3">
             <div class="col-md-6">
               <div class="property-card">
-                <h5 class="text-white">1️⃣ Todo número es múltiplo de sí mismo</h5>
+                <h5 class="text-white">1️⃣ Todo número es múltiplo de sí mismo <sup><a href="#ref3" style="color: #fff; text-decoration: none;">[3]</a></sup></h5>
                 <p class="mb-0 text-white">
                   <strong>Ejemplo:</strong> 8 es múltiplo de 8 porque 8 × 1 = 8
                 </p>
@@ -300,7 +277,7 @@
 
             <div class="col-md-6">
               <div class="property-card">
-                <h5 class="text-white">2️⃣ Todo número es múltiplo de 1</h5>
+                <h5 class="text-white">2️⃣ Todo número es múltiplo de 1 <sup><a href="#ref3" style="color: #fff; text-decoration: none;">[3]</a></sup></h5>
                 <p class="mb-0 text-white">
                   <strong>Ejemplo:</strong> Cualquier número × 1 = ese número
                 </p>
@@ -309,7 +286,7 @@
 
             <div class="col-md-6">
               <div class="property-card">
-                <h5 class="text-white">3️⃣ El cero es múltiplo de todos los números</h5>
+                <h5 class="text-white">3️⃣ El cero es múltiplo de todos los números <sup><a href="#ref3" style="color: #fff; text-decoration: none;">[3]</a></sup></h5>
                 <p class="mb-0 text-white">
                   <strong>Ejemplo:</strong> Cualquier número × 0 = 0
                 </p>
@@ -318,7 +295,7 @@
 
             <div class="col-md-6">
               <div class="property-card">
-                <h5 class="text-white">4️⃣ Los múltiplos son infinitos</h5>
+                <h5 class="text-white">4️⃣ Los múltiplos son infinitos <sup><a href="#ref3" style="color: #fff; text-decoration: none;">[3]</a></sup></h5>
                 <p class="mb-0 text-white">
                   Siempre puedes multiplicar por un número más grande
                 </p>
@@ -327,7 +304,7 @@
 
             <div class="col-md-6">
               <div class="property-card">
-                <h5 class="text-white">5️⃣ Suma de múltiplos</h5>
+                <h5 class="text-white">5️⃣ Suma de múltiplos <sup><a href="#ref3" style="color: #fff; text-decoration: none;">[3]</a></sup></h5>
                 <p class="mb-0 text-white">
                   La suma de dos múltiplos de un número es también múltiplo<br>
                   <strong>Ejemplo:</strong> 6+12=18 (todos son múltiplos de 3)
@@ -337,7 +314,7 @@
 
             <div class="col-md-6">
               <div class="property-card">
-                <h5 class="text-white">6️⃣ Resta de múltiplos</h5>
+                <h5 class="text-white">6️⃣ Resta de múltiplos <sup><a href="#ref3" style="color: #fff; text-decoration: none;">[3]</a></sup></h5>
                 <p class="mb-0 text-white">
                   La resta de dos múltiplos de un número es también múltiplo<br>
                   <strong>Ejemplo:</strong> 20-10=10 (todos son múltiplos de 5)
@@ -352,20 +329,10 @@
         <div class="custom-card">
           <h2 class="section-title">⚖️ Múltiplos vs Divisores</h2>
 
-          <div class="reference-box">
-            <strong>📚 Referencia:(Pag. 5)</strong> Instituto Guatemalteco de Educación Radiofónica (IGER) & Asociación
-            de
-            Servicios Educativos y Culturales (ASEC).
-            Material para uso educativo no lucrativo.
-            🔗 <a
-              href="https://elmaestroencasa.edu.gt/wp-content/uploads/2020/03/IGER-1.%C2%BA-Ba%CC%81sico-Matema%CC%81tica-semana-6.pdf"
-              target="_blank">Ver material completo</a>
-          </div>
-
           <div class="row">
             <div class="col-md-6">
               <div class="concept-box">
-                <h4 class="text-white">🔼 Múltiplos</h4>
+                <h4 class="text-white">🔼 Múltiplos <sup><a href="#ref1" style="color: #fff; text-decoration: none;">[1]</a></sup></h4>
                 <p class="text-white">Son números MAYORES o iguales</p>
                 <p class="text-white"><strong>Se obtienen multiplicando</strong></p>
                 <div class="calculation-step bg-white">
@@ -379,7 +346,7 @@
 
             <div class="col-md-6">
               <div class="example-box">
-                <h4 class="text-white">🔽 Divisores</h4>
+                <h4 class="text-white">🔽 Divisores <sup><a href="#ref1" style="color: #fff; text-decoration: none;">[1]</a></sup></h4>
                 <p class="text-white">Son números MENORES o iguales</p>
                 <p class="text-white"><strong>Se obtienen dividiendo</strong></p>
                 <div class="calculation-step bg-white">
@@ -397,21 +364,18 @@
       <section id="aplicaciones" class="mb-5">
         <div class="custom-card">
           <h2 class="section-title">🌍 Múltiplos en la Vida Real</h2>
-
-
-
           <div class="row g-4" id="aplicaciones-vida-real"></div>
         </div>
       </section>
+      </div>
+
+      <!-- PARTE 3: EVALUACIÓN -->
+      <div id="parte-3" class="parte-contenido">
 
       <section id="ejercicios" class="mb-5">
         <div class="custom-card">
-          <h2 class="section-title text-center">📝 Ejercicios Prácticos</h2>
-          <p class="text-center lead">¡Pon a prueba tus conocimientos! Resuelve todos los ejercicios.</p>
-          <div class="text-center">
-            <button class="btn btn-primary btn-lg" onclick="generarNuevosEjercicios()">🔄 Generar Nuevos
-              Ejercicios</button>
-          </div>
+          <h2 class="section-title text-center">📝 Evaluación de Conocimientos</h2>
+          <p class="text-center lead">¡Pon a prueba tus conocimientos! Responde todos los ejercicios.</p>
         </div>
       </section>
 
@@ -439,10 +403,57 @@
             <h4>¡Excelente trabajo!</h4>
             <p class="lead">Ahora dominas el concepto de múltiplos de un número</p>
           </div>
-
-
         </div>
       </section>
+
+      <section id="referencias" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title text-center">📚 Referencias Bibliográficas</h2>
+          
+          <div class="reference-box mt-4">
+            <p id="ref1"><strong>Instituto Guatemalteco de Educación Radiofónica (IGER)</strong></p>
+            <p><em>Matemática 1.º Básico, Semana 6</em><br>
+            Páginas 98-102<br>
+            Programa: El Maestro en Casa<br>
+            Editorial: Ediciones ASEC<br>
+            Autoría: Institucional<br>
+            🔗 <a href="https://elmaestroencasa.edu.gt/wp-content/uploads/2020/03/IGER-1.%C2%BA-Ba%CC%81sico-Matema%CC%81tica-semana-6.pdf" target="_blank">Ver material completo</a></p>
+          </div>
+
+          <div class="reference-box mt-3">
+            <p id="ref2"><strong>Ocádiz López, Luis</strong></p>
+            <p><em>Aritmética Básica y Álgebra Elemental</em><br>
+            Editorial: Palibrio<br>
+            Página: 6<br>
+            Año: 2015 (Fecha de Revisión: 15/12/2014)<br>
+            Copyright © 2004, 2015 por Luis Ocádiz López<br>
+            ISBN (Tapa Dura): 978-1-4633-7848-6<br>
+            ISBN (Tapa Blanda): 978-1-4633-7847-9<br>
+            ISBN (Libro Electrónico): 978-1-4633-7846-2<br>
+            Número de Control de la Biblioteca del Congreso de EE. UU.: 2014902369</p>
+          </div>
+
+          <div class="reference-box mt-3">
+            <p id="ref3"><strong>Barbero Corral, Eduardo</strong></p>
+            <p><em>Múltiplos y divisores</em> (1.º ESO)<br>
+            Página: 4<br>
+            Proyecto EDAD (Educación Digital con Descartes)<br>
+            Red Educativa Digital Descartes<br>
+            Iniciativa colectiva con recursos digitales interactivos para la enseñanza de las matemáticas<br>
+            🔗 <a href="https://proyectodescartes.org/EDAD/materiales_didacticos/EDAD_1eso_multiplos_y_divisores-JS/1quincena2.pdf" target="_blank">Ver PDF completo</a></p>
+          </div>
+
+          <div class="reference-box mt-3">
+            <p id="ref4"><strong>Equipo Editorial Santillana</strong></p>
+            <p><em>Matemáticas Primaria - Múltiplos y divisores</em> (Unidad 4)<br>
+            Página: 58<br>
+            Editorial: Santillana<br>
+            Proyecto curricular desarrollado por el equipo editorial bajo la dirección de Santillana<br>
+            🔗 <a href="https://back-edupack.santillana.es/file/repository/1152616_1a_unidad.pdf" target="_blank">Ver material completo</a></p>
+          </div>
+        </div>
+      </section>
+      </div>
 
     </div>
   </main>

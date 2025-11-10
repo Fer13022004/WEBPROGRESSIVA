@@ -526,6 +526,62 @@ body {
 }
 
 /* ============================================
+   NAVEGACIÓN ENTRE PARTES
+   ============================================ */
+
+.parts-navigation {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 80px;
+  z-index: 999;
+}
+
+.part-btn {
+  background: #e9ecef;
+  color: #222;
+  border: 2px solid #dee2e6;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s;
+  flex: 1;
+  min-width: 200px;
+}
+
+.part-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.part-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.parte-contenido {
+  display: none;
+  animation: fadeIn 0.5s;
+}
+
+.parte-contenido.active {
+  display: block;
+}
+
+/* ============================================
    RESPONSIVE DESIGN
    ============================================ */
 
@@ -550,6 +606,17 @@ body {
   .emoji-large {
     font-size: 2rem;
   }
+  
+  .parts-navigation {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .part-btn {
+    min-width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -573,4 +640,8 @@ body {
   .option-btn {
     font-size: 0.9rem;
   }
+}
+/* Oculta las explicaciones sin romper la lógica */
+.explanation-box {
+  display: none !important;
 }
