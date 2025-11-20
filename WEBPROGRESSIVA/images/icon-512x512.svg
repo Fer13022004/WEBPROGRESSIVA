@@ -1,6 +1,0 @@
-<!-- Placeholder para icono 512x512 -->
-<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
-  <rect width="512" height="512" fill="#2196F3" rx="64"/>
-  <text x="256" y="290" font-family="Arial, sans-serif" font-size="200" fill="white" text-anchor="middle" font-weight="bold">∑</text>
-  <text x="256" y="400" font-family="Arial, sans-serif" font-size="40" fill="white" text-anchor="middle">MATEMÁTICAS</text>
-</svg>

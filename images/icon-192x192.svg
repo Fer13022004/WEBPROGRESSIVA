@@ -1,0 +1,16 @@
+<!-- Placeholder para icono 192x192 -->
+<!-- Este archivo debe ser reemplazado por un icono PNG real -->
+<!-- Usar herramientas como Canva, GIMP, o generadores online para crear iconos PWA -->
+
+<!-- Especificaciones del icono:
+- Tamaño: 192x192 píxeles
+- Formato: PNG
+- Fondo: Puede ser transparente o usar el color de tema (#2196F3)
+- Contenido sugerido: Símbolo matemático (∑, π, √, etc.) o número estilizado
+-->
+
+<svg width="192" height="192" xmlns="http://www.w3.org/2000/svg">
+  <rect width="192" height="192" fill="#2196F3" rx="24"/>
+  <text x="96" y="110" font-family="Arial, sans-serif" font-size="80" fill="white" text-anchor="middle" font-weight="bold">∑</text>
+  <text x="96" y="150" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">MATH</text>
+</svg>
