@@ -1,1261 +1,457 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Múltiplos de un número - Matemáticas Educativas</title>
-    <link rel="stylesheet" href="../css/styles-template.css" />
-    <link rel="stylesheet" href="../css/multiplos-styles.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/svg+xml" href="../images/icon-192x192.svg" />
-  </head>
-  <body>
-    <!-- Header / Navbar -->
-    <header class="header">
-      <div class="container header-content">
-        <h1 class="logo">📚 Matemáticas Educativas</h1>
-        <nav class="nav">
-          <a href="../index.html" class="back-btn">🏠 Dashboard</a>
-          <div class="dropdown">
-            <button class="dropbtn">Subtemas ▼</button>
-            <div class="dropdown-content">
-              <a href="#introduccion">Introducción</a>
-              <a href="#concepto">¿Qué son los Múltiplos?</a>
-              <a href="#como-encontrar">Cómo Encontrar Múltiplos</a>
-              <a href="#tabla-multiplicar">Relación con Tablas</a>
-              <a href="#representacion">Representación Visual</a>
-              <a href="#patrones">Patrones de Múltiplos</a>
-              <a href="#propiedades">Propiedades</a>
-              <a href="#diferencia">Múltiplos vs Divisores</a>
-              <a href="#aplicaciones">Aplicaciones</a>
-              <a href="#ejercicios">Ejercicios Prácticos</a>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="main">
-      <div class="container py-5">
-        <!-- Introducción -->
-        <section id="introduccion" class="mb-5">
-          <div class="custom-card">
-            <div class="text-center emoji-large">🔢</div>
-            <h2 class="section-title text-center">Múltiplos de un Número</h2>
-            <div class="definition-highlight">
-              <p class="mb-0">
-                ¡Bienvenido al fascinante mundo de los múltiplos! Los múltiplos
-                son uno de los conceptos más importantes en matemáticas y están
-                presentes en nuestra vida diaria: cuando contamos dinero, cuando
-                organizamos objetos en grupos, cuando calculamos tiempo, y mucho
-                más. En esta lección aprenderás todo sobre ellos. 🎯
-              </p>
-            </div>
-          </div>
-        </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Múltiplos de un número - Matemáticas Educativas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/multiplos-styles.css" />
+</head>
 
-        <!-- ¿Qué son los Múltiplos? -->
-        <section id="concepto" class="mb-5">
-          <div class="custom-card">
-            <h2 class="section-title">📖 ¿Qué son los Múltiplos?</h2>
+<body>
+  <header class="header">
+    <div class="container header-content">
+      <h1 class="logo">📚 Matemáticas Educativas</h1>
+      <nav class="nav">
+        <a href="../index.html" class="back-btn">🏠 Dashboard</a>
+      </nav>
+    </div>
+  </header>
 
-            <div class="concept-box">
-              <h4 class="text-white">💡 Definición</h4>
-              <p class="mb-0 text-white">
-                Un <strong>múltiplo de un número</strong> es el resultado que
-                obtenemos cuando multiplicamos ese número por cualquier número
-                entero positivo (1, 2, 3, 4, 5, 6...).
-              </p>
-            </div>
+  <main class="main">
+    <div class="container py-5">
 
-            <div class="row mt-4">
-              <div class="col-md-6">
-                <div class="tip-box">
-                  <strong>🤔 Piénsalo de esta manera:</strong><br />
-                  Imagina que tienes cajas con 3 manzanas cada una. Si tienes 1
-                  caja, tienes 3 manzanas. Si tienes 2 cajas, tienes 6 manzanas.
-                  Si tienes 3 cajas, tienes 9 manzanas.<br />
-                  Entonces: 3, 6, 9... ¡son múltiplos de 3!
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="tip-box">
-                  <strong>⭐ Importante saber:</strong><br />
-                  • Todo número tiene infinitos múltiplos<br />
-                  • El primer múltiplo de un número es él mismo<br />
-                  • Los múltiplos siempre son mayores o iguales al número
-                  original
-                </div>
-              </div>
-            </div>
+      <!-- Navegación entre partes -->
+      <nav class="parts-navigation mb-4">
+        <button class="part-btn active" onclick="mostrarParte(1)">Parte 1: Definición</button>
+        <button class="part-btn" onclick="mostrarParte(2)">Parte 2: Conceptos y Ejemplos</button>
+        <button class="part-btn" onclick="mostrarParte(3)">Parte 3: Evaluación</button>
+      </nav>
 
-            <div class="mt-4">
-              <h5>Ejemplos básicos de múltiplos:</h5>
-              <div class="row">
-                <div class="col-md-3">
-                  <div class="calculation-step">
-                    <strong>Múltiplos de 2:</strong><br />
-                    2, 4, 6, 8, 10, 12, 14, 16, 18, 20...
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="calculation-step">
-                    <strong>Múltiplos de 5:</strong><br />
-                    5, 10, 15, 20, 25, 30, 35, 40, 45, 50...
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="calculation-step">
-                    <strong>Múltiplos de 10:</strong><br />
-                    10, 20, 30, 40, 50, 60, 70, 80, 90, 100...
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="calculation-step">
-                    <strong>Múltiplos de 7:</strong><br />
-                    7, 14, 21, 28, 35, 42, 49, 56, 63, 70...
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+      <!-- PARTE 1: DEFINICIÓN -->
+      <div id="parte-1" class="parte-contenido active">
 
-        <!-- Cómo encontrar múltiplos -->
-        <section id="como-encontrar" class="mb-5">
-          <div class="custom-card">
-            <h2 class="section-title">
-              🔍 ¿Cómo Encontrar los Múltiplos de un Número?
-            </h2>
-
-            <div class="concept-box">
-              <h5 class="text-white">📝 Método paso a paso:</h5>
-            </div>
-
-            <div class="timeline-item">
-              <h5>
-                <span class="badge bg-primary badge-custom">Paso 1</span> Elige
-                el número base
-              </h5>
-              <p>
-                Decide de qué número quieres encontrar los múltiplos. Por
-                ejemplo: <strong>6</strong>
-              </p>
-            </div>
-
-            <div class="timeline-item">
-              <h5>
-                <span class="badge bg-primary badge-custom">Paso 2</span>
-                Multiplica por números consecutivos
-              </h5>
-              <p>
-                Multiplica tu número base por 1, 2, 3, 4, 5, 6, 7, 8, 9, 10... y
-                así sucesivamente.
-              </p>
-            </div>
-
-            <div class="timeline-item">
-              <h5>
-                <span class="badge bg-primary badge-custom">Paso 3</span>
-                Escribe todos los resultados
-              </h5>
-              <p>
-                Cada resultado que obtengas será un múltiplo del número que
-                elegiste.
-              </p>
-            </div>
-
-            <div class="example-box mt-4">
-              <h5 class="text-white">🎯 Ejemplo completo: Múltiplos de 6</h5>
-              <div class="row mt-3">
-                <div class="col-md-6">
-                  <div class="calculation-step bg-white">
-                    6 × 1 = <strong>6</strong> ✔️
-                  </div>
-                  <div class="calculation-step bg-white">
-                    6 × 2 = <strong>12</strong> ✔️
-                  </div>
-                  <div class="calculation-step bg-white">
-                    6 × 3 = <strong>18</strong> ✔️
-                  </div>
-                  <div class="calculation-step bg-white">
-                    6 × 4 = <strong>24</strong> ✔️
-                  </div>
-                  <div class="calculation-step bg-white">
-                    6 × 5 = <strong>30</strong> ✔️
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="calculation-step bg-white">
-                    6 × 6 = <strong>36</strong> ✔️
-                  </div>
-                  <div class="calculation-step bg-white">
-                    6 × 7 = <strong>42</strong> ✔️
-                  </div>
-                  <div class="calculation-step bg-white">
-                    6 × 8 = <strong>48</strong> ✔️
-                  </div>
-                  <div class="calculation-step bg-white">
-                    6 × 9 = <strong>54</strong> ✔️
-                  </div>
-                  <div class="calculation-step bg-white">
-                    6 × 10 = <strong>60</strong> ✔️
-                  </div>
-                </div>
-              </div>
-              <p class="mt-3 mb-0 text-white">
-                <strong>Resultado:</strong> Los primeros 10 múltiplos de 6 son:
-                6, 12, 18, 24, 30, 36, 42, 48, 54, 60
-              </p>
-            </div>
-
-            <div class="row mt-4">
-              <div class="col-md-6">
-                <div class="example-box">
-                  <h6 class="text-white">Múltiplos de 8 hasta 80:</h6>
-                  <div class="calculation-step bg-white">
-                    8, 16, 24, 32, 40, 48, 56, 64, 72, 80
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="example-box">
-                  <h6 class="text-white">Múltiplos de 9 hasta 90:</h6>
-                  <div class="calculation-step bg-white">
-                    9, 18, 27, 36, 45, 54, 63, 72, 81, 90
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Relación con Tablas de Multiplicar -->
-        <section id="tabla-multiplicar" class="mb-5">
-          <div class="custom-card">
-            <h2 class="section-title">
-              ✖️ Relación con las Tablas de Multiplicar
-            </h2>
-
-            <div class="concept-box">
-              <p class="text-white mb-0">
-                <strong>¡Dato importante!</strong> Los múltiplos de un número
-                son exactamente los resultados de su tabla de multiplicar. Si
-                conoces bien tus tablas, ¡ya sabes encontrar múltiplos!
-              </p>
-            </div>
-
-            <div class="row mt-4">
-              <div class="col-md-6">
-                <div class="example-box">
-                  <h5 class="text-white text-center">Tabla del 4</h5>
-                  <table class="interactive-table mt-3">
-                    <thead>
-                      <tr>
-                        <th>Operación</th>
-                        <th>Resultado</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>4 × 1</td>
-                        <td><strong>4</strong></td>
-                      </tr>
-                      <tr>
-                        <td>4 × 2</td>
-                        <td><strong>8</strong></td>
-                      </tr>
-                      <tr>
-                        <td>4 × 3</td>
-                        <td><strong>12</strong></td>
-                      </tr>
-                      <tr>
-                        <td>4 × 4</td>
-                        <td><strong>16</strong></td>
-                      </tr>
-                      <tr>
-                        <td>4 × 5</td>
-                        <td><strong>20</strong></td>
-                      </tr>
-                      <tr>
-                        <td>4 × 6</td>
-                        <td><strong>24</strong></td>
-                      </tr>
-                      <tr>
-                        <td>4 × 7</td>
-                        <td><strong>28</strong></td>
-                      </tr>
-                      <tr>
-                        <td>4 × 8</td>
-                        <td><strong>32</strong></td>
-                      </tr>
-                      <tr>
-                        <td>4 × 9</td>
-                        <td><strong>36</strong></td>
-                      </tr>
-                      <tr>
-                        <td>4 × 10</td>
-                        <td><strong>40</strong></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="example-box">
-                  <h5 class="text-white text-center">Tabla del 7</h5>
-                  <table class="interactive-table mt-3">
-                    <thead>
-                      <tr>
-                        <th>Operación</th>
-                        <th>Resultado</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>7 × 1</td>
-                        <td><strong>7</strong></td>
-                      </tr>
-                      <tr>
-                        <td>7 × 2</td>
-                        <td><strong>14</strong></td>
-                      </tr>
-                      <tr>
-                        <td>7 × 3</td>
-                        <td><strong>21</strong></td>
-                      </tr>
-                      <tr>
-                        <td>7 × 4</td>
-                        <td><strong>28</strong></td>
-                      </tr>
-                      <tr>
-                        <td>7 × 5</td>
-                        <td><strong>35</strong></td>
-                      </tr>
-                      <tr>
-                        <td>7 × 6</td>
-                        <td><strong>42</strong></td>
-                      </tr>
-                      <tr>
-                        <td>7 × 7</td>
-                        <td><strong>49</strong></td>
-                      </tr>
-                      <tr>
-                        <td>7 × 8</td>
-                        <td><strong>56</strong></td>
-                      </tr>
-                      <tr>
-                        <td>7 × 9</td>
-                        <td><strong>63</strong></td>
-                      </tr>
-                      <tr>
-                        <td>7 × 10</td>
-                        <td><strong>70</strong></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Representación Visual -->
-        <section id="representacion" class="mb-5">
-          <div class="custom-card">
-            <h2 class="section-title">🎨 Representación Visual de Múltiplos</h2>
-
-            <p class="lead">
-              Observa cómo se distribuyen los múltiplos en una cuadrícula
-              numérica del 1 al 100:
-            </p>
-
-            <div class="row mt-4">
-              <div class="col-md-6">
-                <h5 class="text-center">Múltiplos de 3 (del 1 al 50)</h5>
-                <div class="visual-grid">
-                  <div class="grid-item">1</div>
-                  <div class="grid-item">2</div>
-                  <div class="grid-item highlight">3</div>
-                  <div class="grid-item">4</div>
-                  <div class="grid-item">5</div>
-                  <div class="grid-item highlight">6</div>
-                  <div class="grid-item">7</div>
-                  <div class="grid-item">8</div>
-                  <div class="grid-item highlight">9</div>
-                  <div class="grid-item">10</div>
-                  <div class="grid-item">11</div>
-                  <div class="grid-item highlight">12</div>
-                  <div class="grid-item">13</div>
-                  <div class="grid-item">14</div>
-                  <div class="grid-item highlight">15</div>
-                  <div class="grid-item">16</div>
-                  <div class="grid-item">17</div>
-                  <div class="grid-item highlight">18</div>
-                  <div class="grid-item">19</div>
-                  <div class="grid-item">20</div>
-                  <div class="grid-item highlight">21</div>
-                  <div class="grid-item">22</div>
-                  <div class="grid-item">23</div>
-                  <div class="grid-item highlight">24</div>
-                  <div class="grid-item">25</div>
-                  <div class="grid-item">26</div>
-                  <div class="grid-item highlight">27</div>
-                  <div class="grid-item">28</div>
-                  <div class="grid-item">29</div>
-                  <div class="grid-item highlight">30</div>
-                  <div class="grid-item">31</div>
-                  <div class="grid-item">32</div>
-                  <div class="grid-item highlight">33</div>
-                  <div class="grid-item">34</div>
-                  <div class="grid-item">35</div>
-                  <div class="grid-item highlight">36</div>
-                  <div class="grid-item">37</div>
-                  <div class="grid-item">38</div>
-                  <div class="grid-item highlight">39</div>
-                  <div class="grid-item">40</div>
-                  <div class="grid-item">41</div>
-                  <div class="grid-item highlight">42</div>
-                  <div class="grid-item">43</div>
-                  <div class="grid-item">44</div>
-                  <div class="grid-item highlight">45</div>
-                  <div class="grid-item">46</div>
-                  <div class="grid-item">47</div>
-                  <div class="grid-item highlight">48</div>
-                  <div class="grid-item">49</div>
-                  <div class="grid-item">50</div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <h5 class="text-center">Múltiplos de 4 (del 1 al 50)</h5>
-                <div class="visual-grid">
-                  <div class="grid-item">1</div>
-                  <div class="grid-item">2</div>
-                  <div class="grid-item">3</div>
-                  <div class="grid-item highlight-alt">4</div>
-                  <div class="grid-item">5</div>
-                  <div class="grid-item">6</div>
-                  <div class="grid-item">7</div>
-                  <div class="grid-item highlight-alt">8</div>
-                  <div class="grid-item">9</div>
-                  <div class="grid-item">10</div>
-                  <div class="grid-item">11</div>
-                  <div class="grid-item highlight-alt">12</div>
-                  <div class="grid-item">13</div>
-                  <div class="grid-item">14</div>
-                  <div class="grid-item">15</div>
-                  <div class="grid-item highlight-alt">16</div>
-                  <div class="grid-item">17</div>
-                  <div class="grid-item">18</div>
-                  <div class="grid-item">19</div>
-                  <div class="grid-item highlight-alt">20</div>
-                  <div class="grid-item">21</div>
-                  <div class="grid-item">22</div>
-                  <div class="grid-item">23</div>
-                  <div class="grid-item highlight-alt">24</div>
-                  <div class="grid-item">25</div>
-                  <div class="grid-item">26</div>
-                  <div class="grid-item">27</div>
-                  <div class="grid-item highlight-alt">28</div>
-                  <div class="grid-item">29</div>
-                  <div class="grid-item">30</div>
-                  <div class="grid-item">31</div>
-                  <div class="grid-item highlight-alt">32</div>
-                  <div class="grid-item">33</div>
-                  <div class="grid-item">34</div>
-                  <div class="grid-item">35</div>
-                  <div class="grid-item highlight-alt">36</div>
-                  <div class="grid-item">37</div>
-                  <div class="grid-item">38</div>
-                  <div class="grid-item">39</div>
-                  <div class="grid-item highlight-alt">40</div>
-                  <div class="grid-item">41</div>
-                  <div class="grid-item">42</div>
-                  <div class="grid-item">43</div>
-                  <div class="grid-item highlight-alt">44</div>
-                  <div class="grid-item">45</div>
-                  <div class="grid-item">46</div>
-                  <div class="grid-item">47</div>
-                  <div class="grid-item highlight-alt">48</div>
-                  <div class="grid-item">49</div>
-                  <div class="grid-item">50</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="tip-box mt-4">
-              <strong>👀 ¿Notaste el patrón?</strong> Los múltiplos aparecen a
-              intervalos regulares. Los de 3 cada 3 números, los de 4 cada 4
-              números. ¡Esto nos ayuda a identificarlos rápidamente!
-            </div>
-          </div>
-        </section>
-
-        <!-- Patrones de Múltiplos -->
-        <section id="patrones" class="mb-5">
-          <div class="custom-card">
-            <h2 class="section-title">
-              🔮 Patrones Especiales en los Múltiplos
-            </h2>
-
-            <div class="row g-4">
-              <div class="col-md-6">
-                <div class="concept-box">
-                  <h5 class="text-white">🔢 Múltiplos de 2 (números pares)</h5>
-                  <p class="text-white">
-                    Todos los múltiplos de 2 terminan en: 0, 2, 4, 6 u 8
-                  </p>
-                  <div class="calculation-step bg-white">
-                    Ejemplos: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24...
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="example-box">
-                  <h5 class="text-white">5️⃣ Múltiplos de 5</h5>
-                  <p class="text-white">
-                    Todos los múltiplos de 5 terminan en: 0 o 5
-                  </p>
-                  <div class="calculation-step bg-white">
-                    Ejemplos: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60...
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="mcm-box">
-                  <h5 class="text-white">🔟 Múltiplos de 10</h5>
-                  <p class="text-white">
-                    Todos los múltiplos de 10 terminan en: 0
-                  </p>
-                  <div class="calculation-step bg-white">
-                    Ejemplos: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110,
-                    120...
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="concept-box">
-                  <h5 class="text-white">3️⃣ Múltiplos de 3</h5>
-                  <p class="text-white">
-                    La suma de sus dígitos es múltiplo de 3
-                  </p>
-                  <div class="calculation-step bg-white">
-                    Ejemplo: 27 → 2+7=9 (9 es múltiplo de 3) ✓<br />
-                    Ejemplo: 123 → 1+2+3=6 (6 es múltiplo de 3) ✓
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="example-box">
-                  <h5 class="text-white">9️⃣ Múltiplos de 9</h5>
-                  <p class="text-white">
-                    La suma de sus dígitos es múltiplo de 9
-                  </p>
-                  <div class="calculation-step bg-white">
-                    Ejemplo: 36 → 3+6=9 ✓<br />
-                    Ejemplo: 108 → 1+0+8=9 ✓<br />
-                    Ejemplo: 234 → 2+3+4=9 ✓
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="mcm-box">
-                  <h5 class="text-white">6️⃣ Múltiplos de 6</h5>
-                  <p class="text-white">
-                    Son pares Y la suma de dígitos es múltiplo de 3
-                  </p>
-                  <div class="calculation-step bg-white">
-                    Ejemplo: 24 → par ✓ y 2+4=6 (múltiplo de 3) ✓<br />
-                    Ejemplo: 42 → par ✓ y 4+2=6 (múltiplo de 3) ✓
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Propiedades -->
-        <section id="propiedades" class="mb-5">
-          <div class="custom-card">
-            <h2 class="section-title">
-              ✨ Propiedades Importantes de los Múltiplos
-            </h2>
-
-            <div class="row g-3">
-              <div class="col-md-6">
-                <div class="property-card">
-                  <h5 class="text-white">
-                    1️⃣ Todo número es múltiplo de sí mismo
-                  </h5>
-                  <p class="mb-0 text-white">
-                    <strong>Ejemplo:</strong> 8 es múltiplo de 8 porque 8 × 1 =
-                    8
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="property-card">
-                  <h5 class="text-white">2️⃣ Todo número es múltiplo de 1</h5>
-                  <p class="mb-0 text-white">
-                    <strong>Ejemplo:</strong> Cualquier número × 1 = ese número
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="property-card">
-                  <h5 class="text-white">
-                    3️⃣ El cero es múltiplo de todos los números
-                  </h5>
-                  <p class="mb-0 text-white">
-                    <strong>Ejemplo:</strong> Cualquier número × 0 = 0
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="property-card">
-                  <h5 class="text-white">4️⃣ Los múltiplos son infinitos</h5>
-                  <p class="mb-0 text-white">
-                    Siempre puedes multiplicar por un número más grande
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="property-card">
-                  <h5 class="text-white">5️⃣ Suma de múltiplos</h5>
-                  <p class="mb-0 text-white">
-                    La suma de dos múltiplos de un número es también múltiplo<br />
-                    <strong>Ejemplo:</strong> 6+12=18 (todos son múltiplos de 3)
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="property-card">
-                  <h5 class="text-white">6️⃣ Resta de múltiplos</h5>
-                  <p class="mb-0 text-white">
-                    La resta de dos múltiplos de un número es también
-                    múltiplo<br />
-                    <strong>Ejemplo:</strong> 20-10=10 (todos son múltiplos de
-                    5)
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Diferencia entre Múltiplos y Divisores -->
-        <section id="diferencia" class="mb-5">
-          <div class="custom-card">
-            <h2 class="section-title">⚖️ Múltiplos vs Divisores</h2>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="concept-box">
-                  <h4 class="text-white">🔼 Múltiplos</h4>
-                  <p class="text-white">Son números MAYORES o iguales</p>
-                  <p class="text-white">
-                    <strong>Se obtienen multiplicando</strong>
-                  </p>
-                  <div class="calculation-step bg-white">
-                    Múltiplos de 4:<br />
-                    4, 8, 12, 16, 20, 24, 28, 32...
-                  </div>
-                  <p class="text-white mt-3">📈 Van hacia arriba (crecen)</p>
-                  <p class="text-white">♾️ Son infinitos</p>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="example-box">
-                  <h4 class="text-white">🔽 Divisores</h4>
-                  <p class="text-white">Son números MENORES o iguales</p>
-                  <p class="text-white">
-                    <strong>Se obtienen dividiendo</strong>
-                  </p>
-                  <div class="calculation-step bg-white">
-                    Divisores de 12:<br />
-                    1, 2, 3, 4, 6, 12
-                  </div>
-                  <p class="text-white mt-3">📉 Van hacia abajo (decrecen)</p>
-                  <p class="text-white">🔢 Son limitados (finitos)</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="tip-box mt-4">
-              <strong>💡 Recuerda:</strong> Los múltiplos son como "hijos" del
-              número (van hacia arriba), mientras que los divisores son como
-              "padres" del número (van hacia abajo).
-            </div>
-          </div>
-        </section>
-
-        <!-- Aplicaciones en la Vida Real -->
-        <section id="aplicaciones" class="mb-5">
-          <div class="custom-card">
-            <h2 class="section-title">🌍 Múltiplos en la Vida Real</h2>
-
-            <div class="row g-4">
-              <div class="col-md-4">
-                <div class="concept-box text-center">
-                  <div class="emoji-large">🛒</div>
-                  <h5 class="text-white">En el Supermercado</h5>
-                  <p class="text-white">
-                    Los productos vienen en paquetes. Si compras 3 paquetes de 6
-                    galletas, tienes 18 galletas (múltiplo de 6).
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="example-box text-center">
-                  <div class="emoji-large">🎵</div>
-                  <h5 class="text-white">Música y Ritmo</h5>
-                  <p class="text-white">
-                    En música, los compases se repiten en múltiplos de tiempos
-                    (4/4, 3/4, etc.).
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="mcm-box text-center">
-                  <div class="emoji-large">⏰</div>
-                  <h5 class="text-white">Horarios</h5>
-                  <p class="text-white">
-                    Los relojes marcan los minutos en múltiplos de 5 (5, 10, 15,
-                    20...).
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="tip-box">
-                  <h6>🚌 Ejemplo: Autobuses</h6>
-                  <p>
-                    Un autobús pasa cada 15 minutos. ¿En qué minutos pasará?
-                  </p>
-                  <p class="mb-0">
-                    <strong>Respuesta:</strong> En los minutos 15, 30, 45, 60
-                    (múltiplos de 15)
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="tip-box">
-                  <h6>💰 Ejemplo: Dinero</h6>
-                  <p>
-                    Si ahorras $20 cada semana, ¿cuánto tendrás después de
-                    varias semanas?
-                  </p>
-                  <p class="mb-0">
-                    <strong>Respuesta:</strong> Tendrás múltiplos de 20: $20,
-                    $40, $60, $80...
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="tip-box">
-                  <h6>🎂 Ejemplo: Fiestas</h6>
-                  <p>
-                    Si pones 8 sillas en cada mesa, ¿cuántas sillas necesitas
-                    para varias mesas?
-                  </p>
-                  <p class="mb-0">
-                    <strong>Respuesta:</strong> Necesitas múltiplos de 8: 8, 16,
-                    24, 32, 40...
-                  </p>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="tip-box">
-                  <h6>📅 Ejemplo: Calendario</h6>
-                  <p>
-                    Los días de la semana se repiten cada 7 días (múltiplos de
-                    7).
-                  </p>
-                  <p class="mb-0">
-                    <strong>Ejemplo:</strong> Si hoy es lunes, en 7, 14, 21 días
-                    también será lunes.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- SECCIÓN DE EJERCICIOS -->
-        <section id="ejercicios" class="mb-5">
-          <div class="custom-card">
-            <h2 class="section-title text-center">📝 Ejercicios Prácticos</h2>
-            <p class="text-center lead">
-              ¡Pon a prueba tus conocimientos! Resuelve todos los ejercicios.
+      <section id="introduccion" class="mb-5">
+        <div class="custom-card">
+          <div class="text-center emoji-large">🔢</div>
+          <h2 class="section-title text-center">Múltiplos de un Número</h2>
+          <div class="definition-highlight">
+            <p class="mb-0">
+              ¡Bienvenido al fascinante mundo de los múltiplos! Los múltiplos son uno de los conceptos más importantes
+              en matemáticas y están presentes en nuestra vida diaria: cuando contamos dinero, cuando organizamos
+              objetos
+              en grupos, cuando calculamos tiempo, y mucho más. En esta lección aprenderás todo sobre ellos. 🎯
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Ejercicio 1 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">
-              Ejercicio 1: Identificar Múltiplos Básicos
-            </h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>Escribe los primeros 10 múltiplos de 5:</h5>
+      <section id="concepto" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">📖 ¿Qué son los Múltiplos?</h2>
+
+          <div class="concept-box">
+            <h4 class="text-white">💡 Definición</h4>
+            <p class="text-white">
+              <strong>Es el producto de dicho número por cualquier número entero.</strong>
+            </p>
+            <p class="text-white mb-2">
+              <strong>Ejemplos:</strong><br>
+              15 × 1 = 15<br>
+              15 × 2 = 30<br>
+              15 × 9 = 135
+            </p>
+            <p class="text-white mb-2">
+              15, 30 y 135 son múltiplos de 15.<br>
+              Así mismo, 30 es múltiplo de 2 y 135 es múltiplo de 9.
+            </p>
+            <p class="mb-0 text-white" style="font-size: 0.9em; font-style: italic; opacity: 0.9;">
+              (Ocádiz López, Luis. 2015. Aritmética Básica y Álgebra Elemental. Palibrio, pág. 6)
+            </p>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="tip-box">
+                <strong id="ejemplo-cajas">🤔 Ejemplo ilustrativo:</strong><br>
+                <span class="ejemplo-texto"></span>
               </div>
-              <div class="options">
-                <button class="option-btn">
-                  5, 10, 15, 20, 25, 30, 35, 40, 45, 50
-                </button>
-                <button class="option-btn">5, 10, 15, 25, 30, 40, 45</button>
-                <button class="option-btn">
-                  5, 15, 25, 35, 45, 55, 65, 75, 85, 95
-                </button>
-                <button class="option-btn">
-                  10, 20, 30, 40, 50, 60, 70, 80, 90, 100
-                </button>
+            </div>
+            <div class="col-md-6">
+              <div class="tip-box">
+                <strong>⭐ ¿Cómo saber si un número es múltiplo de otro?</strong><br><br>
+                <strong>Si la división es exacta →</strong> el número es múltiplo.<br>
+                <strong>Si la división es inexacta →</strong> no es múltiplo.<br><br>
+                <strong>Ejemplo:</strong><br>
+                ¿Es 15 múltiplo de 3 y de 6?<br>
+                15 ÷ 3 = 5 → exacta → 15 es múltiplo de 3.<br>
+                15 ÷ 6 = 2.5 → inexacta → 15 no es múltiplo de 6.<br><br>
+                <em style="font-size: 0.85em;">(IGER. Matemática 1.º Básico, Semana 6, págs. 98-102)</em>
               </div>
             </div>
           </div>
-        </section>
 
-        <!-- Ejercicio 2 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 2: Múltiplos de 7</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>¿Cuáles de los siguientes números son múltiplos de 7?</h5>
-                <p class="text-muted">Números: 14, 21, 30, 35, 42, 50, 56</p>
-              </div>
-              <div class="options">
-                <button class="option-btn">14, 21, 35, 42, 56</button>
-                <button class="option-btn">14, 30, 35, 50</button>
-                <button class="option-btn">21, 30, 42, 56</button>
-                <button class="option-btn">Todos son múltiplos de 7</button>
-              </div>
-            </div>
+          <div class="mt-4" id="ejemplos-basicos">
+            <h5>Ejemplos básicos de múltiplos:</h5>
+            <div class="row ejemplo-multiplos-container"></div>
           </div>
-        </section>
-
-        <!-- Ejercicio 3 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 3: Completar la Secuencia</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>Completa la secuencia de múltiplos de 8:</h5>
-                <p class="lead">8, 16, ___, 32, ___, 48, ___, 64</p>
-              </div>
-              <div class="options">
-                <button class="option-btn">24, 40, 56</button>
-                <button class="option-btn">20, 36, 52</button>
-                <button class="option-btn">24, 36, 56</button>
-                <button class="option-btn">22, 38, 54</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 4 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 4: Reconocer Patrones</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>¿Cuál de estos números NO es múltiplo de 3?</h5>
-              </div>
-              <div class="options">
-                <button class="option-btn">27</button>
-                <button class="option-btn">36</button>
-                <button class="option-btn">43</button>
-                <button class="option-btn">54</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 5 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 5: Múltiplos de 9</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>Escribe los múltiplos de 9 que están entre 20 y 70:</h5>
-              </div>
-              <div class="options">
-                <button class="option-btn">27, 36, 45, 54, 63</button>
-                <button class="option-btn">18, 27, 36, 45, 54, 63, 72</button>
-                <button class="option-btn">27, 36, 45, 54</button>
-                <button class="option-btn">21, 30, 39, 48, 57, 66</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 6 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 6: Números Pares</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>Los números pares son múltiplos de:</h5>
-              </div>
-              <div class="options">
-                <button class="option-btn">2</button>
-                <button class="option-btn">5</button>
-                <button class="option-btn">10</button>
-                <button class="option-btn">3</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 7 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 7: Problema de Aplicación</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>
-                  María tiene cajas con 6 chocolates cada una. Si tiene 8 cajas,
-                  ¿cuántos chocolates tiene en total?
-                </h5>
-              </div>
-              <div class="options">
-                <button class="option-btn">42 chocolates</button>
-                <button class="option-btn">48 chocolates</button>
-                <button class="option-btn">54 chocolates</button>
-                <button class="option-btn">36 chocolates</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 8 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 8: Múltiplos de 10</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>¿Cuál es el séptimo múltiplo de 10?</h5>
-              </div>
-              <div class="options">
-                <button class="option-btn">60</button>
-                <button class="option-btn">70</button>
-                <button class="option-btn">80</button>
-                <button class="option-btn">50</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 9 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">
-              Ejercicio 9: Identificar Múltiplos de 4
-            </h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>¿Cuántos múltiplos de 4 hay entre 10 y 50?</h5>
-              </div>
-              <div class="options">
-                <button class="option-btn">8 múltiplos</button>
-                <button class="option-btn">10 múltiplos</button>
-                <button class="option-btn">9 múltiplos</button>
-                <button class="option-btn">11 múltiplos</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 10 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 10: Tabla de Multiplicar</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>Si 12 es múltiplo de 3, ¿qué operación lo demuestra?</h5>
-              </div>
-              <div class="options">
-                <button class="option-btn">3 × 4 = 12</button>
-                <button class="option-btn">12 ÷ 3 = 4</button>
-                <button class="option-btn">3 + 9 = 12</button>
-                <button class="option-btn">12 - 3 = 9</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 11 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 11: Suma de Múltiplos</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>Si sumas dos múltiplos de 5, ¿qué obtienes?</h5>
-                <p class="text-muted">Ejemplo: 15 + 20 = ?</p>
-              </div>
-              <div class="options">
-                <button class="option-btn">Otro múltiplo de 5</button>
-                <button class="option-btn">Un número impar</button>
-                <button class="option-btn">Un divisor de 5</button>
-                <button class="option-btn">Siempre el número 35</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 12 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 12: Múltiplos de 6</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>¿Cuál de estos números es múltiplo de 6?</h5>
-              </div>
-              <div class="options">
-                <button class="option-btn">32</button>
-                <button class="option-btn">42</button>
-                <button class="option-btn">46</button>
-                <button class="option-btn">52</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 13 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 13: Problema de Tiempo</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>
-                  Un reloj da campanadas cada 12 horas. ¿A qué horas dará
-                  campanadas en un día?
-                </h5>
-                <p class="text-muted">(Considerando un día de 24 horas)</p>
-              </div>
-              <div class="options">
-                <button class="option-btn">12:00 PM y 12:00 AM</button>
-                <button class="option-btn">Solo a las 12:00 PM</button>
-                <button class="option-btn">Cada hora</button>
-                <button class="option-btn">6:00 AM y 6:00 PM</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 14 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 14: Múltiplos Grandes</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>¿Cuál es el múltiplo de 7 más cercano a 100?</h5>
-              </div>
-              <div class="options">
-                <button class="option-btn">91</button>
-                <button class="option-btn">98</button>
-                <button class="option-btn">105</button>
-                <button class="option-btn">100</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 15 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 15: Patrón de Múltiplos</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>¿Qué patrón siguen los múltiplos de 5?</h5>
-              </div>
-              <div class="options">
-                <button class="option-btn">Terminan en 0 o 5</button>
-                <button class="option-btn">Terminan en números pares</button>
-                <button class="option-btn">Son todos números impares</button>
-                <button class="option-btn">Terminan en 5 solamente</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 16 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 16: Problema de Dinero</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>
-                  Si ahorras $15 cada semana, ¿cuánto tendrás después de 6
-                  semanas?
-                </h5>
-              </div>
-              <div class="options">
-                <button class="option-btn">$75</button>
-                <button class="option-btn">$90</button>
-                <button class="option-btn">$80</button>
-                <button class="option-btn">$105</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 17 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 17: Múltiplos de 11</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>Escribe los primeros 5 múltiplos de 11:</h5>
-              </div>
-              <div class="options">
-                <button class="option-btn">11, 22, 33, 44, 55</button>
-                <button class="option-btn">11, 21, 31, 41, 51</button>
-                <button class="option-btn">10, 20, 30, 40, 50</button>
-                <button class="option-btn">11, 23, 35, 47, 59</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 18 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 18: Comparación</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>¿Cuál número es múltiplo tanto de 2 como de 3?</h5>
-              </div>
-              <div class="options">
-                <button class="option-btn">18</button>
-                <button class="option-btn">20</button>
-                <button class="option-btn">15</button>
-                <button class="option-btn">14</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 19 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 19: Problema de Frutas</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>
-                  En una tienda, las manzanas se venden en bolsas de 8. Si
-                  compras 7 bolsas, ¿cuántas manzanas tienes?
-                </h5>
-              </div>
-              <div class="options">
-                <button class="option-btn">48 manzanas</button>
-                <button class="option-btn">56 manzanas</button>
-                <button class="option-btn">64 manzanas</button>
-                <button class="option-btn">52 manzanas</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Ejercicio 20 -->
-        <section class="mb-5">
-          <div class="custom-card">
-            <h3 class="section-title">Ejercicio 20: Desafío Final</h3>
-            <div class="exercise-card">
-              <div class="exercise-question">
-                <h5>¿Cuántos múltiplos de 3 hay entre 1 y 30?</h5>
-              </div>
-              <div class="options">
-                <button class="option-btn">8 múltiplos</button>
-                <button class="option-btn">9 múltiplos</button>
-                <button class="option-btn">10 múltiplos</button>
-                <button class="option-btn">11 múltiplos</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Resumen Final -->
-        <section id="resumen" class="mb-5">
-          <div class="custom-card">
-            <h2 class="section-title text-center">
-              🎓 ¡Felicidades! Has completado todos los ejercicios
-            </h2>
-
-            <div class="definition-highlight text-center">
-              <div class="emoji-large">🌟</div>
-              <h4>Resumen de lo que aprendiste:</h4>
-              <ul
-                class="text-start mt-4"
-                style="max-width: 600px; margin: 0 auto"
-              >
-                <li>
-                  ✅ Los múltiplos se obtienen multiplicando un número por 1, 2,
-                  3, 4...
-                </li>
-                <li>✅ Todo número tiene infinitos múltiplos</li>
-                <li>
-                  ✅ Los múltiplos están relacionados con las tablas de
-                  multiplicar
-                </li>
-                <li>
-                  ✅ Existen patrones especiales para identificar múltiplos
-                </li>
-                <li>
-                  ✅ Los múltiplos son útiles en situaciones de la vida diaria
-                </li>
-                <li>✅ La suma y resta de múltiplos produce otro múltiplo</li>
-              </ul>
-            </div>
-
-            <div class="text-center mt-4">
-              <div class="emoji-large">🎉</div>
-              <h4>¡Excelente trabajo!</h4>
-              <p class="lead">
-                Ahora dominas el concepto de múltiplos de un número
-              </p>
-            </div>
-          </div>
-        </section>
+        </div>
+      </section>
       </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <p>
-          &copy; 2025 Matemáticas Educativas. Todos los derechos reservados.
-        </p>
+      <!-- PARTE 2: CONCEPTOS Y EJEMPLOS -->
+      <div id="parte-2" class="parte-contenido">
+
+      <section id="como-encontrar" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">🔍 Múltiplos de un Número Natural</h2>
+
+          <div class="concept-box">
+            <p class="text-white">Los múltiplos de un número natural son los números naturales que resultan de multiplicar ese número por otros números naturales.</p>
+            <p class="text-white">Decimos que un número es múltiplo de otro si lo contiene un número entero de veces.</p>
+            <p class="text-white">El conjunto de múltiplos se nombra con la letra M mayúscula y entre paréntesis se escribe el número del cual enumeramos los múltiplos.</p>
+            <p class="text-white mb-2">
+              • El número 0 solamente tiene un múltiplo, que es el 0.<br>
+              • Los demás números naturales tienen infinito número de múltiplos.<br>
+              • El número 0 es múltiplo de todos los números.<br>
+              • Todos los números son múltiplos de 1.
+            </p>
+            <p class="mb-0 text-white" style="font-size: 0.9em; font-style: italic; opacity: 0.9;">
+              (Barbero Corral, Eduardo. Múltiplos y divisores - 1.º ESO. Proyecto EDAD, Red Educativa Digital Descartes, pág. 4)
+            </p>
+          </div>
+
+          <div class="concept-box mt-4">
+            <h5 class="text-white">⚡ Propiedades de los múltiplos:</h5>
+            <ul class="text-white mb-2">
+              <li><strong>El cero es el primer múltiplo de todo número natural.</strong><br>
+              Ejemplos: 0 = 3 × 0; 0 = 15 × 0.</li>
+              <li><strong>Todo número, distinto de cero, es múltiplo de sí mismo y de 1.</strong><br>
+              Ejemplos: 3 = 1 × 3; 723 = 1 × 723.</li>
+              <li><strong>El resultado de multiplicar dos o más números es múltiplo de dichos números.</strong><br>
+              Ejemplo: 42 = 2 × 3 × 7 → 42 es múltiplo de 2, 3 y 7.</li>
+              <li><strong>La suma de dos múltiplos de un número es también múltiplo de ese número.</strong><br>
+              Ejemplo: 21 y 35 son múltiplos de 7 → 21 + 35 = 56 → 56 es múltiplo de 7.</li>
+            </ul>
+            <p class="mb-0 text-white" style="font-size: 0.9em; font-style: italic; opacity: 0.9;">
+              (IGER - Instituto Guatemalteco de Educación Radiofónica. Matemática 1.º Básico, Semana 6, págs. 98-102)
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="tabla-multiplicar" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">✖️ Relación con las Tablas de Multiplicar</h2>
+
+          <div class="concept-box">
+            <p class="text-white">
+              <strong>¡Dato importante!</strong> Los múltiplos de un número se obtienen multiplicando ese número por los números naturales: 0, 1, 2, 3, 4…
+            </p>
+            <p class="text-white mb-2">
+              Durante varias semanas, hemos practicado las tablas de multiplicar. Los resultados que se memorizan son ejemplos de múltiplos. Si conoces bien tus tablas, ¡ya sabes encontrar múltiplos!
+            </p>
+            <p class="mb-0 text-white" style="font-size: 0.9em; font-style: italic; opacity: 0.9;">
+              (Equipo Editorial Santillana. Matemáticas Primaria - Múltiplos y divisores, Unidad 4, pág. 58)
+            </p>
+          </div>
+
+          <div class="row mt-4" id="tablas-multiplicar"></div>
+        </div>
+      </section>
+
+      <section id="representacion" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">🎨 Representación Visual de Múltiplos</h2>
+
+          <p class="lead">Observa cómo se distribuyen los múltiplos en una cuadrícula numérica del 1 al 50:</p>
+
+          <div class="row mt-4" id="grids-visuales"></div>
+
+          <div class="tip-box mt-4">
+            <strong>👀 ¿Notaste el patrón?</strong> Los múltiplos aparecen a intervalos regulares.
+            ¡Esto nos ayuda a identificarlos rápidamente!
+          </div>
+        </div>
+      </section>
+
+      <section id="patrones" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">🔮 Patrones Especiales en los Múltiplos</h2>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="concept-box">
+                <h5 class="text-white">🔢 Múltiplos de 2 (números pares)</h5>
+                <p class="text-white">Todos los múltiplos de 2 terminan en: 0, 2, 4, 6 u 8</p>
+                <div class="calculation-step bg-white">
+                  Ejemplos: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24...
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="example-box">
+                <h5 class="text-white">5️⃣ Múltiplos de 5</h5>
+                <p class="text-white">Todos los múltiplos de 5 terminan en: 0 o 5</p>
+                <div class="calculation-step bg-white">
+                  Ejemplos: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60...
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="mcm-box">
+                <h5 class="text-white">🔟 Múltiplos de 10</h5>
+                <p class="text-white">Todos los múltiplos de 10 terminan en: 0</p>
+                <div class="calculation-step bg-white">
+                  Ejemplos: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120...
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="concept-box">
+                <h5 class="text-white">3️⃣ Múltiplos de 3</h5>
+                <p class="text-white">La suma de sus dígitos es múltiplo de 3</p>
+                <div class="calculation-step bg-white">
+                  Ejemplo: 27 → 2+7=9 (9 es múltiplo de 3) ✓<br>
+                  Ejemplo: 123 → 1+2+3=6 (6 es múltiplo de 3) ✓
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="example-box">
+                <h5 class="text-white">9️⃣ Múltiplos de 9</h5>
+                <p class="text-white">La suma de sus dígitos es múltiplo de 9</p>
+                <div class="calculation-step bg-white">
+                  Ejemplo: 36 → 3+6=9 ✓<br>
+                  Ejemplo: 108 → 1+0+8=9 ✓
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="mcm-box">
+                <h5 class="text-white">6️⃣ Múltiplos de 6</h5>
+                <p class="text-white">Son pares Y la suma de dígitos es múltiplo de 3</p>
+                <div class="calculation-step bg-white">
+                  Ejemplo: 24 → par ✓ y 2+4=6 (múltiplo de 3) ✓
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="propiedades" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">✨ Propiedades Importantes de los Múltiplos</h2>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="property-card">
+                <h5 class="text-white">1️⃣ Todo número es múltiplo de sí mismo <sup><a href="#ref3" style="color: #fff; text-decoration: none;">[3]</a></sup></h5>
+                <p class="mb-0 text-white">
+                  <strong>Ejemplo:</strong> 8 es múltiplo de 8 porque 8 × 1 = 8
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="property-card">
+                <h5 class="text-white">2️⃣ Todo número es múltiplo de 1 <sup><a href="#ref3" style="color: #fff; text-decoration: none;">[3]</a></sup></h5>
+                <p class="mb-0 text-white">
+                  <strong>Ejemplo:</strong> Cualquier número × 1 = ese número
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="property-card">
+                <h5 class="text-white">3️⃣ El cero es múltiplo de todos los números <sup><a href="#ref3" style="color: #fff; text-decoration: none;">[3]</a></sup></h5>
+                <p class="mb-0 text-white">
+                  <strong>Ejemplo:</strong> Cualquier número × 0 = 0
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="property-card">
+                <h5 class="text-white">4️⃣ Los múltiplos son infinitos <sup><a href="#ref3" style="color: #fff; text-decoration: none;">[3]</a></sup></h5>
+                <p class="mb-0 text-white">
+                  Siempre puedes multiplicar por un número más grande
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="property-card">
+                <h5 class="text-white">5️⃣ Suma de múltiplos <sup><a href="#ref3" style="color: #fff; text-decoration: none;">[3]</a></sup></h5>
+                <p class="mb-0 text-white">
+                  La suma de dos múltiplos de un número es también múltiplo<br>
+                  <strong>Ejemplo:</strong> 6+12=18 (todos son múltiplos de 3)
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="property-card">
+                <h5 class="text-white">6️⃣ Resta de múltiplos <sup><a href="#ref3" style="color: #fff; text-decoration: none;">[3]</a></sup></h5>
+                <p class="mb-0 text-white">
+                  La resta de dos múltiplos de un número es también múltiplo<br>
+                  <strong>Ejemplo:</strong> 20-10=10 (todos son múltiplos de 5)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="diferencia" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">⚖️ Múltiplos vs Divisores</h2>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="concept-box">
+                <h4 class="text-white">🔼 Múltiplos <sup><a href="#ref1" style="color: #fff; text-decoration: none;">[1]</a></sup></h4>
+                <p class="text-white">Son números MAYORES o iguales</p>
+                <p class="text-white"><strong>Se obtienen multiplicando</strong></p>
+                <div class="calculation-step bg-white">
+                  Múltiplos de 4:<br>
+                  4, 8, 12, 16, 20, 24, 28, 32...
+                </div>
+                <p class="text-white mt-3">📈 Van hacia arriba (crecen)</p>
+                <p class="text-white">♾️ Son infinitos</p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="example-box">
+                <h4 class="text-white">🔽 Divisores <sup><a href="#ref1" style="color: #fff; text-decoration: none;">[1]</a></sup></h4>
+                <p class="text-white">Son números MENORES o iguales</p>
+                <p class="text-white"><strong>Se obtienen dividiendo</strong></p>
+                <div class="calculation-step bg-white">
+                  Divisores de 12:<br>
+                  1, 2, 3, 4, 6, 12
+                </div>
+                <p class="text-white mt-3">📉 Van hacia abajo (decrecen)</p>
+                <p class="text-white">🔢 Son limitados (finitos)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="aplicaciones" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title">🌍 Múltiplos en la Vida Real</h2>
+          <div class="row g-4" id="aplicaciones-vida-real"></div>
+        </div>
+      </section>
       </div>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/app.js"></script>
-    <script src="../js/multiplos.js"></script>
-    <script src="../js/sw-register.js"></script>
-  </body>
+      <!-- PARTE 3: EVALUACIÓN -->
+      <div id="parte-3" class="parte-contenido">
+
+      <section id="ejercicios" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title text-center">📝 Evaluación de Conocimientos</h2>
+          <p class="text-center lead">¡Pon a prueba tus conocimientos! Responde todos los ejercicios.</p>
+        </div>
+      </section>
+
+      <div id="ejercicios-container"></div>
+
+      <section id="resumen" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title text-center">🎓 ¡Felicidades! Has completado todos los ejercicios</h2>
+
+          <div class="definition-highlight text-center">
+            <div class="emoji-large">🌟</div>
+            <h4>Resumen de lo que aprendiste:</h4>
+            <ul class="text-start mt-4" style="max-width: 600px; margin: 0 auto;">
+              <li>✅ Los múltiplos se obtienen multiplicando un número por 1, 2, 3, 4...</li>
+              <li>✅ Todo número tiene infinitos múltiplos</li>
+              <li>✅ Los múltiplos están relacionados con las tablas de multiplicar</li>
+              <li>✅ Existen patrones especiales para identificar múltiplos</li>
+              <li>✅ Los múltiplos son útiles en situaciones de la vida diaria</li>
+              <li>✅ La suma y resta de múltiplos produce otro múltiplo</li>
+            </ul>
+          </div>
+
+          <div class="text-center mt-4">
+            <div class="emoji-large">🎉</div>
+            <h4>¡Excelente trabajo!</h4>
+            <p class="lead">Ahora dominas el concepto de múltiplos de un número</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="referencias" class="mb-5">
+        <div class="custom-card">
+          <h2 class="section-title text-center">📚 Referencias Bibliográficas</h2>
+          
+          <div class="reference-box mt-4">
+            <p id="ref1"><strong>Instituto Guatemalteco de Educación Radiofónica (IGER)</strong></p>
+            <p><em>Matemática 1.º Básico, Semana 6</em><br>
+            Páginas 98-102<br>
+            Programa: El Maestro en Casa<br>
+            Editorial: Ediciones ASEC<br>
+            Autoría: Institucional<br>
+            🔗 <a href="https://elmaestroencasa.edu.gt/wp-content/uploads/2020/03/IGER-1.%C2%BA-Ba%CC%81sico-Matema%CC%81tica-semana-6.pdf" target="_blank">Ver material completo</a></p>
+          </div>
+
+          <div class="reference-box mt-3">
+            <p id="ref2"><strong>Ocádiz López, Luis</strong></p>
+            <p><em>Aritmética Básica y Álgebra Elemental</em><br>
+            Editorial: Palibrio<br>
+            Página: 6<br>
+            Año: 2015 (Fecha de Revisión: 15/12/2014)<br>
+            Copyright © 2004, 2015 por Luis Ocádiz López<br>
+            ISBN (Tapa Dura): 978-1-4633-7848-6<br>
+            ISBN (Tapa Blanda): 978-1-4633-7847-9<br>
+            ISBN (Libro Electrónico): 978-1-4633-7846-2<br>
+            Número de Control de la Biblioteca del Congreso de EE. UU.: 2014902369</p>
+          </div>
+
+          <div class="reference-box mt-3">
+            <p id="ref3"><strong>Barbero Corral, Eduardo</strong></p>
+            <p><em>Múltiplos y divisores</em> (1.º ESO)<br>
+            Página: 4<br>
+            Proyecto EDAD (Educación Digital con Descartes)<br>
+            Red Educativa Digital Descartes<br>
+            Iniciativa colectiva con recursos digitales interactivos para la enseñanza de las matemáticas<br>
+            🔗 <a href="https://proyectodescartes.org/EDAD/materiales_didacticos/EDAD_1eso_multiplos_y_divisores-JS/1quincena2.pdf" target="_blank">Ver PDF completo</a></p>
+          </div>
+
+          <div class="reference-box mt-3">
+            <p id="ref4"><strong>Equipo Editorial Santillana</strong></p>
+            <p><em>Matemáticas Primaria - Múltiplos y divisores</em> (Unidad 4)<br>
+            Página: 58<br>
+            Editorial: Santillana<br>
+            Proyecto curricular desarrollado por el equipo editorial bajo la dirección de Santillana<br>
+            🔗 <a href="https://back-edupack.santillana.es/file/repository/1152616_1a_unidad.pdf" target="_blank">Ver material completo</a></p>
+          </div>
+        </div>
+      </section>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Matemáticas Educativas. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/multiplos.js"></script>
+</body>
+
 </html>
