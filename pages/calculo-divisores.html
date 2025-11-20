@@ -1,90 +1,225 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cálculo de todos los divisores - Matemáticas Educativas</title>
-  <link rel="stylesheet" href="../css/styles-template.css" />
-  <link rel="icon" type="image/svg+xml" href="../images/icon-192x192.svg" />
-</head>
-<body>
-  <!-- Header / Navbar -->
-  <header class="header">
-    <div class="container header-content">
-      <h1 class="logo">📚 Matemáticas Educativas</h1>
-      <nav class="nav">
-        <a href="../index.html" class="back-btn">🏠 Dashboard</a>
-        <div class="dropdown">
-          <button class="dropbtn">Subtemas ▼</button>
-          <div class="dropdown-content">
-            <a href="#concepto">Concepto</a>
-            <a href="#ejemplo">Ejemplo</a>
-            <a href="#ejercicio">Ejercicio</a>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="main">
-    <section id="concepto" class="theory-section">
-      <div class="container">
-        <div class="content-card animate-fade">
-          <h2 class="page-title">Concepto</h2>
-          <p>
-            Para <strong>calcular todos los divisores</strong> de un número,
-            debes encontrar todos los números que dividen exactamente al número dado.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="ejemplo" class="interactive-section">
-      <div class="container">
-        <div class="content-card animate-fade">
-          <h2 class="page-title">Ejemplo</h2>
-          <p>Calcula todos los divisores de 20:</p>
-          <div class="calculation-steps">
-            <div class="step">20 ÷ 1 = 20 ✔️</div>
-            <div class="step">20 ÷ 2 = 10 ✔️</div>
-            <div class="step">20 ÷ 3 = 6.66 ❌</div>
-            <div class="step">20 ÷ 4 = 5 ✔️</div>
-            <div class="step">20 ÷ 5 = 4 ✔️</div>
-            <div class="step">20 ÷ 10 = 2 ✔️</div>
-            <div class="step">20 ÷ 20 = 1 ✔️</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="ejercicio" class="exercise-section">
-      <div class="container">
-        <div class="content-card animate-fade">
-          <h2 class="page-title">Ejercicio</h2>
-          <div class="exercise">
-            <div class="exercise-question">Encuentra todos los divisores de 24:</div>
-            <div class="options">
-              <div class="option">1, 2, 3, 4, 6, 8, 12, 24</div>
-              <div class="option">1, 2, 4, 6, 12</div>
-              <div class="option">1, 3, 6, 9, 12, 24</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Divisores de un Número - Matemáticas Educativas</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Aprende sobre divisores de un número de forma interactiva con ejercicios y calculadora." />
+    <meta name="theme-color" content="#2ecc71" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="MathEdu" />
+    <meta name="msapplication-TileColor" content="#2ecc71" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    
+    <!-- Links para PWA -->
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="manifest" href="../manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="../images/icon-192x192.svg" />
+    <link rel="apple-touch-icon" href="../images/icon-192x192.svg" />
+    
+    <!-- Preload -->
+    <link rel="preload" href="../js/calculo-divisores.js" as="script" />
+    <link rel="preload" href="../css/styles.css" as="style" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container header-content">
+        <h1 class="logo">📚 Matemáticas Educativas</h1>
+        <nav class="nav">
+          <a href="../index.html" class="back-btn">🏠 Dashboard</a>
+          <div class="dropdown">
+            <button class="dropbtn">Subtemas ▼</button>
+            <div class="dropdown-content">
+              <a href="#concepto">Concepto</a>
+              <a href="#ejemplo">Ejemplos</a>
+              <a href="#calculadora">Calculadora</a>
+              <a href="#ejercicio">Ejercicios</a>
+              <a href="#curiosidades">Curiosidades</a>
+              <a href="#referencias">Referencias</a>
             </div>
-            <div class="exercise-feedback"></div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+      <section class="page-header">
+        <div class="container">
+          <div class="page-title-section">
+            <h1 class="main-page-title">Divisores de un Número</h1>
           </div>
         </div>
+      </section>
+
+      <!-- Concepto -->
+      <section id="concepto" class="theory-section">
+        <div class="container">
+          <div class="content-card animate-fade">
+            <div class="concept-header">
+              <h2 class="page-title">Concepto</h2>
+              <button id="refreshExamples" class="refresh-btn" title="Generar nuevos ejemplos">
+                🔄 Nuevos Ejemplos
+              </button>
+            </div>
+            <div class="definition-box">
+              <h3>📘 Definición</h3>
+              <p>
+                Los <span class="concepto divisor">divisores de un número</span> son aquellos números enteros
+                que lo dividen de forma exacta, es decir, el residuo de la división es cero.
+                <span class="cita">(Baldor, 2016, p. 92)</span>
+              </p>
+              <p>
+                Si un número <em>a</em> es divisor de <em>b</em>, se cumple que
+                <strong>b ÷ a = número entero</strong>.  
+                <span class="cita">(Rosen, 2019, p. 133)</span>
+              </p>
+              <div class="example-box">
+                <strong>Ejemplo:</strong> Los divisores de 12 son 
+                <span class="concepto divisor">1, 2, 3, 4, 6 y 12</span>.
+                <span class="cita">(Burton, 2017, p. 58)</span>
+              </div>
+            </div>
+
+            <div class="properties-box">
+              <h3>🔍 Propiedades Importantes</h3>
+              <ul class="compact-list">
+                <li>Todo número natural tiene al menos dos divisores: 1 y él mismo. <span class="cita">(Baldor, 2016, p. 93)</span></li>
+                <li>Si un número tiene solo dos divisores, es <span class="concepto primo">número primo</span>. <span class="cita">(Rosen, 2019, p. 134)</span></li>
+                <li>Los divisores aparecen en <strong>pares complementarios</strong> (por ejemplo, en 12: 1×12, 2×6, 3×4). <span class="cita">(Burton, 2017, p. 61)</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ejemplo -->
+      <section id="ejemplo" class="interactive-section">
+        <div class="container">
+          <div class="content-card animate-fade">
+            <h2 class="page-title">Ejemplos Detallados</h2>
+            <div class="example-item">
+              <h4>Ejemplo 1: Divisores de 18</h4>
+              <p>Comprobamos los números del 1 al 18:</p>
+              <p>1, 2, 3, 6, 9, 18 → ✅ <strong>Son divisores</strong>.</p>
+            </div>
+
+            <div class="example-item">
+              <h4>Ejemplo 2: Divisores de 25</h4>
+              <p>1, 5, 25 → ✅ <strong>Son divisores</strong>.</p>
+            </div>
+
+            <div class="example-item">
+              <h4>Ejemplo 3: Divisores de 7</h4>
+              <p>1, 7 → Solo dos divisores → <span class="concepto primo">Es número primo</span>. <span class="cita">(Rosen, 2019, p. 137)</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Calculadora -->
+      <section id="calculadora" class="interactive-section">
+        <div class="container">
+          <div class="content-card animate-fade">
+            <h2 class="page-title">🧮 Calculadora de Divisores</h2>
+            <div class="calculator-section">
+              <div class="input-group">
+                <label for="numberInput">Ingresa un número:</label>
+                <input type="number" id="numberInput" min="1" max="10000" placeholder="Ej: 36" />
+                <button id="analyzeBtn" class="btn-primary">Calcular Divisores</button>
+              </div>
+
+              <div id="resultSection" class="result-section" style="display: none">
+                <div id="divisorsList" class="divisors-list"></div>
+                <div id="explanation" class="explanation"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ejercicios -->
+      <section id="ejercicio" class="exercise-section">
+        <div class="container">
+          <div class="content-card animate-fade">
+            <h2 class="page-title">🎯 Ejercicios Interactivos</h2>
+
+            <div class="dynamic-exercise-container">
+              <div class="exercise-header">
+                <div class="exercise-counter">Ejercicio <span id="currentExercise">1</span></div>
+                <div class="exercise-score">
+                  Aciertos: <span id="correctAnswers">0</span> / <span id="answeredQuestions">0</span>
+                </div>
+              </div>
+
+              <div id="exerciseContainer" class="exercise-container"></div>
+              <div id="exerciseFeedback" class="exercise-feedback hidden"></div>
+
+              <div class="exercise-buttons">
+                <button id="nextExerciseBtn" class="next-exercise-btn hidden">Siguiente Ejercicio →</button>
+                <button id="restartExerciseBtn" class="restart-exercise-btn">🔄 Reiniciar Puntuación</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Curiosidades -->
+      <section id="curiosidades" class="theory-section">
+        <div class="container">
+          <div class="content-card animate-fade">
+            <h2 class="page-title">🌟 Curiosidades y Datos Interesantes</h2>
+            <div class="dynamic-curiosity-container">
+              <div id="dynamicCuriosity" class="curiosity-card"></div>
+              <button id="refreshCuriosity" class="refresh-curiosity-btn">🔁 Nueva Curiosidad</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Referencias -->
+      <section id="referencias" class="references-section">
+        <div class="container">
+          <div class="content-card animate-fade">
+            <h2 class="page-title">📚 Referencias Bibliográficas</h2>
+            <ol class="reference-list">
+              <li><strong>Baldor, A. (2016).</strong> <em>Aritmética</em>. Grupo Editorial Patria.</li>
+              <li><strong>Rosen, K. H. (2019).</strong> <em>Matemáticas Discretas y sus Aplicaciones</em>. McGraw-Hill.</li>
+              <li><strong>Burton, D. M. (2017).</strong> <em>Elementary Number Theory</em>. McGraw-Hill.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Menú flotante -->
+    <div class="floating-menu" id="floatingMenu">
+      <div class="menu-toggle" onclick="toggleFloatingMenu()" title="Navegación rápida">
+        <span class="menu-icon">📱</span><span class="menu-text">Menú</span>
       </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Matemáticas Educativas. Todos los derechos reservados.</p>
+      <div class="menu-items" id="menuItems">
+        <a href="#concepto" class="menu-item" onclick="closeFloatingMenu()">📖 Concepto</a>
+        <a href="#ejemplo" class="menu-item" onclick="closeFloatingMenu()">📝 Ejemplos</a>
+        <a href="#calculadora" class="menu-item" onclick="closeFloatingMenu()">🧮 Calculadora</a>
+        <a href="#ejercicio" class="menu-item" onclick="closeFloatingMenu()">🎯 Ejercicios</a>
+        <a href="#curiosidades" class="menu-item" onclick="closeFloatingMenu()">🌟 Curiosidades</a>
+        <a href="#referencias" class="menu-item" onclick="closeFloatingMenu()">📚 Referencias</a>
+      </div>
     </div>
-  </footer>
 
-  <script src="../js/app.js"></script>
-  <script src="../js/calculo-divisores.js"></script>
-  <script src="../js/sw-register.js"></script>
-</body>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Matemáticas Educativas. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/calculo-divisores.js"></script>
+    <script src="../js/sw-register.js"></script>
+  </body>
 </html>
