@@ -181,15 +181,6 @@ body {
   margin: 1rem 0;
 }
 
-.property-card {
-  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-  color: white;
-  padding: 1.5rem;
-  border-radius: 10px;
-  margin: 0.5rem 0;
-  font-weight: 500;
-}
-
 .definition-highlight {
   background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
   padding: 1.5rem;
@@ -231,145 +222,45 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* (Estilos de Criterios.css) */
-.timeline-item-alt {
-    padding-left: 20px;
-    border-left: 3px solid #ffffff;
-    position: relative;
-    margin-left: 20px;
-    padding-bottom: 15px;
-    color: #ffffff;
-}
-.timeline-item-alt:last-child {
-    border-left: none;
-    padding-bottom: 0;
-}
-.timeline-item-alt h5 .badge-custom {
-    position: absolute;
-    left: -25px;
-    top: -5px;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    font-weight: bold;
-    border: 3px solid #ffffff;
-}
-.interactive-table {
-    width: 100%;
-    margin: 1rem 0;
-    border-collapse: separate;
-    border-spacing: 0;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-.interactive-table th {
-    background: var(--primary-color);
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    font-weight: bold;
-}
-.interactive-table td {
-    background: white;
-    padding: 1rem;
-    text-align: center;
-    border: 1px solid #dee2e6;
-    color: var(--dark-color);
-}
-
 /* ============================================
-   NUEVOS ESTILOS: SECCIÓN 1 (EJEMPLOS DINÁMICOS)
-   ============================================ */
-.dynamic-example-container {
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 8px;
-    padding: 1rem;
-}
-.example-content-box {
-    padding: 10px;
-    min-height: 50px;
-}
-.example-content-box span {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 1.1rem;
-}
-.example-content-box .ejemplo-si {
-    color: #155724; /* Verde */
-}
-.example-content-box .ejemplo-no {
-    color: #721c24; /* Rojo */
-}
-
-/* ============================================
-   NUEVOS ESTILOS: SECCIÓN 2 (VERIFICADOR)
-   ============================================ */
-.criterio-resultado-item {
-    display: flex;
-    align-items: center;
-    font-size: 1.1rem;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-.criterio-resultado-item.criterio-si {
-    background-color: #d4edda; /* Verde Bootstrap */
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-.criterio-resultado-item.criterio-no {
-    background-color: #f8d7da; /* Rojo Bootstrap */
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
-.criterio-resultado-item .emoji {
-    font-size: 1.5rem;
-    margin-right: 15px;
-}
-.criterio-resultado-item .explicacion {
-    font-style: italic;
-    font-size: 0.9em;
-    margin-left: auto;
-    padding-left: 15px;
-    text-align: right;
-}
-
-/* ============================================
-   NUEVOS ESTILOS: SECCIÓN 3 (EXAMEN)
+   ESTILOS ESPECÍFICOS PARA EL EXAMEN DE MCM
    ============================================ */
 
-#lista-examen-criterios {
+/* Contenedor de la lista de preguntas */
+#lista-examen {
     padding-left: 0;
-    list-style: none;
+    list-style: none; /* Quitamos los números por defecto */
 }
-#lista-examen-criterios li {
-    background-color: #f8f9fa;
+
+/* Cada item de la lista (pregunta) */
+#lista-examen li {
+    background-color: #f8f9fa; /* Un fondo gris claro */
     margin-bottom: 15px;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 10px; /* Bordes redondeados */
     border: 1px solid #e9ecef;
-    list-style-type: decimal;
-    list-style-position: inside;
+    list-style-type: decimal; /* Números de pregunta */
+    list-style-position: inside; /* Números dentro de la caja */
     font-weight: 500;
 }
-#lista-examen-criterios li > label {
+
+/* El texto de la pregunta (label) */
+#lista-examen li > label {
     display: block;
     font-size: 1.1em;
     font-weight: bold;
     margin-bottom: 10px;
     color: var(--dark-color);
 }
+
+/* Contenedor de los radio buttons */
 .opciones-examen {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 8px; /* Espacio entre opciones */
 }
+
+/* Cada opción (label) */
 .opcion-label {
     display: block;
     padding: 10px 15px;
@@ -381,13 +272,15 @@ body {
     font-weight: normal;
 }
 .opcion-label:hover {
-    background-color: #e9ecef;
+    background-color: #e9ecef; /* Un gris claro al pasar el mouse */
     border-color: #adb5bd;
 }
 .opcion-label input[type="radio"] {
     margin-right: 10px;
     transform: translateY(1px);
 }
+
+/* Feedback del examen (Correcto/Incorrecto) */
 .feedback-examen {
     font-weight: bold;
     margin-top: 15px;
@@ -396,15 +289,17 @@ body {
     border-radius: 5px;
 }
 .feedback-examen.correcto {
-    color: #155724;
-    background-color: #d4edda;
+    color: #155724; /* Bootstrap success text */
+    background-color: #d4edda; /* Bootstrap success bg */
     border: 1px solid #c3e6cb;
 }
 .feedback-examen.incorrecto {
-    color: #721c24;
-    background-color: #f8d7da;
+    color: #721c24; /* Bootstrap danger text */
+    background-color: #f8d7da; /* Bootstrap danger bg */
     border: 1px solid #f5c6cb;
 }
+
+/* Resultado final del examen */
 #resultado-examen {
     padding: 1.5rem;
     font-size: 1.3em;
@@ -449,7 +344,11 @@ body {
   .emoji-large {
     font-size: 2rem;
   }
+  .timeline-item {
+    padding-left: 2rem;
+  }
 }
+
 @media (max-width: 576px) {
   .concept-box,
   .example-box,
@@ -461,26 +360,4 @@ body {
     font-size: 1rem;
     padding: 0.8rem;
   }
-}
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.main {
-  flex: 1; 
-}
-
-.footer {
-  background-color: #f8f9fa;
-  text-align: center;
-  padding: 1rem 0;
-  color: #6c757d;
-  margin-top: auto; 
 }
