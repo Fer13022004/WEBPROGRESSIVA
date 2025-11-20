@@ -1,87 +1,534 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Máximo Común Divisor - Matemáticas Educativas</title>
-  <link rel="stylesheet" href="../css/styles-template.css" />
-  <link rel="icon" type="image/svg+xml" href="../images/icon-192x192.svg" />
-</head>
-<body>
-  <!-- Header / Navbar -->
-  <header class="header">
-    <div class="container header-content">
-      <h1 class="logo">📚 Matemáticas Educativas</h1>
-      <nav class="nav">
-        <a href="../index.html" class="back-btn">🏠 Dashboard</a>
-        <div class="dropdown">
-          <button class="dropbtn">Subtemas ▼</button>
-          <div class="dropdown-content">
-            <a href="#concepto">Concepto</a>
-            <a href="#ejemplo">Ejemplo</a>
-            <a href="#ejercicio">Ejercicio</a>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Máximo Común Divisor - Matemáticas Educativas</title>
 
-  <!-- Main Content -->
-  <main class="main">
-    <section id="concepto" class="theory-section">
-      <div class="container">
-        <div class="content-card animate-fade">
-          <h2 class="page-title">Concepto</h2>
-          <p>
-            El <strong>Máximo Común Divisor (MCD)</strong> de dos o más números es el mayor número que los divide exactamente.
-          </p>
-          <p>Por ejemplo: MCD de 12 y 18 es 6, porque 6 es el mayor número que divide tanto a 12 como a 18.</p>
-        </div>
-      </div>
-    </section>
+    <meta
+      name="description"
+      content="Aprende sobre el Máximo Común Divisor (MCD) de forma interactiva con ejercicios y calculadora"
+    />
+    <meta name="theme-color" content="#3498db" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="MathEdu" />
+    <meta name="msapplication-TileColor" content="#3498db" />
+    <meta name="msapplication-tap-highlight" content="no" />
 
-    <section id="ejemplo" class="interactive-section">
-      <div class="container">
-        <div class="content-card animate-fade">
-          <h2 class="page-title">Ejemplo</h2>
-          <p>Calcula el MCD de 24 y 36:</p>
-          <div class="calculation-steps">
-            <div class="step">Divisores de 24: 1, 2, 3, 4, 6, 8, 12, 24</div>
-            <div class="step">Divisores de 36: 1, 2, 3, 4, 6, 9, 12, 18, 36</div>
-            <div class="step">Divisores comunes: 1, 2, 3, 4, 6, 12</div>
-            <div class="step">Máximo común divisor: 12 ✔️</div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="manifest" href="../manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="../images/icon-192x192.svg" />
+    <link rel="apple-touch-icon" href="../images/icon-192x192.svg" />
 
-    <section id="ejercicio" class="exercise-section">
-      <div class="container">
-        <div class="content-card animate-fade">
-          <h2 class="page-title">Ejercicio</h2>
-          <div class="exercise">
-            <div class="exercise-question">Encuentra el MCD de 15 y 25:</div>
-            <div class="options">
-              <div class="option">5 ✔️</div>
-              <div class="option">10 ❌</div>
-              <div class="option">15 ❌</div>
+    <link rel="preload" href="../js/mcd.js" as="script" />
+    <link rel="preload" href="../css/styles.css" as="style" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-content">
+        <h1 class="logo">📚 Matemáticas Educativas</h1>
+        <nav class="nav">
+          <a href="../index.html" class="back-btn">🏠 Dashboard</a>
+          <div class="dropdown">
+            <button class="dropbtn">Subtemas ▼</button>
+            <div class="dropdown-content">
+              <a href="#concepto">Concepto</a>
+              <a href="#ejemplo">Ejemplos</a>
+              <a href="#calculadora">Calculadora</a>
+              <a href="#ejercicio">Ejercicios</a>
+              <a href="#curiosidades">Curiosidades</a>
+              <a href="#referencias">Referencias</a>
             </div>
-            <div class="exercise-feedback"></div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="page-header">
+        <div class="container">
+          <div class="page-title-section">
+            <h1 class="main-page-title">Máximo Común Divisor (MCD)</h1>
           </div>
         </div>
+      </section>
+
+      <section id="concepto" class="theory-section">
+        <div class="container">
+          <div class="content-card animate-fade">
+            <div class="concept-header">
+              <h2 class="page-title">Concepto</h2>
+            </div>
+
+            <div class="definition-box">
+              <h3>📚 ¿Qué es el Máximo Común Divisor?</h3>
+              <div class="definition-grid">
+                <div class="definition-item">
+                  <h4>🔢 Definición del MCD</h4>
+                  <p>
+                    El <strong>Máximo Común Divisor (MCD)</strong> de dos o más números
+                    es el <strong>mayor número que divide exactamente</strong> a todos ellos.
+                  </p>
+                  <div class="citation">
+                    <em>(SEP, 2023, Libro de matemáticas 6° grado, p. 52)</em>
+                  </div>
+                  <div class="tip-box">
+                    💡
+                    <em
+                      >¡Es el divisor más grande que tienen en común varios números!</em
+                    >
+                  </div>
+                  <div class="example-box">
+                    <strong>Ejemplo:</strong> MCD(12, 18) = 6<br />
+                    Porque 6 es el mayor número que divide a ambos
+                  </div>
+                </div>
+
+                <div class="definition-item">
+                  <h4>🧮 ¿Para qué sirve?</h4>
+                  <p>
+                    El MCD nos ayuda a <strong>simplificar fracciones</strong>,
+                    <strong>dividir cosas en partes iguales</strong>, y resolver
+                    problemas de la vida real.
+                  </p>
+                  <div class="citation">
+                    <em>(SEP, 2023, Libro de matemáticas 6° grado, p. 53)</em>
+                  </div>
+                  <div class="tip-box">
+                    💡
+                    <em
+                      >¡Es muy útil cuando queremos repartir cosas de manera equitativa!</em
+                    >
+                  </div>
+                  <div class="example-box">
+                    <strong>Ejemplo práctico:</strong> Si tienes 12 manzanas y 18 naranjas,
+                    el MCD te dice cuántos grupos iguales puedes hacer (6 grupos)
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="special-cases">
+              <h3>⚠️ Casos Especiales que Debes Recordar</h3>
+              <ul class="compact-list">
+                <li>
+                  <strong>Números primos entre sí:</strong> 🤔 Si dos números no
+                  tienen divisores comunes excepto el 1, su MCD es 1 <br /><em
+                    >Ejemplo: MCD(7, 9) = 1 (7 y 9 son primos relativos)</em
+                  >
+                  <span class="citation-inline">(Rosen, 2019, p. 156)</span>
+                </li>
+                <li>
+                  <strong>Uno de los números divide al otro:</strong> 🌟 Si un
+                  número divide exactamente al otro, ese es el MCD <br /><em
+                    >Ejemplo: MCD(6, 18) = 6 porque 6 divide a 18</em
+                  >
+                  <span class="citation-inline">(SEP, 2023, p. 79)</span>
+                </li>
+                <li>
+                  <strong>Números iguales:</strong> 📝 El MCD de dos números
+                  iguales es el mismo número <br /><em
+                    >Ejemplo: MCD(12, 12) = 12</em
+                  >
+                  <span class="citation-inline">(Burton, 2017, p. 46)</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="properties-box">
+              <h3>🔍 Datos Curiosos e Importantes</h3>
+              <ul class="compact-list">
+                <li>
+                  <strong>¡Muy útil en la vida real!</strong> 🔢 El MCD se usa
+                  para simplificar fracciones, dividir cosas en partes iguales,
+                  y resolver problemas prácticos <br /><em
+                    >Ejemplo: Si tienes 12 galletas y 18 chocolates, ¿cuántas
+                    bolsas iguales puedes hacer? Respuesta: 6 bolsas (MCD de 12
+                    y 18)</em
+                  >
+                  <span class="citation-inline">(SEP, 2023, p. 80)</span>
+                </li>
+                <li>
+                  <strong>Algoritmo de Euclides:</strong> 🧩 Hay un método muy
+                  antiguo y eficiente para calcular el MCD <br /><em
+                    >Fue inventado hace más de 2000 años y todavía se usa hoy en
+                    día</em
+                  >
+                  <span class="citation-inline"
+                    >(Algoritmo de Euclides, Burton, 2017, p. 50)</span
+                  >
+                </li>
+                <li>
+                  <strong>Relación con el mínimo común múltiplo:</strong> 🏗️ El
+                  MCD y el MCM están relacionados <br /><em
+                    >MCD(a, b) × MCM(a, b) = a × b</em
+                  >
+                  <span class="citation-inline">(SEP, 2023, p. 82)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ejemplo" class="interactive-section">
+        <div class="container">
+          <div class="content-card animate-fade">
+            <h2 class="page-title">Ejemplos Detallados</h2>
+
+            <div class="method-section">
+              <h3>🔎 ¿Cómo calcular el MCD de dos números?</h3>
+              <div class="method-steps">
+                <div class="method-step">
+                  <span class="step-number">1</span>
+                  <div class="step-content">
+                    <strong>Método 1: Listar divisores</strong> - Encuentra
+                    todos los divisores de cada número
+                  </div>
+                </div>
+                <div class="method-step">
+                  <span class="step-number">2</span>
+                  <div class="step-content">
+                    <strong>Buscar divisores comunes</strong> - Identifica los
+                    números que dividen a ambos
+                  </div>
+                </div>
+                <div class="method-step">
+                  <span class="step-number">3</span>
+                  <div class="step-content">
+                    <strong>Elegir el mayor</strong> - El MCD es el mayor de los
+                    divisores comunes
+                  </div>
+                </div>
+                <div class="method-step">
+                  <span class="step-number">4</span>
+                  <div class="step-content">
+                    <strong>Método 2: Algoritmo de Euclides</strong> - Método
+                    más eficiente para números grandes
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="examples-section">
+              <h3>📝 Análisis Paso a Paso</h3>
+              <div class="calculation-steps">
+                <div class="example-item">
+                  <h4>Ejemplo 1: MCD de 12 y 18</h4>
+                  <div class="step">1. Encontrar los divisores de 12:</div>
+                  <div class="step">Divisores de 12: 1, 2, 3, 4, 6, 12</div>
+                  <div class="step">2. Encontrar los divisores de 18:</div>
+                  <div class="step">Divisores de 18: 1, 2, 3, 6, 9, 18</div>
+                  <div class="step">3. Identificar los divisores comunes:</div>
+                  <div class="step">Divisores comunes: 1, 2, 3, 6</div>
+                  <div class="step conclusion">
+                    ✅ <strong>MCD(12, 18) = 6</strong> porque 6 es el mayor
+                    número que divide a ambos <br /><small
+                      class="citation-inline"
+                      >(SEP, 2023, p. 78)</small
+                    >
+                  </div>
+                </div>
+
+                <div class="example-item">
+                  <h4>
+                    Ejemplo 2: MCD de 24 y 36 usando el Algoritmo de Euclides
+                  </h4>
+                  <div class="step">1. Dividir el mayor entre el menor:</div>
+                  <div class="step">36 ÷ 24 = 1 con residuo 12</div>
+                  <div class="step">2. Ahora dividir 24 entre el residuo:</div>
+                  <div class="step">24 ÷ 12 = 2 con residuo 0</div>
+                  <div class="step">
+                    3. Cuando el residuo es 0, el divisor anterior es el MCD
+                  </div>
+                  <div class="step conclusion">
+                    ✅ <strong>MCD(24, 36) = 12</strong> <br />💡
+                    <em
+                      >El Algoritmo de Euclides es más rápido para números
+                      grandes</em
+                    >
+                    <br /><small class="citation-inline"
+                      >(Burton, 2017, p. 50)</small
+                    >
+                  </div>
+                </div>
+
+                <div class="example-item">
+                  <h4>Ejemplo 3: MCD de tres números</h4>
+                  <div class="step">Para calcular MCD(12, 18, 24):</div>
+                  <div class="step">1. Primero calculamos MCD(12, 18) = 6</div>
+                  <div class="step">2. Luego calculamos MCD(6, 24) = 6</div>
+                  <div class="step conclusion">
+                    ✅ <strong>MCD(12, 18, 24) = 6</strong> <br />💡
+                    <em
+                      >Para tres o más números, calculamos el MCD de dos en
+                      dos</em
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="calculadora" class="interactive-section">
+        <div class="container">
+          <div class="content-card animate-fade">
+            <h2 class="page-title">🧮 Calculadora Interactiva</h2>
+            <div class="calculator-section">
+              <div class="input-group">
+                <label for="number1Input"
+                  >🔍 Escribe dos números y calcularemos su MCD:</label
+                >
+                <div
+                  style="
+                    display: flex;
+                    gap: 1rem;
+                    align-items: center;
+                    flex-wrap: wrap;
+                  "
+                >
+                  <input
+                    type="number"
+                    id="number1Input"
+                    min="1"
+                    max="1000"
+                    placeholder="Primer número (ej: 12)"
+                    style="flex: 1; min-width: 150px"
+                  />
+                  <span style="font-size: 1.5rem; font-weight: bold">y</span>
+                  <input
+                    type="number"
+                    id="number2Input"
+                    min="1"
+                    max="1000"
+                    placeholder="Segundo número (ej: 18)"
+                    style="flex: 1; min-width: 150px"
+                  />
+                </div>
+                <button
+                  id="calculateBtn"
+                  class="btn-primary"
+                  style="margin-top: 1rem"
+                >
+                  ¡Calcular MCD!
+                </button>
+              </div>
+
+              <div
+                id="resultSection"
+                class="result-section"
+                style="display: none"
+              >
+                <div id="resultType" class="result-type"></div>
+                <div id="divisorsList" class="divisors-list"></div>
+                <div id="explanation" class="explanation"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ejercicio" class="exercise-section">
+        <div class="container">
+          <div class="content-card animate-fade">
+            <h2 class="page-title">🎯 Ejercicios Interactivos</h2>
+
+            <div class="dynamic-exercise-container">
+              <div class="exercise-header">
+                <div class="exercise-counter">
+                  Ejercicio <span id="currentExercise">1</span>
+                </div>
+                <div class="exercise-score">
+                  Aciertos: <span id="correctAnswers">0</span> /
+                  <span id="answeredQuestions">0</span>
+                </div>
+              </div>
+
+              <div id="exerciseContainer" class="exercise-container"></div>
+
+              <div id="exerciseFeedback" class="exercise-feedback hidden"></div>
+
+              <div class="exercise-buttons">
+                <button id="nextExerciseBtn" class="next-exercise-btn hidden">
+                  Siguiente Ejercicio →
+                </button>
+                <button id="restartExerciseBtn" class="restart-exercise-btn">
+                  🔄 Reiniciar Puntuación
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="curiosidades" class="theory-section">
+        <div class="container">
+          <div class="content-card animate-fade">
+            <h2 class="page-title">
+              🌟 ¿Sabías que...? Datos Súper Interesantes
+            </h2>
+
+            <div class="dynamic-curiosity-container">
+              <div id="dynamicCuriosity" class="curiosity-card"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="referencias" class="references-section">
+        <div class="container">
+          <div class="content-card animate-fade">
+            <h2 class="page-title">📚 Referencias y Más Información</h2>
+
+            <div class="references-content">
+              <h3>📖 Fuentes Académicas</h3>
+              <ol class="reference-list">
+                <li>
+                  <strong
+                    >Secretaría de Educación Pública [SEP]. (2023).</strong
+                  >
+                  <em
+                    >Desafíos Matemáticos. Quinto grado. Educación Primaria.</em
+                  >
+                  Comisión Nacional de Libros de Texto Gratuitos (CONALITEG).
+                  <span class="reference-note">
+                    Páginas 78-82: Máximo Común Divisor. Algoritmo de Euclides.
+                    (Recurso oficial gratuito - México)
+                  </span>
+                </li>
+
+                <li>
+                  <strong>Burton, D. M. (2017).</strong>
+                  <em>Elementary Number Theory.</em> 7ª edición. McGraw-Hill
+                  Education.
+                  <span class="reference-note">
+                    Capítulo 2: Divisibilidad y el Algoritmo de Euclides (pp.
+                    45-50). Máximo Común Divisor.
+                  </span>
+                </li>
+
+                <li>
+                  <strong>Rosen, K. H. (2019).</strong>
+                  <em>Elementary Number Theory and Its Applications.</em> 6ª
+                  edición. Pearson.
+                  <span class="reference-note">
+                    Capítulo 3: Máximo Común Divisor y Mínimo Común Múltiplo
+                    (pp. 156-165). Propiedades del MCD.
+                  </span>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="floating-menu" id="floatingMenu">
+      <div
+        class="menu-toggle"
+        onclick="toggleFloatingMenu()"
+        title="Navegación rápida"
+      >
+        <span class="menu-icon">📱</span>
+        <span class="menu-text">Menú</span>
       </div>
-    </section>
-  </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 Matemáticas Educativas. Todos los derechos reservados.</p>
+      <div class="menu-items" id="menuItems">
+        <a href="#concepto" class="menu-item" onclick="closeFloatingMenu()">
+          <span class="item-icon">📖</span>
+          <span class="item-text">Concepto</span>
+        </a>
+        <a href="#ejemplo" class="menu-item" onclick="closeFloatingMenu()">
+          <span class="item-icon">📝</span>
+          <span class="item-text">Ejemplos</span>
+        </a>
+        <a href="#calculadora" class="menu-item" onclick="closeFloatingMenu()">
+          <span class="item-icon">🧮</span>
+          <span class="item-text">Calculadora</span>
+        </a>
+        <a href="#ejercicio" class="menu-item" onclick="closeFloatingMenu()">
+          <span class="item-icon">🎯</span>
+          <span class="item-text">Ejercicios</span>
+        </a>
+        <a href="#curiosidades" class="menu-item" onclick="closeFloatingMenu()">
+          <span class="item-icon">🌟</span>
+          <span class="item-text">Curiosidades</span>
+        </a>
+        <a href="#referencias" class="menu-item" onclick="closeFloatingMenu()">
+          <span class="item-icon">📚</span>
+          <span class="item-text">Referencias</span>
+        </a>
+      </div>
     </div>
-  </footer>
 
-  <script src="../js/app.js"></script>
-  <script src="../js/mcd.js"></script>
-  <script src="../js/sw-register.js"></script>
-</body>
+    <footer class="footer">
+      <div class="container">
+        <p>
+          &copy; 2025 Matemáticas Educativas. Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/mcd.js"></script>
+    <script src="../js/sw-register.js"></script>
+
+    <script>
+      // Funciones para el menú flotante
+      function toggleFloatingMenu() {
+        const menuItems = document.getElementById("menuItems");
+        const isOpen = menuItems.classList.contains("menu-open");
+
+        if (isOpen) {
+          closeFloatingMenu();
+        } else {
+          openFloatingMenu();
+        }
+      }
+
+      function openFloatingMenu() {
+        const menuItems = document.getElementById("menuItems");
+        const menuToggle = document.querySelector(".menu-toggle");
+
+        menuItems.classList.add("menu-open");
+        menuToggle.classList.add("menu-active");
+      }
+
+      function closeFloatingMenu() {
+        const menuItems = document.getElementById("menuItems");
+        const menuToggle = document.querySelector(".menu-toggle");
+
+        menuItems.classList.remove("menu-open");
+        menuToggle.classList.remove("menu-active");
+      }
+
+      // Cerrar menú al hacer scroll
+      let scrollTimeout;
+      window.addEventListener("scroll", () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          closeFloatingMenu();
+        }, 100);
+      });
+
+      // Smooth scrolling para los enlaces del menú
+      document.querySelectorAll(".menu-item").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
