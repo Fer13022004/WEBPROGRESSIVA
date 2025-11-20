@@ -18,8 +18,11 @@
           <button class="dropbtn">Subtemas ▼</button>
           <div class="dropdown-content">
             <a href="#concepto">Concepto</a>
-            <a href="#ejemplo">Ejemplo</a>
-            <a href="#ejercicio">Ejercicio</a>
+            <a href="#visualizador">Visualizador</a>
+            <a href="#propiedades">Propiedades</a>
+            <a href="#ejemplos">Ejemplos</a>
+            <a href="#calculadora">Calculadora</a>
+            <a href="#ejercicios">Ejercicios</a>
           </div>
         </div>
       </nav>
@@ -28,48 +31,298 @@
 
   <!-- Main Content -->
   <main class="main">
+    <!-- Concepto -->
     <section id="concepto" class="theory-section">
       <div class="container">
         <div class="content-card animate-fade">
-          <h2 class="page-title">Concepto</h2>
-          <p>
-            Un <strong>divisor de un número</strong> es aquel número que divide exactamente al número dado sin dejar residuo.
-          </p>
-          <p>Por ejemplo, los divisores de 12 son: 1, 2, 3, 4, 6, 12.</p>
-        </div>
-      </div>
-    </section>
+          <h2 class="page-title">📖 Concepto de Divisores</h2>
+          
+          <div class="definition-box">
+            <h3>Definición</h3>
+            <p>
+              Un número <strong>a</strong> es <strong>divisor</strong> de otro número <strong>b</strong> 
+              si al dividir <strong>b</strong> entre <strong>a</strong> el resultado es un número entero 
+              y el residuo es cero. En otras palabras, <strong>b</strong> es divisible entre <strong>a</strong>.
+            </p>
+            <p class="formula">
+              Matemáticamente: <strong>a | b</strong> si existe un entero <strong>k</strong> 
+              tal que <strong>b = a × k</strong>
+            </p>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-left: 4px solid #667eea; border-radius: 4px;">
+              <p style="margin: 0; font-style: italic; color: #495057;">
+                "La divisibilidad es una relación entre números enteros que expresa que uno de ellos está contenido 
+                un número exacto de veces en el otro."
+              </p>
+              <p style="margin: 10px 0 0 0; font-size: 0.9em; color: #6c757d;">
+                — Rosen, K. H. (2019). <em>Matemáticas Discretas y sus Aplicaciones</em> (7ª ed.). McGraw-Hill Education.
+              </p>
+            </div>
+          </div>
 
-    <section id="ejemplo" class="interactive-section">
-      <div class="container">
-        <div class="content-card animate-fade">
-          <h2 class="page-title">Ejemplo</h2>
-          <p>Encuentra los divisores de 18:</p>
-          <div class="calculation-steps">
-            <div class="step">18 ÷ 1 = 18 ✔️</div>
-            <div class="step">18 ÷ 2 = 9 ✔️</div>
-            <div class="step">18 ÷ 3 = 6 ✔️</div>
-            <div class="step">18 ÷ 4 = 4.5 ❌</div>
-            <div class="step">18 ÷ 6 = 3 ✔️</div>
-            <div class="step">18 ÷ 9 = 2 ✔️</div>
-            <div class="step">18 ÷ 18 = 1 ✔️</div>
+          <div class="info-box">
+            <h3>Tipos de Números según sus Divisores</h3>
+            <ul>
+              <li>
+                <strong>🔢 Números Primos:</strong> Solo tienen dos divisores (1 y ellos mismos).
+                <br><em>Ejemplos: 2, 3, 5, 7, 11, 13, 17, 19...</em>
+              </li>
+              <li>
+                <strong>🔢 Números Compuestos:</strong> Tienen más de dos divisores.
+                <br><em>Ejemplos: 4, 6, 8, 9, 10, 12, 14...</em>
+              </li>
+              <li>
+                <strong>🔢 Números Perfectos:</strong> La suma de sus divisores propios es igual al número.
+                <br><em>Ejemplos: 6 (1+2+3=6), 28 (1+2+4+7+14=28)</em>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="ejercicio" class="exercise-section">
+    <!-- Visualizador Dinámico -->
+    <section id="visualizador" class="interactive-section">
       <div class="container">
         <div class="content-card animate-fade">
-          <h2 class="page-title">Ejercicio</h2>
-          <div class="exercise">
-            <div class="exercise-question">Encuentra todos los divisores de 20:</div>
-            <div class="options">
-              <div class="option">1, 2, 4, 5, 10, 20 ✔️</div>
-              <div class="option">1, 2, 5, 10 ❌</div>
-              <div class="option">2, 4, 8, 10, 20 ❌</div>
+          <h2 class="page-title">🎨 Visualizador Dinámico de Divisores</h2>
+          <p class="section-description">
+            Observa cómo los divisores "encajan" perfectamente en el número. 
+            Cada fila representa una división exacta.
+          </p>
+
+          <div class="calculator-container">
+            <div class="input-group">
+              <label for="vizNumberInput">Ingresa un número (2 - 100):</label>
+              <input 
+                type="number" 
+                id="vizNumberInput" 
+                min="2" 
+                max="100" 
+                value="12"
+                placeholder="Ejemplo: 12"
+                class="number-input"
+              />
             </div>
-            <div class="exercise-feedback"></div>
+            <button class="btn-primary" id="vizBtn">
+              Visualizar Divisores
+            </button>
+
+            <div id="visualizerContainer" class="visualizer-container">
+              <!-- Aquí se generará la visualización -->
+            </div>
+
+            <div id="vizStats" class="viz-stats" style="display: none;">
+              <p><strong>📊 Estadísticas:</strong></p>
+              <p id="vizInfo"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Propiedades -->
+    <section id="propiedades" class="theory-section">
+      <div class="container">
+        <div class="content-card animate-fade">
+          <h2 class="page-title">⚡ Propiedades Importantes</h2>
+          
+          <div class="properties-grid">
+            <div class="property-card">
+              <h3>1️⃣ Propiedad Reflexiva</h3>
+              <p>Todo número es divisor de sí mismo</p>
+              <p class="formula">n | n</p>
+              <p class="example">Ejemplo: 5 | 5</p>
+            </div>
+
+            <div class="property-card">
+              <h3>2️⃣ El Uno Universal</h3>
+              <p>El 1 es divisor de todos los números</p>
+              <p class="formula">1 | n para todo n</p>
+              <p class="example">Ejemplo: 1 | 100</p>
+            </div>
+
+            <div class="property-card">
+              <h3>3️⃣ Propiedad Transitiva</h3>
+              <p>Si a divide a b, y b divide a c, entonces a divide a c</p>
+              <p class="formula">Si a | b y b | c → a | c</p>
+              <p class="example">Ejemplo: 2|6 y 6|12 → 2|12</p>
+            </div>
+
+            <div class="property-card">
+              <h3>4️⃣ Suma y Resta</h3>
+              <p>Si a divide a b y a c, entonces divide su suma y resta</p>
+              <p class="formula">Si a|b y a|c → a|(b±c)</p>
+              <p class="example">Ejemplo: 3|9 y 3|6 → 3|15</p>
+            </div>
+
+            <div class="property-card">
+              <h3>5️⃣ Divisores en Pares</h3>
+              <p>Los divisores vienen en pares cuyo producto es el número</p>
+              <p class="formula">Si d|n → (n/d)|n</p>
+              <p class="example">Ejemplo: 3|12 y 4|12 (3×4=12)</p>
+            </div>
+
+            <div class="property-card">
+              <h3>6️⃣ Caso del Cero</h3>
+              <p>El 0 solo tiene como divisor a sí mismo</p>
+              <p class="formula">0 | 0 únicamente</p>
+              <p class="example">División por 0 no está definida</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejemplos -->
+    <section id="ejemplos" class="interactive-section">
+      <div class="container">
+        <div class="content-card animate-fade">
+          <h2 class="page-title">💡 Ejemplos Prácticos</h2>
+
+          <div class="example-container">
+            <div class="example-box">
+              <div class="example-header">
+                <span class="example-number">Ejemplo 1</span>
+                <h3>Divisores de 12</h3>
+              </div>
+              <p>Para encontrar los divisores de 12, probamos qué números lo dividen exactamente:</p>
+              <div class="calculation-steps">
+                <div class="step">12 ÷ 1 = 12 ✔️ Divisor</div>
+                <div class="step">12 ÷ 2 = 6 ✔️ Divisor</div>
+                <div class="step">12 ÷ 3 = 4 ✔️ Divisor</div>
+                <div class="step">12 ÷ 4 = 3 ✔️ Divisor</div>
+                <div class="step">12 ÷ 5 = 2.4 ❌ No es divisor</div>
+                <div class="step">12 ÷ 6 = 2 ✔️ Divisor</div>
+                <div class="step">12 ÷ 12 = 1 ✔️ Divisor</div>
+              </div>
+              <div class="result-divisors" id="example1-divisors"></div>
+              <p class="result-summary"><strong>Total: 6 divisores</strong></p>
+            </div>
+
+            <div class="example-box">
+              <div class="example-header">
+                <span class="example-number">Ejemplo 2</span>
+                <h3>Divisores de 28 (Número Perfecto)</h3>
+              </div>
+              <p>28 es un número perfecto. Veamos sus divisores:</p>
+              <div class="result-divisors" id="example2-divisors"></div>
+              <p class="result-summary">
+                <strong>Suma de divisores propios:</strong> 1 + 2 + 4 + 7 + 14 = 28
+                <br>⭐ <strong>¡Es un número perfecto!</strong>
+              </p>
+            </div>
+
+            <div class="example-box">
+              <div class="example-header">
+                <span class="example-number">Ejemplo 3</span>
+                <h3>Divisores de 17 (Número Primo)</h3>
+              </div>
+              <p>17 solo es divisible por 1 y por sí mismo:</p>
+              <div class="result-divisors" id="example3-divisors"></div>
+              <p class="result-summary">
+                <strong>Total: 2 divisores</strong>
+                <br>🎯 <strong>Es un número primo</strong>
+              </p>
+            </div>
+
+            <div class="example-box">
+              <div class="example-header">
+                <span class="example-number">Ejemplo 4</span>
+                <h3>Divisores de 36</h3>
+              </div>
+              <p>36 es un cuadrado perfecto (6²). Sus divisores son:</p>
+              <div class="result-divisors" id="example4-divisors"></div>
+              <p class="result-summary">
+                <strong>Total: 9 divisores</strong>
+                <br>Nota: Los cuadrados perfectos tienen un número impar de divisores
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calculadora -->
+    <section id="calculadora" class="interactive-section">
+      <div class="container">
+        <div class="content-card animate-fade">
+          <h2 class="page-title">🧮 Calculadora de Divisores</h2>
+          <p class="section-description">
+            Ingresa un número entero positivo y descubre todos sus divisores, 
+            su cantidad, suma y tipo de número.
+          </p>
+
+          <div class="calculator-container">
+            <div class="input-group">
+              <label for="numberInput">Ingresa un número (1 - 10000):</label>
+              <input 
+                type="number" 
+                id="numberInput" 
+                min="1" 
+                max="10000" 
+                placeholder="Ejemplo: 24"
+                class="number-input"
+              />
+            </div>
+            <button class="btn-primary" id="calculateBtn">
+              Calcular Divisores
+            </button>
+
+            <div class="result-container" id="resultContainer" style="display: none;">
+              <h3>📊 Resultados</h3>
+              <div class="result-info">
+                <p id="numberDisplay" class="number-analyzed"></p>
+              </div>
+              
+              <div class="divisors-container">
+                <h4>Divisores encontrados:</h4>
+                <div class="result-divisors" id="divisorsDisplay"></div>
+              </div>
+
+              <div class="stats-grid">
+                <div class="stat-card">
+                  <div class="stat-label">Cantidad de divisores</div>
+                  <div class="stat-value" id="countDisplay">0</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-label">Suma de todos los divisores</div>
+                  <div class="stat-value" id="sumDisplay">0</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-label">Suma de divisores propios</div>
+                  <div class="stat-value" id="properSumDisplay">0</div>
+                </div>
+              </div>
+
+              <div class="number-type" id="typeDisplay"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejercicios -->
+    <section id="ejercicios" class="exercise-section">
+      <div class="container">
+        <div class="content-card animate-fade">
+          <h2 class="page-title">✏️ Ejercicios Interactivos</h2>
+          <p class="section-description">
+            Pon a prueba tus conocimientos sobre divisores. Cada vez que reinicies, obtendrás nuevas preguntas.
+          </p>
+
+          <div id="exercisesContainer" class="exercises-container">
+            <!-- Los ejercicios se generarán dinámicamente aquí -->
+          </div>
+
+          <div class="score-container" id="scoreContainer">
+            <h3>📈 Tu Puntuación</h3>
+            <div class="score-display">
+              <span class="score-value" id="scoreValue">0</span>
+              <span class="score-total">/ 6</span>
+            </div>
+            <div class="score-message" id="scoreMessage"></div>
+            <button class="btn-secondary" id="resetBtn">Nuevos Ejercicios</button>
           </div>
         </div>
       </div>
