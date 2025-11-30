@@ -1,19 +1,13 @@
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
-      const isGitHubPages = location.hostname.includes("github.io");
-      const basePath = isGitHubPages ? "/WEBPROGRESSIVA" : "";
-
-      const registration = await navigator.serviceWorker.register(
-        `${basePath}/sw.js`
-      );
+      const registration = await navigator.serviceWorker.register("/sw.js");
 
       console.log(
         "Service Worker registrado exitosamente:",
         registration.scope
       );
 
-      // Detectar actualizaciones
       registration.addEventListener("updatefound", () => {
         const newWorker = registration.installing;
         newWorker.addEventListener("statechange", () => {
@@ -30,6 +24,7 @@ if ("serviceWorker" in navigator) {
     }
   });
 }
+
 
 
 function showUpdateNotification() {
