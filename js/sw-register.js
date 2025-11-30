@@ -1,7 +1,13 @@
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
-      const registration = await navigator.serviceWorker.register("/sw.js");
+      const isGitHubPages = location.hostname.includes("github.io");
+      const basePath = isGitHubPages ? "/WEBPROGRESSIVA" : "";
+
+      const registration = await navigator.serviceWorker.register(
+        `${basePath}/sw.js`
+      );
+
       console.log(
         "Service Worker registrado exitosamente:",
         registration.scope
@@ -24,6 +30,7 @@ if ("serviceWorker" in navigator) {
     }
   });
 }
+
 
 function showUpdateNotification() {
   if (window.Utils && window.Utils.showToast) {
