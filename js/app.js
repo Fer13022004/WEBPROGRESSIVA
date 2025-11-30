@@ -453,8 +453,8 @@ const NotificationManager = {
 
       registration.showNotification("🧮 Matemáticas Educativas", {
         body: "¡Bienvenido! Las notificaciones están funcionando correctamente.",
-        icon: "/images/icon-192x192.svg",
-        badge: "/images/icon-192x192.svg",
+        icon: "images/icon-192x192.svg",
+        badge: "images/icon-192x192.svg",
         tag: "welcome-notification",
         actions: [
           {
