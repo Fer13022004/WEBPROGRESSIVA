@@ -271,13 +271,11 @@ if (listaExamen && divResultadoExamen) {
   generarExamenCriterios();
 }
     // --- Inicialización ---
-    if (listaExamen && btnCalificar && btnNuevoExamen && divResultadoExamen) {
-        btnCalificar.addEventListener("click", calificarExamen);
-        btnNuevoExamen.addEventListener("click", generarExamenCriterios);
+    // Inicialización del examen dinámico
+  if (listaExamen && divResultadoExamen) {
+      generarExamenCriterios();
+  } else {
+      console.error("Error: No se encontraron los elementos del examen (lista o resultado).");
+  }
 
-        // Generar el primer examen al cargar
-        generarExamenCriterios();
-    } else {
-        console.error("Error: No se encontraron los elementos del examen (lista, botones o resultado).");
-    }
 });
