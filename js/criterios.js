@@ -277,5 +277,4 @@ if (listaExamen && divResultadoExamen) {
   } else {
       console.error("Error: No se encontraron los elementos del examen (lista o resultado).");
   }
-
 });
