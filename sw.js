@@ -10,6 +10,7 @@ const urlsToCache = [
   `${basePath}/js/app.js`,
   `${basePath}/js/config.js`,
   `${basePath}/js/sw-register.js`,
+  `${basePath}/js/criterios.js`
   `${basePath}/js/primos-compuestos.js`,
   `${basePath}/manifest.json`,
   `${basePath}/images/icon-192x192.svg`,
@@ -17,6 +18,7 @@ const urlsToCache = [
   `${basePath}/pages/primos-compuestos.html`,
   `${basePath}/pages/multiplos.html`,
   `${basePath}/pages/primos.html`,
+  `${basePath}/pages/criterios.html,
 ];
 
 // Instalación - Cachear archivos
